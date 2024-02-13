@@ -7,7 +7,20 @@
 			"path": "microservices"
 		},
 		{
-			"path": "microservices/api-gateway/src"
+			"path": "microservices/api-gateway/src",
+			"name": "api-gateway"
+		},
+		{
+			"path": "microservices/user-service/src",
+			"name": "user-service"
+		},
+		{
+			"path": "microservices/invoice-service/src",
+			"name": "invoice-service"
+		},
+		{
+			"path": "microservices/report-service/src",
+			"name": "report-service"
 		}
 	],
 	"settings": {
