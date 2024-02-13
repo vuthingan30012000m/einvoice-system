@@ -18,6 +18,14 @@
 
 
 
+
+
+
+
+
+
+
+
 npm i @nestjs/config @nestjs/swagger @nestjs/cqrs
 npm i class-transformer class-validator 
 npm i @nestjs/typeorm typeorm
