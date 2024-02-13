@@ -4,14 +4,14 @@ echo "Tải offline"
 
 echo "Tải mysql"
 # docker pull mysql
-docker save -o wifi/image/mysql_image.tar mysql
+# docker save -o wifi/image/mysql_image.tar mysql
 docker load -i wifi/image/mysql_image.tar
 echo "Xong mysql"
 
 
 echo "Tải node"
 # docker pull node
-docker save -o wifi/image/node_image.tar node
+# docker save -o wifi/image/node_image.tar node
 docker load -i wifi/image/node_image.tar
 echo "Xong node"
 
@@ -19,9 +19,15 @@ echo "Xong node"
 
 echo "Tải nats"
 # docker pull nats
-docker save -o wifi/image/nats_image.tar nats
+# docker save -o wifi/image/nats_image.tar nats
 docker load -i wifi/image/nats_image.tar
 echo "Xong nats"
+
+echo "Tải adminer"
+docker pull adminer
+docker save -o wifi/image/adminer_image.tar adminer
+docker load -i wifi/image/adminer_image.tar
+echo "Xong adminer"
 
 
 
