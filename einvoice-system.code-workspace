@@ -11,6 +11,7 @@
 		"code-runner.executorMap": {
 			"shellscript": " cd $dir && $fileName" ,
 			"typescript": " cd $dir && npm run format && NEST_DEBUG=true npm run start:dev ",
+			// "typescript": " cd $dir && npm run format && npm run test && npm run test:e2e ",
 		},
 		"cSpell.words": [
 			"cqrs",

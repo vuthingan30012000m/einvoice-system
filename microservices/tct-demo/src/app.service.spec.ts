@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppService } from './app.service';
-import { validate } from 'uuid';
 
 describe('AppService', () => {
   let app: AppService;
@@ -16,7 +15,9 @@ describe('AppService', () => {
   it('Trả về UUID', () => {
     jest.spyOn(Math, 'random').mockReturnValue(0.4);
     const result = app.getRandomValue();
-    expect(validate(result)).toBe(true);
+    expect(result).toMatch(
+      /[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/i,
+    );
   });
 
   it('Trả về null', () => {
