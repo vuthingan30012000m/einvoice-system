@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "microservices"
+		},
+		{
+			"path": "microservices/api-gateway/src"
 		}
 	],
 	"settings": {
