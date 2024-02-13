@@ -8,6 +8,10 @@
 		}
 	],
 	"settings": {
+		"code-runner.executorMap": {
+			"shellscript": " cd $dir && $fileName" ,
+			"typescript": " cd $dir && npm run format && NEST_DEBUG=true npm run start:dev ",
+		},
 		"cSpell.words": [
 			"cqrs",
 			"dataaccess",
