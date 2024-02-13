@@ -18,7 +18,7 @@ describe('AppController', () => {
   });
 
   it('Tạo thành công', () => {
-    const uuid = 'random-uuid';
+    const uuid = 'uuid-uuid-uuid-uuid-uuid';
     jest.spyOn(appService, 'getRandomValue').mockReturnValue(uuid);
 
     expect(() => appController.getRandomValue()).toThrowError(

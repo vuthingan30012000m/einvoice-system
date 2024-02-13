@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
@@ -15,10 +15,33 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  //
+  it('Tạo thành công', () => {
+    return request(app.getHttpServer()).get('/demo/uuid');
+    // .expect(HttpStatus.CREATED)
+
+    // .expect((res) => {
+    //   expect(res.body.uuid).toBeDefined();
+    //   expect(res.body.statusCode).toBe(HttpStatus.CREATED);
+    //   expect(res.body.message).toBe('Tạo thành công');
+    // });
+  });
+
+  it('Không được chấp nhận', () => {
+    return request(app.getHttpServer()).get('/demo/uuid');
+    // .expect(HttpStatus.OK)
+    //     .expect((res) => {
+    //       expect(res.body.uuid).toBeUndefined();
+    //       expect(res.body.statusCode).toBe(HttpStatus.OK);
+    //       expect(res.body.message).toBe('Không được chấp nhận');
+    //     });
+  });
+  // //
+  //
+  //
+  //
+
+  afterEach(async () => {
+    await app.close();
   });
 });

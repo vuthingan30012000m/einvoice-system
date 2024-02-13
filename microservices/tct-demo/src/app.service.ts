@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class AppService {
@@ -8,7 +8,7 @@ export class AppService {
     const random_choose = Math.random();
 
     if (random_choose < ACCEPTANCE_RATE) {
-      return uuidv4();
+      return randomUUID();
     }
 
     return null;
