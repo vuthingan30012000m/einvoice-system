@@ -22,15 +22,4 @@ echo "Tải nats"
 # docker save -o wifi/image/nats_image.tar nats
 docker load -i wifi/image/nats_image.tar
 echo "Xong nats"
-
-echo "Tải adminer"
-docker pull adminer
-docker save -o wifi/image/adminer_image.tar adminer
-docker load -i wifi/image/adminer_image.tar
-echo "Xong adminer"
-
-
-
-
- 
  
