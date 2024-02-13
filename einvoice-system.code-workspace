@@ -17,10 +17,10 @@
 		{
 			"path": "microservices/invoice-service/src",
 			"name": "invoice-service"
-		},
-		{
-			"path": "microservices/report-service/src",
-			"name": "report-service"
+		// },
+		// {
+		// 	"path": "microservices/report-service/src",
+		// 	"name": "report-service"
 		}
 	],
 	"settings": {
