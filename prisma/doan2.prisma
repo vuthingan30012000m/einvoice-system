@@ -1,0 +1,134 @@
+model Address {
+  id       Int        @id @default(autoincrement())
+  ward     String // Phường ,Xã
+  district String // Quận,Huyện
+  city     String // Tỉnh,Thành phố
+  Tenant   Tenant[]
+  Customer Customer[]
+}
+
+model Bank {
+  id       String     @id
+  name     String
+  Tenant   Tenant[]
+  Customer Customer[]
+}
+
+model Mail {
+  id      Int      @id @default(autoincrement())
+  subject String
+  content String
+  Tenant  Tenant[]
+}
+
+model Tenant {
+  id          Int     @id @default(autoincrement())
+  name        String
+  phoneNumber String
+  email       Mail    @relation(fields: [mailId], references: [id])
+  address     Address @relation(fields: [addressId], references: [id])
+  bank        Bank    @relation(fields: [bankId], references: [id])
+  addressId   Int
+  bankId      String
+  User        User[]
+  mailId      Int
+}
+
+model Role {
+  id             Int              @id @default(autoincrement())
+  name           String
+  User           User[]
+  UserRole       UserRole[]
+  RolePermission RolePermission[]
+}
+
+enum RoleName {
+  Tenant
+  Customer
+  Product
+  Invoice
+  Mail
+}
+
+model Permission {
+  id             Int              @id @default(autoincrement())
+  name           RoleName
+  RolePermission RolePermission[]
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  username     String
+  password     String
+  fullName     String
+  email        String
+  phoneNumber  String
+  refreshToken String
+  role         Role       @relation(fields: [roleId], references: [id])
+  tenant       Tenant     @relation(fields: [tenantId], references: [id])
+  roleId       Int
+  tenantId     Int
+  UserRole     UserRole[]
+  Invoice      Invoice[]
+}
+
+model UserRole {
+  user   User @relation(fields: [userId], references: [id])
+  role   Role @relation(fields: [roleId], references: [id])
+  userId Int
+  roleId Int
+
+  @@id([userId, roleId])
+}
+
+model RolePermission {
+  role         Role       @relation(fields: [roleId], references: [id])
+  permission   Permission @relation(fields: [permissionId], references: [id])
+  roleId       Int
+  permissionId Int
+
+  @@id([roleId, permissionId])
+}
+
+model Customer {
+  id          Int       @id @default(autoincrement())
+  name        String
+  email       String
+  phoneNumber String
+  address     Address   @relation(fields: [addressId], references: [id])
+  bank        Bank      @relation(fields: [bankId], references: [id])
+  addressId   Int
+  bankId      String
+  Invoice     Invoice[]
+}
+
+model Product {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String
+  price        Float
+  invoiceItems InvoiceItem[]
+}
+
+model Invoice {
+  id               Int           @id @default(autoincrement())
+  user             User          @relation(fields: [userId], references: [id])
+  customer         Customer      @relation(fields: [customerId], references: [id])
+  total_before_tax Float
+  total_after_tax  Float
+  date             DateTime
+  userId           Int
+  customerId       Int
+  invoiceItems     InvoiceItem[]
+}
+
+model InvoiceItem {
+  id        Int     @id @default(autoincrement())
+  product   Product @relation(fields: [productId], references: [id])
+  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+  unitPrice Float
+  quantity  Int
+  taxRate   Float
+  productId Int
+  invoiceId Int
+}
