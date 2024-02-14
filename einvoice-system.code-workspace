@@ -43,5 +43,38 @@
       "nestjs",
       "typeorm"
     ]
+  },
+  "extensions": {
+    "recommendations": [
+      "pkief.material-icon-theme"
+    ]
   }
+}
+{
+  "recommendations": [
+      "pkief.material-icon-theme"
+  ]
+}{
+  "recommendations": [
+      "formulahendry.code-runner",
+      "michaelcurrin.auto-commit-msg",
+      "aaron-bond.better-comments",
+      "dracula-theme.theme-dracula",
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker",
+      "ms-azuretools.vscode-docker",
+  ]
+}{
+  "recommendations": [
+      "formulahendry.code-runner",
+      "michaelcurrin.auto-commit-msg",
+      "aaron-bond.better-comments",
+      "dracula-theme.theme-dracula",
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker",
+      "ms-azuretools.vscode-docker",
+      "github.vscode-github-actions",
+      "cweijan.vscode-myssql-client2",
+      "ms-vscode.vscode-typescript-next"
+  ]
 }
