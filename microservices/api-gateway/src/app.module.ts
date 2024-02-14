@@ -9,22 +9,22 @@ import * as Joi from '@hapi/joi';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      // validationSchema: Joi.object({
-      //   NATS_SERVICE: Joi.string().required(),
+      validationSchema: Joi.object({
+        NATS_SERVICE: Joi.string().required(),
 
-      //   DATABASE_HOST: Joi.string().required(),
-      //   DATABASE_PORT: Joi.string().required(),
-      //   DATABASE_USERNAME: Joi.string().required(),
-      //   DATABASE_PASSWORD: Joi.string().required(),
-      //   DATABASE_NAME: Joi.string().required(),
-      // }),
+        //   DATABASE_HOST: Joi.string().required(),
+        //   DATABASE_PORT: Joi.string().required(),
+        //   DATABASE_USERNAME: Joi.string().required(),
+        //   DATABASE_PASSWORD: Joi.string().required(),
+        //   DATABASE_NAME: Joi.string().required(),
+      }),
     }),
     ClientsModule.register([
       {
         name: 'NATS_SERVICE',
         transport: Transport.NATS,
         options: {
-          servers: [process.env.NATS_SERVICE || 'nats://nats'],
+          servers: [process.env.NATS_SERVICE],
         },
       },
     ]),
