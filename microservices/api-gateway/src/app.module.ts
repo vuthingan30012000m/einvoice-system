@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './user/user.module';
+import { InvoiceModule } from './invoice/invoice.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -26,6 +28,8 @@ import * as Joi from '@hapi/joi';
         },
       },
     ]),
+    UserModule,
+    InvoiceModule,
   ],
   controllers: [],
   providers: [],
