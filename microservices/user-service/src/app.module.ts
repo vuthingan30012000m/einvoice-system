@@ -16,7 +16,9 @@ import { UserModule } from './user/user.module';
         //   DATABASE_PASSWORD: Joi.string().required(),
         //   DATABASE_NAME: Joi.string().required(),
       }),
-    }),UserModule],
+    }),
+    UserModule,
+  ],
   controllers: [],
   providers: [],
 })
