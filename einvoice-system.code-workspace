@@ -1,41 +1,47 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "microservices"
-		},
-		{
-			"path": "microservices/api-gateway/src",
-			"name": "api-gateway"
-		},
-		{
-			"path": "microservices/user-service/src",
-			"name": "user-service"
-		},
-		{
-			"path": "microservices/invoice-service/src",
-			"name": "invoice-service"
-		// },
-		// {
-		// 	"path": "microservices/report-service/src",
-		// 	"name": "report-service"
-		}
-	],
-	"settings": {
-		"code-runner.executorMap": {
-			"shellscript": " cd $dir && $fileName" ,
-			"typescript": " cd $dir && npm run format && NEST_DEBUG=true npm run start:dev ",
-			// "typescript": " cd $dir && npm run format && npm run test && npm run test:e2e ",
-		},
-		"cSpell.words": [
-			"cqrs",
-			"dataaccess",
-			"einvoice",
-			"nats",
-			"nestjs",
-			"typeorm"
-		]
-	}
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "microservices"
+    },
+    {
+      "path": "microservices/api-gateway/src",
+      "name": "api-gateway"
+    },
+    {
+      "path": "microservices/user-service/src",
+      "name": "user-service"
+    },
+    {
+      "path": "microservices/invoice-service/src",
+      "name": "invoice-service"
+      // },
+      // {
+      // 	"path": "microservices/report-service/src",
+      // 	"name": "report-service"
+    }
+  ],
+  "settings": {
+    "code-runner.executorMap": {
+      "shellscript": " cd $dir && $fileName",
+      "typescript": " cd $dir && npm run format && NEST_DEBUG=true npm run start:dev "
+      // "typescript": " cd $dir && npm run format && npm run test && npm run test:e2e ",
+    },
+    "github.copilot.enable": {
+      "*": true,
+      "plaintext": false,
+      "markdown": true,
+      "scminput": false
+    },
+    "cSpell.words": [
+      "cqrs",
+      "dataaccess",
+      "einvoice",
+      "nats",
+      "nestjs",
+      "typeorm"
+    ]
+  }
 }
