@@ -36,6 +36,7 @@
       "markdown": true,
       "scminput": false
     },
+    "material-icon-theme.activeIconPack": "nest",
     "cSpell.words": [
       "cqrs",
       "dataaccess",
@@ -57,7 +58,7 @@
       "ms-azuretools.vscode-docker",
       "github.vscode-github-actions",
       "cweijan.vscode-myssql-client2",
-      "ms-vscode.vscode-typescript-next",
+      "ms-vscode.vscode-typescript-next"
     ]
   }
 }
