@@ -109,8 +109,6 @@ Tìm hiểu DDD
 <!-- Cache redis -->
 <!-- Nhập mã captcha và nhấn “Tìm kiếm” -->
 
-Thưa thầy, em thấy hóa đơn điện tử hơi khó để demo như dấu ấn, giấy tờ.
-Thầy có gợi ý chủ đề nào khác cho em không ạ?
 Microservices là một kiến trúc phần mềm phân tán mà mỗi dịch vụ hoạt động độc lập và chạy trên các máy chủ riêng biệt. Các design pattern là các mô hình thiết kế đã được kiểm chứng trong việc triển khai các microservices. Dưới đây là một số design pattern phổ biến cho microservices:
 
 1. **Service Discovery**:
