@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = new Logger();
 
-  // app.setGlobalPrefix('api/product');
+  app.setGlobalPrefix('api');
 
   const options = new DocumentBuilder().build();
   const document = SwaggerModule.createDocument(app, options);
