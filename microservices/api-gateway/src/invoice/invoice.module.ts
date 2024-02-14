@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { InvoiceService } from './invoice.service';
 import { InvoiceController } from './invoice.controller';
+import { NatsClientModule } from 'src/nats-client/nats-client.module';
 
 @Module({
+  imports: [NatsClientModule],
   controllers: [InvoiceController],
-  providers: [InvoiceService],
+  providers: [],
 })
 export class InvoiceModule {}

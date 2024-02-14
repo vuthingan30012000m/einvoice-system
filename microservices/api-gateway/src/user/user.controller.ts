@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Inject,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ClientProxy } from '@nestjs/microservices';
@@ -7,10 +16,11 @@ import { ClientProxy } from '@nestjs/microservices';
 export class UserController {
   constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
 
-  // @Post()
-  // create(@Body() createUserDto: CreateUserDto) {
-  //   return this.userService.create(createUserDto);
-  // }
+  @Post()
+  create() {
+    // create(@Body() createUserDto: CreateUserDto) {
+    //   return this.userService.create(createUserDto);
+  }
 
   // @Get()
   // findAll() {
