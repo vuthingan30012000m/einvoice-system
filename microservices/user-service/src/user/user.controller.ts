@@ -11,10 +11,9 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
-@Controller()
-// @Controller('user')
+@Controller('user')
 export class UserController {
-  // constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @MessagePattern({ cmd: 'createUserDto' })
   create(@Payload() createUserDto: CreateUserDto) {

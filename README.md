@@ -1,1 +1,1 @@
-nest g resource user 
+nest g resource   invoice
