@@ -24,12 +24,13 @@ services:
     build: ./microservices/api-gateway
     restart: always
     ports:
-      - 3000:3000
+      - 3001:3001
     volumes:
       - ./microservices/api-gateway/src:/usr/src/app/src
       - ./microservices/api-gateway/node_modules:/usr/src/app/node_modules
     command: npm run start:dev
     environment:
+      PORT: 3001
       NATS_SERVICE: 'nats://nats'
 
   user:
