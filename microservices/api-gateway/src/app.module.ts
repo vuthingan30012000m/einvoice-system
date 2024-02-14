@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Module, Logger, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { UserModule } from './user/user.module';
 import { InvoiceModule } from './invoice/invoice.module';
+import { LoggingMiddleware } from './logging.middleware';
 
 @Module({
   imports: [
@@ -35,4 +36,8 @@ import { InvoiceModule } from './invoice/invoice.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggingMiddleware).forRoutes('*');
+  }
+}
