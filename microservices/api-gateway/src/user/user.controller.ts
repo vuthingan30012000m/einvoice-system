@@ -19,7 +19,7 @@ export class UserController {
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     console.log('🚀 ~ UserController ~ create ~ createUserDto:', createUserDto);
-    //   return this.userService.create(createUserDto);
+    this.natsClient.send({cmd:'createUserDto'}, createUserDto);
   }
 
   // @Get()
