@@ -9,6 +9,7 @@ import * as Joi from '@hapi/joi';
       isGlobal: true,
       validationSchema: Joi.object({
         NATS_SERVICE: Joi.string().required(),
+
         DATABASE_HOST: Joi.string().required(),
         DATABASE_PORT: Joi.string().required(),
         DATABASE_USERNAME: Joi.string().required(),
