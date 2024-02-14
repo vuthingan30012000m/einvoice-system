@@ -31,7 +31,7 @@ services:
     command: npm run start:dev
     environment:
       PORT: 3001
-      NATS_SERVICE: 'nats://nats'
+      NATS_SERVICE: ${NATS_SERVICE}
 
   user:
     build: ./microservices/user-service
@@ -41,7 +41,7 @@ services:
       - ./microservices/user-service/node_modules:/usr/src/app/node_modules
     command: npm run start:dev
     environment:
-      NATS_SERVICE: 'nats://nats'
+      NATS_SERVICE: ${NATS_SERVICE}
 
   invoice:
     build: ./microservices/invoice-service
@@ -51,7 +51,7 @@ services:
       - ./microservices/invoice-service/node_modules:/usr/src/app/node_modules
     command: npm run start:dev
     environment:
-      NATS_SERVICE: 'nats://nats'
+      NATS_SERVICE: ${NATS_SERVICE}
 
 #   zookeeper:
 #     image: bitnami/zookeeper
