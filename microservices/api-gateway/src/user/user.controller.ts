@@ -17,8 +17,8 @@ export class UserController {
   constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
 
   @Post()
-  create() {
-    // create(@Body() createUserDto: CreateUserDto) {
+  create(@Body() createUserDto: CreateUserDto) {
+    console.log('🚀 ~ UserController ~ create ~ createUserDto:', createUserDto);
     //   return this.userService.create(createUserDto);
   }
 
