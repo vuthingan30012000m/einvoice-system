@@ -32,9 +32,9 @@ import { ReportController } from './report.controller';
   controllers: [ReportController],
   providers: [
     ReportService,
-     TaxOfficeSeeder,
-    BankSeeder,
-    AddressSeeder,
+    //  TaxOfficeSeeder,
+    // BankSeeder,
+    // AddressSeeder,
   ],
 })
 export class ReportModule {}

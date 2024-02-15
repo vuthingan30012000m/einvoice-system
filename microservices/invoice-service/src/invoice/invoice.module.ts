@@ -32,9 +32,9 @@ import { InvoiceController } from './invoice.controller';
   controllers: [InvoiceController],
   providers: [
     InvoiceService,
-     TaxOfficeSeeder,
-    BankSeeder,
-    AddressSeeder,
+    //  TaxOfficeSeeder,
+    // BankSeeder,
+    // AddressSeeder,
   ],
 })
 export class InvoiceModule {}
