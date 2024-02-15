@@ -13,12 +13,12 @@ export class District {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({nullable:false})
   name: string;
 
-  @OneToMany(() => Ward, (ward) => ward.district)
+  @OneToMany(() => Ward, (ward) => ward.district,{cascade:true})
   wards: Ward[];
 
-  @ManyToOne(() => City, (city) => city.districts)
+  @ManyToOne(() => City, (city) => city.districts,{nullable:false})
   city: City;
 }

@@ -55,9 +55,15 @@ export class AddressSeeder implements OnModuleInit {
           //   name: item.name,
           // });
         } else {
+          const city=          await this.cityRepository.findOneBy({
+            id:Number(item.city)
+          })
+
+
           const newDistrict = this.districtRepository.create({
             id: Number(item.id),
             name: item.name,
+            city:city
           });
 
           await this.districtRepository.save(newDistrict);
