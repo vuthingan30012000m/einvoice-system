@@ -23,13 +23,13 @@ export class AddressSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      const jsonFileCityPath = path.join(__dirname, 'address.city.seeder.json');
-      const rawDataCity = fs.readFileSync(jsonFileCityPath, 'utf8');
+      var jsonFilePath = path.join(__dirname, 'address.city.seeder.json');
+      var rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
-      const data: {
+      var data: {
         id: number;
         name: string;
-      }[] = JSON.parse(rawDataCity);
+      }[] = JSON.parse(rawData);
 
       for (const item of data) {
         const existingCity = await this.cityRepository.findOneBy({
@@ -49,8 +49,68 @@ export class AddressSeeder implements OnModuleInit {
           await this.cityRepository.save(newCity);
         }
       }
-      this.logger.log('District successfully!');
-      this.logger.log('Ward successfully!');
+
+
+
+      var jsonFilePath = path.join(__dirname, 'address.district.seeder.json');
+      var rawData = fs.readFileSync(jsonFilePath, 'utf8');
+
+      var data: {
+        id: number;
+        name: string;
+      }[] = JSON.parse(rawData);
+
+      for (const item of data) {
+        const existingDistrict = await this.districtRepository.findOneBy({
+          id: item.id,
+        });
+
+        if (existingDistrict) {
+          await this.districtRepository.update(existingDistrict.id, {
+            name: item.name,
+          });
+        } else {
+          const newDistrict = this.districtRepository.create({
+            id: item.id,
+            name: item.name,
+          });
+
+          await this.districtRepository.save(newDistrict);
+        }
+      }
+
+
+
+
+
+      var jsonFilePath = path.join(__dirname, 'address.ward.seeder.json');
+      var rawData = fs.readFileSync(jsonFilePath, 'utf8');
+      
+      var data: {
+        id: number;
+        name: string;
+      }[] = JSON.parse(rawData);
+      
+      for (const item of data) {
+        const existingWard = await this.wardRepository.findOneBy({
+          id: item.id,
+        });
+      
+        if (existingWard) {
+          await this.wardRepository.update(existingWard.id, {
+            name: item.name,
+          });
+        } else {
+          const newWard = this.wardRepository.create({
+            id: item.id,
+            name: item.name,
+          });
+      
+          await this.wardRepository.save(newWard);
+        }
+      }
+      
+
 
       this.logger.log('Seeder successfully!');
     } catch (error) {

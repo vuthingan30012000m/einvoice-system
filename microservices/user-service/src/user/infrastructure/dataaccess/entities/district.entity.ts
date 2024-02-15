@@ -10,8 +10,8 @@ import { City } from './city.entity';
 
 @Entity()
 export class District {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn( )
+  id: number;
 
   @Column()
   name: string;
