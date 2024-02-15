@@ -1,4 +1,7 @@
-[
+export const dataCity: { 
+        id: string;
+        name: string;
+      }[] = [
   {
       "id": "01",
       "name": "Thành phố Hà Nội"
