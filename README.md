@@ -7,21 +7,7 @@ email: Email
 phoneNumber: PhoneNumber
 <!-- address: string -->
 <!-- bankName: string -->
-model Address {
-  id       Int        @id @default(autoincrement())
-  ward     String // Phường ,Xã
-  district String // Quận,Huyện
-  city     String // Tỉnh,Thành phố
-  Tenant   Tenant[]
-  Customer Customer[]
-}
 
-model Bank {
-  id       String     @id
-  name     String
-  Tenant   Tenant[]
-  Customer Customer[]
-}
 
 <!-- bankNumber: string -->
 

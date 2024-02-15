@@ -1,9 +1,19 @@
-export class Bank {
+export class Address {
+  id: number;
+  note: string;
+}
+export class Ward {
   id: number;
   name: string;
-  code: string;
-  shortName: string;
 }
-Tỉnh / Thành Phố   (id,name)
-Quận Huyện  (id,name)
-Phường   Xã  (id,name) 
+ 
+export class District {
+  id: number;
+  name: string;
+}
+
+
+export class City {
+  id: number;
+  name: string;
+}
