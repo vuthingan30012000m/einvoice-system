@@ -23,15 +23,15 @@ export class AddressSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      var jsonFilePath = path.join(__dirname, 'address.city.seeder.json');
-      var rawData = fs.readFileSync(jsonFilePath, 'utf8');
+      const jsonFileCityPath = path.join(__dirname, 'address.city.seeder.json');
+      const rawCityData = fs.readFileSync(jsonFileCityPath, 'utf8');
 
-      var data: {
+      const dataCity: {
         id: number;
         name: string;
-      }[] = JSON.parse(rawData);
+      }[] = JSON.parse(rawCityData);
 
-      for (const item of data) {
+      for (const item of dataCity) {
         const existingCity = await this.cityRepository.findOneBy({
           id: item.id,
         });
@@ -50,15 +50,16 @@ export class AddressSeeder implements OnModuleInit {
         }
       }
 
-      // var jsonFilePath = path.join(__dirname, 'address.district.seeder.json');
-      // var rawData = fs.readFileSync(jsonFilePath, 'utf8');
+  
+      const jsonFileDistrictPath = path.join(__dirname, 'address.district.seeder.json');
+      const rawDistrictData = fs.readFileSync(jsonFileDistrictPath, 'utf8');
 
-      // var data: {
-      //   id: number;
-      //   name: string;
-      // }[] = JSON.parse(rawData);
+      const dataDistrict: {
+        id: number;
+        name: string;
+      }[] = JSON.parse(rawDistrictData);
 
-      // for (const item of data) {
+      // for (const item of dataDistrict) {
       //   const existingDistrict = await this.districtRepository.findOneBy({
       //     id: item.id,
       //   });
