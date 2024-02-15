@@ -27,20 +27,55 @@ export class BankSeeder implements OnModuleInit {
       }[] = JSON.parse(rawData);
 
       for (const item of data) {
+
         const existingBank = await this.bankRepository.findOneBy({
           id: item.id,
         });
 
+
+
         if (existingBank) {
+
+
+
           await this.bankRepository.update(existingBank.id, {
             name: item.name,
+            code: item.code,
+            shortName: item.shortName,
           });
+
+
+
+
+
         } else {
+
+
+
+
+
           const newBank = this.bankRepository.create({
             id: item.id,
             name: item.name,
+            code: item.code,
+            shortName: item.shortName,
           });
+
+
+
+
+
+
+
           await this.bankRepository.save(newBank);
+
+
+
+
+
+
+
+          
         }
       }
 

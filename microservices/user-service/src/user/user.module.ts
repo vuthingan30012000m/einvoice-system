@@ -27,6 +27,11 @@ import { DatabaseConfig } from './infrastructure/dataaccess/config/database.conf
     }),
   ],
   controllers: [UserController],
-  providers: [UserService, TaxOfficeSeeder, BankSeeder, AddressSeeder],
+  providers: [
+    UserService,
+    //  TaxOfficeSeeder,
+    // BankSeeder,
+    AddressSeeder,
+  ],
 })
 export class UserModule {}
