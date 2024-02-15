@@ -16,9 +16,9 @@ export class AddressSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      // const createAddressDto={name:"Address1"}
-      // const newAddress = this.AddressRepository.create( createAddressDto)
-      // await this.AddressRepository.save(newAddress);
+      this.logger.log('City successfully!');
+      this.logger.log('District successfully!');
+      this.logger.log('Ward successfully!');
 
       this.logger.log('Seeder successfully!');
     } catch (error) {
