@@ -6,13 +6,16 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Product {
+export class Bank {
   @PrimaryGeneratedColumn('uuid')
-  productId: string;
+  id: string;
 
   @Column()
-  name: string;
+  name: string; 
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @Column()
+  code: string; 
+
+  @Column()
+  shortName: string; 
 }
