@@ -26,8 +26,7 @@ services:
     ports:
       - 3001:3001
     volumes:
-      - ./microservices/api-gateway/src:/usr/src/app/src
-      - ./microservices/api-gateway/node_modules:/usr/src/app/node_modules
+      - ./microservices/api-gateway:/usr/src/app
     command: npm run start:dev
     environment:
       PORT: 3001
@@ -37,8 +36,7 @@ services:
     build: ./microservices/user-service
     restart: always
     volumes:
-      - ./microservices/user-service/src:/usr/src/app/src
-      - ./microservices/user-service/node_modules:/usr/src/app/node_modules
+      - ./microservices/user-service:/usr/src/app
     command: npm run start:dev
     environment:
       NATS_SERVICE: ${NATS_SERVICE}
@@ -47,8 +45,7 @@ services:
     build: ./microservices/invoice-service
     restart: always
     volumes:
-      - ./microservices/invoice-service/src:/usr/src/app/src
-      - ./microservices/invoice-service/node_modules:/usr/src/app/node_modules
+      - ./microservices/invoice-service:/usr/src/app
     command: npm run start:dev
     environment:
       NATS_SERVICE: ${NATS_SERVICE}

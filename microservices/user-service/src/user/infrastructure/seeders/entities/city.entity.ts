@@ -7,11 +7,6 @@ import {
 } from 'typeorm';
 import { District } from './district.entity';
 
-
-
-
-
-
 @Entity()
 export class City {
   @PrimaryGeneratedColumn('uuid')

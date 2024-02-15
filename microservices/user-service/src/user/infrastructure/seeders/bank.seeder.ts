@@ -9,7 +9,7 @@ export class BankSeeder implements OnModuleInit {
 
   constructor(
     @InjectRepository(Bank)
-    private readonly BankRepository: Repository<Bank>,
+    private readonly bankRepository: Repository<Bank>,
   ) {}
 
   async onModuleInit() {

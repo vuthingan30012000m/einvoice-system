@@ -8,7 +8,6 @@ import {
 import { Ward } from './ward.entity';
 import { City } from './city.entity';
 
-
 @Entity()
 export class District {
   @PrimaryGeneratedColumn('uuid')

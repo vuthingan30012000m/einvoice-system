@@ -9,7 +9,7 @@ export class AddressSeeder implements OnModuleInit {
 
   constructor(
     @InjectRepository(Address)
-    private readonly AddressRepository: Repository<Address>,
+    private readonly addressRepository: Repository<Address>,
   ) {}
 
   async onModuleInit() {

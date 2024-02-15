@@ -18,4 +18,3 @@ export class Address {
   @ManyToOne(() => Ward, (ward) => ward.addresses)
   ward: Ward;
 }
-
