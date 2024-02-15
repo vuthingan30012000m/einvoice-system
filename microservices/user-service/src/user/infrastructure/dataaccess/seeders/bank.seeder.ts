@@ -15,7 +15,6 @@ export class BankSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-
       for (const item of dataBank) {
         const existingBank = await this.bankRepository.findOneBy({
           id: item.id,

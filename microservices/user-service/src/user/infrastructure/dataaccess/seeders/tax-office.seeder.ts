@@ -15,9 +15,7 @@ export class TaxOfficeSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-
-
-      for (const item of dataTaxOffice  ) {
+      for (const item of dataTaxOffice) {
         const existingTaxOffice = await this.taxOfficeRepository.findOneBy({
           id: Number(item.id),
         });

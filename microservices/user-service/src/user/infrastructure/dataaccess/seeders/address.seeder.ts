@@ -26,10 +26,9 @@ export class AddressSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-
       for (const item of dataCity) {
         const existingCity = await this.cityRepository.findOneBy({
-               id:Number (item.id),
+          id: Number(item.id),
         });
 
         if (existingCity) {
@@ -38,18 +37,17 @@ export class AddressSeeder implements OnModuleInit {
           // });
         } else {
           const newCity = this.cityRepository.create({
-                 id:Number (item.id),
+            id: Number(item.id),
             name: item.name,
           });
 
           await this.cityRepository.save(newCity);
         }
       }
- 
 
       for (const item of dataDistrict) {
         const existingDistrict = await this.districtRepository.findOneBy({
-          id:Number (item.id),
+          id: Number(item.id),
         });
 
         if (existingDistrict) {
@@ -58,18 +56,17 @@ export class AddressSeeder implements OnModuleInit {
           // });
         } else {
           const newDistrict = this.districtRepository.create({
-            id:Number (item.id),
+            id: Number(item.id),
             name: item.name,
           });
 
           await this.districtRepository.save(newDistrict);
         }
       }
- 
 
       for (const item of dataWard) {
         const existingWard = await this.wardRepository.findOneBy({
-            id:Number (item.id),
+          id: Number(item.id),
         });
 
         if (existingWard) {
@@ -78,7 +75,7 @@ export class AddressSeeder implements OnModuleInit {
           // });
         } else {
           const newWard = this.wardRepository.create({
-              id:Number (item.id),
+            id: Number(item.id),
 
             name: item.name,
           });
