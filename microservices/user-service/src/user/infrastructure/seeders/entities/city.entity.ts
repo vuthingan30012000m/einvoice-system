@@ -5,17 +5,21 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
-import { Ward } from './ward.entity';
+import { District } from './district.entity';
+
+
+
+
+
 
 @Entity()
-export class Address {
+export class City {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  note: string;
+  name: string;
 
-  @ManyToOne(() => Ward, (ward) => ward.addresses)
-  ward: Ward;
+  @OneToMany(() => District, (district) => district.city)
+  districts: District[];
 }
-
