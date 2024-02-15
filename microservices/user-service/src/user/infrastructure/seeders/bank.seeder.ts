@@ -2,6 +2,8 @@ import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Bank } from './entities/bank.entity';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Injectable()
 export class BankSeeder implements OnModuleInit {
@@ -13,9 +15,45 @@ export class BankSeeder implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
+
+
+    try {
+
+
+
+
+ 
+      const jsonFilePath = path.join(__dirname, 'banks.json');
+      const rawData = fs.readFileSync(jsonFilePath, 'utf8');
+
+      const data: { id: number; name: string ; code: string ; shortName: string }[] = JSON.parse(rawData);
+
+      for (const item of data) {
+        const existingBank = await this.BankRepository.findOneBy({
+          id: item.id,
+        });
+
+        if (existingBank) {
+          await this.bankRepository.update(existingBank.id, {
+            name: item.name,
+          });
+        } else {
+          const newBank = this.bankRepository.create({
+            id: item.id,
+            name: item.name,
+          });
+          await this.bankRepository.save(newBank);
+        }
+      }
+
+
+
     // const createBankDto={name:"Bank1"}
     // const newBank = this.BankRepository.create( createBankDto)
     // await this.BankRepository.save(newBank);
-    this.logger.log('Seeder successfully!');
+      this.logger.log('Seeder successfully!');
+    } catch (error) {
+      this.logger.error('Error seeding data:', error);
+    }
   }
 }
