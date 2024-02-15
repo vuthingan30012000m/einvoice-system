@@ -8,8 +8,8 @@ import { City } from '../entities/city.entity';
 import { District } from '../entities/district.entity';
 import { Ward } from '../entities/ward.entity';
 import { dataDistrict } from './data/address.district.data';
-import { dataCity } from './address.city.seeder';
-import { dataWard } from './address.ward.seeder';
+import { dataCity } from './data/address.city.seeder';
+import { dataWard } from './data/address.ward.seeder';
 
 @Injectable()
 export class AddressSeeder implements OnModuleInit {

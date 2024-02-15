@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { TaxOffice } from '../entities/tax-office.entity';
 import * as fs from 'fs';
 import * as path from 'path';
+import { dataTaxOffice } from './data/tax-office.data';
 
 @Injectable()
 export class TaxOfficeSeeder implements OnModuleInit {
@@ -16,12 +17,9 @@ export class TaxOfficeSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      const jsonFilePath = path.join(__dirname, 'tax-office.seeder.json');
-      const rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
-      const data: { id: number; name: string }[] = JSON.parse(rawData);
 
-      for (const item of data) {
+      for (const item of dataTaxOffice  ) {
         const existingTaxOffice = await this.taxOfficeRepository.findOneBy({
           id: item.id,
         });

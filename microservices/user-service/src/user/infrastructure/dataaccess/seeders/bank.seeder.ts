@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Bank } from '../entities/bank.entity';
 import * as fs from 'fs';
 import * as path from 'path';
+import { dataBank } from './data/bank.data';
 
 @Injectable()
 export class BankSeeder implements OnModuleInit {
@@ -16,17 +17,8 @@ export class BankSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      const jsonFilePath = path.join(__dirname, 'bank.seeder.json');
-      const rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
-      const data: {
-        id: number;
-        name: string;
-        code: string;
-        shortName: string;
-      }[] = JSON.parse(rawData);
-
-      for (const item of data) {
+      for (const item of dataBank) {
         const existingBank = await this.bankRepository.findOneBy({
           id: item.id,
         });

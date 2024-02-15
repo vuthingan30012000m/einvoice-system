@@ -1,4 +1,9 @@
-[
+export const dataBank: {
+  id: number;
+  name: string;
+  code: string;
+  shortName: string;
+}[] = [
   {
     "id": 17,
     "name": "Ngân hàng TMCP Công thương Việt Nam",
