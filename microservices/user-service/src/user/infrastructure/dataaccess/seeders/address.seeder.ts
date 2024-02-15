@@ -4,19 +4,52 @@ import { Repository } from 'typeorm';
 import { Address } from '../entities/address.entity';
 import * as fs from 'fs';
 import * as path from 'path';
+import { City } from '../entities/city.entity';
+import { District } from '../entities/district.entity';
+import { Ward } from '../entities/ward.entity';
 
 @Injectable()
 export class AddressSeeder implements OnModuleInit {
   private logger = new Logger(AddressSeeder.name);
 
   constructor(
-    @InjectRepository(Address)
-    private readonly addressRepository: Repository<Address>,
+    @InjectRepository(City)
+    private readonly cityRepository: Repository<City>,
+    @InjectRepository(District)
+    private readonly districtRepository: Repository<District>,
+    @InjectRepository(Ward)
+    private readonly wardRepository: Repository<Ward>,
   ) {}
 
   async onModuleInit() {
     try {
-      this.logger.log('City successfully!');
+      const jsonFileCityPath = path.join(__dirname, 'address.city.seeder.json');
+      const rawDataCity = fs.readFileSync(jsonFileCityPath, 'utf8');
+
+      const data: {
+        id: number;
+        name: string;
+      }[] = JSON.parse(rawDataCity); 
+
+      
+      for (const item of data) {
+        const existingCity = await this.cityRepository.findOneBy({
+          id: item.id,
+        });
+
+        if (existingCity) {
+          await this.cityRepository.update(existingCity.id, {
+            name: item.name,
+          });
+        } else {
+          const newCity = this.cityRepository.create({
+            id: item.id,
+            name: item.name,
+          });
+
+          await this.cityRepository.save(newCity);
+        }
+      }
       this.logger.log('District successfully!');
       this.logger.log('Ward successfully!');
 

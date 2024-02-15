@@ -9,10 +9,13 @@ import { BankSeeder } from './infrastructure/dataaccess/seeders/bank.seeder';
 import { Address } from './infrastructure/dataaccess/entities/address.entity';
 import { AddressSeeder } from './infrastructure/dataaccess/seeders/address.seeder';
 import { DatabaseConfig } from './infrastructure/dataaccess/config/database.config';
+import { City } from './infrastructure/dataaccess/entities/city.entity';
+import { District } from './infrastructure/dataaccess/entities/district.entity';
+import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([TaxOffice, Bank, Address]),
+    TypeOrmModule.forFeature([TaxOffice, Bank, City, District, Ward, Address]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env['DATABASE_HOST'],
