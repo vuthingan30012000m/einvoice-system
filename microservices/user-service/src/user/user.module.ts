@@ -34,7 +34,7 @@ import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
     UserService,
     //  TaxOfficeSeeder,
     // BankSeeder,
-    // AddressSeeder,
+    AddressSeeder,
   ],
 })
 export class UserModule {}

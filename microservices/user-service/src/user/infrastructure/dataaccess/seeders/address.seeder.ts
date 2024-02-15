@@ -50,17 +50,17 @@ export class AddressSeeder implements OnModuleInit {
         }
       }
 
-      // const jsonFileDistrictPath = path.join(
-      //   __dirname,
-      //   'address.district.seeder.json',
-      // );
-      // const rawDistrictData = fs.readFileSync(jsonFileDistrictPath, 'utf8');
+      const jsonFileDistrictPath = path.join(
+        __dirname,
+        'address.district.seeder.json',
+      );
+      const rawDistrictData = fs.readFileSync(jsonFileDistrictPath, 'utf8');
 
-      // const dataDistrict: {
-      //   id: number;
-      //   name: string;
-      //   city: number;
-      // }[] = JSON.parse(rawDistrictData);
+      const dataDistrict: {
+        id: number;
+        name: string;
+        city: number;
+      }[] = JSON.parse(rawDistrictData);
 
       // for (const item of dataDistrict) {
       //   const existingDistrict = await this.districtRepository.findOneBy({
@@ -81,34 +81,35 @@ export class AddressSeeder implements OnModuleInit {
       //   }
       // }
 
-      const jsonFileWardPath = path.join(__dirname, 'address.ward.seeder.json');
-      const rawWardData = fs.readFileSync(jsonFileWardPath, 'utf8');
+      // const jsonFileWardPath = path.join(__dirname, 'address.ward.seeder.json');
+      // const rawWardData = fs.readFileSync(jsonFileWardPath, 'utf8');
 
-      const dataWard: {
-        id: number;
-        name: string;
-        city: number;
-      }[] = JSON.parse(rawWardData);
+      // const dataWard: {
+      //   id: number;
+      //   name: string;
+      //   city: number;
+      // }[] = JSON.parse(rawWardData);
 
-      for (const item of dataWard) {
-        console.log('🚀 ~ AddressSeeder ~ onModuleInit ~ item:', item);
-        const existingWard = await this.wardRepository.findOneBy({
-          id: item.id,
-        });
+      // for (const item of dataWard) {
+      //   console.log('🚀 ~ AddressSeeder ~ onModuleInit ~ item:', item);
+      //   const existingWard = await this.wardRepository.findOneBy({
+      //     id: item.id,
+      //   });
 
-        if (existingWard) {
-          await this.wardRepository.update(existingWard.id, {
-            name: item.name,
-          });
-        } else {
-          const newWard = this.wardRepository.create({
-            id: item.id,
-            name: item.name,
-          });
+      //   if (existingWard) {
+      //     await this.wardRepository.update(existingWard.id, {
+      //       name: item.name,
+      //     });
+      //   } else {
+      //     const newWard = this.wardRepository.create({
+      //       id: item.id,
+      //       name: item.name,
+      //     });
 
-          await this.wardRepository.save(newWard);
-        }
-      }
+      //     await this.wardRepository.save(newWard);
+      //   }
+      // }
+
       this.logger.log('Seeder successfully!');
     } catch (error) {
       this.logger.error('Error seeding data:', error);
