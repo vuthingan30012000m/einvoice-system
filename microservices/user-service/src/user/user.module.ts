@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
-import { ProductSeeder } from './infrastructure/seeders/product.seeder';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Product } from './infrastructure/seeders/entities/product.entity';
+import { TaxOffice } from './infrastructure/seeders/entities/tax-office.entity';
+import { TaxOfficeSeeder } from './infrastructure/seeders/tax-office.seeder';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Product]),
+    TypeOrmModule.forFeature([TaxOffice]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'mysql',
@@ -22,6 +22,6 @@ import { Product } from './infrastructure/seeders/entities/product.entity';
     }),
   ],
   controllers: [UserController],
-  providers: [UserService, ProductSeeder],
+  providers: [UserService, TaxOfficeSeeder],
 })
 export class UserModule {}
