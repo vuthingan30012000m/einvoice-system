@@ -16,7 +16,7 @@ export class TaxOfficeSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      const jsonFilePath = path.join(__dirname, 'tax-offices.json');
+      const jsonFilePath = path.join(__dirname, 'tax-office.seeder.json');
       const rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
       const data: { id: number; name: string }[] = JSON.parse(rawData);

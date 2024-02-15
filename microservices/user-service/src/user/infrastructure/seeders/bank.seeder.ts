@@ -16,7 +16,7 @@ export class BankSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      const jsonFilePath = path.join(__dirname, 'banks.json');
+      const jsonFilePath = path.join(__dirname, 'bank.seeder.json');
       const rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
       const data: {
