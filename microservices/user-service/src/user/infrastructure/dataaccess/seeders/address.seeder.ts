@@ -29,9 +29,8 @@ export class AddressSeeder implements OnModuleInit {
       const data: {
         id: number;
         name: string;
-      }[] = JSON.parse(rawDataCity); 
+      }[] = JSON.parse(rawDataCity);
 
-      
       for (const item of data) {
         const existingCity = await this.cityRepository.findOneBy({
           id: item.id,
