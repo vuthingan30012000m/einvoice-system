@@ -1,25 +1,31 @@
 {
   "folders": [
     {
+      "name": "einvoice-system",
       "path": "."
     },
     {
-      "path": "microservices",
-      "name": "microservices"
+      "name": "docker",
+      "path": "docker"
     },
     {
-      "path": "microservices/api-gateway/src",
-      "name": "api-gateway"
+      "name": "microservices",
+      "path": "microservices"
     },
     {
-      "path": "microservices/user-service/src",
-      "name": "user-service"
+      "name": "api-gateway",
+      "path": "microservices/api-gateway/src"
     },
     {
-      "path": "microservices/invoice-service/src",
-      "name": "invoice-service"
+      "name": "user-service",
+      "path": "microservices/user-service/src"
     },
     {
+      "name": "invoice-service",
+      "path": "microservices/invoice-service/src"
+    },
+    {
+      "name": "seed",
       "path": "seed"
     }
   ],

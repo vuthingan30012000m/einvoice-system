@@ -26,7 +26,7 @@ import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
       synchronize: true,
-      logging: true,
+      // logging: true,
     }),
   ],
   controllers: [UserController],
@@ -34,7 +34,7 @@ import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
     UserService,
     //  TaxOfficeSeeder,
     // BankSeeder,
-    AddressSeeder,
+    // AddressSeeder,
   ],
 })
 export class UserModule {}
