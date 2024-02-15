@@ -1,7 +1,7 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Address } from '../dataaccess/entities/address.entity';
+import { Address } from '../entities/address.entity';
 import * as fs from 'fs';
 import * as path from 'path';
 

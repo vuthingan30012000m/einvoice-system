@@ -3,11 +3,11 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaxOffice } from './infrastructure/dataaccess/entities/tax-office.entity';
-import { TaxOfficeSeeder } from './infrastructure/seeders/tax-office.seeder';
+import { TaxOfficeSeeder } from './infrastructure/dataaccess/seeders/tax-office.seeder';
 import { Bank } from './infrastructure/dataaccess/entities/bank.entity';
-import { BankSeeder } from './infrastructure/seeders/bank.seeder';
+import { BankSeeder } from './infrastructure/dataaccess/seeders/bank.seeder';
 import { Address } from './infrastructure/dataaccess/entities/address.entity';
-import { AddressSeeder } from './infrastructure/seeders/address.seeder';
+import { AddressSeeder } from './infrastructure/dataaccess/seeders/address.seeder';
 import { DatabaseConfig } from './infrastructure/dataaccess/config/database.config';
 
 @Module({
@@ -24,7 +24,7 @@ import { DatabaseConfig } from './infrastructure/dataaccess/config/database.conf
       autoLoadEntities: true,
       synchronize: true,
       logging: true,
-    })
+    }),
   ],
   controllers: [UserController],
   providers: [UserService, TaxOfficeSeeder, BankSeeder, AddressSeeder],
