@@ -2,7 +2,6 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
   OneToMany,
   ManyToOne,
 } from 'typeorm';
@@ -22,6 +21,8 @@ export class Ward {
   id: number;
   @Column()
   name: string;
+  // @OneToMany
+  // @ManyToOne
 }
 @Entity()
 export class District {
@@ -29,6 +30,8 @@ export class District {
   id: number;
   @Column()
   name: string;
+  // @OneToMany
+  // @ManyToOne
 }
 @Entity()
 export class City {
@@ -36,4 +39,6 @@ export class City {
   id: number;
   @Column()
   name: string;
+  // @OneToMany
+  // @ManyToOne
 }
