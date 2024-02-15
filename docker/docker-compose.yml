@@ -19,10 +19,10 @@ services:
       MYSQL_USER: test_user
       MYSQL_PASSWORD: test_user
       MYSQL_TCP_PORT: 3306
-    command: --init-file /data/application/init.sql
+    command: --init-file /init.sql
     volumes:
       # - ./mysql/var/lib/mysql:/var/lib/mysql
-      - ./mysql/data/application/init.sql:/data/application/init.sql
+      - ./mysql/init.sql:/init.sql
 
   api_gateway:
     build: ../microservices/api-gateway
