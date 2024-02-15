@@ -23,9 +23,9 @@ export class TaxOfficeSeeder implements OnModuleInit {
         });
 
         if (existingTaxOffice) {
-          await this.taxOfficeRepository.update(existingTaxOffice.id, {
-            name: item.name,
-          });
+          // await this.taxOfficeRepository.update(existingTaxOffice.id, {
+          //   name: item.name,
+          // });
         } else {
           const newTaxOffice = this.taxOfficeRepository.create({
             id: Number(item.id),
