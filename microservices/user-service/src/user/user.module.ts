@@ -8,22 +8,12 @@ import { Bank } from './infrastructure/seeders/entities/bank.entity';
 import { BankSeeder } from './infrastructure/seeders/bank.seeder';
 import { Address } from './infrastructure/seeders/entities/address.entity';
 import { AddressSeeder } from './infrastructure/seeders/address.seeder';
+import { DatabaseConfig } from './infrastructure/dataaccess/config/database.config';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([TaxOffice, Bank, Address]),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'mysql',
-      port: 3306,
-      username: 'root',
-      password: 'root_password',
-      database: 'nghia',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      autoLoadEntities: true,
-      synchronize: true,
-      logging: true,
-    }),
+    DatabaseConfig.init(),
   ],
   controllers: [UserController],
   providers: [UserService, TaxOfficeSeeder, BankSeeder, AddressSeeder],
