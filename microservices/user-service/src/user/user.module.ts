@@ -11,7 +11,7 @@ import { AddressSeeder } from './infrastructure/seeders/address.seeder';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([TaxOffice,Bank,Address]),
+    TypeOrmModule.forFeature([TaxOffice, Bank, Address]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'mysql',
@@ -26,6 +26,6 @@ import { AddressSeeder } from './infrastructure/seeders/address.seeder';
     }),
   ],
   controllers: [UserController],
-  providers: [UserService, TaxOfficeSeeder,BankSeeder,AddressSeeder],
+  providers: [UserService, TaxOfficeSeeder, BankSeeder, AddressSeeder],
 })
 export class UserModule {}

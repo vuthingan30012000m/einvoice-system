@@ -11,11 +11,11 @@ export class Bank {
   id: string;
 
   @Column()
-  name: string; 
+  name: string;
 
   @Column()
-  code: string; 
+  code: string;
 
   @Column()
-  shortName: string; 
+  shortName: string;
 }

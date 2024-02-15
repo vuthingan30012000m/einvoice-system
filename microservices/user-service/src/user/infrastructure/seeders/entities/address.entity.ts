@@ -7,7 +7,6 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-
 @Entity()
 export class Address {
   @PrimaryGeneratedColumn('uuid')
