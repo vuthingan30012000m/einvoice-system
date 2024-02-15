@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS user - service;
+
+CREATE DATABASE IF NOT EXISTS invoice - service;
+
+CREATE DATABASE IF NOT EXISTS report - service;
