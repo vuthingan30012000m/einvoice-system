@@ -59,6 +59,28 @@ services:
     environment:
       NATS_SERVICE: ${NATS_SERVICE}
 
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: invoice
+
+  report:
+    build: ../microservices/report-service
+    restart: always
+    volumes:
+      - ../microservices/report-service:/usr/src/app
+    command: npm run start:dev
+    environment:
+      NATS_SERVICE: ${NATS_SERVICE}
+
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: report
+ 
+
 #   zookeeper:
 #     image: bitnami/zookeeper
 #     restart: always
