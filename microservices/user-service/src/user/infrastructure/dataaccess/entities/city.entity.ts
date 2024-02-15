@@ -6,9 +6,9 @@ export class City {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({nullable:false})
+  @Column({ nullable: false })
   name: string;
 
-  @OneToMany(() => District, (district) => district.city,{cascade:true})
+  @OneToMany(() => District, (district) => district.city, { cascade: true })
   districts: District[];
 }

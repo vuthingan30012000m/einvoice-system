@@ -55,15 +55,14 @@ export class AddressSeeder implements OnModuleInit {
           //   name: item.name,
           // });
         } else {
-          const city=          await this.cityRepository.findOneBy({
-            id:Number(item.city)
-          })
-
+          const city = await this.cityRepository.findOneBy({
+            id: Number(item.city),
+          });
 
           const newDistrict = this.districtRepository.create({
             id: Number(item.id),
             name: item.name,
-            city:city
+            city: city,
           });
 
           await this.districtRepository.save(newDistrict);
@@ -80,10 +79,14 @@ export class AddressSeeder implements OnModuleInit {
           //   name: item.name,
           // });
         } else {
+          const district = await this.districtRepository.findOneBy({
+            id: Number(item.district),
+          });
+
           const newWard = this.wardRepository.create({
             id: Number(item.id),
-
             name: item.name,
+            district: district,
           });
 
           await this.wardRepository.save(newWard);

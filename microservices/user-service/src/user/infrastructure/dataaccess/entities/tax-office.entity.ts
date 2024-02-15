@@ -5,6 +5,6 @@ export class TaxOffice {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({nullable:false})
+  @Column({ nullable: false })
   name: string;
 }

@@ -6,9 +6,9 @@ export class Address {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({nullable:false})
+  @Column({ nullable: false })
   note: string;
 
-  @ManyToOne(() => Ward, (ward) => ward.addresses,{nullable:false})
+  @ManyToOne(() => Ward, (ward) => ward.addresses, { nullable: false })
   ward: Ward;
 }
