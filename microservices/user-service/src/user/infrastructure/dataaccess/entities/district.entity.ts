@@ -10,7 +10,7 @@ import { City } from './city.entity';
 
 @Entity()
 export class District {
-  @PrimaryGeneratedColumn( )
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()

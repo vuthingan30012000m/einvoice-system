@@ -50,67 +50,59 @@ export class AddressSeeder implements OnModuleInit {
         }
       }
 
+      // var jsonFilePath = path.join(__dirname, 'address.district.seeder.json');
+      // var rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
+      // var data: {
+      //   id: number;
+      //   name: string;
+      // }[] = JSON.parse(rawData);
 
-      var jsonFilePath = path.join(__dirname, 'address.district.seeder.json');
-      var rawData = fs.readFileSync(jsonFilePath, 'utf8');
+      // for (const item of data) {
+      //   const existingDistrict = await this.districtRepository.findOneBy({
+      //     id: item.id,
+      //   });
 
-      var data: {
-        id: number;
-        name: string;
-      }[] = JSON.parse(rawData);
+      //   if (existingDistrict) {
+      //     await this.districtRepository.update(existingDistrict.id, {
+      //       name: item.name,
+      //     });
+      //   } else {
+      //     const newDistrict = this.districtRepository.create({
+      //       id: item.id,
+      //       name: item.name,
+      //     });
 
-      for (const item of data) {
-        const existingDistrict = await this.districtRepository.findOneBy({
-          id: item.id,
-        });
+      //     await this.districtRepository.save(newDistrict);
+      //   }
+      // }
 
-        if (existingDistrict) {
-          await this.districtRepository.update(existingDistrict.id, {
-            name: item.name,
-          });
-        } else {
-          const newDistrict = this.districtRepository.create({
-            id: item.id,
-            name: item.name,
-          });
+      // var jsonFilePath = path.join(__dirname, 'address.ward.seeder.json');
+      // var rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
-          await this.districtRepository.save(newDistrict);
-        }
-      }
+      // var data: {
+      //   id: number;
+      //   name: string;
+      // }[] = JSON.parse(rawData);
 
+      // for (const item of data) {
+      //   const existingWard = await this.wardRepository.findOneBy({
+      //     id: item.id,
+      //   });
 
+      //   if (existingWard) {
+      //     await this.wardRepository.update(existingWard.id, {
+      //       name: item.name,
+      //     });
+      //   } else {
+      //     const newWard = this.wardRepository.create({
+      //       id: item.id,
+      //       name: item.name,
+      //     });
 
-
-
-      var jsonFilePath = path.join(__dirname, 'address.ward.seeder.json');
-      var rawData = fs.readFileSync(jsonFilePath, 'utf8');
-      
-      var data: {
-        id: number;
-        name: string;
-      }[] = JSON.parse(rawData);
-      
-      for (const item of data) {
-        const existingWard = await this.wardRepository.findOneBy({
-          id: item.id,
-        });
-      
-        if (existingWard) {
-          await this.wardRepository.update(existingWard.id, {
-            name: item.name,
-          });
-        } else {
-          const newWard = this.wardRepository.create({
-            id: item.id,
-            name: item.name,
-          });
-      
-          await this.wardRepository.save(newWard);
-        }
-      }
-      
-
+      //     await this.wardRepository.save(newWard);
+      //   }
+      // }
 
       this.logger.log('Seeder successfully!');
     } catch (error) {
