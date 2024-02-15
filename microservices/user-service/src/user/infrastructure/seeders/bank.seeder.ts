@@ -15,21 +15,19 @@ export class BankSeeder implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-
-
     try {
-
-
-
-
- 
       const jsonFilePath = path.join(__dirname, 'banks.json');
       const rawData = fs.readFileSync(jsonFilePath, 'utf8');
 
-      const data: { id: number; name: string ; code: string ; shortName: string }[] = JSON.parse(rawData);
+      const data: {
+        id: number;
+        name: string;
+        code: string;
+        shortName: string;
+      }[] = JSON.parse(rawData);
 
       for (const item of data) {
-        const existingBank = await this.BankRepository.findOneBy({
+        const existingBank = await this.bankRepository.findOneBy({
           id: item.id,
         });
 
@@ -46,11 +44,6 @@ export class BankSeeder implements OnModuleInit {
         }
       }
 
-
-
-    // const createBankDto={name:"Bank1"}
-    // const newBank = this.BankRepository.create( createBankDto)
-    // await this.BankRepository.save(newBank);
       this.logger.log('Seeder successfully!');
     } catch (error) {
       this.logger.error('Error seeding data:', error);

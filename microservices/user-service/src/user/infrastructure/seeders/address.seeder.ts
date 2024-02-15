@@ -15,28 +15,14 @@ export class AddressSeeder implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-
-
-
-
     try {
+      // const createAddressDto={name:"Address1"}
+      // const newAddress = this.AddressRepository.create( createAddressDto)
+      // await this.AddressRepository.save(newAddress);
 
-
-
-
-      
-    // const createAddressDto={name:"Address1"}
-    // const newAddress = this.AddressRepository.create( createAddressDto)
-    // await this.AddressRepository.save(newAddress);
-    
-
-
-
-
-
-    this.logger.log('Seeder successfully!');
-  } catch (error) {
-    this.logger.error('Error seeding data:', error);
+      this.logger.log('Seeder successfully!');
+    } catch (error) {
+      this.logger.error('Error seeding data:', error);
+    }
   }
-}
 }
