@@ -9,36 +9,53 @@ import {
 @Entity()
 export class Address {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
+
   @Column()
   note: string;
-  // @OneToMany
-  // @ManyToOne
+
+  @ManyToOne(() => Ward, (ward) => ward.addresses)
+  ward: Ward;
 }
+
 @Entity()
 export class Ward {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
+
   @Column()
   name: string;
-  // @OneToMany
-  // @ManyToOne
+
+  @OneToMany(() => Address, (address) => address.ward)
+  addresses: Address[];
+
+  @ManyToOne(() => District, (district) => district.wards)
+  district: District;
 }
+
 @Entity()
 export class District {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
+
   @Column()
   name: string;
-  // @OneToMany
-  // @ManyToOne
+
+  @OneToMany(() => Ward, (ward) => ward.district)
+  wards: Ward[];
+
+  @ManyToOne(() => City, (city) => city.districts)
+  city: City;
 }
+
 @Entity()
 export class City {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
+
   @Column()
   name: string;
-  // @OneToMany
-  // @ManyToOne
+
+  @OneToMany(() => District, (district) => district.city)
+  districts: District[];
 }
