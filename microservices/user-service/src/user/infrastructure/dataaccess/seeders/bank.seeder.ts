@@ -2,8 +2,6 @@ import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Bank } from '../entities/bank.entity';
-import * as fs from 'fs';
-import * as path from 'path';
 import { dataBank } from './data/bank.data';
 
 @Injectable()

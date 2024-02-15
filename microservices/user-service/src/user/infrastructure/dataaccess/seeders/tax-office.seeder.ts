@@ -2,8 +2,6 @@ import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TaxOffice } from '../entities/tax-office.entity';
-import * as fs from 'fs';
-import * as path from 'path';
 import { dataTaxOffice } from './data/tax-office.data';
 
 @Injectable()
@@ -21,7 +19,7 @@ export class TaxOfficeSeeder implements OnModuleInit {
 
       for (const item of dataTaxOffice  ) {
         const existingTaxOffice = await this.taxOfficeRepository.findOneBy({
-          id: item.id,
+          id: Number(item.id),
         });
 
         if (existingTaxOffice) {
@@ -30,7 +28,7 @@ export class TaxOfficeSeeder implements OnModuleInit {
           });
         } else {
           const newTaxOffice = this.taxOfficeRepository.create({
-            id: item.id,
+            id: Number(item.id),
             name: item.name,
           });
           await this.taxOfficeRepository.save(newTaxOffice);
