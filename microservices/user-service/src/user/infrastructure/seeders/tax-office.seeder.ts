@@ -22,11 +22,23 @@ export class TaxOfficeSeeder implements OnModuleInit {
       const data: { id: number; name: string }[] = JSON.parse(rawData);
 
       for (const item of data) {
-        const taxOffice = new TaxOffice();
-        taxOffice.id = item.id;
-        taxOffice.name = item.name;
-        await this.taxOfficeRepository.save(taxOffice);
+        const existingTaxOffice = await this.taxOfficeRepository.findOneBy({
+          id: item.id,
+        });
+
+        if (existingTaxOffice) {
+          await this.taxOfficeRepository.update(existingTaxOffice.id, {
+            name: item.name,
+          });
+        } else {
+          const newTaxOffice = this.taxOfficeRepository.create({
+            id: item.id,
+            name: item.name,
+          });
+          await this.taxOfficeRepository.save(newTaxOffice);
+        }
       }
+
       this.logger.log('Seeder successfully!');
     } catch (error) {
       this.logger.error('Error seeding data:', error);
