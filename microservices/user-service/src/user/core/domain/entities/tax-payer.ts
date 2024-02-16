@@ -8,7 +8,7 @@ import { AddressId } from '../value-objects/address-id';
 import { BankId } from '../value-objects/bank-id';
 
 export class TaxPayer extends AggregateRoot<TaxCode> {
-  name: string;
+  nameTaxPayer: string;
   password: string;
   email: Email;
   phoneNumber: PhoneNumber;
