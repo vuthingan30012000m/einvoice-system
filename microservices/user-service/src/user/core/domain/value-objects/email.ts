@@ -7,6 +7,13 @@ export class Email {
 
   validate() {
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
+
+
+
+
+
+    
     if (!regex.test(this.value)) {
       throw new TaxPayerException('Email không đúng định dạng.');
     }

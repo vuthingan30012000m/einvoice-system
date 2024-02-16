@@ -13,19 +13,33 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
   password: string;
   email: Email;
   phoneNumber: PhoneNumber;
-  addressId: AddressId;
-  bankId: BankId;
+  // addressId: AddressId;
+  // bankId: BankId;
   // <!-- bankName: string -->
   // <!-- bankNumber: string -->
-  
   taxPayerStatus: TaxPayerStatus;
   taxOfficeId: TaxOfficeId;
+
+
+
+
+
+
 
 
   constructor(taxCode: TaxCode) {
     super(taxCode);
   }
 
+
+
+
+
+
+
+
+
+  
   // static Builder(taxCode: string): TaxPayerBuilder {
   //   return new TaxPayerBuilder(taxCode);
   // }
