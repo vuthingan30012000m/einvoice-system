@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { UserModule } from './user/user.module';
 import { InvoiceModule } from './invoice/invoice.module';
-import { LoggingMiddleware } from './logging.middleware';
+import { LoggingMiddleware } from './common/logging.middleware';
 
 @Module({
   imports: [
