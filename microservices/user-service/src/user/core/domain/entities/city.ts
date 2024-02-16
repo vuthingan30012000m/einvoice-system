@@ -4,7 +4,7 @@ import { CityId } from '../value-objects/city-id';
 
 export class City extends BaseEntity<CityId> {
   name: string;
-
+  //   districts = new Array<District>();
   constructor(cityId: CityId) {
     super(cityId);
   }
