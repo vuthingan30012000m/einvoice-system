@@ -14,11 +14,10 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
   email: Email;
   phoneNumber: PhoneNumber;
   taxPayerStatus: TaxPayerStatus;
-  
+
   taxOfficeId: TaxOfficeId;
   bankId: BankId;
   addressId: AddressId;
-  
 
   constructor(taxCode: TaxCode) {
     super(taxCode);

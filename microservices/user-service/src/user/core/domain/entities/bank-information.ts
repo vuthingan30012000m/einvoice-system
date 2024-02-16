@@ -8,7 +8,6 @@ export class BankInformation extends BaseEntity<BankInformationId> {
 
   shortName: string;
 
-
   constructor(bankInformationId: BankInformationId) {
     super(bankInformationId);
   }

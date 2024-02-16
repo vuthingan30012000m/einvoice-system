@@ -7,21 +7,17 @@ export class BankBuilder {
   constructor(bankId: BankId) {
     this.Bank = new Bank(bankId);
   }
- 
-  
-  
-    public withAccountBank(accountBank: string) {
-      this.Bank.accountBank = accountBank;
-      return this;
-    }
-  
-    public withBankInformationId(bankInformationId: BankInformationId) {
-      this.Bank.bankInformationId = bankInformationId;
-      return this;
-    }
-    
 
-  
+  public withAccountBank(accountBank: string) {
+    this.Bank.accountBank = accountBank;
+    return this;
+  }
+
+  public withBankInformationId(bankInformationId: BankInformationId) {
+    this.Bank.bankInformationId = bankInformationId;
+    return this;
+  }
+
   build(): Bank {
     return this.Bank;
   }

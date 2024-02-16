@@ -1,6 +1,6 @@
-import { BaseEntity } from '../../../../common/core/domain/entities/base-entity';
+import { BaseEntity } from '../../../../../common/core/domain/entities/base-entity';
 
-import { CityId } from '../value-objects/temp/city-id';
+import { CityId } from '../../value-objects/temp/city-id';
 import { District } from './district';
 
 export class City extends BaseEntity<CityId> {
