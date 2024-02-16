@@ -1,11 +1,11 @@
  
-export class Address {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+// export class Address {
+//   @PrimaryGeneratedColumn('uuid')
+//   id: string;
 
-  @Column({ nullable: false })
-  note: string;
+//   @Column({ nullable: false })
+//   note: string;
 
-  @ManyToOne(() => Ward, (ward) => ward.addresses, { nullable: false })
-  ward: Ward;
-}
+//   @ManyToOne(() => Ward, (ward) => ward.addresses, { nullable: false })
+//   ward: Ward;
+// }

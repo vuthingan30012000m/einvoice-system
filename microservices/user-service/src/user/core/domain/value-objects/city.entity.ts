@@ -1,14 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { District } from './district.entity';
+// import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+// import { District } from './district.entity';
 
-@Entity()
-export class City {
-  @PrimaryGeneratedColumn()
-  id: number;
+// @Entity()
+// export class City {
+//   @PrimaryGeneratedColumn()
+//   id: number;
 
-  @Column({ nullable: false })
-  name: string;
+//   @Column({ nullable: false })
+//   name: string;
 
-  @OneToMany(() => District, (district) => district.city, { cascade: true })
-  districts: District[];
-}
+//   @OneToMany(() => District, (district) => district.city, { cascade: true })
+//   districts: District[];
+// }

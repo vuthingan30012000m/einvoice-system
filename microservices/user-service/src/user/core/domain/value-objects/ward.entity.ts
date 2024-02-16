@@ -1,24 +1,24 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToMany,
-  ManyToOne,
-} from 'typeorm';
-import { Address } from './address.entity';
-import { District } from './district.entity';
+// import {
+//   Entity,
+//   PrimaryGeneratedColumn,
+//   Column,
+//   OneToMany,
+//   ManyToOne,
+// } from 'typeorm';
+// import { Address } from './address.entity';
+// import { District } from './district.entity';
 
-@Entity()
-export class Ward {
-  @PrimaryGeneratedColumn()
-  id: number;
+// @Entity()
+// export class Ward {
+//   @PrimaryGeneratedColumn()
+//   id: number;
 
-  @Column({ nullable: false })
-  name: string;
+//   @Column({ nullable: false })
+//   name: string;
 
-  @OneToMany(() => Address, (address) => address.ward, { cascade: true })
-  addresses: Address[];
+//   @OneToMany(() => Address, (address) => address.ward, { cascade: true })
+//   addresses: Address[];
 
-  @ManyToOne(() => District, (district) => district.wards, { nullable: false })
-  district: District;
-}
+//   @ManyToOne(() => District, (district) => district.wards, { nullable: false })
+//   district: District;
+// }
