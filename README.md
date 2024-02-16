@@ -13,6 +13,7 @@ phoneNumber: PhoneNumber
 <!-- bankNumber: string -->
 
 taxPayerStatus: TaxPayerStatus
+
 createdAt: Date
 updatedAt: Date
 deletedAt: Date
