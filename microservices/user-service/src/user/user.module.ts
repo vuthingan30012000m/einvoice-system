@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './inter/user.service';
-import { UserController } from './inter/user.controller';
+import { UserService } from './temp/user.service';
+import { UserController } from './temp/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaxOffice } from './infrastructure/dataaccess/entities/tax-office.entity';
 import { TaxOfficeSeeder } from './infrastructure/dataaccess/seeders/tax-office.seeder';
