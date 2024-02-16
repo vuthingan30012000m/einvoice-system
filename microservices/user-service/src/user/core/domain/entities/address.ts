@@ -6,9 +6,6 @@ export class Address extends AggregateRoot<AddressId> {
   note: string;
   wardId: WardId;
 
-
-
-
   constructor(addressId: AddressId) {
     super(addressId);
   }
