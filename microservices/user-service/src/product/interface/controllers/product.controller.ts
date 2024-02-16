@@ -25,6 +25,7 @@ import { ResponseFindAllProductDto } from '../dto/find-all-product/response-find
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateProductCommand } from 'src/product/core/application/commands/create-product/create-product.command';
 import { FindAllProductQuery } from 'src/product/core/application/queries/find-all-product/find-all-product.query';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller('product')
 @ApiTags('product')
@@ -34,18 +35,19 @@ export class ProductController {
     private readonly queryBus: QueryBus,
   ) {}
 
-  @Post()
+  @MessagePattern({ cmd: 'createProductDto' })
+  // @Post()
   @ApiOperation({ summary: 'Tạo sản phẩm mới' })
   @ApiResponse({ status: 201, type: ResponseCreateProductDto })
   @ApiBody({ type: CreateProductDto })
-  async create(@Body() createProductDto: CreateProductDto) {
+  async create(@Payload() createProductDto: CreateProductDto) {
     const newProduct = await this.commandBus.execute(
       new CreateProductCommand(createProductDto.name),
     );
     return classToPlain(new ResponseCreateProductDto(newProduct));
   }
 
-  @Get()
+  @Get() 
   @ApiOperation({ summary: 'Lấy tất cả sản phẩm' })
   @ApiResponse({ status: 200, type: [ResponseFindAllProductDto] })
   async findAll() {

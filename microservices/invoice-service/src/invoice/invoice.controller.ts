@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { InvoiceService } from './invoice.service';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { UpdateInvoiceDto } from './dto/update-invoice.dto';
-import { MessagePattern } from '@nestjs/microservices';
+import { EventPattern, MessagePattern } from '@nestjs/microservices';
 
 @Controller('invoice')
 export class InvoiceController {
@@ -15,6 +15,21 @@ export class InvoiceController {
     // return this.invoiceService.create(createInvoiceDto);
   }
 
+
+  @EventPattern('product_created')
+  async handleProductCreated(data: Record<string, unknown>) {
+    console.log("🚀 ~ InvoiceController ~ handleProductCreated ~ data", data)
+    // const product = await this.productService.create(data);
+    // return product;
+
+
+    // const product = Product.Builder(randomUUID())
+    //   .withName(new ProductName(createProductCommand.name))
+    //   .withCreatedAt(new Date())
+    //   .build();
+
+    // const newProduct = this.createProductPort.save(product);
+  }
   // @Get()
   // findAll() {
   //   return this.invoiceService.findAll();
