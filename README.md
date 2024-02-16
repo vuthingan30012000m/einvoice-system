@@ -8,8 +8,10 @@ email: Email
 phoneNumber: PhoneNumber
 <!-- address: string -->
 <!-- bankName: string -->
-
-
+<!-- common -->
+<!-- oop -->
+<!-- shared-kernel -->
+[text](../product-cqrs/src/product/core/domain/product.service.ts)
 <!-- bankNumber: string -->
 
 taxPayerStatus: TaxPayerStatus
