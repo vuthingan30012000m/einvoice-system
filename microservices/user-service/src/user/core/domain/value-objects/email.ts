@@ -1,11 +1,5 @@
 import { BaseValueObject } from 'src/common/core/domain/value-objects/base-value-object';
 
-
-
-
-
-
-
 import { TaxPayerException } from '../exceptions/tax-payer.exception';
 
 export class Email extends BaseValueObject {

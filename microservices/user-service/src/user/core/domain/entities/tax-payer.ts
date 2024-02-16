@@ -1,10 +1,9 @@
 import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
 import { TaxCode } from '../value-objects/tax-code';
-import { Email } from '../value-objects/email'
-import { PhoneNumber } from '../value-objects/phone-number'
-import { TaxPayerStatus } from '../value-objects/tax-payer-status'
+import { Email } from '../value-objects/email';
+import { PhoneNumber } from '../value-objects/phone-number';
+import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 import { TaxOfficeId } from '../value-objects/tax-office-id';
-
 
 export class TaxPayer extends AggregateRoot<TaxCode> {
   name: string;
@@ -12,16 +11,11 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
   email: Email;
   phoneNumber: PhoneNumber;
 
-
-
-
   // addressId: AddressId;
   // bankId: BankId;
   // <!-- bankName: string -->
   // <!-- bankNumber: string -->
-  
-  
-  
+
   taxPayerStatus: TaxPayerStatus;
   taxOfficeId: TaxOfficeId;
 

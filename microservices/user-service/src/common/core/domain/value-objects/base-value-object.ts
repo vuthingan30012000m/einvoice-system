@@ -1,4 +1,3 @@
-export abstract class BaseValueObject { 
+export abstract class BaseValueObject {
   constructor(readonly value: string) {}
 }
-
