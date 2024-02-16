@@ -1,17 +1,13 @@
-import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
-import { BankBuilder } from '../factories/bank.factory';
+import { BaseEntity } from '../../../../common/core/domain/entities/base-entity';
 import { BankId } from '../value-objects/bank-id';
-import { BankInformationId } from '../value-objects/bank-information-id';
+import { BankInformation } from './bank-information';
 
-export class Bank extends AggregateRoot<BankId> {
+export class Bank extends BaseEntity<BankId> {
   accountBank: string;
-  bankInformationId: BankInformationId;
+  bankInformation: BankInformation;
 
   constructor(bankId: BankId) {
     super(bankId);
   }
 
-  static Builder(bankId: BankId): BankBuilder {
-    return new BankBuilder(bankId);
-  }
 }

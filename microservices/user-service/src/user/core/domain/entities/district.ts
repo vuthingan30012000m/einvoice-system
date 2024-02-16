@@ -1,10 +1,10 @@
-import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
-import { CityId } from '../value-objects/city-id';
+import { BaseEntity } from '../../../../common/core/domain/entities/base-entity';
 import { DistrictId } from '../value-objects/district-id';
+import { City } from './city';
 
-export class District extends AggregateRoot<DistrictId> {
+export class District extends BaseEntity<DistrictId> {
   name: string;
-  cityId: CityId;
+  city: City;
 
   constructor(districtId: DistrictId) {
     super(districtId);

@@ -1,10 +1,10 @@
-import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
+import { BaseEntity } from '../../../../common/core/domain/entities/base-entity';
 import { AddressId } from '../value-objects/address-id';
-import { WardId } from '../value-objects/ward-id';
+import { Ward } from './ward';
 
-export class Address extends AggregateRoot<AddressId> {
+export class Address extends BaseEntity<AddressId> {
   note: string;
-  wardId: WardId;
+  ward: Ward;
 
   constructor(addressId: AddressId) {
     super(addressId);

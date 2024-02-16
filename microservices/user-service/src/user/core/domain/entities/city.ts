@@ -1,7 +1,7 @@
-import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
+import { BaseEntity } from '../../../../common/core/domain/entities/base-entity';
 import { CityId } from '../value-objects/city-id';
 
-export class City extends AggregateRoot<CityId> {
+export class City extends BaseEntity<CityId> {
   name: string;
 
   constructor(cityId: CityId) {
