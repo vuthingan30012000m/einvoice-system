@@ -24,7 +24,7 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
     super(taxCode);
   }
 
-  static Builder(taxCode: string): TaxPayerBuilder {
+  static Builder(taxCode: TaxCode): TaxPayerBuilder {
     return new TaxPayerBuilder(taxCode);
   }
 }
