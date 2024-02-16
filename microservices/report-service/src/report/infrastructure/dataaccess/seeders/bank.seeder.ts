@@ -22,9 +22,9 @@ export class BankSeeder implements OnModuleInit {
 
         if (existingBank) {
           // await this.bankRepository.update(existingBank.id, {
-          //   name: item.name,
-          //   code: item.code,
-          //   shortName: item.shortName,
+          // name: item.name,
+          // code: item.code,
+          // shortName: item.shortName,
           // });
         } else {
           const newBank = this.bankRepository.create({

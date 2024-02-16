@@ -9,37 +9,36 @@ export class Invoice extends AggregateRoot<InvoiceId> {
   customerId: CustomerId;
   // items = new Array<InvoiceItem>();
 
-// (Buyer):
-// (Seller
-  //  totalBeforeTax    : Money
-  //  totalAfterTax    : Money
-
+  // (Buyer):
+  // (Seller
+  // totalBeforeTax : Money
+  // totalAfterTax : Money
 
   constructor(invoiceId: InvoiceId) {
     super(invoiceId);
   }
 
   // static Builder(invoiceId: InvoiceId): TaxPayerBuilder {
-  //   return new TaxPayerBuilder(invoiceId);
+  // return new TaxPayerBuilder(invoiceId);
   // }
 }
 
 // <!-- model InvoiceItem { -->
-//   <!-- id        Int     @id @default(autoincrement()) -->
-//   <!-- unitPrice Float -->
-//   <!-- quantity  Int -->
-//   <!-- taxRate   Float -->
+// <!-- id Int @id @default(autoincrement()) -->
+// <!-- unitPrice Float -->
+// <!-- quantity Int -->
+// <!-- taxRate Float -->
 
-//   <!-- productId Int -->
-//   <!-- product   Product @relation(fields: [productId], references: [id]) -->
+// <!-- productId Int -->
+// <!-- product Product @relation(fields: [productId], references: [id]) -->
 
-//   <!-- invoiceId Int -->
-//   <!-- invoice   Invoice @relation(fields: [invoiceId], references: [id]) -->
+// <!-- invoiceId Int -->
+// <!-- invoice Invoice @relation(fields: [invoiceId], references: [id]) -->
 // }
 
 // <!-- model Product { -->
-//   <!-- id           Int           @id @default(autoincrement()) -->
-//   <!-- name         String -->
-//   <!-- description  String -->
-//   <!-- price        Float -->
+// <!-- id Int @id @default(autoincrement()) -->
+// <!-- name String -->
+// <!-- description String -->
+// <!-- price Float -->
 // }

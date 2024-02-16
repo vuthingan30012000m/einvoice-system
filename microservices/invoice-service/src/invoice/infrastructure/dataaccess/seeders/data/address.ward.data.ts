@@ -8600,7 +8600,7 @@
   },
   {
     id: '04138',
-    name: 'Xã Cò  Nòi',
+    name: 'Xã Cò Nòi',
     district: '125',
   },
   {
@@ -11680,7 +11680,7 @@
   },
   {
     id: '06178',
-    name: 'Xã  Hoàng Văn Thụ',
+    name: 'Xã Hoàng Văn Thụ',
     district: '182',
   },
   {
@@ -20555,7 +20555,7 @@
   },
   {
     id: '12916',
-    name: 'Xã Dương Hồng  Thủy',
+    name: 'Xã Dương Hồng Thủy',
     district: '341',
   },
   {
@@ -20595,7 +20595,7 @@
   },
   {
     id: '12949',
-    name: 'Xã  Mỹ Lộc',
+    name: 'Xã Mỹ Lộc',
     district: '341',
   },
   {
@@ -28685,7 +28685,7 @@
   },
   {
     id: '18136',
-    name: 'Thị trấn  Tây Sơn',
+    name: 'Thị trấn Tây Sơn',
     district: '439',
   },
   {
@@ -30660,7 +30660,7 @@
   },
   {
     id: '19483',
-    name: 'Xã  A Dơi',
+    name: 'Xã A Dơi',
     district: '465',
   },
   {
@@ -31835,7 +31835,7 @@
   },
   {
     id: '20236',
-    name: 'Phường Hải Châu  I',
+    name: 'Phường Hải Châu I',
     district: '492',
   },
   {
@@ -32235,7 +32235,7 @@
   },
   {
     id: '20482',
-    name: 'Xã  Tư',
+    name: 'Xã Tư',
     district: '505',
   },
   {
@@ -33860,7 +33860,7 @@
   },
   {
     id: '21397',
-    name: 'Xã Hành Tín  Đông',
+    name: 'Xã Hành Tín Đông',
     district: '532',
   },
   {
@@ -39740,7 +39740,7 @@
   },
   {
     id: '24667',
-    name: 'Xã  Đắk Lao',
+    name: 'Xã Đắk Lao',
     district: '663',
   },
   {
@@ -44615,7 +44615,7 @@
   },
   {
     id: '27460',
-    name: 'Phường  An Lạc',
+    name: 'Phường An Lạc',
     district: '777',
   },
   {
@@ -49190,7 +49190,7 @@
   },
   {
     id: '30181',
-    name: 'Xã Tân  Khánh Trung',
+    name: 'Xã Tân Khánh Trung',
     district: '875',
   },
   {
@@ -50530,7 +50530,7 @@
   },
   {
     id: '30949',
-    name: 'Xã  Hòa Thuận',
+    name: 'Xã Hòa Thuận',
     district: '906',
   },
   {
@@ -52135,7 +52135,7 @@
   },
   {
     id: '31672',
-    name: 'Xã Đại Ân  2',
+    name: 'Xã Đại Ân 2',
     district: '951',
   },
   {
@@ -52825,7 +52825,7 @@
   },
   {
     id: '32158',
-    name: 'Xã Tạ An Khương  Đông',
+    name: 'Xã Tạ An Khương Đông',
     district: '970',
   },
   {
@@ -52850,7 +52850,7 @@
   },
   {
     id: '32170',
-    name: 'Xã Tạ An Khương  Nam',
+    name: 'Xã Tạ An Khương Nam',
     district: '970',
   },
   {

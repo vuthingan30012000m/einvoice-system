@@ -33,7 +33,7 @@ export class AddressSeeder implements OnModuleInit {
 
         if (existingCity) {
           // await this.cityRepository.update(existingCity.id, {
-          //   name: item.name,
+          // name: item.name,
           // });
         } else {
           const newCity = this.cityRepository.create({
@@ -52,7 +52,7 @@ export class AddressSeeder implements OnModuleInit {
 
         if (existingDistrict) {
           // await this.districtRepository.update(existingDistrict.id, {
-          //   name: item.name,
+          // name: item.name,
           // });
         } else {
           const city = await this.cityRepository.findOneBy({
@@ -76,7 +76,7 @@ export class AddressSeeder implements OnModuleInit {
 
         if (existingWard) {
           // await this.wardRepository.update(existingWard.id, {
-          //   name: item.name,
+          // name: item.name,
           // });
         } else {
           const district = await this.districtRepository.findOneBy({

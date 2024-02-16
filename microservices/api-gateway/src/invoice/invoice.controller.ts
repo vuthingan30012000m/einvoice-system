@@ -18,26 +18,26 @@ export class InvoiceController {
 
   // @Post()
   // create(@Body() createInvoiceDto: CreateInvoiceDto) {
-  //   console.log(
-  //     '🚀 ~ InvoiceController ~ create ~ createInvoiceDto:',
-  //     createInvoiceDto,
-  //   );
-  //   return this.natsClient.send({ cmd: 'createInvoiceDto' }, createInvoiceDto);
+  // console.log(
+  // '🚀 ~ InvoiceController ~ create ~ createInvoiceDto:',
+  // createInvoiceDto,
+  // );
+  // return this.natsClient.send({ cmd: 'createInvoiceDto' }, createInvoiceDto);
   // }
   // @Get()
   // findAll() {
-  //   return this.invoiceService.findAll();
+  // return this.invoiceService.findAll();
   // }
   // @Get(':id')
   // findOne(@Param('id') id: string) {
-  //   return this.invoiceService.findOne(+id);
+  // return this.invoiceService.findOne(+id);
   // }
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateInvoiceDto: UpdateInvoiceDto) {
-  //   return this.invoiceService.update(+id, updateInvoiceDto);
+  // return this.invoiceService.update(+id, updateInvoiceDto);
   // }
   // @Delete(':id')
   // remove(@Param('id') id: string) {
-  //   return this.invoiceService.remove(+id);
+  // return this.invoiceService.remove(+id);
   // }
 }

@@ -22,7 +22,7 @@ export class TaxOfficeSeeder implements OnModuleInit {
 
         if (existingTaxOffice) {
           // await this.taxOfficeRepository.update(existingTaxOffice.id, {
-          //   name: item.name,
+          // name: item.name,
           // });
         } else {
           const newTaxOffice = this.taxOfficeRepository.create({

@@ -11,7 +11,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   },
   {
     id: '1019671',
-    name: 'Chi Cục thuế Thị xã Lai Châu -  Cục thuế Tỉnh Lai Châu',
+    name: 'Chi Cục thuế Thị xã Lai Châu - Cục thuế Tỉnh Lai Châu',
   },
   { id: '1056182', name: 'Chi cục Thuế Huyện Đắk Song ' },
   {
@@ -27,7 +27,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
     name: 'Chi cục thuế Quận Hà Đông - Cục thuế Thành phố Hà Nội',
   },
   { id: '1054803', name: 'Chi cục thuế TP. Điện Biên Phủ' },
-  { id: '1055890', name: 'Chi cục thuế Thành phố  Hoà Bình' },
+  { id: '1055890', name: 'Chi cục thuế Thành phố Hoà Bình' },
   {
     id: '1056039',
     name: 'Chi cục thuế Thành phố Thanh Hoá - Cục thuế Tỉnh Thanh Hóa',
@@ -256,7 +256,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
     name: 'Chi cục Thuế khu vực Ninh Phước - Thuận Nam',
   },
   { id: '1129932', name: 'Chi Cục Thuế Khu Vực Mường Tè - Nậm Nhùn' },
-  { id: '1129934', name: 'Chi cục thuế Khu vực Hương sơn -  Đức Thọ' },
+  { id: '1129934', name: 'Chi cục thuế Khu vực Hương sơn - Đức Thọ' },
   { id: '1129933', name: 'Chi cục thuế Khu vực Kỳ Anh' },
   { id: '1129930', name: 'Chi cục Thuế Khu vực Cẩm Lệ - Hoà Vang' },
   { id: '1129926', name: 'Chi cục Thuế khu vực Phong Thổ - Sìn Hồ' },
@@ -572,7 +572,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   { id: '1128721', name: 'Chi cục Thuế khu vực Sóc Sơn- Mê Linh' },
   {
     id: '1128714',
-    name: 'Chi cục Thuế khu vực Tịnh Biên -  Tri Tôn thuộc Cục Thuế tỉnh An Giang',
+    name: 'Chi cục Thuế khu vực Tịnh Biên - Tri Tôn thuộc Cục Thuế tỉnh An Giang',
   },
   { id: '1128709', name: 'Chi cục Thuế khu vực Đồng Hỷ - Võ Nhai' },
   { id: '1128720', name: 'Chi cục Thuế khu vực Ứng Hòa - Mỹ Đức' },
@@ -776,7 +776,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   },
   {
     id: '1028843',
-    name: 'Chi cục Thuế huyện Lộc Hà -  Cục thuế Tỉnh Hà Tĩnh',
+    name: 'Chi cục Thuế huyện Lộc Hà - Cục thuế Tỉnh Hà Tĩnh',
   },
   {
     id: '1028458',
@@ -839,11 +839,11 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   },
   {
     id: '1072494',
-    name: 'Chi Cục thuế Huyện Tây Trà -  Cục thuế Tỉnh Quảng Ngãi',
+    name: 'Chi Cục thuế Huyện Tây Trà - Cục thuế Tỉnh Quảng Ngãi',
   },
   {
     id: '1061397',
-    name: 'Chi cục thuế huyện Cờ Đỏ -  Cục thuế Thành phố Cần Thơ',
+    name: 'Chi cục thuế huyện Cờ Đỏ - Cục thuế Thành phố Cần Thơ',
   },
   { id: '1059659', name: 'Chi cục thuế huyện Phong Điền' },
   {
@@ -1450,7 +1450,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   { id: '1054336', name: 'Cục thuế tỉnh Bình Thuận' },
   { id: '1055082', name: 'Cục thuế tỉnh Ninh Bình' },
   { id: '1054221', name: 'Cục thuế tỉnh Ninh Thuận' },
-  { id: '1055896', name: 'Chi cục thuế Thành phố  Sóc Trăng' },
+  { id: '1055896', name: 'Chi cục thuế Thành phố Sóc Trăng' },
   {
     id: '1055894',
     name: 'Chi cục thuế huyện Châu Thành - Cục thuế Tỉnh Hậu Giang',
@@ -1540,7 +1540,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
     id: '1055359',
     name: 'Chi cục thuế Kông Chro - Cục thuế Tỉnh Gia Lai',
   },
-  { id: '1055824', name: 'Chi cục thuế Thành phố  Hà Tĩnh ' },
+  { id: '1055824', name: 'Chi cục thuế Thành phố Hà Tĩnh ' },
   {
     id: '1056415',
     name: 'Chi cục thuế Thành phố Pleiku - Cục thuế Tỉnh Gia Lai',
@@ -1619,7 +1619,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   },
   {
     id: '1054069',
-    name: 'Chi cục thuế huyện Thường Tín  - Cục thuế Thành phố Hà Nội',
+    name: 'Chi cục thuế huyện Thường Tín - Cục thuế Thành phố Hà Nội',
   },
   {
     id: '1055891',
@@ -1641,7 +1641,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
     id: '1054066',
     name: 'Chi cục thuế huyện Ứng Hoà - Cục thuế Thành phố Hà Nội',
   },
-  { id: '1054370', name: 'Cục thuế tỉnh Bà rịa  - Vũng Tàu' },
+  { id: '1054370', name: 'Cục thuế tỉnh Bà rịa - Vũng Tàu' },
   { id: '1056502', name: 'Cục thuế tỉnh Gia Lai' },
   { id: '1055797', name: 'Cục thuế tỉnh Hoà Bình' },
   {
@@ -1885,13 +1885,13 @@ export const dataTaxOffice: { id: string; name: string }[] = [
     id: '1055362',
     name: 'Chi cục thuế TP. Buôn Ma Thuột - Cục thuế Tỉnh Đắk Lắk',
   },
-  { id: '1054623', name: 'Chi cục thuế Thành phố  Móng Cái ' },
-  { id: '1054362', name: 'Chi cục thuế Thành phố  Quảng Ngãi ' },
+  { id: '1054623', name: 'Chi cục thuế Thành phố Móng Cái ' },
+  { id: '1054362', name: 'Chi cục thuế Thành phố Quảng Ngãi ' },
   {
     id: '1056425',
-    name: 'Chi cục thuế Thành phố  Rạch Giá - Cục thuế Tỉnh Kiên Giang',
+    name: 'Chi cục thuế Thành phố Rạch Giá - Cục thuế Tỉnh Kiên Giang',
   },
-  { id: '1055733', name: 'Chi cục thuế Thành phố  Sơn La ' },
+  { id: '1055733', name: 'Chi cục thuế Thành phố Sơn La ' },
   {
     id: '1054280',
     name: 'Chi cục thuế Thành phố Biên Hoà - Cục thuế Tỉnh Đồng Nai',
@@ -1906,7 +1906,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   },
   {
     id: '1055960',
-    name: 'Chi cục thuế Thành phố Long Xuyên -  Cục thuế Tỉnh An Giang',
+    name: 'Chi cục thuế Thành phố Long Xuyên - Cục thuế Tỉnh An Giang',
   },
   { id: '1055007', name: 'Chi cục thuế Thành phố Lạng Sơn ' },
   {
@@ -1963,7 +1963,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
     id: '1054105',
     name: 'Chi cục thuế Thị xã Hưng Yên - Cục thuế Tỉnh Hưng Yên',
   },
-  { id: '1054351', name: 'Chi cục thuế Thị xã Mường Lay  ' },
+  { id: '1054351', name: 'Chi cục thuế Thị xã Mường Lay ' },
   {
     id: '1056276',
     name: 'Chi cục thuế Thị xã Quảng Trị - Cục thuế Tỉnh Quảng Trị',
@@ -2703,7 +2703,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   },
   {
     id: '1055742',
-    name: 'Chi cục thuế huyện Thốt Nốt -  Cục thuế Thành phố Cần Thơ',
+    name: 'Chi cục thuế huyện Thốt Nốt - Cục thuế Thành phố Cần Thơ',
   },
   {
     id: '1055878',
@@ -2857,7 +2857,7 @@ export const dataTaxOffice: { id: string; name: string }[] = [
   },
   {
     id: '1056052',
-    name: 'Chi cục thuế huyện Vĩnh  Lợi - Cục thuế Tỉnh Bạc Liêu',
+    name: 'Chi cục thuế huyện Vĩnh Lợi - Cục thuế Tỉnh Bạc Liêu',
   },
   {
     id: '1055101',

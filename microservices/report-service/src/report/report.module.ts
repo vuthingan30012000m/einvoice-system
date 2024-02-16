@@ -32,7 +32,7 @@ import { ReportController } from './report.controller';
   controllers: [ReportController],
   providers: [
     ReportService,
-    //  TaxOfficeSeeder,
+    // TaxOfficeSeeder,
     // BankSeeder,
     // AddressSeeder,
   ],

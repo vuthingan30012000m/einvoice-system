@@ -3095,7 +3095,7 @@
   },
   {
     id: '859',
-    name: 'Huyện  Vũng Liêm',
+    name: 'Huyện Vũng Liêm',
     city: '86',
   },
   {
