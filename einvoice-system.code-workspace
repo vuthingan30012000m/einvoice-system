@@ -13,10 +13,6 @@
       "path": "microservices"
     },
     {
-      "name": "vuvannghia",
-      "path": "microservices/vuvannghia/src"
-    },
-    {
       "name": "api-gateway",
       "path": "microservices/api-gateway/src"
     },
@@ -27,18 +23,6 @@
     {
       "name": "invoice-service",
       "path": "microservices/invoice-service/src"
-    },
-    {
-      "name": "invoice-report",
-      "path": "microservices/report-service/src"
-    },
-    {
-      "name": "common",
-      "path": "microservices/user-service/src/common"
-    },
-    {
-      "name": "user",
-      "path": "microservices/user-service/src/user"
     },
     {
       "name": "product",
