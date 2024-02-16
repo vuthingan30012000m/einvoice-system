@@ -33,16 +33,16 @@
       "path": "microservices/report-service/src"
     },
     {
-      "name": "product",
-      "path": "../product-cqrs/src/product"
-    },
-    {
       "name": "common",
       "path": "microservices/user-service/src/common"
     },
     {
       "name": "user",
       "path": "microservices/user-service/src/user"
+    },
+    {
+      "name": "product",
+      "path": "../product-cqrs/src/product"
     }
   ],
   "settings": {

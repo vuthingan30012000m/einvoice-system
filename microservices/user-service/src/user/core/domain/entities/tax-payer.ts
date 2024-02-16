@@ -4,13 +4,16 @@ import { TaxCode } from '../value-objects/tax-code';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
 import { TaxPayerStatus } from '../value-objects/tax-payer-status';
+import { AddressId } from '../value-objects/address-id';
+import { BankId } from '../value-objects/bank-id';
 
 export class TaxPayer extends AggregateRoot<TaxCode> {
   name: string;
   password: string;
   email: Email;
   phoneNumber: PhoneNumber;
-  // <!-- address: string -->
+  addressId: AddressId;
+  bankId: BankId;
   // <!-- bankName: string -->
   // <!-- bankNumber: string -->
 
