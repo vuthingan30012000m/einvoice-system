@@ -1,4 +1,4 @@
-import { ProductException } from '../exceptions/product.exception';
+import { TaxPayerException } from '../exceptions/tax-payer.exception';
 
 export class Email {
   constructor(readonly value: string) {
@@ -8,7 +8,7 @@ export class Email {
   validate() {
     const regex = /^[a-zA-Z0-9\s]+$/;
     if (!regex.test(this.value)) {
-      throw new ProductException(
+      throw new TaxPayerException(
         'Tên chỉ có thể chứa chữ cái, số và khoảng trắng.',
       );
     }
