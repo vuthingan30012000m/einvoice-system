@@ -10,8 +10,8 @@ import { DatabaseConfig } from './infrastructure/dataaccess/config/database.conf
 import { City } from './infrastructure/dataaccess/entities/city.entity';
 import { District } from './infrastructure/dataaccess/entities/district.entity';
 import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
-import { InvoiceService } from './invoice.service';
-import { InvoiceController } from './invoice.controller';
+import { InvoiceService } from './temp/invoice.service';
+import { InvoiceController } from './temp/invoice.controller';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 
