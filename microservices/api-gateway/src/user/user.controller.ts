@@ -24,16 +24,7 @@ export class UserController {
   }
 
 
-
-
-  @Post('createProductDto')
-  createProduct(@Body() createProductDto: CreateProductDto) {
-    console.log(
-      '🚀 ~ UserController ~ create ~ createProductDto:',
-      createProductDto,
-    );
-    return this.natsClient.send({ cmd: 'createProductDto' }, createProductDto);
-  }
+ 
 
   // @Get()
   // findAll() {
