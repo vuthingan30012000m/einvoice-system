@@ -1,51 +1,41 @@
+import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
+
+import { InvoiceId } from '../value-objects/invoice-id';
+
 export class Invoice extends AggregateRoot<InvoiceId> {
+  constructor(invoiceId: InvoiceId) {
+    super(invoiceId);
+  }
 
-
-
-
-
-    constructor(invoiceId: InvoiceId) {
-        super(invoiceId);
-      }
-    
-      // static Builder(invoiceId: InvoiceId): TaxPayerBuilder {
-      //   return new TaxPayerBuilder(invoiceId);
-      // }
-
-
+  // static Builder(invoiceId: InvoiceId): TaxPayerBuilder {
+  //   return new TaxPayerBuilder(invoiceId);
+  // }
 }
+//   <!-- invoiceItems     InvoiceItem[] -->
 
-
-
-
-// <!-- model Invoice { -->
-//   <!-- id               Int           @id @default(autoincrement()) -->
 //   <!-- total_before_tax Float -->
 //   <!-- total_after_tax  Float -->
 //   <!-- date             DateTime -->
-  
+
 //   <!-- userId           Int -->
 //   <!-- user             User          @relation(fields: [userId], references: [id]) -->
-  
+
 //   <!-- customerId       Int -->
 //   <!-- customer         Customer      @relation(fields: [customerId], references: [id]) -->
 
-//   <!-- invoiceItems     InvoiceItem[] -->
-// }
 
 // <!-- model InvoiceItem { -->
 //   <!-- id        Int     @id @default(autoincrement()) -->
 //   <!-- unitPrice Float -->
 //   <!-- quantity  Int -->
 //   <!-- taxRate   Float -->
-  
+
 //   <!-- productId Int -->
 //   <!-- product   Product @relation(fields: [productId], references: [id]) -->
 
 //   <!-- invoiceId Int -->
 //   <!-- invoice   Invoice @relation(fields: [invoiceId], references: [id]) -->
 // }
-
 
 // <!-- model Product { -->
 //   <!-- id           Int           @id @default(autoincrement()) -->
@@ -54,9 +44,7 @@ export class Invoice extends AggregateRoot<InvoiceId> {
 //   <!-- price        Float -->
 // }
 
-
-
-// <!--  
+// <!--
 // model Customer {
 //   id          Int       @id @default(autoincrement())
 //   name        String
