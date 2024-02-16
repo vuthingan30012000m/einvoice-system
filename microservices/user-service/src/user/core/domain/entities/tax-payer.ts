@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../../../common/ddd/core/domain/entities/aggregate-root';
+import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
 
 import { TaxCode } from '../value-objects/tax-code';
 import { Email } from '../value-objects/email';
