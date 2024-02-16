@@ -1,3 +1,5 @@
+
+
 import { BaseValueObject } from '../../../../common/core/domain/value-objects/base-value-object';
 
 
@@ -10,7 +12,7 @@ import { BaseValueObject } from '../../../../common/core/domain/value-objects/ba
 
 
 
-export class BankId  extends BaseValueObject {
+export class CityId  extends BaseValueObject {
   constructor(readonly value: string) {
     super(value);
   }

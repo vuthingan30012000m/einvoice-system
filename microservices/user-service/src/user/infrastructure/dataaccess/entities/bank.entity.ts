@@ -5,12 +5,12 @@ export class Bank {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+   @Column({ nullable: false })
   name: string;
 
-  @Column()
+   @Column({ nullable: false })
   code: string;
 
-  @Column()
+   @Column({ nullable: false })
   shortName: string;
 }
