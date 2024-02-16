@@ -1,8 +1,26 @@
 import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
+import { CustomerId } from '../value-objects/customer-id';
 
 import { InvoiceId } from '../value-objects/invoice-id';
+import { UserId } from '../value-objects/user-id';
 
 export class Invoice extends AggregateRoot<InvoiceId> {
+  userId: UserId;
+  customerId: CustomerId;
+  // items = new Array<InvoiceItem>();
+
+  //  totalBeforeTax    : Money
+  //  totalAfterTax    : Money
+
+  //
+  //   Customer
+  //   name        String
+  //   email       String
+  //   phoneNumber String
+  //   addressId   Int
+  //   bankId      String
+  //
+
   constructor(invoiceId: InvoiceId) {
     super(invoiceId);
   }
@@ -11,18 +29,6 @@ export class Invoice extends AggregateRoot<InvoiceId> {
   //   return new TaxPayerBuilder(invoiceId);
   // }
 }
-//   <!-- invoiceItems     InvoiceItem[] -->
-
-//   <!-- total_before_tax Float -->
-//   <!-- total_after_tax  Float -->
-//   <!-- date             DateTime -->
-
-//   <!-- userId           Int -->
-//   <!-- user             User          @relation(fields: [userId], references: [id]) -->
-
-//   <!-- customerId       Int -->
-//   <!-- customer         Customer      @relation(fields: [customerId], references: [id]) -->
-
 
 // <!-- model InvoiceItem { -->
 //   <!-- id        Int     @id @default(autoincrement()) -->
@@ -43,16 +49,3 @@ export class Invoice extends AggregateRoot<InvoiceId> {
 //   <!-- description  String -->
 //   <!-- price        Float -->
 // }
-
-// <!--
-// model Customer {
-//   id          Int       @id @default(autoincrement())
-//   name        String
-//   email       String
-//   phoneNumber String
-//   address     Address   @relation(fields: [addressId], references: [id])
-//   bank        Bank      @relation(fields: [bankId], references: [id])
-//   addressId   Int
-//   bankId      String
-//   Invoice     Invoice[]
-// } -->
