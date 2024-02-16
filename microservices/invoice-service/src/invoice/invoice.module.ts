@@ -12,9 +12,21 @@ import { District } from './infrastructure/dataaccess/entities/district.entity';
 import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
 import { InvoiceService } from './invoice.service';
 import { InvoiceController } from './invoice.controller';
+import { ConfigModule } from '@nestjs/config';
+import * as Joi from '@hapi/joi';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validationSchema: Joi.object({
+        DATABASE_HOST: Joi.string().required(),
+        DATABASE_PORT: Joi.string().required(),
+        DATABASE_USERNAME: Joi.string().required(),
+        DATABASE_PASSWORD: Joi.string().required(),
+        DATABASE_NAME: Joi.string().required(),
+      }),
+    }),
     TypeOrmModule.forFeature([TaxOffice, Bank, City, District, Ward, Address]),
     TypeOrmModule.forRoot({
       type: 'mysql',

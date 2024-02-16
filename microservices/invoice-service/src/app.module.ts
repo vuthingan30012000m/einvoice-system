@@ -9,14 +9,10 @@ import { InvoiceModule } from './invoice/invoice.module';
       isGlobal: true,
       validationSchema: Joi.object({
         NATS_SERVICE: Joi.string().required(),
-
-          DATABASE_HOST: Joi.string().required(),
-          DATABASE_PORT: Joi.string().required(),
-          DATABASE_USERNAME: Joi.string().required(),
-          DATABASE_PASSWORD: Joi.string().required(),
-          DATABASE_NAME: Joi.string().required(),
       }),
-    }),InvoiceModule],
+    }),
+    InvoiceModule,
+  ],
   controllers: [],
   providers: [],
 })

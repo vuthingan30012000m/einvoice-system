@@ -5,7 +5,7 @@ import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const logger = new Logger();
-    logger.log('Microservice is Running!');
+  logger.log('Microservice is Running!');
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
