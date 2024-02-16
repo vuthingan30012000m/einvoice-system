@@ -1,9 +1,11 @@
 import { AggregateRoot } from '../../../../common/ddd/core/domain/entities/aggregate-root';
+
+import { TaxCode } from '../value-objects/tax-code';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
+import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 
-export class TaxPayer extends AggregateRoot<string> {
-  // taxCode: TaxCode
+export class TaxPayer extends AggregateRoot<TaxCode> {
   name: string;
   password: string;
   email: Email;
@@ -12,19 +14,19 @@ export class TaxPayer extends AggregateRoot<string> {
   // <!-- bankName: string -->
   // <!-- bankNumber: string -->
 
-  // taxPayerStatus: TaxPayerStatus
+  taxPayerStatus: TaxPayerStatus;
 
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
 
-  constructor(id: string) {
-    super(id);
+  constructor(taxCode: TaxCode) {
+    super(taxCode);
   }
 
-  static Builder(id: string): TaxPayerBuilder {
-    return new TaxPayerBuilder(id);
-  }
+  // static Builder(taxCode: string): TaxPayerBuilder {
+  //   return new TaxPayerBuilder(taxCode);
+  // }
 }
 
 //       Factory   sử dụng mẫu   Builder
