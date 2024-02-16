@@ -19,9 +19,6 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
 
   taxPayerStatus: TaxPayerStatus;
 
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
 
   constructor(taxCode: TaxCode) {
     super(taxCode);
@@ -32,5 +29,4 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
   // }
 }
 
-//       Factory   sử dụng mẫu   Builder
 // class TaxPayerBuilder {

@@ -1,3 +1,3 @@
 export class AddressId {
-  constructor(readonly value: number) {}
+  constructor(readonly value: string) {}
 }

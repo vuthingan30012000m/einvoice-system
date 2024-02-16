@@ -1,6 +1,10 @@
 export abstract class BaseEntity<T> {
   protected readonly _id: T;
 
+createdAt: Date;
+updatedAt: Date;
+deletedAt: Date;
+
   constructor(id: T) {
     this._id = id;
   }
