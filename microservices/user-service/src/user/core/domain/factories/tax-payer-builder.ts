@@ -1,12 +1,12 @@
 // import { TaxPayerException } from './../exceptions/tax-payer.exception';
 
 import { TaxPayer } from '../entities/tax-payer';
-import { AddressId } from '../value-objects/address-id';
-import { BankId } from '../value-objects/bank-id';
+import { AddressId } from '../value-objects/temp/address-id';
+import { BankId } from '../value-objects/temp/bank-id';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
-import { TaxCode } from '../value-objects/tax-code';
-import { TaxOfficeId } from '../value-objects/tax-office-id';
+import { TaxCode } from '../value-objects/temp/tax-code';
+import { TaxOfficeId } from '../value-objects/temp/tax-office-id';
 import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 
 // Factory sử dụng mẫu Builder

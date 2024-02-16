@@ -1,11 +1,11 @@
 import { AggregateRoot } from '../../../../common/core/domain/entities/aggregate-root';
-import { TaxCode } from '../value-objects/tax-code';
+import { TaxCode } from '../value-objects/temp/tax-code';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
 import { TaxPayerStatus } from '../value-objects/tax-payer-status';
-import { TaxOfficeId } from '../value-objects/tax-office-id';
-import { AddressId } from '../value-objects/address-id';
-import { BankId } from '../value-objects/bank-id';
+import { TaxOfficeId } from '../value-objects/temp/tax-office-id';
+import { AddressId } from '../value-objects/temp/address-id';
+import { BankId } from '../value-objects/temp/bank-id';
 import { TaxPayerBuilder } from '../factories/tax-payer-builder';
 
 export class TaxPayer extends AggregateRoot<TaxCode> {
