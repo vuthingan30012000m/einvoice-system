@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UserController } from './user.controller';
+import { UserService } from './inter/user.service';
+import { UserController } from './inter/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaxOffice } from './infrastructure/dataaccess/entities/tax-office.entity';
 import { TaxOfficeSeeder } from './infrastructure/dataaccess/seeders/tax-office.seeder';
@@ -12,9 +12,21 @@ import { DatabaseConfig } from './infrastructure/dataaccess/config/database.conf
 import { City } from './infrastructure/dataaccess/entities/city.entity';
 import { District } from './infrastructure/dataaccess/entities/district.entity';
 import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
+import { ConfigModule } from '@nestjs/config';
+import * as Joi from '@hapi/joi';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validationSchema: Joi.object({
+        DATABASE_HOST: Joi.string().required(),
+        DATABASE_PORT: Joi.string().required(),
+        DATABASE_USERNAME: Joi.string().required(),
+        DATABASE_PASSWORD: Joi.string().required(),
+        DATABASE_NAME: Joi.string().required(),
+      }),
+    }),
     TypeOrmModule.forFeature([TaxOffice, Bank, City, District, Ward, Address]),
     TypeOrmModule.forRoot({
       type: 'mysql',
