@@ -15,7 +15,7 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @MessagePattern({ cmd: 'createUserDto' })
+  @MessagePattern({ cmd: 'register' })
   create(@Payload() createUserDto: CreateUserDto) {
     console.log('🚀 ~ UserController ~ create ~ createUserDto:', createUserDto);
     return createUserDto;

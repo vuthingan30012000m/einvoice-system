@@ -16,11 +16,16 @@ import { CreateProductDto } from './dto/create-product.dto';
 export class UserController {
   constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
 
-  @Post('createUserDto')
+
+
+  @Post('register')
   create(@Body() createUserDto: CreateUserDto) {
-    console.log('🚀 ~ UserController ~ create ~ createUserDto:', createUserDto);
-    return this.natsClient.send({ cmd: 'createUserDto' }, createUserDto);
+    return this.natsClient.send({ cmd: 'register' }, createUserDto);
   }
+
+
+
+
   @Post('createProductDto')
   createProduct(@Body() createProductDto: CreateProductDto) {
     console.log(

@@ -16,14 +16,14 @@ import { ClientProxy } from '@nestjs/microservices';
 export class InvoiceController {
   constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
 
-  @Post()
-  create(@Body() createInvoiceDto: CreateInvoiceDto) {
-    console.log(
-      '🚀 ~ InvoiceController ~ create ~ createInvoiceDto:',
-      createInvoiceDto,
-    );
-    return this.natsClient.send({ cmd: 'createInvoiceDto' }, createInvoiceDto);
-  }
+  // @Post()
+  // create(@Body() createInvoiceDto: CreateInvoiceDto) {
+  //   console.log(
+  //     '🚀 ~ InvoiceController ~ create ~ createInvoiceDto:',
+  //     createInvoiceDto,
+  //   );
+  //   return this.natsClient.send({ cmd: 'createInvoiceDto' }, createInvoiceDto);
+  // }
   // @Get()
   // findAll() {
   //   return this.invoiceService.findAll();
