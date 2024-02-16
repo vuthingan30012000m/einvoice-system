@@ -61,13 +61,13 @@ export class TaxPayerBuilder {
   }
 }
 
-// const taxPayer = TaxPayer.Builder("tax_code")
-// .withNameTaxPayer("name")
-// .withPassword("password")
-// .withEmail(new Email("email"))
-// .withPhoneNumber(new PhoneNumber("phone_number"))
-// .withAddressId(new AddressId("address_id"))
-// .withBankId(new BankId("bank_id"))
-// .withTaxPayerStatus( TaxPayerStatus.PENDING)
-// .withTaxOfficeId(new TaxOfficeId("tax_office_id"))
-// .build();
+// const taxPayer = TaxPayer.Builder(new TaxCode('123'))
+//   .withNameTaxPayer('name')
+//   .withPassword('password')
+//   .withEmail(new Email('nghiavu2k2abc@gmail.com'))
+//   .withPhoneNumber(new PhoneNumber('0397562283'))
+//   .withAddressId(new AddressId('address_id'))
+//   .withBankId(new BankId('bank_id'))
+//   .withTaxPayerStatus(TaxPayerStatus.PENDING)
+//   .withTaxOfficeId(new TaxOfficeId('tax_office_id'))
+//   .build();
