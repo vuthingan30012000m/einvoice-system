@@ -1,10 +1,8 @@
 <!-- DatabaseConfig  -->
 <!-- nest g resource   report -->
 
+TaxPayerBuilder
 
-
-mangr
-viet thuong
 
 <!--  -->
 init

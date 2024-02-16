@@ -8,7 +8,7 @@ export class District extends BaseEntity<DistrictId> {
 
   wards = new Array<Ward>();
 
-  constructor(DistrictId: DistrictId) {
-    super(DistrictId);
+  constructor(districtId: DistrictId) {
+    super(districtId);
   }
 }

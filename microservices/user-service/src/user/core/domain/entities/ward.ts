@@ -8,7 +8,7 @@ export class Ward extends BaseEntity<WardId> {
 
   addresses = new Array<Address>();
 
-  constructor(WardId: WardId) {
-    super(WardId);
+  constructor(wardId: WardId) {
+    super(wardId);
   }
 }

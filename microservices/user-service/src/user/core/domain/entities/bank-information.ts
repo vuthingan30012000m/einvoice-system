@@ -11,7 +11,7 @@ export class BankInformation extends BaseEntity<BankInformationId> {
 
   Banks = new Array<Bank>();
 
-  constructor(BankInformationId: BankInformationId) {
-    super(BankInformationId);
+  constructor(bankInformationId: BankInformationId) {
+    super(bankInformationId);
   }
 }

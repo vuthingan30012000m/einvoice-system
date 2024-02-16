@@ -5,7 +5,7 @@ import { AddressId } from '../value-objects/address-id';
 export class Address extends BaseEntity<AddressId> {
   note: string;
 
-  constructor(AddressId: AddressId) {
-    super(AddressId);
+  constructor(addressId: AddressId) {
+    super(addressId);
   }
 }

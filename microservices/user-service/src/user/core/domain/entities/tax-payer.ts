@@ -6,6 +6,7 @@ import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 import { TaxOfficeId } from '../value-objects/tax-office-id';
 import { AddressId } from '../value-objects/address-id';
 import { BankId } from '../value-objects/bank-id';
+import { TaxPayerBuilder } from '../factories/tax-payer-builder';
 
 export class TaxPayer extends AggregateRoot<TaxCode> {
   nameTaxPayer: string;
@@ -23,9 +24,7 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
     super(taxCode);
   }
 
-  // static Builder(taxCode: string): TaxPayerBuilder {
-  //   return new TaxPayerBuilder(taxCode);
-  // }
+  static Builder(taxCode: string): TaxPayerBuilder {
+    return new TaxPayerBuilder(taxCode);
+  }
 }
-
-// class TaxPayerBuilder {
