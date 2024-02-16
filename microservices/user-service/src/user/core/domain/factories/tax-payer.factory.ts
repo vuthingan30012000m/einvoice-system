@@ -1,5 +1,5 @@
 import { TaxPayer } from '../entities/tax-payer';
-import { AddressId } from '../value-objects/temp/address-id';
+import { AddressId } from '../value-objects/address-id';
 import { BankId } from '../value-objects/bank-id';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
