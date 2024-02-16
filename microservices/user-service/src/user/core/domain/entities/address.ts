@@ -1,12 +1,8 @@
-import { BaseEntity } from "../../../../common/core/domain/entities/base-entity";
+import { BaseEntity } from '../../../../common/core/domain/entities/base-entity';
 
+import { AddressId } from '../value-objects/address-id';
 
-
-
-import { AddressId } from "../value-objects/address-id";
-
-export class Address   extends BaseEntity<AddressId> {
-
+export class Address extends BaseEntity<AddressId> {
   // street: string;
   // street: string;
   // street: string;
@@ -16,5 +12,4 @@ export class Address   extends BaseEntity<AddressId> {
   constructor(addressId: AddressId) {
     super(addressId);
   }
-
 }

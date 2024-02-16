@@ -1,3 +1,3 @@
-export class Bank   {
+export class Bank {
   constructor(readonly value: string) {}
 }

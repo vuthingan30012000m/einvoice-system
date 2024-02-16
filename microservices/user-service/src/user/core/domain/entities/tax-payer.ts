@@ -20,26 +20,10 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
   taxPayerStatus: TaxPayerStatus;
   taxOfficeId: TaxOfficeId;
 
-
-
-
-
-
-
-
   constructor(taxCode: TaxCode) {
     super(taxCode);
   }
 
-
-
-
-
-
-
-
-
-  
   // static Builder(taxCode: string): TaxPayerBuilder {
   //   return new TaxPayerBuilder(taxCode);
   // }
