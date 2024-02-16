@@ -18,7 +18,7 @@ export class TaxPayerBuilder {
   }
 
   withNameTaxPayer(name: string): TaxPayerBuilder {
-    this.taxPayer.nameTaxPayer = name;
+    this.taxPayer.name = name;
     return this;
   }
 

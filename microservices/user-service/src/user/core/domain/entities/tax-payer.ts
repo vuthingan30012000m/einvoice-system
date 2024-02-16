@@ -9,15 +9,15 @@ import { BankId } from '../value-objects/bank-id';
 import { TaxPayerBuilder } from '../factories/tax-payer-builder';
 
 export class TaxPayer extends AggregateRoot<TaxCode> {
-  nameTaxPayer: string;
+  name: string;
   password: string;
   email: Email;
   phoneNumber: PhoneNumber;
+  taxPayerStatus: TaxPayerStatus;
 
   addressId: AddressId;
+  
   bankId: BankId;
-
-  taxPayerStatus: TaxPayerStatus;
   taxOfficeId: TaxOfficeId;
 
   constructor(taxCode: TaxCode) {
