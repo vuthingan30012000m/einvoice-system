@@ -8,13 +8,6 @@ export class Email extends BaseValueObject {
     this.validate();
   }
 
-
-
-
-
-
-
-  
   validate() {
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 

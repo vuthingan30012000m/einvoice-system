@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 export enum TaxPayerStatus {
   PENDING = 'PENDING',
   ACTIVE = 'ACTIVE',
