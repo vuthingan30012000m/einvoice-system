@@ -13,10 +13,17 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
   password: string;
   email: Email;
   phoneNumber: PhoneNumber;
+
+
+
+
   // addressId: AddressId;
   // bankId: BankId;
   // <!-- bankName: string -->
   // <!-- bankNumber: string -->
+  
+  
+  
   taxPayerStatus: TaxPayerStatus;
   taxOfficeId: TaxOfficeId;
 

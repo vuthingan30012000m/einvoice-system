@@ -1,7 +1,9 @@
+import { BaseValueObject } from '../../../../common/core/domain/value-objects/base-value-object';
 import { TaxPayerException } from '../exceptions/tax-payer.exception';
 
-export class PhoneNumber {
+export class PhoneNumber  extends BaseValueObject {
   constructor(readonly value: string) {
+    super(value);
     this.validate();
   }
 
