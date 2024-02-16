@@ -6,6 +6,7 @@ import { PhoneNumber } from '../value-objects/phone-number';
 import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 import { AddressId } from '../value-objects/address-id';
 import { BankId } from '../value-objects/bank-id';
+import { TaxOfficeId } from '../value-objects/tax-office-id';
 
 export class TaxPayer extends AggregateRoot<TaxCode> {
   name: string;
@@ -16,8 +17,9 @@ export class TaxPayer extends AggregateRoot<TaxCode> {
   bankId: BankId;
   // <!-- bankName: string -->
   // <!-- bankNumber: string -->
-
+  
   taxPayerStatus: TaxPayerStatus;
+  taxOfficeId: TaxOfficeId;
 
 
   constructor(taxCode: TaxCode) {
