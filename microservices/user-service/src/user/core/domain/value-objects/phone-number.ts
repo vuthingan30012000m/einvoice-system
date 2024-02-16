@@ -6,11 +6,9 @@ export class PhoneNumber {
   }
 
   validate() {
-    const regex = /^[a-zA-Z0-9\s]+$/;
+    const regex = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
     if (!regex.test(this.value)) {
-      throw new TaxPayerException(
-        'Tên chỉ có thể chứa chữ cái, số và khoảng trắng.',
-      );
+      throw new TaxPayerException('Số điện thoại không đúng định dạng.');
     }
   }
 }

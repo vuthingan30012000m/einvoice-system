@@ -6,11 +6,9 @@ export class Email {
   }
 
   validate() {
-    const regex = /^[a-zA-Z0-9\s]+$/;
+    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     if (!regex.test(this.value)) {
-      throw new TaxPayerException(
-        'Tên chỉ có thể chứa chữ cái, số và khoảng trắng.',
-      );
+      throw new TaxPayerException('Email không đúng định dạng.');
     }
   }
 }
