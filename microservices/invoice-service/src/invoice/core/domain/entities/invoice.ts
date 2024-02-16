@@ -9,17 +9,11 @@ export class Invoice extends AggregateRoot<InvoiceId> {
   customerId: CustomerId;
   // items = new Array<InvoiceItem>();
 
+// (Buyer):
+// (
   //  totalBeforeTax    : Money
   //  totalAfterTax    : Money
 
-  //
-  //   Customer
-  //   name        String
-  //   email       String
-  //   phoneNumber String
-  //   addressId   Int
-  //   bankId      String
-  //
 
   constructor(invoiceId: InvoiceId) {
     super(invoiceId);
