@@ -10,7 +10,7 @@ export class Invoice extends AggregateRoot<InvoiceId> {
   // items = new Array<InvoiceItem>();
 
 // (Buyer):
-// (
+// (Seller
   //  totalBeforeTax    : Money
   //  totalAfterTax    : Money
 
