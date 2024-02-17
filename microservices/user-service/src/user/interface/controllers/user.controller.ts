@@ -22,7 +22,6 @@ export class UserController {
 
   @MessagePattern({ cmd: 'register' })
   async create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
-    //   const newProduct =
     await this.commandBus.execute(
       new RegisterTaxPayerCommand(
         registerTaxPayerDto.name,
@@ -36,10 +35,7 @@ export class UserController {
         registerTaxPayerDto.noteAddress,
       ),
     );
-    //   return classToPlain(new ResponseCreateProductDto(newProduct));
-    // }
     return 'registerTaxPayerDto';
-    // return this.userService.create(registerTaxPayerDto);
   }
 
   // @Get()

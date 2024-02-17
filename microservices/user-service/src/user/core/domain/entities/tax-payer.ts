@@ -13,9 +13,17 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   email: Email;
   phoneNumber: PhoneNumber;
   taxPayerStatus: TaxPayerStatus;
+
   taxOfficeId: TaxOfficeId;
+
   bankDetailId: BankDetailId;
+
+  // .withBankId(new BankId(payload.bankId))
+  // .withAccountBank(payload.accountBank)
+
   addressId: AddressId;
+
+  // .withAddress(payload.wardId, payload.noteAddress)
 
   constructor(taxCode: TaxCode) {
     super(taxCode);
@@ -76,14 +84,3 @@ class TaxPayerBuilder {
     return this.taxPayer;
   }
 }
-
-// const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
-// .withNameTaxPayer(payload.name)
-// .withPassword(payload.password)
-// .withEmail(new Email(payload.email))
-// .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
-// .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
-// .withBankId(new BankId(payload.bankId))
-// .withAccountBank(payload.accountBank)
-// .withAddress(payload.wardId, payload.noteAddress)
-// .build();
