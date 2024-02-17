@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { UserModule } from './user/user.module';
 import { InvoiceModule } from './invoice/invoice.module';
-import { LoggingMiddleware } from './common/api/middlewares/logging.middleware';
+import { LoggingRequestMiddleware } from './common/api/middlewares/logging.middleware';
 import { APP_FILTER } from '@nestjs/core';
 import { AllExceptionFilter } from './common/api/filters/all-exception.filter';
 
@@ -39,6 +39,6 @@ import { AllExceptionFilter } from './common/api/filters/all-exception.filter';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggingMiddleware).forRoutes('*');
+    consumer.apply(LoggingRequestMiddleware).forRoutes('*');
   }
 }
