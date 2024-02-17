@@ -1,7 +1,7 @@
 import { DomainEntity } from '../../../../common/core/domain/entities/domain.entity';
 import { BankId } from '../value-objects/bank-id';
 
-export class BankInformation extends DomainEntity<BankId> {
+export class Bank extends DomainEntity<BankId> {
   name: string;
 
   code: string;
