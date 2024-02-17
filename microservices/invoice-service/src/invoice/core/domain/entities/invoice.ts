@@ -10,8 +10,8 @@ export class Invoice extends AggregateRoot<InvoiceId> {
 
   items = new Array<InvoiceItem>();
 
-  //  totalBeforeTax    : Float
-  //  totalAfterTax    : Float
+  // totalBeforeTax : Float
+  // totalAfterTax : Float
   // Money
 
   constructor(invoiceId: InvoiceId) {
@@ -19,6 +19,6 @@ export class Invoice extends AggregateRoot<InvoiceId> {
   }
 
   // static Builder(invoiceId: InvoiceId): InvoiceBuilder {
-  //   return new InvoiceBuilder(invoiceId);
+  // return new InvoiceBuilder(invoiceId);
   // }
 }

@@ -27,7 +27,9 @@ import * as Joi from '@hapi/joi';
         DATABASE_NAME: Joi.string().required(),
       }),
     }),
+    // CqrsModule,
     TypeOrmModule.forFeature([TaxOffice, Bank, City, District, Ward, Address]),
+    // TypeOrmModule.forFeature([...UserInfrastructure.repositories]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env['DATABASE_HOST'],
@@ -41,34 +43,14 @@ import * as Joi from '@hapi/joi';
       // logging: true,
     }),
   ],
+  // controllers: [...UserInterface.controllers],
   controllers: [UserController],
   providers: [
-    UserService,
     // TaxOfficeSeeder,
     // BankSeeder,
     // AddressSeeder,
+    UserService,
+    // providers: [...UserInterface.resolvers, ...UserInfrastructure.providers, ...UserApplications],
   ],
 })
 export class UserModule {}
-
-
-
-
-
-
-
-// import { Module } from "@nestjs/common";
-// import { CqrsModule } from "@nestjs/cqrs";
-// import { TypeOrmModule } from "@nestjs/typeorm";
-// import { UserApplications } from "../../../../../einvoice-system/microservices/user-service/src/user/core/application/user.application";
-// import { UserInfrastructure } from "./infrastructure/user.infrastructure";
-// import { UserInterface } from "./interface/user.interface";
-
-// @Module({
-//   imports: [TypeOrmModule.forFeature([...UserInfrastructure.repositories]), CqrsModule],
-//   providers: [...UserInterface.resolvers, ...UserInfrastructure.providers, ...UserApplications],
-//   controllers: [...UserInterface.controllers],
-//   exports: [],
-// })
-// export class UserModule {}
-

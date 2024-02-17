@@ -16,6 +16,6 @@ export class InvoiceItem extends BaseEntity<InvoiceItemId> {
   }
 
   // static Builder(InvoiceItemId: InvoiceItemId): InvoiceBuilder {
-  //   return new InvoiceBuilder(InvoiceItemId);
+  // return new InvoiceBuilder(InvoiceItemId);
   // }
 }
