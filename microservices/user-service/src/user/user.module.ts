@@ -1,19 +1,12 @@
 import { Module } from '@nestjs/common';
 import { UserService } from './core/user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TaxOffice } from './infrastructure/dataaccess/entities/tax-office.entity';
-import { TaxOfficeSeeder } from './infrastructure/dataaccess/seeders/tax-office.seeder';
-import { Bank } from './infrastructure/dataaccess/entities/bank.entity';
-import { BankSeeder } from './infrastructure/dataaccess/seeders/bank.seeder';
-import { Address } from './infrastructure/dataaccess/entities/address.entity';
-import { AddressSeeder } from './infrastructure/dataaccess/seeders/address.seeder';
 import { DatabaseConfig } from './infrastructure/dataaccess/config/database.config';
-import { City } from './infrastructure/dataaccess/entities/city.entity';
-import { District } from './infrastructure/dataaccess/entities/district.entity';
-import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { UserInterface } from './interface/user.interface';
+import { UserInfrastructure } from './infrastructure/user.infrastructure';
+import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
   imports: [
@@ -27,9 +20,8 @@ import { UserInterface } from './interface/user.interface';
         DATABASE_NAME: Joi.string().required(),
       }),
     }),
-    // CqrsModule,
-    TypeOrmModule.forFeature([TaxOffice, Bank, City, District, Ward, Address]),
-    // TypeOrmModule.forFeature([...UserInfrastructure.repositories]),
+    CqrsModule,
+    TypeOrmModule.forFeature([...UserInfrastructure.repositories]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env['DATABASE_HOST'],
@@ -45,11 +37,9 @@ import { UserInterface } from './interface/user.interface';
   ],
   controllers: [...UserInterface.controllers],
   providers: [
-    // TaxOfficeSeeder,
-    // BankSeeder,
-    // AddressSeeder,
+    // ...UserInfrastructure.seeders,
     UserService,
-    // providers: [...UserInterface.resolvers, ...UserInfrastructure.providers, ...UserApplications],
+    // ...UserInterface.resolvers, ...UserInfrastructure.providers, ...UserApplications],
   ],
 })
 export class UserModule {}
