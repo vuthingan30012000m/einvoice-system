@@ -49,7 +49,7 @@ export class RegisterTaxPayerCommandHandler
         new Email(payload.email),
       );
       if (existingEmail) {
-        throw new TaxPayerException('Email already exists');
+        throw new TaxPayerException('Email đã tồn tại.');
       }
 
       const existingPhoneNumber =
@@ -57,28 +57,28 @@ export class RegisterTaxPayerCommandHandler
           new PhoneNumber(payload.phoneNumber),
         );
       if (existingPhoneNumber) {
-        throw new TaxPayerException('Phone number already exists');
+        throw new TaxPayerException('Phone number  đã tồn tại.');
       }
 
       const existingTaxOffice = await this.TaxOfficeRepository.getOneById(
         new TaxOfficeId(payload.taxOfficeId),
       );
       if (!existingTaxOffice) {
-        throw new TaxPayerException('Tax office not found');
+        throw new TaxPayerException('Cơ quan thuế không tồn tại');
       }
 
       const existingBank = await this.BankRepository.getOneById(
         new BankId(payload.bankId),
       );
       if (!existingBank) {
-        throw new TaxPayerException('Bank not found');
+        throw new TaxPayerException('Ngân hàng không tồn tại');
       }
 
       const exitingWard = await this.WardRepository.getOneById(
         new WardId(payload.wardId),
       );
       if (!exitingWard) {
-        throw new TaxPayerException('Ward not found');
+        throw new TaxPayerException('Phường/xã không tồn tại');
       }
 
       const exitingBankDetail = await this.BankDetailRepository.getAccountBank(
@@ -86,7 +86,7 @@ export class RegisterTaxPayerCommandHandler
         new BankId(payload.bankId),
       );
       if (exitingBankDetail) {
-        throw new TaxPayerException('Account bank already exists');
+        throw new TaxPayerException('Tài khoản ngân hàng đã tồn tại');
       }
 
       const newAddress = Address.Builder(new AddressId(randomUUID()))
@@ -119,6 +119,7 @@ export class RegisterTaxPayerCommandHandler
       return 'newTaxPayer';
     } catch (error) {
       this.logger.error(`> ${error}`);
+      return {error:error.message};
     }
   }
 }

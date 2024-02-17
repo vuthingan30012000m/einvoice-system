@@ -9,7 +9,7 @@ import { TaxPayerEntity } from './tax-payer.entity';
 
 @Entity()
 export class TaxOfficeEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ nullable: false })

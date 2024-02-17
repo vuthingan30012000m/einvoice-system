@@ -13,7 +13,7 @@ import { BankDetailEntity } from './bank-detail.entity';
 
 @Entity()
 export class TaxPayerEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ nullable: false })

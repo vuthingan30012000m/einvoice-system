@@ -3,7 +3,7 @@ import { DistrictEntity } from './district.entity';
 
 @Entity()
 export class CityEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ nullable: false })
