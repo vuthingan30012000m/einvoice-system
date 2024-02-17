@@ -12,9 +12,8 @@ export class WardAdapter {
 
     const WardModel = new Ward(new WardId(WardEntity.id));
     WardModel.name = WardEntity.name;
-    
-    // WardModel.districtId = new DistrictId(WardEntity.district.id);
 
+    // WardModel.districtId = new DistrictId(WardEntity.district.id);
 
     return WardModel;
   }
@@ -33,6 +32,5 @@ export class WardAdapter {
     entity.district = district;
 
     return entity;
-
   }
 }

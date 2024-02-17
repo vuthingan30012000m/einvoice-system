@@ -22,6 +22,7 @@ import { BankRepository } from '../../ports/dataaccess/repositories/bank.reposit
 import { WardRepository } from '../../ports/dataaccess/repositories/ward.repository';
 import { BankDetailRepository } from '../../ports/dataaccess/repositories/bank-detail.repository';
 import { AddressRepository } from '../../ports/dataaccess/repositories/address.repository';
+import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
@@ -107,11 +108,10 @@ export class RegisterTaxPayerCommandHandler
         .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
         .withBankDetailId(new BankDetailId(newBankDetail.id.value))
         .withAddressId(new AddressId(newAddress.id.value))
+        .withTaxPayerStatus(TaxPayerStatus.PENDING)
         .build();
 
-      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       await this.AddressRepository.save(newAddress);
-      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       await this.BankDetailRepository.save(newBankDetail);
       await this.TaxPayerRepository.save(newTaxPayer);
 
@@ -119,7 +119,7 @@ export class RegisterTaxPayerCommandHandler
       return 'newTaxPayer';
     } catch (error) {
       this.logger.error(`> ${error}`);
-      return {error:error.message};
+      return { error: error.message };
     }
   }
 }

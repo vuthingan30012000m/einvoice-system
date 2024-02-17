@@ -20,7 +20,6 @@ export class AddressOrmRepository implements AddressRepository {
     const persistenceModel = AddressAdapter.toPersistence(Address);
     const newEntity = await this.AddressEntityRepository.save(persistenceModel);
     return AddressAdapter.toDomain(newEntity);
-    
   }
 
   async getAll(): Promise<Address[]> {

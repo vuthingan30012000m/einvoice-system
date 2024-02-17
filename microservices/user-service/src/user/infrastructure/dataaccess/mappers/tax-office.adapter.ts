@@ -21,6 +21,5 @@ export class TaxOfficeAdapter {
     entity.name = TaxOffice.name;
 
     return entity;
-
   }
 }

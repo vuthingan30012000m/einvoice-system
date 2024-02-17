@@ -56,6 +56,5 @@ export class TaxPayerAdapter {
     entity.taxPayerStatus = TaxPayer.taxPayerStatus;
 
     return entity;
-
   }
 }

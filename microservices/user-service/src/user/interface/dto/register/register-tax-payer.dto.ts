@@ -72,7 +72,7 @@ export class RegisterTaxPayerDto {
 
   @ApiProperty({
     description: 'Mã số phường/xã',
-    example: '277',
+    example: '00277',
     required: true,
   })
   @IsNotEmpty()

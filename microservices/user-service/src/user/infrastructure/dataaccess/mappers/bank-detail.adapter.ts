@@ -33,6 +33,5 @@ export class BankDetailAdapter {
 
     entity.bank = bank;
     return entity;
-
   }
 }

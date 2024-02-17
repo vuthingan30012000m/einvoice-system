@@ -23,8 +23,6 @@ export class AddressAdapter {
 
     const entity = new AddressEntity();
 
-
-    
     entity.id = Address.id.value;
 
     entity.note = Address.note;
