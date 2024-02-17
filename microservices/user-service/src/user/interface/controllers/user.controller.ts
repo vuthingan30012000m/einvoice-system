@@ -11,6 +11,7 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import { RegisterTaxPayerDto } from '../dto/register-tax-payer.dto';
+import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
 
 @Controller('user')
 export class UserController {
@@ -20,15 +21,21 @@ export class UserController {
   ) {}
 
   @MessagePattern({ cmd: 'register' })
-  create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
-    console.log(
-      '🚀 ~ UserController ~ create ~ registerTaxPayerDto:',
-      registerTaxPayerDto,
+  async create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
+    //   const newProduct =
+    await this.commandBus.execute(
+      new RegisterTaxPayerCommand(
+        registerTaxPayerDto.name,
+        registerTaxPayerDto.password,
+        registerTaxPayerDto.email,
+        registerTaxPayerDto.phoneNumber,
+        registerTaxPayerDto.taxOfficeId,
+        registerTaxPayerDto.bankId,
+        registerTaxPayerDto.accountBank,
+        registerTaxPayerDto.wardId,
+        registerTaxPayerDto.noteAddress,
+      ),
     );
-
-    //   const newProduct = await this.commandBus.execute(
-    //     new CreateProductCommand(createProductDto.name),
-    //   );
     //   return classToPlain(new ResponseCreateProductDto(newProduct));
     // }
     return 'registerTaxPayerDto';

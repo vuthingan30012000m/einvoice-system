@@ -7,9 +7,9 @@ export class RegisterTaxPayerCommand implements ICommand {
     public readonly email: string,
     public readonly phoneNumber: string,
     public readonly taxOfficeId: string,
-    public readonly BankId: string,
+    public readonly bankId: string,
     public readonly accountBank: string,
     public readonly wardId: string,
-    public readonly note: string,
+    public readonly noteAddress: string,
   ) {}
 }

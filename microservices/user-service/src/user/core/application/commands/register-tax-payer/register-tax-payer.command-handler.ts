@@ -7,17 +7,13 @@ import { RegisterTaxPayerPort } from './register-tax-payer.port';
 export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
-  constructor(private readonly registerTaxPayerPort: RegisterTaxPayerPort) {}
+  // constructor(private readonly registerTaxPayerPort: RegisterTaxPayerPort) {}
 
   private readonly logger = new Logger(RegisterTaxPayerCommandHandler.name);
 
-  public async execute( payload : RegisterTaxPayerCommand): Promise<void> {
+  public async execute(payload: RegisterTaxPayerCommand): Promise<void> {
     this.logger.log(`> RegisterTaxPayerCommand: called`);
-    console.log("🚀 ~ execute ~ payload:", payload)
-
-
-
-
+    console.log('🚀 ~ execute ~ payload:', payload);
 
     // await this.registerTaxPayerPort.registerTaxPayer(payload);
   }

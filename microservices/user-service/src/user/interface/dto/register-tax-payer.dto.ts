@@ -60,7 +60,7 @@ export class RegisterTaxPayerDto {
     required: true,
   })
   @IsNotEmpty()
-  readonly BankId: string;
+  readonly bankId: string;
 
   @ApiProperty({
     description: 'Số tài khoản ngân hàng',
@@ -84,5 +84,5 @@ export class RegisterTaxPayerDto {
     required: true,
   })
   @IsNotEmpty()
-  readonly note: string;
+  readonly noteAddress: string;
 }
