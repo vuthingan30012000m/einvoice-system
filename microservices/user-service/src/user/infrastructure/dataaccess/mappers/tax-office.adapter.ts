@@ -1,5 +1,6 @@
-import { TaxOffice } from 'src/user/core/domain/entities/tax-office';
 import { TaxOfficeEntity } from '../entities/tax-office.entity';
+import { TaxOffice } from 'src/user/core/domain/entities/tax-office';
+
 import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
 
 export class TaxOfficeAdapter {
@@ -8,7 +9,7 @@ export class TaxOfficeAdapter {
     TaxOfficeModel.name = TaxOfficeEntity.name;
     return TaxOfficeModel;
   }
-
+ 
   static toPersistence(TaxOffice: TaxOffice): TaxOfficeEntity {
     const entity = new TaxOfficeEntity();
 

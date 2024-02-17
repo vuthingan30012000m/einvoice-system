@@ -1,12 +1,13 @@
-import { Bank } from './../../../core/domain/entities/bank';
-
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { BankRepository } from 'src/user/core/application/ports/dataaccess/repositories/bank.repository';
+
 import { BankEntity } from '../entities/bank.entity';
 import { BankAdapter } from '../mappers/bank.adapter';
+import { Bank } from './../../../core/domain/entities/bank';
+import { BankId } from 'src/user/core/domain/value-objects/bank-id';
 
 @Injectable()
 export class BankOrmRepository implements BankRepository {
@@ -27,8 +28,8 @@ export class BankOrmRepository implements BankRepository {
     return entities.map((item) => BankAdapter.toDomain(item));
   }
 
-  async getOneById(id: any): Promise<Bank> {
-    const entity = await this.BankEntityRepository.findOne(id);
+  async getOneById(id: BankId): Promise<Bank> {
+    const entity = await this.BankEntityRepository.findOneBy({id:id.value});
     return BankAdapter.toDomain(entity);
   }
 

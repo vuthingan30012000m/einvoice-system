@@ -1,8 +1,10 @@
-import { Ward } from 'src/user/core/domain/entities/ward';
 import { WardEntity } from '../entities/ward.entity';
+import { Ward } from 'src/user/core/domain/entities/ward';
+
+import { DistrictEntity } from '../entities/district.entity';
+
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 import { DistrictId } from 'src/user/core/domain/value-objects/district-id';
-import { DistrictEntity } from '../entities/district.entity';
 
 export class WardAdapter {
   static toDomain(WardEntity: WardEntity): Ward {

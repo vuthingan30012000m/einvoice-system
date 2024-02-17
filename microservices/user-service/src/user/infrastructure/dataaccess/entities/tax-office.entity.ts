@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany,OneToOne } from 'typeorm';
+import { TaxPayerEntity } from './tax-payer.entity';
 
 @Entity()
 export class TaxOfficeEntity {
@@ -7,4 +8,24 @@ export class TaxOfficeEntity {
 
   @Column({ nullable: false })
   name: string;
+
+
+
+
+
+
+
+  @OneToMany(() => TaxPayerEntity, (taxPayer) => taxPayer.taxOffice, {
+    cascade: true,
+  })
+  taxPayers: TaxPayerEntity[];
+
+
+
+
+
+
+
+
+  
 }

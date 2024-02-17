@@ -1,5 +1,8 @@
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
+import { TaxOfficeEntity } from './tax-office.entity';
+import { AddressEntity } from './address.entity';
+import { BankDetailEntity } from './bank-detail.entity';
 
 @Entity()
 export class TaxPayerEntity {
@@ -19,14 +22,27 @@ export class TaxPayerEntity {
   phoneNumber: string;
 
   @Column({ nullable: false })
-  taxOfficeId: string;
-
-  @Column({ nullable: false })
-  bankDetailId: string;
-
-  @Column({ nullable: false })
-  addressId: string;
-
-  @Column({ nullable: false })
   taxPayerStatus: TaxPayerStatus;
+
+  @ManyToOne(() => TaxOfficeEntity, (taxOffice) => taxOffice.taxPayers, { nullable: false })
+  taxOffice: TaxOfficeEntity;
+ 
+
+
+
+
+
+
+
+  @OneToOne(() => BankDetailEntity)
+  @JoinColumn()
+  bankDetail: BankDetailEntity;
+
+
+
+
+
+  @OneToOne(() => AddressEntity)
+  @JoinColumn()
+  address: AddressEntity;
 }

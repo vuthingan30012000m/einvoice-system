@@ -1,5 +1,6 @@
-import { Bank } from 'src/user/core/domain/entities/bank';
 import { BankEntity } from '../entities/bank.entity';
+import { Bank } from 'src/user/core/domain/entities/bank';
+
 import { BankId } from 'src/user/core/domain/value-objects/bank-id';
 
 export class BankAdapter {

@@ -1,8 +1,10 @@
-import { Address } from 'src/user/core/domain/entities/address';
 import { AddressEntity } from '../entities/address.entity';
+import { Address } from 'src/user/core/domain/entities/address';
+
+import { WardEntity } from '../entities/ward.entity';
+
 import { AddressId } from 'src/user/core/domain/value-objects/address-id';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
-import { WardEntity } from '../entities/ward.entity';
 
 export class AddressAdapter {
   static toDomain(AddressEntity: AddressEntity): Address {
