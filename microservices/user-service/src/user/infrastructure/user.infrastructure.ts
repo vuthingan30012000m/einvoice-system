@@ -1,6 +1,5 @@
 import { DatabaseConfig } from './dataaccess/config/database.config';
 import { WardEntity } from './dataaccess/entities/ward.entity';
-import { OrmRepository } from './dataaccess/repositories/orm.repository';
 import { TaxOfficeEntity } from './dataaccess/entities/tax-office.entity';
 import { BankEntity } from './dataaccess/entities/bank.entity';
 import { CityEntity } from './dataaccess/entities/city.entity';
@@ -13,10 +12,10 @@ import { BankDetailEntity } from './dataaccess/entities/bank-detail.entity';
 
 export const UserInfrastructure = {
   providers: [
-    {
-      provide: RegisterTaxPayerPort,
-      useClass: OrmRepository,
-    },
+    // {
+    //   provide: RegisterTaxPayerPort,
+    //   useClass: OrmRepository,
+    // },
   ],
   configs: [DatabaseConfig.init()],
   repositories: [

@@ -61,7 +61,7 @@ class TaxPayerBuilder {
     return this;
   }
 
-  withBankId(bankDetailId: BankDetailId): TaxPayerBuilder {
+  withBankDetailId(bankDetailId: BankDetailId): TaxPayerBuilder {
     this.taxPayer.bankDetailId = bankDetailId;
     return this;
   }

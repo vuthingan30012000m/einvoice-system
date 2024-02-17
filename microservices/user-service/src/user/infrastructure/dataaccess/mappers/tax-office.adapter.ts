@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 import { TaxOffice } from 'src/user/core/domain/entities/tax-office';
 import { TaxOfficeEntity } from '../entities/tax-office.entity';
 import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';

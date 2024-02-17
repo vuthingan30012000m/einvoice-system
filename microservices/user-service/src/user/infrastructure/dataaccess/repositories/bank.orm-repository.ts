@@ -17,8 +17,7 @@ export class BankOrmRepository implements BankRepository {
 
   async save(Bank: Bank): Promise<Bank> {
     const persistenceModel = BankAdapter.toPersistence(Bank);
-    const newEntity =
-      await this.BankEntityRepository.save(persistenceModel);
+    const newEntity = await this.BankEntityRepository.save(persistenceModel);
     return BankAdapter.toDomain(newEntity);
   }
 
@@ -35,8 +34,7 @@ export class BankOrmRepository implements BankRepository {
 
   async delete(Bank: Bank): Promise<boolean> {
     const persistenceModel = BankAdapter.toPersistence(Bank);
-    const result =
-      await this.BankEntityRepository.delete(persistenceModel);
+    const result = await this.BankEntityRepository.delete(persistenceModel);
     return result.affected > 0;
   }
 }

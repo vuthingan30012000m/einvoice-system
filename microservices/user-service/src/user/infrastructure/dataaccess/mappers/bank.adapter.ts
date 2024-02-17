@@ -1,7 +1,4 @@
-
-
-
-import { Bank } from 'src/user/core/domain/entities/bank'
+import { Bank } from 'src/user/core/domain/entities/bank';
 import { BankEntity } from '../entities/bank.entity';
 import { BankId } from 'src/user/core/domain/value-objects/bank-id';
 
