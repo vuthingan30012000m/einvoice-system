@@ -8,7 +8,6 @@ import { UserApplications } from './core/application/user.application';
 import { UserInterface } from './interface/user.interface';
 import { UserInfrastructure } from './infrastructure/user.infrastructure';
 
-import { UserService } from './core/user.service';
 
 @Module({
   imports: [
@@ -29,7 +28,6 @@ import { UserService } from './core/user.service';
   controllers: [...UserInterface.controllers],
   providers: [
     ...UserInfrastructure.seeders,
-    UserService,
     ...UserInterface.resolvers,
     ...UserInfrastructure.providers,
     ...UserApplications,
