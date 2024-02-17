@@ -5,7 +5,6 @@ import { PhoneNumber } from './../../../domain/value-objects/phone-number';
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { RegisterTaxPayerCommand } from './register-tax-payer.command';
-import { RegisterTaxPayerPort } from './register-tax-payer.port';
 import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
 import { randomUUID } from 'crypto';
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
@@ -17,12 +16,12 @@ import { AddressId } from 'src/user/core/domain/value-objects/address-id';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 
+
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
   constructor(
-    private readonly registerTaxPayerPort: RegisterTaxPayerPort,
     private readonly eventBus: EventBus,
   ) {}
 
@@ -33,15 +32,29 @@ export class RegisterTaxPayerCommandHandler
       this.logger.log(
         `> RegisterTaxPayerCommand:   ${JSON.stringify(payload)}`,
       );
-
+      
+      //     TaxPayer     Repository
       // public readonly email: string,
       // public readonly phoneNumber: string,
-      
+
+      //     TaxOffice     Repository
       // public readonly taxOfficeId: string,
 
+      //     Bank     Repository
       // public readonly bankId: string,
+
+      const existingBank = await this.registerTaxPayerPort.getBankById(
+        payload.bankId,
+      );
+
+      if (!existingBank) {
+        throw new TaxPayerException('Bank not found');
+      }
+
+      //     BankDetail     Repository
       // public readonly accountBank: string,
       
+      //     Ward     Repository
       // public readonly wardId: string,
 
       const exitingWard = await this.registerTaxPayerPort.getWardById(
@@ -52,23 +65,18 @@ export class RegisterTaxPayerCommandHandler
         throw new TaxPayerException('Ward not found');
       }
 
-      const existingBank = await this.registerTaxPayerPort.getBankById(
-        payload.bankId,
-      );
-
-      if (!existingBank) {
-        throw new TaxPayerException('Bank not found');
-      }
 
       const newAddress = Address.Builder(new AddressId(randomUUID()))
         .withWardId(new WardId(payload.wardId))
         .withNoteAddress(payload.noteAddress)
         .build();
+      //       Address     Repository
 
       const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
         .withBankId(new BankId(payload.bankId))
         .withAccountBank(payload.accountBank)
         .build();
+      //       BankDetail     Repository
 
       const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
         .withName(payload.name)
@@ -79,6 +87,7 @@ export class RegisterTaxPayerCommandHandler
         .withBankId(newBankDetail.id)
         .withAddressId(newAddress.id)
         .build();
+      //     TaxPayer     Repository
 
 
       await this.registerTaxPayerPort.saveAddress(newAddress);

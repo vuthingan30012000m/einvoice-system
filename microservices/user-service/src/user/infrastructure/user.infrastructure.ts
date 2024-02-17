@@ -1,5 +1,4 @@
 import { DatabaseConfig } from './dataaccess/config/database.config';
-import { RegisterTaxPayerPort } from '../core/application/commands/register-tax-payer/register-tax-payer.port';
 import { WardEntity } from './dataaccess/entities/ward.entity';
 import { OrmRepository } from './dataaccess/repositories/orm.repository';
 import { TaxOfficeEntity } from './dataaccess/entities/tax-office.entity';
