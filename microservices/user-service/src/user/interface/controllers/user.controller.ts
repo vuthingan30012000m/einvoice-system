@@ -10,7 +10,7 @@ import {
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { RegisterTaxPayerDto } from '../dto/register-tax-payer.dto';
+import { RegisterTaxPayerDto } from '../dto/register/register-tax-payer.dto';
 import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
 
 @Controller('user')
