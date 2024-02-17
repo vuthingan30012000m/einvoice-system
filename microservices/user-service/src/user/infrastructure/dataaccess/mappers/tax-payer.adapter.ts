@@ -2,10 +2,6 @@ import { BankDetail } from './../../../core/domain/entities/bank-detail';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
 
-
-
-
-
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
 import { Email } from 'src/user/core/domain/value-objects/email';
 import { PhoneNumber } from 'src/user/core/domain/value-objects/phone-number';
@@ -41,12 +37,6 @@ export class TaxPayerAdapter {
     entity.email = TaxPayer.email.value;
     entity.phoneNumber = TaxPayer.phoneNumber.value;
 
-
- 
-
-
-
-
     const TaxOffice = new TaxOfficeEntity();
     TaxOffice.id = TaxPayer.taxOfficeId.value;
     entity.taxOffice = TaxOffice;
@@ -58,9 +48,6 @@ export class TaxPayerAdapter {
     const Address = new AddressEntity();
     Address.id = TaxPayer.addressId.value;
     entity.address = Address;
- 
-
-
 
     entity.taxPayerStatus = TaxPayer.taxPayerStatus;
 

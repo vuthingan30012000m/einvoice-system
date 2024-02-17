@@ -30,7 +30,9 @@ export class TaxOfficeOrmRepository implements TaxOfficeRepository {
   }
 
   async getOneById(id: TaxOfficeId): Promise<TaxOffice> {
-    const entity = await this.TaxOfficeEntityRepository.findOneBy({id:id.value});
+    const entity = await this.TaxOfficeEntityRepository.findOneBy({
+      id: id.value,
+    });
     // const entity = await this.TaxOfficeEntityRepository.findOne(id);
     return TaxOfficeAdapter.toDomain(entity);
   }

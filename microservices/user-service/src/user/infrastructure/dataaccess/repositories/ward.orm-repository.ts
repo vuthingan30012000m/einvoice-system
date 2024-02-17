@@ -19,8 +19,7 @@ export class WardOrmRepository implements WardRepository {
 
   async save(Ward: Ward): Promise<Ward> {
     const persistenceModel = WardAdapter.toPersistence(Ward);
-    const newEntity =
-      await this.WardEntityRepository.save(persistenceModel);
+    const newEntity = await this.WardEntityRepository.save(persistenceModel);
     return WardAdapter.toDomain(newEntity);
   }
 
@@ -31,16 +30,13 @@ export class WardOrmRepository implements WardRepository {
   }
 
   async getOneById(id: WardId): Promise<Ward> {
-    const entity = await this.WardEntityRepository.findOneBy({id:id.value});
+    const entity = await this.WardEntityRepository.findOneBy({ id: id.value });
     return WardAdapter.toDomain(entity);
   }
 
   async delete(Ward: Ward): Promise<boolean> {
     const persistenceModel = WardAdapter.toPersistence(Ward);
-    const result =
-      await this.WardEntityRepository.delete(persistenceModel);
+    const result = await this.WardEntityRepository.delete(persistenceModel);
     return result.affected > 0;
   }
-
- 
 }

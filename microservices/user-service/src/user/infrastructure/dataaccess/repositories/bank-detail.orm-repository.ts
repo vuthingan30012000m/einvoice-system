@@ -31,7 +31,9 @@ export class BankDetailOrmRepository implements BankDetailRepository {
   }
 
   async getOneById(id: BankDetailId): Promise<BankDetail> {
-    const entity = await this.BankDetailEntityRepository.findOneBy({id:id.value});
+    const entity = await this.BankDetailEntityRepository.findOneBy({
+      id: id.value,
+    });
     return BankDetailAdapter.toDomain(entity);
   }
 
@@ -42,9 +44,7 @@ export class BankDetailOrmRepository implements BankDetailRepository {
     return result.affected > 0;
   }
 
-
-
-  async  getAccountBank(accountBank: string, bankId: BankId): Promise<boolean> {
+  async getAccountBank(accountBank: string, bankId: BankId): Promise<boolean> {
     const entity = await this.BankDetailEntityRepository.findOne({
       where: {
         accountBank,
@@ -55,6 +55,5 @@ export class BankDetailOrmRepository implements BankDetailRepository {
     });
 
     return !!entity;
-      
   }
 }

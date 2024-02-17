@@ -9,7 +9,7 @@ export class TaxOfficeAdapter {
     TaxOfficeModel.name = TaxOfficeEntity.name;
     return TaxOfficeModel;
   }
- 
+
   static toPersistence(TaxOffice: TaxOffice): TaxOfficeEntity {
     const entity = new TaxOfficeEntity();
 

@@ -29,7 +29,7 @@ export class BankOrmRepository implements BankRepository {
   }
 
   async getOneById(id: BankId): Promise<Bank> {
-    const entity = await this.BankEntityRepository.findOneBy({id:id.value});
+    const entity = await this.BankEntityRepository.findOneBy({ id: id.value });
     return BankAdapter.toDomain(entity);
   }
 

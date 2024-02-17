@@ -18,8 +18,7 @@ export class AddressOrmRepository implements AddressRepository {
 
   async save(Address: Address): Promise<Address> {
     const persistenceModel = AddressAdapter.toPersistence(Address);
-    const newEntity =
-      await this.AddressEntityRepository.save(persistenceModel);
+    const newEntity = await this.AddressEntityRepository.save(persistenceModel);
     return AddressAdapter.toDomain(newEntity);
   }
 
@@ -30,15 +29,16 @@ export class AddressOrmRepository implements AddressRepository {
   }
 
   async getOneById(id: AddressId): Promise<Address> {
-    const entity = await this.AddressEntityRepository.findOneBy({id:id.value});
+    const entity = await this.AddressEntityRepository.findOneBy({
+      id: id.value,
+    });
     // const entity = await this.AddressEntityRepository.findOne(id);
     return AddressAdapter.toDomain(entity);
   }
 
   async delete(Address: Address): Promise<boolean> {
     const persistenceModel = AddressAdapter.toPersistence(Address);
-    const result =
-      await this.AddressEntityRepository.delete(persistenceModel);
+    const result = await this.AddressEntityRepository.delete(persistenceModel);
     return result.affected > 0;
   }
 }
