@@ -12,7 +12,7 @@ export class DatabaseConfig {
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
       synchronize: true,
-      logging: true,
+      // logging: true,
     });
   }
 }
