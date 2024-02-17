@@ -10,11 +10,18 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class RemovePasswordInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    return next.handle().pipe(
-      map((data) => {
-        const { password, ...result } = data;
-        return result;
-      }),
-    );
+    const httpContext = context.switchToHttp();
+    const response = httpContext.getResponse();
+
+    if (response) {
+      return next.handle().pipe(
+        map((data) => {
+          const { password, ...result } = data;
+          return result;
+        }),
+      );
+    }
+
+    return next.handle();
   }
 }

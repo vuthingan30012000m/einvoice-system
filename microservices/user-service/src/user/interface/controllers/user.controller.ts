@@ -18,7 +18,6 @@ import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-val
 import { LoginTaxPayerDto } from '../dto/login/login-tax-payer.dto';
 
 @Controller('user')
-@UseInterceptors(RemovePasswordInterceptor)
 @UseInterceptors(ExcludeValueInterceptor)
 export class UserController {
   constructor(
@@ -27,6 +26,7 @@ export class UserController {
   ) {}
 
   @MessagePattern({ cmd: 'register' })
+  @UseInterceptors(RemovePasswordInterceptor)
   async register(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
     return await this.commandBus.execute(
       new RegisterTaxPayerCommand(
@@ -45,9 +45,8 @@ export class UserController {
 
   @MessagePattern({ cmd: 'login' })
   async login(@Payload() LoginTaxPayerDto: LoginTaxPayerDto) {
-    console.log(
-      '🚀 ~ UserController ~ login ~ LoginTaxPayerDto:',
-      LoginTaxPayerDto,
+    return await this.queryBus.execute(
+      new LoginTaxPayerQuery(LoginTaxPayerDto.email, LoginTaxPayerDto.password),
     );
   }
 
