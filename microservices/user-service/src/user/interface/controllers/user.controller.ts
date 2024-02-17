@@ -14,7 +14,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { RegisterTaxPayerDto } from '../dto/register/register-tax-payer.dto';
 import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
 import { RemovePasswordInterceptor } from 'src/common/api/interceptors/remove-password.interceptor';
-import { ExcludeValueInterceptor } from 'src/common/api/interceptors/a';
+import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-value.interceptor';
 
 @Controller('user')
 @UseInterceptors(RemovePasswordInterceptor) 
