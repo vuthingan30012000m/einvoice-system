@@ -9,15 +9,15 @@ import {
 } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
-import { CreateUserDto } from '../dto/create-user.dto';
+import { RegisterTaxPayerDto } from '../dto/register-tax-payer.dto';
 
 @Controller('user')
 export class UserController {
   @MessagePattern({ cmd: 'register' })
-  create(@Payload() createUserDto: CreateUserDto) {
-    console.log('🚀 ~ UserController ~ create ~ createUserDto:', createUserDto);
-    return 'createUserDto';
-    // return this.userService.create(createUserDto);
+  create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
+    console.log('🚀 ~ UserController ~ create ~ registerTaxPayerDto:', registerTaxPayerDto);
+    return 'registerTaxPayerDto';
+    // return this.userService.create(registerTaxPayerDto);
   }
 
   // @Get()
