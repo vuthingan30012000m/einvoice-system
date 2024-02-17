@@ -14,6 +14,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ClientProxy } from '@nestjs/microservices';
 
 import { RegisterTaxPayerDto } from './dto/register/register-tax-payer.dto';
+import { LoginTaxPayerDto } from './dto/login/login-tax-payer.dto';
 
 @Controller('user')
 @ApiTags('user-service')
@@ -26,20 +27,13 @@ export class UserController {
     return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
   }
 
-
   // signatures
- 
-
 
   @Post('login')
   @ApiOperation({ summary: 'Đăng nhập tài khoản' })
-  login(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
-    return this.natsClient.send({ cmd: 'login' }, registerTaxPayerDto);
+  login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
+    return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);
   }
-
-
-
-
 
   // @Get()
   // @Get(':id')

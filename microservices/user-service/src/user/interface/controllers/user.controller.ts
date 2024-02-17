@@ -15,6 +15,7 @@ import { RegisterTaxPayerDto } from '../dto/register/register-tax-payer.dto';
 import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
 import { RemovePasswordInterceptor } from 'src/common/api/interceptors/remove-password.interceptor';
 import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-value.interceptor';
+import { LoginTaxPayerDto } from '../dto/login/login-tax-payer.dto';
 
 @Controller('user')
 @UseInterceptors(RemovePasswordInterceptor) 
@@ -25,10 +26,17 @@ export class UserController {
     private readonly queryBus: QueryBus,
   ) {}
 
+
+
+
+
+
+
+
+
   @MessagePattern({ cmd: 'register' })
-  async create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
+  async register(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
     return await this.commandBus.execute(
-      // const { password, ...result } = await this.commandBus.execute(
       new RegisterTaxPayerCommand(
         registerTaxPayerDto.name,
         registerTaxPayerDto.password,
@@ -41,9 +49,18 @@ export class UserController {
         registerTaxPayerDto.noteAddress,
       ),
     );
-
-    // return result;
   }
+
+  @MessagePattern({ cmd: 'login' })
+async  login(@Payload() LoginTaxPayerDto: LoginTaxPayerDto) {
+    console.log("🚀 ~ UserController ~ login ~ LoginTaxPayerDto:", LoginTaxPayerDto)
+  }
+
+
+
+
+
+
 
   // @Get()
   // findAll() {
