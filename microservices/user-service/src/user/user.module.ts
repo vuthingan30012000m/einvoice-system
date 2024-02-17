@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './interface/user.service';
-import { UserController } from './interface/user.controller';
+import { UserService } from './core/user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaxOffice } from './infrastructure/dataaccess/entities/tax-office.entity';
 import { TaxOfficeSeeder } from './infrastructure/dataaccess/seeders/tax-office.seeder';
@@ -14,6 +13,7 @@ import { District } from './infrastructure/dataaccess/entities/district.entity';
 import { Ward } from './infrastructure/dataaccess/entities/ward.entity';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
+import { UserInterface } from './interface/user.interface';
 
 @Module({
   imports: [
@@ -43,8 +43,7 @@ import * as Joi from '@hapi/joi';
       // logging: true,
     }),
   ],
-  // controllers: [...UserInterface.controllers],
-  controllers: [UserController],
+  controllers: [...UserInterface.controllers],
   providers: [
     // TaxOfficeSeeder,
     // BankSeeder,
