@@ -9,6 +9,11 @@
 <!--  -->
 init
 validation
+
+
+
+
+
 + register ()
 + login()
 + logout()
@@ -19,6 +24,7 @@ validation
 
 + getTaxPayer()
 + verifyEmail()
+
 
 <!-- + updateTaxPayer() -->
 <!-- + deleteTaxPayer() -->

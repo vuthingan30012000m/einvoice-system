@@ -7,18 +7,17 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { UserService } from '../../core/user.service';
-import { CreateUserDto } from '../dto/create-user.dto';
 import { MessagePattern, Payload } from '@nestjs/microservices';
+
+import { CreateUserDto } from '../dto/create-user.dto';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
 
   @MessagePattern({ cmd: 'register' })
   create(@Payload() createUserDto: CreateUserDto) {
     console.log('🚀 ~ UserController ~ create ~ createUserDto:', createUserDto);
-    return createUserDto;
+    return "createUserDto";
     // return this.userService.create(createUserDto);
   }
 
