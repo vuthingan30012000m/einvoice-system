@@ -15,7 +15,6 @@ import { BankDetail } from 'src/user/core/domain/entities/bank-detail';
 import { Address } from 'src/user/core/domain/entities/address';
 import { AddressId } from 'src/user/core/domain/value-objects/address-id';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
-import { TaxPayerDomainService } from 'src/user/core/domain/tax-payer.domain-service';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 
 @CommandHandler(RegisterTaxPayerCommand)
@@ -23,7 +22,6 @@ export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
   constructor(
-    private readonly taxPayerDomainService: TaxPayerDomainService,
     private readonly registerTaxPayerPort: RegisterTaxPayerPort,
     private readonly eventBus: EventBus,
   ) {}
@@ -35,6 +33,16 @@ export class RegisterTaxPayerCommandHandler
       this.logger.log(
         `> RegisterTaxPayerCommand:   ${JSON.stringify(payload)}`,
       );
+
+      // public readonly email: string,
+      // public readonly phoneNumber: string,
+      
+      // public readonly taxOfficeId: string,
+
+      // public readonly bankId: string,
+      // public readonly accountBank: string,
+      
+      // public readonly wardId: string,
 
       const exitingWard = await this.registerTaxPayerPort.getWardById(
         payload.wardId,
@@ -72,7 +80,6 @@ export class RegisterTaxPayerCommandHandler
         .withAddressId(newAddress.id)
         .build();
 
-      // const eventXXX=this.taxPayerDomainService.RegisterTaxPayer(newTaxPayer,newBankDetail,newAddress)
 
       await this.registerTaxPayerPort.saveAddress(newAddress);
       await this.registerTaxPayerPort.saveBankDetail(newBankDetail);
