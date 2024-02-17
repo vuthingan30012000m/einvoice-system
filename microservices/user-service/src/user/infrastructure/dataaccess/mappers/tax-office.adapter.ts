@@ -20,6 +20,7 @@ export class TaxOfficeAdapter {
     entity.id = TaxOffice.id.value;
     entity.name = TaxOffice.name;
 
-    return null;
+    return entity;
+
   }
 }

@@ -74,11 +74,9 @@ export class RegisterTaxPayerCommandHandler
         throw new TaxPayerException('Bank not found');
       }
 
-      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       const exitingWard = await this.WardRepository.getOneById(
         new WardId(payload.wardId),
       );
-      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       if (!exitingWard) {
         throw new TaxPayerException('Ward not found');
       }
@@ -111,7 +109,9 @@ export class RegisterTaxPayerCommandHandler
         .withAddressId(new AddressId(newAddress.id.value))
         .build();
 
+      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       await this.AddressRepository.save(newAddress);
+      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       await this.BankDetailRepository.save(newBankDetail);
       await this.TaxPayerRepository.save(newTaxPayer);
 

@@ -32,6 +32,7 @@ export class BankDetailAdapter {
     bank.id = BankDetail.BankId.value;
 
     entity.bank = bank;
-    return null;
+    return entity;
+
   }
 }

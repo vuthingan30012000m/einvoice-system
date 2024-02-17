@@ -55,6 +55,7 @@ export class TaxPayerAdapter {
 
     entity.taxPayerStatus = TaxPayer.taxPayerStatus;
 
-    return null;
+    return entity;
+
   }
 }

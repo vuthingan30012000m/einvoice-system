@@ -23,6 +23,8 @@ export class AddressAdapter {
 
     const entity = new AddressEntity();
 
+
+    
     entity.id = Address.id.value;
 
     entity.note = Address.note;
@@ -31,6 +33,6 @@ export class AddressAdapter {
     ward.id = Address.WardId.value;
     entity.ward = ward;
 
-    return null;
+    return entity;
   }
 }

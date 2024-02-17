@@ -24,6 +24,7 @@ export class BankAdapter {
     entity.code = Bank.code;
     entity.shortName = Bank.shortName;
 
-    return null;
+    return entity;
+
   }
 }
