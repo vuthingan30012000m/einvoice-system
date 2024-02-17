@@ -17,12 +17,8 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   taxOfficeId: TaxOfficeId;
 
   bankDetailId: BankDetailId;
-  // bankId
-  // accountBank
 
   addressId: AddressId;
-  // wardId
-  // noteAddress
 
   constructor(taxCode: TaxCode) {
     super(taxCode);
@@ -65,19 +61,19 @@ class TaxPayerBuilder {
     return this;
   }
 
-  // withAddressId(addressId: AddressId): TaxPayerBuilder {
-  //   this.taxPayer.addressId = addressId;
-  //   return this;
-  // }
-  // withBankId(bankDetailId: BankDetailId): TaxPayerBuilder {
-  //   this.taxPayer.bankDetailId = bankDetailId;
-  //   return this;
-  // }
+  withBankId(bankDetailId: BankDetailId): TaxPayerBuilder {
+    this.taxPayer.bankDetailId = bankDetailId;
+    return this;
+  }
+  withAddressId(addressId: AddressId): TaxPayerBuilder {
+    this.taxPayer.addressId = addressId;
+    return this;
+  }
 
-  // withTaxPayerStatus(taxPayerStatus: TaxPayerStatus): TaxPayerBuilder {
-  //   this.taxPayer.taxPayerStatus = taxPayerStatus;
-  //   return this;
-  // }
+  withTaxPayerStatus(taxPayerStatus: TaxPayerStatus): TaxPayerBuilder {
+    this.taxPayer.taxPayerStatus = taxPayerStatus;
+    return this;
+  }
 
   build(): TaxPayer {
     return this.taxPayer;
