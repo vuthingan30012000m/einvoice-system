@@ -22,19 +22,21 @@ export class UserController {
 
   @MessagePattern({ cmd: 'register' })
   async create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
-    await this.commandBus.execute(
-      new RegisterTaxPayerCommand(
-        registerTaxPayerDto.name,
-        registerTaxPayerDto.password,
-        registerTaxPayerDto.email,
-        registerTaxPayerDto.phoneNumber,
-        registerTaxPayerDto.taxOfficeId,
-        registerTaxPayerDto.bankId,
-        registerTaxPayerDto.accountBank,
-        registerTaxPayerDto.wardId,
-        registerTaxPayerDto.noteAddress,
-      ),
-    );
+    console.log("🚀 ~ UserController ~ create ~ registerTaxPayerDto:", registerTaxPayerDto)
+    console.log("🚀 ~ UserController ~ create ~ registerTaxPayerDto:", registerTaxPayerDto.address)
+    // await this.commandBus.execute(
+    //   new RegisterTaxPayerCommand(
+    //     registerTaxPayerDto.name,
+    //     registerTaxPayerDto.password,
+    //     registerTaxPayerDto.email,
+    //     registerTaxPayerDto.phoneNumber,
+    //     registerTaxPayerDto.taxOfficeId,
+    //     registerTaxPayerDto.bankId,
+    //     registerTaxPayerDto.accountBank,
+    //     registerTaxPayerDto.wardId,
+    //     registerTaxPayerDto.noteAddress,
+    //   ),
+    // );
     return 'registerTaxPayerDto';
   }
 
