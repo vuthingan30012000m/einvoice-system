@@ -10,7 +10,7 @@ import { BankDetailEntity } from './bank-detail.entity';
 @Entity()
 export class BankEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @Column({ nullable: false })
   name: string;
