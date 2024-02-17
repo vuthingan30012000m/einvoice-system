@@ -60,17 +60,9 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
 
   async getOneByEmail(email: Email): Promise<TaxPayer> {
     console.log('🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ email:', email);
-    const entity = await this.TaxPayerEntityRepository.
-    
-    
-
-
-
-
-
-    findOne({
+    const entity = await this.TaxPayerEntityRepository.findOne({
       where: {
-      email: email.value,
+        email: email.value,
       },
       relations: {
         taxOffice: true,
@@ -78,11 +70,6 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
         address: true,
       },
     });
-
-
-
-
-
 
     console.log('🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ entity:', entity);
     console.log(
@@ -93,17 +80,9 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
   }
 
   async getOneByPhoneNumber(PhoneNumber: PhoneNumber): Promise<TaxPayer> {
-    const entity = await this.TaxPayerEntityRepository.
-
-
-
-
-
-
-
-    findOne({
+    const entity = await this.TaxPayerEntityRepository.findOne({
       where: {
-      phoneNumber: PhoneNumber.value,
+        phoneNumber: PhoneNumber.value,
       },
       relations: {
         taxOffice: true,
@@ -111,12 +90,6 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
         address: true,
       },
     });
-
-
-
-
-
-
 
     return TaxPayerAdapter.toDomain(entity);
   }

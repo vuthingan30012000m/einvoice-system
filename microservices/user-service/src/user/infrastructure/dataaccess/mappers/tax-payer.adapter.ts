@@ -14,7 +14,10 @@ import { AddressEntity } from '../entities/address.entity';
 
 export class TaxPayerAdapter {
   static toDomain(TaxPayerEntity: TaxPayerEntity): TaxPayer {
-    console.log("🚀 ~ TaxPayerAdapter ~ toDomain ~ TaxPayerEntity:", TaxPayerEntity)
+    console.log(
+      '🚀 ~ TaxPayerAdapter ~ toDomain ~ TaxPayerEntity:',
+      TaxPayerEntity,
+    );
     if (!TaxPayerEntity) return null;
 
     const TaxPayerModel = TaxPayer.Builder(new TaxCode(TaxPayerEntity.id))
@@ -25,14 +28,14 @@ export class TaxPayerAdapter {
       .withTaxOfficeId(new TaxOfficeId(TaxPayerEntity.taxOffice.id))
       .withBankDetailId(new BankDetailId(TaxPayerEntity.bankDetail.id))
       .withAddressId(new AddressId(TaxPayerEntity.address.id))
-      .withTaxPayerStatus(TaxPayerEntity.taxPayerStatus )
+      .withTaxPayerStatus(TaxPayerEntity.taxPayerStatus)
       .build();
 
     return TaxPayerModel;
   }
 
   static toPersistence(TaxPayer: TaxPayer): TaxPayerEntity {
-    console.log("🚀 ~ TaxPayerAdapter ~ toPersistence ~ TaxPayer:", TaxPayer)
+    console.log('🚀 ~ TaxPayerAdapter ~ toPersistence ~ TaxPayer:', TaxPayer);
     if (!TaxPayer) return null;
 
     const entity = new TaxPayerEntity();

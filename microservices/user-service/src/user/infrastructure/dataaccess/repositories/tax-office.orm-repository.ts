@@ -24,45 +24,26 @@ export class TaxOfficeOrmRepository implements TaxOfficeRepository {
   }
 
   async getAll(): Promise<TaxOffice[]> {
-    const entities = await this.TaxOfficeEntityRepository.
-    
- 
-find({
-     relations: {
-       taxPayers: true,
-     },
-   }); 
-
-
-
-    
+    const entities = await this.TaxOfficeEntityRepository.find({
+      relations: {
+        taxPayers: true,
+      },
+    });
 
     return entities.map((item) => TaxOfficeAdapter.toDomain(item));
   }
 
   async getOneById(id: TaxOfficeId): Promise<TaxOffice> {
-    const entity = await this.TaxOfficeEntityRepository.
-    
+    const entity = await this.TaxOfficeEntityRepository.findOne({
+      where: {
+        id: id.value,
+      },
+      relations: {
+        taxPayers: true,
+      },
+    });
 
-    
-   findOne({
-    where: {
-      id: id.value,
-    },
-    relations: {
-      taxPayers: true,
-    },
-  });
-
-
-
-
-
-
-
-
-
-  return TaxOfficeAdapter.toDomain(entity);
+    return TaxOfficeAdapter.toDomain(entity);
   }
 
   async delete(TaxOffice: TaxOffice): Promise<boolean> {

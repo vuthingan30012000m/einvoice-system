@@ -33,8 +33,7 @@ export class AddressOrmRepository implements AddressRepository {
   }
 
   async getOneById(id: AddressId): Promise<Address> {
-    const entity = await this.AddressEntityRepository.
-    findOne({
+    const entity = await this.AddressEntityRepository.findOne({
       where: {
         id: id.value,
       },

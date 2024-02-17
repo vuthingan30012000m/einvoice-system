@@ -50,7 +50,7 @@ export class RegisterTaxPayerCommandHandler
       if (existingEmail) {
         throw new TaxPayerException('Email đã tồn tại.');
       }
-      console.log("🚀 ~ execute ~ exitingBankDetail:",  )
+      console.log('🚀 ~ execute ~ exitingBankDetail:');
 
       const existingPhoneNumber =
         await this.TaxPayerRepository.getOneByPhoneNumber(
@@ -115,7 +115,7 @@ export class RegisterTaxPayerCommandHandler
       await this.TaxPayerRepository.save(newTaxPayer);
 
       // this.eventBus.publish(new ProductCreatedEvent(product));
-      return  newTaxPayer
+      return newTaxPayer;
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };
