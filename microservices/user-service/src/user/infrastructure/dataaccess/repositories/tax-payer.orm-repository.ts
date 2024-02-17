@@ -49,11 +49,6 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
       },
     });
 
-
-
-
-
-
     return TaxPayerAdapter.toDomain(entity);
   }
 
