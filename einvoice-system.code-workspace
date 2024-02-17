@@ -27,6 +27,9 @@
     {
       "name": "product",
       "path": "../product-cqrs/src/product"
+    },
+    {
+      "path": "../002 food-ordering-system"
     }
   ],
   "settings": {
