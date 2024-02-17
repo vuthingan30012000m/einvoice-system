@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './temp/user.service';
+import { UserService } from './interface/user.service';
 import { UserController } from './interface/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaxOffice } from './infrastructure/dataaccess/entities/tax-office.entity';
@@ -50,3 +50,25 @@ import * as Joi from '@hapi/joi';
   ],
 })
 export class UserModule {}
+
+
+
+
+
+
+
+// import { Module } from "@nestjs/common";
+// import { CqrsModule } from "@nestjs/cqrs";
+// import { TypeOrmModule } from "@nestjs/typeorm";
+// import { UserApplications } from "../../../../../einvoice-system/microservices/user-service/src/user/core/application/user.application";
+// import { UserInfrastructure } from "./infrastructure/user.infrastructure";
+// import { UserInterface } from "./interface/user.interface";
+
+// @Module({
+//   imports: [TypeOrmModule.forFeature([...UserInfrastructure.repositories]), CqrsModule],
+//   providers: [...UserInterface.resolvers, ...UserInfrastructure.providers, ...UserApplications],
+//   controllers: [...UserInterface.controllers],
+//   exports: [],
+// })
+// export class UserModule {}
+

@@ -7,7 +7,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { UserService } from '../temp/user.service';
+import { UserService } from './user.service';
 import { CreateUserDto } from './create-user.dto';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
