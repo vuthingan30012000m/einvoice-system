@@ -1,4 +1,4 @@
-export const dataBank: {
+export const dataBank  : {
   id: number;
   name: string;
   code: string;

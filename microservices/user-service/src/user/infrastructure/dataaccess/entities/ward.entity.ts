@@ -5,20 +5,20 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
-import { Address } from './address.entity';
-import { District } from './district.entity';
+import { AddressEntity } from './address.entity';
+import { DistrictEntity } from './district.entity';
 
 @Entity()
-export class Ward {
+export class WardEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ nullable: false })
   name: string;
 
-  @OneToMany(() => Address, (address) => address.ward, { cascade: true })
-  addresses: Address[];
+  @OneToMany(() => AddressEntity, (address) => address.ward, { cascade: true })
+  addresses: AddressEntity[];
 
-  @ManyToOne(() => District, (district) => district.wards, { nullable: false })
-  district: District;
+  @ManyToOne(() => DistrictEntity, (district) => district.wards, { nullable: false })
+  district: DistrictEntity;
 }

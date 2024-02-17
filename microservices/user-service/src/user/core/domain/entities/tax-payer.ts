@@ -17,13 +17,12 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   taxOfficeId: TaxOfficeId;
 
   bankDetailId: BankDetailId;
-
-  // .withBankId(new BankId(payload.bankId))
-  // .withAccountBank(payload.accountBank)
+  // bankId
+  // accountBank
 
   addressId: AddressId;
-
-  // .withAddress(payload.wardId, payload.noteAddress)
+  // wardId
+  // noteAddress
 
   constructor(taxCode: TaxCode) {
     super(taxCode);
@@ -41,7 +40,7 @@ class TaxPayerBuilder {
     this.taxPayer = new TaxPayer(taxCode);
   }
 
-  withNameTaxPayer(name: string): TaxPayerBuilder {
+  withName  (name: string): TaxPayerBuilder {
     this.taxPayer.name = name;
     return this;
   }
@@ -61,24 +60,27 @@ class TaxPayerBuilder {
     return this;
   }
 
-  withAddressId(addressId: AddressId): TaxPayerBuilder {
-    this.taxPayer.addressId = addressId;
-    return this;
-  }
-  withBankId(bankDetailId: BankDetailId): TaxPayerBuilder {
-    this.taxPayer.bankDetailId = bankDetailId;
-    return this;
-  }
-
-  withTaxPayerStatus(taxPayerStatus: TaxPayerStatus): TaxPayerBuilder {
-    this.taxPayer.taxPayerStatus = taxPayerStatus;
-    return this;
-  }
-
   withTaxOfficeId(taxOfficeId: TaxOfficeId): TaxPayerBuilder {
     this.taxPayer.taxOfficeId = taxOfficeId;
     return this;
   }
+
+
+
+  // withAddressId(addressId: AddressId): TaxPayerBuilder {
+  //   this.taxPayer.addressId = addressId;
+  //   return this;
+  // }
+  // withBankId(bankDetailId: BankDetailId): TaxPayerBuilder {
+  //   this.taxPayer.bankDetailId = bankDetailId;
+  //   return this;
+  // }
+
+  // withTaxPayerStatus(taxPayerStatus: TaxPayerStatus): TaxPayerBuilder {
+  //   this.taxPayer.taxPayerStatus = taxPayerStatus;
+  //   return this;
+  // }
+
 
   build(): TaxPayer {
     return this.taxPayer;

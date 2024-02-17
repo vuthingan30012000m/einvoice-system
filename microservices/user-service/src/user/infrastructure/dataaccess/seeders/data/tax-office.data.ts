@@ -1,4 +1,4 @@
-export const dataTaxOffice: { id: string; name: string }[] = [
+export const dataTaxOfficeEntity: { id: string; name: string }[] = [
   {
     id: '1042302',
     name: 'Chi Cục Thuế Huyện Tu Mơ Rông - Cục Thuế Tỉnh Kon Tum',

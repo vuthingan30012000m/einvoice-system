@@ -1,14 +1,14 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Ward } from './ward.entity';
+import { WardEntity } from './ward.entity';
 
 @Entity()
-export class Address {
+export class AddressEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ nullable: false })
   note: string;
 
-  @ManyToOne(() => Ward, (ward) => ward.addresses, { nullable: false })
-  ward: Ward;
+  @ManyToOne(() => WardEntity, (ward) => ward.addresses, { nullable: false })
+  ward: WardEntity;
 }

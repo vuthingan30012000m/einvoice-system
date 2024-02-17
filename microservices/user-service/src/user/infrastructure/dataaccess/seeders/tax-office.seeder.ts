@@ -1,35 +1,35 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TaxOffice } from '../entities/tax-office.entity';
-import { dataTaxOffice } from './data/tax-office.data';
+import { TaxOfficeEntity } from '../entities/tax-office.entity';
+import { dataTaxOfficeEntity } from './data/tax-office.data';
 
 @Injectable()
-export class TaxOfficeSeeder implements OnModuleInit {
-  private logger = new Logger(TaxOfficeSeeder.name);
+export class TaxOfficeEntitySeeder implements OnModuleInit {
+  private logger = new Logger(TaxOfficeEntitySeeder.name);
 
   constructor(
-    @InjectRepository(TaxOffice)
-    private readonly taxOfficeRepository: Repository<TaxOffice>,
+    @InjectRepository(TaxOfficeEntity)
+    private readonly TaxOfficeEntityRepository: Repository<TaxOfficeEntity>,
   ) {}
 
   async onModuleInit() {
     try {
-      for (const item of dataTaxOffice) {
-        const existingTaxOffice = await this.taxOfficeRepository.findOneBy({
+      for (const item of dataTaxOfficeEntity) {
+        const existingTaxOfficeEntity = await this.TaxOfficeEntityRepository.findOneBy({
           id: Number(item.id),
         });
 
-        if (existingTaxOffice) {
-          // await this.taxOfficeRepository.update(existingTaxOffice.id, {
+        if (existingTaxOfficeEntity) {
+          // await this.TaxOfficeEntityRepository.update(existingTaxOfficeEntity.id, {
           // name: item.name,
           // });
         } else {
-          const newTaxOffice = this.taxOfficeRepository.create({
+          const newTaxOfficeEntity = this.TaxOfficeEntityRepository.create({
             id: Number(item.id),
             name: item.name,
           });
-          await this.taxOfficeRepository.save(newTaxOffice);
+          await this.TaxOfficeEntityRepository.save(newTaxOfficeEntity);
         }
       }
 

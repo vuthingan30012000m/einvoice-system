@@ -1,12 +1,12 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Address } from '../entities/address.entity';
+import { AddressEntity } from '../entities/address.entity';
 // import * as fs from 'fs';
 // import * as path from 'path';
-import { City } from '../entities/city.entity';
-import { District } from '../entities/district.entity';
-import { Ward } from '../entities/ward.entity';
+import { CityEntity } from '../entities/city.entity';
+import { DistrictEntity } from '../entities/district.entity';
+import { WardEntity } from '../entities/ward.entity';
 import { dataDistrict } from './data/address.district.data';
 import { dataCity } from './data/address.city.data';
 import { dataWard } from './data/address.ward.data';
@@ -16,12 +16,12 @@ export class AddressSeeder implements OnModuleInit {
   private logger = new Logger(AddressSeeder.name);
 
   constructor(
-    @InjectRepository(City)
-    private readonly cityRepository: Repository<City>,
-    @InjectRepository(District)
-    private readonly districtRepository: Repository<District>,
-    @InjectRepository(Ward)
-    private readonly wardRepository: Repository<Ward>,
+    @InjectRepository(CityEntity)
+    private readonly cityRepository: Repository<CityEntity>,
+    @InjectRepository(DistrictEntity)
+    private readonly districtRepository: Repository<DistrictEntity>,
+    @InjectRepository(WardEntity)
+    private readonly wardRepository: Repository<WardEntity>,
   ) {}
 
   async onModuleInit() {

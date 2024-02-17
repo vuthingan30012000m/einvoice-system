@@ -1,3 +1,4 @@
+import { Bank } from './../../../domain/entities/bank';
 import { BankId } from './../../../domain/value-objects/bank-id';
 import { PhoneNumber } from './../../../domain/value-objects/phone-number';
 import { Logger } from '@nestjs/common';
@@ -20,9 +21,12 @@ export class RegisterTaxPayerCommandHandler
 
   public async execute(payload: RegisterTaxPayerCommand): Promise<void> {
     this.logger.log(`> RegisterTaxPayerCommand:   ${JSON.stringify(payload)}`);
+// const newBank = new Bank(payload.bankId, payload.accountBank);
+  // newBank.value 
+// accountBank
 
     const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
-    .withNameTaxPayer(payload.name)
+    .withName  (payload.name)
     .withPassword(payload.password)
     .withEmail(new Email(payload.email))
     .withPhoneNumber(new PhoneNumber(payload.phoneNumber))

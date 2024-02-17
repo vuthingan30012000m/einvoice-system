@@ -1,40 +1,40 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Bank } from '../entities/bank.entity';
-import { dataBank } from './data/bank.data';
+import { BankEntity } from '../entities/bank.entity';
+import { dataBank   } from './data/bank.data';
 
 @Injectable()
-export class BankSeeder implements OnModuleInit {
-  private logger = new Logger(BankSeeder.name);
+export class BankEntitySeeder implements OnModuleInit {
+  private logger = new Logger(BankEntitySeeder.name);
 
   constructor(
-    @InjectRepository(Bank)
-    private readonly bankRepository: Repository<Bank>,
+    @InjectRepository(BankEntity)
+    private readonly BankEntityRepository: Repository<BankEntity>,
   ) {}
 
   async onModuleInit() {
     try {
-      for (const item of dataBank) {
-        const existingBank = await this.bankRepository.findOneBy({
+      for (const item of dataBank  ) {
+        const existingBankEntity = await this.BankEntityRepository.findOneBy({
           id: item.id,
         });
 
-        if (existingBank) {
-          // await this.bankRepository.update(existingBank.id, {
+        if (existingBankEntity) {
+          // await this.BankEntityRepository.update(existingBankEntity.id, {
           // name: item.name,
           // code: item.code,
           // shortName: item.shortName,
           // });
         } else {
-          const newBank = this.bankRepository.create({
+          const newBankEntity = this.BankEntityRepository.create({
             id: item.id,
             name: item.name,
             code: item.code,
             shortName: item.shortName,
           });
 
-          await this.bankRepository.save(newBank);
+          await this.BankEntityRepository.save(newBankEntity);
         }
       }
 
