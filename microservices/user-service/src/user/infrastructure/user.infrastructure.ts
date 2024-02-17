@@ -5,8 +5,8 @@ import { BankEntity } from './dataaccess/entities/bank.entity';
 import { CityEntity } from './dataaccess/entities/city.entity';
 import { DistrictEntity } from './dataaccess/entities/district.entity';
 import { AddressEntity } from './dataaccess/entities/address.entity';
-import { TaxOfficeEntitySeeder } from './dataaccess/seeders/tax-office.seeder';
-import { BankEntitySeeder } from './dataaccess/seeders/bank.seeder';
+import { TaxOfficeSeeder } from './dataaccess/seeders/tax-office.seeder';
+import { BankSeeder } from './dataaccess/seeders/bank.seeder';
 import { AddressSeeder } from './dataaccess/seeders/address.seeder';
 import { BankDetailEntity } from './dataaccess/entities/bank-detail.entity';
 import { TaxPayerRepository } from '../core/application/ports/dataaccess/repositories/tax-payer.repository';
@@ -31,24 +31,24 @@ export const UserInfrastructure = {
     },
     {
       provide: TaxOfficeRepository,
-      useClass: TaxOfficeOrmRepository, 
-    }, 
+      useClass: TaxOfficeOrmRepository,
+    },
     {
       provide: BankRepository,
       useClass: BankOrmRepository,
-    }, 
+    },
     {
       provide: WardRepository,
       useClass: WardOrmRepository,
-    }, 
+    },
     {
       provide: BankDetailRepository,
       useClass: BankDetailOrmRepository,
-    }, 
+    },
     {
       provide: AddressRepository,
       useClass: AddressOrmRepository,
-    }, 
+    },
   ],
   configs: [DatabaseConfig.init()],
   repositories: [
@@ -59,7 +59,7 @@ export const UserInfrastructure = {
     WardEntity,
     AddressEntity,
     BankDetailEntity,
-    TaxPayerEntity
+    TaxPayerEntity,
   ],
-  seeders: [TaxOfficeEntitySeeder, BankEntitySeeder, AddressSeeder],
+  seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
 };

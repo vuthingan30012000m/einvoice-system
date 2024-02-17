@@ -8,6 +8,8 @@ import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 
 export class AddressAdapter {
   static toDomain(AddressEntity: AddressEntity): Address {
+    if (!AddressEntity) return null;
+
     const AddressModel = Address.Builder(new AddressId(AddressEntity.id))
       .withWardId(new WardId(AddressEntity.ward.id))
       .withNoteAddress(AddressEntity.note)
@@ -17,6 +19,8 @@ export class AddressAdapter {
   }
 
   static toPersistence(Address: Address): AddressEntity {
+    if (!Address) return null;
+
     const entity = new AddressEntity();
 
     entity.id = Address.id.value;

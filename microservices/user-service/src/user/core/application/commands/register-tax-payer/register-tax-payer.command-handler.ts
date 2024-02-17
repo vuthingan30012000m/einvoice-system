@@ -47,10 +47,10 @@ export class RegisterTaxPayerCommandHandler
 
       const existingEmail = await this.TaxPayerRepository.getOneByEmail(
         new Email(payload.email),
-        );
-        if (existingEmail) {
-          throw new TaxPayerException('Email already exists');
-        }
+      );
+      if (existingEmail) {
+        throw new TaxPayerException('Email already exists');
+      }
 
       const existingPhoneNumber =
         await this.TaxPayerRepository.getOneByPhoneNumber(
@@ -74,9 +74,11 @@ export class RegisterTaxPayerCommandHandler
         throw new TaxPayerException('Bank not found');
       }
 
+      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       const exitingWard = await this.WardRepository.getOneById(
         new WardId(payload.wardId),
       );
+      console.log('🚀 ~ RegisterTaxPayerCommandHandler:');
       if (!exitingWard) {
         throw new TaxPayerException('Ward not found');
       }

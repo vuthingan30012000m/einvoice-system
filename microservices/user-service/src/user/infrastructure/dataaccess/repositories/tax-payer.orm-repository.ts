@@ -41,27 +41,21 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
 
   async delete(TaxPayer: TaxPayer): Promise<boolean> {
     const persistenceModel = TaxPayerAdapter.toPersistence(TaxPayer);
-    const result =
-      await this.TaxPayerEntityRepository.delete(persistenceModel);
+    const result = await this.TaxPayerEntityRepository.delete(persistenceModel);
     return result.affected > 0;
   }
 
- async getOneByEmail(email: Email): Promise<TaxPayer> {
-  console.log("🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ email:", email)
-  const entity = await this.TaxPayerEntityRepository.findOneBy({
-    email: email.value,
-  });
-  console.log("🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ entity:", entity)
-  // const entity = await this.TaxPayerEntityRepository.findOne(id);
-  return TaxPayerAdapter.toDomain(entity);
+  async getOneByEmail(email: Email): Promise<TaxPayer> {
+    const entity = await this.TaxPayerEntityRepository.findOneBy({
+      email: email.value,
+    });
+    return TaxPayerAdapter.toDomain(entity);
   }
-
 
   async getOneByPhoneNumber(PhoneNumber: PhoneNumber): Promise<TaxPayer> {
     const entity = await this.TaxPayerEntityRepository.findOneBy({
       phoneNumber: PhoneNumber.value,
     });
-    // const entity = await this.TaxPayerEntityRepository.findOne(id);
     return TaxPayerAdapter.toDomain(entity);
   }
 }

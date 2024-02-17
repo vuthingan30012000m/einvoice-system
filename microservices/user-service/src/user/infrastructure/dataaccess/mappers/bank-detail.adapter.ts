@@ -8,6 +8,8 @@ import { BankId } from 'src/user/core/domain/value-objects/bank-id';
 
 export class BankDetailAdapter {
   static toDomain(BankDetailEntity: BankDetailEntity): BankDetail {
+    if (!BankDetailEntity) return null;
+
     const BankDetailModel = BankDetail.Builder(
       new BankDetailId(BankDetailEntity.id),
     )
@@ -19,6 +21,8 @@ export class BankDetailAdapter {
   }
 
   static toPersistence(BankDetail: BankDetail): BankDetailEntity {
+    if (!BankDetail) return null;
+
     const entity = new BankDetailEntity();
 
     entity.id = BankDetail.id.value;

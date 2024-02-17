@@ -18984,11 +18984,6 @@
     district: '317',
   },
   {
-    id: '',
-    name: '',
-    district: '318',
-  },
-  {
     id: '11950',
     name: 'Phường Lam Sơn',
     district: '323',
@@ -31034,11 +31029,6 @@
     district: '470',
   },
   {
-    id: '',
-    name: '',
-    district: '471',
-  },
-  {
     id: '19750',
     name: 'Phường Tây Lộc',
     district: '474',
@@ -32022,11 +32012,6 @@
     id: '20332',
     name: 'Xã Hòa Khương',
     district: '497',
-  },
-  {
-    id: '',
-    name: '',
-    district: '498',
   },
   {
     id: '20335',
@@ -34097,11 +34082,6 @@
     id: '21538',
     name: 'Xã Ba Xa',
     district: '535',
-  },
-  {
-    id: '',
-    name: '',
-    district: '536',
   },
   {
     id: '21550',
@@ -43422,11 +43402,6 @@
     id: '26731',
     name: 'Xã Tóc Tiên',
     district: '754',
-  },
-  {
-    id: '',
-    name: '',
-    district: '755',
   },
   {
     id: '26734',

@@ -8,6 +8,8 @@ import { DistrictId } from 'src/user/core/domain/value-objects/district-id';
 
 export class WardAdapter {
   static toDomain(WardEntity: WardEntity): Ward {
+    if (!WardEntity) return null;
+
     const WardModel = new Ward(new WardId(WardEntity.id));
     WardModel.name = WardEntity.name;
     WardModel.districtId = new DistrictId(WardEntity.district.id);
@@ -16,6 +18,8 @@ export class WardAdapter {
   }
 
   static toPersistence(Ward: Ward): WardEntity {
+    if (!Ward) return null;
+
     const entity = new WardEntity();
 
     entity.id = Ward.id.value;

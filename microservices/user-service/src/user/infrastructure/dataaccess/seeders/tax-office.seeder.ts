@@ -5,8 +5,8 @@ import { TaxOfficeEntity } from '../entities/tax-office.entity';
 import { dataTaxOfficeEntity } from './data/tax-office.data';
 
 @Injectable()
-export class TaxOfficeEntitySeeder implements OnModuleInit {
-  private logger = new Logger(TaxOfficeEntitySeeder.name);
+export class TaxOfficeSeeder implements OnModuleInit {
+  private logger = new Logger(TaxOfficeSeeder.name);
 
   constructor(
     @InjectRepository(TaxOfficeEntity)

@@ -5,8 +5,8 @@ import { BankEntity } from '../entities/bank.entity';
 import { dataBank } from './data/bank.data';
 
 @Injectable()
-export class BankEntitySeeder implements OnModuleInit {
-  private logger = new Logger(BankEntitySeeder.name);
+export class BankSeeder implements OnModuleInit {
+  private logger = new Logger(BankSeeder.name);
 
   constructor(
     @InjectRepository(BankEntity)
