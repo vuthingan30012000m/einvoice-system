@@ -26,19 +26,16 @@ export class RegisterTaxPayerCommandHandler
 
   public async execute(payload: RegisterTaxPayerCommand): Promise<void> {
     this.logger.log(`> RegisterTaxPayerCommand:   ${JSON.stringify(payload)}`);
-    
-   
-   const newAddress = Address.Builder(new AddressId(randomUUID()))
-    .withWardId(new WardId(payload.wardId))
-    .withNoteAddress(payload.noteAddress)
-    .build()
 
-   
-    const newBankDetail =   BankDetail.Builder(new BankDetailId(randomUUID()))
-    .withBankId(new BankId(payload.bankId))
-    .withAccountBank (payload.accountBank)
-    .build()
+    const newAddress = Address.Builder(new AddressId(randomUUID()))
+      .withWardId(new WardId(payload.wardId))
+      .withNoteAddress(payload.noteAddress)
+      .build();
 
+    const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
+      .withBankId(new BankId(payload.bankId))
+      .withAccountBank(payload.accountBank)
+      .build();
 
     const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
       .withName(payload.name)
@@ -50,7 +47,7 @@ export class RegisterTaxPayerCommandHandler
       .withAddressId(newAddress.id)
       .build();
 
-    console.log("🚀 ~ execute ~ newTaxPayer:", newTaxPayer)
+    console.log('🚀 ~ execute ~ newTaxPayer:', newTaxPayer);
 
     //     const newProduct = this.createProductPort.save(product);
 

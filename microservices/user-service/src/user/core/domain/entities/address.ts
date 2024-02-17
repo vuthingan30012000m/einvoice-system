@@ -14,7 +14,7 @@ export class Address extends DomainEntity<AddressId> {
   }
 }
 
-class AddressBuilder{
+class AddressBuilder {
   private address: Address;
 
   constructor(addressId: AddressId) {
