@@ -51,35 +51,35 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_NAME: user
 
-  invoice:
-    build: ../microservices/invoice-service
-    restart: always
-    volumes:
-      - ../microservices/invoice-service:/usr/src/app
-    command: npm run start:dev
-    environment:
-      NATS_SERVICE: ${NATS_SERVICE}
+  # invoice:
+  #   build: ../microservices/invoice-service
+  #   restart: always
+  #   volumes:
+  #     - ../microservices/invoice-service:/usr/src/app
+  #   command: npm run start:dev
+  #   environment:
+  #     NATS_SERVICE: ${NATS_SERVICE}
 
-      DATABASE_HOST: ${DATABASE_HOST}
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      DATABASE_NAME: invoice
+  #     DATABASE_HOST: ${DATABASE_HOST}
+  #     DATABASE_PORT: ${DATABASE_PORT}
+  #     DATABASE_USERNAME: ${DATABASE_USERNAME}
+  #     DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+  #     DATABASE_NAME: invoice
 
-  report:
-    build: ../microservices/report-service
-    restart: always
-    volumes:
-      - ../microservices/report-service:/usr/src/app
-    command: npm run start:dev
-    environment:
-      NATS_SERVICE: ${NATS_SERVICE}
+  # report:
+  #   build: ../microservices/report-service
+  #   restart: always
+  #   volumes:
+  #     - ../microservices/report-service:/usr/src/app
+  #   command: npm run start:dev
+  #   environment:
+  #     NATS_SERVICE: ${NATS_SERVICE}
 
-      DATABASE_HOST: ${DATABASE_HOST}
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      DATABASE_NAME: report
+  #     DATABASE_HOST: ${DATABASE_HOST}
+  #     DATABASE_PORT: ${DATABASE_PORT}
+  #     DATABASE_USERNAME: ${DATABASE_USERNAME}
+  #     DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+  #     DATABASE_NAME: report
  
 
 #   zookeeper:
