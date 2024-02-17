@@ -40,7 +40,7 @@ class TaxPayerBuilder {
     this.taxPayer = new TaxPayer(taxCode);
   }
 
-  withName  (name: string): TaxPayerBuilder {
+  withName(name: string): TaxPayerBuilder {
     this.taxPayer.name = name;
     return this;
   }
@@ -65,8 +65,6 @@ class TaxPayerBuilder {
     return this;
   }
 
-
-
   // withAddressId(addressId: AddressId): TaxPayerBuilder {
   //   this.taxPayer.addressId = addressId;
   //   return this;
@@ -80,7 +78,6 @@ class TaxPayerBuilder {
   //   this.taxPayer.taxPayerStatus = taxPayerStatus;
   //   return this;
   // }
-
 
   build(): TaxPayer {
     return this.taxPayer;

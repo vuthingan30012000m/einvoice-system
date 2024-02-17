@@ -2,7 +2,7 @@ import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BankEntity } from '../entities/bank.entity';
-import { dataBank   } from './data/bank.data';
+import { dataBank } from './data/bank.data';
 
 @Injectable()
 export class BankEntitySeeder implements OnModuleInit {
@@ -15,7 +15,7 @@ export class BankEntitySeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      for (const item of dataBank  ) {
+      for (const item of dataBank) {
         const existingBankEntity = await this.BankEntityRepository.findOneBy({
           id: item.id,
         });

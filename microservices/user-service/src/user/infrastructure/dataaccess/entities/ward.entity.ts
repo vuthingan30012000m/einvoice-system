@@ -19,6 +19,8 @@ export class WardEntity {
   @OneToMany(() => AddressEntity, (address) => address.ward, { cascade: true })
   addresses: AddressEntity[];
 
-  @ManyToOne(() => DistrictEntity, (district) => district.wards, { nullable: false })
+  @ManyToOne(() => DistrictEntity, (district) => district.wards, {
+    nullable: false,
+  })
   district: DistrictEntity;
 }

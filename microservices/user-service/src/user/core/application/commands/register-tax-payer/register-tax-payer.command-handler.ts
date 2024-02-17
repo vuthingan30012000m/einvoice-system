@@ -21,16 +21,16 @@ export class RegisterTaxPayerCommandHandler
 
   public async execute(payload: RegisterTaxPayerCommand): Promise<void> {
     this.logger.log(`> RegisterTaxPayerCommand:   ${JSON.stringify(payload)}`);
-// const newBank = new Bank(payload.bankId, payload.accountBank);
-  // newBank.value 
-// accountBank
+    // const newBank = new Bank(payload.bankId, payload.accountBank);
+    // newBank.value
+    // accountBank
 
     const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
-    .withName  (payload.name)
-    .withPassword(payload.password)
-    .withEmail(new Email(payload.email))
-    .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
-    .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
+      .withName(payload.name)
+      .withPassword(payload.password)
+      .withEmail(new Email(payload.email))
+      .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
+      .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId));
     // .withBankId(new BankId(payload.bankId))
     // .withAccountBank(payload.accountBank)
     // .withAddress(payload.wardId, payload.noteAddress)

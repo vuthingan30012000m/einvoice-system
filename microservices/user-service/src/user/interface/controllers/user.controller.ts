@@ -22,7 +22,10 @@ export class UserController {
 
   @MessagePattern({ cmd: 'register' })
   async create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
-    console.log("🚀 ~ UserController ~ create ~ registerTaxPayerDto:", registerTaxPayerDto)
+    console.log(
+      '🚀 ~ UserController ~ create ~ registerTaxPayerDto:',
+      registerTaxPayerDto,
+    );
     await this.commandBus.execute(
       new RegisterTaxPayerCommand(
         registerTaxPayerDto.name,

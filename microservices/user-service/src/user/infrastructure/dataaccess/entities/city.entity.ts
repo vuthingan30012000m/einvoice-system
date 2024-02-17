@@ -9,6 +9,8 @@ export class CityEntity {
   @Column({ nullable: false })
   name: string;
 
-  @OneToMany(() => DistrictEntity, (district) => district.city, { cascade: true })
+  @OneToMany(() => DistrictEntity, (district) => district.city, {
+    cascade: true,
+  })
   districts: DistrictEntity[];
 }
