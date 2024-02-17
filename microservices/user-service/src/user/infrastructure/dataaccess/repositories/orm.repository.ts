@@ -20,63 +20,61 @@ export class OrmRepository implements RegisterTaxPayerPort {
     @InjectRepository(BankEntity)
     private readonly BankEntityRepository: Repository<BankEntity>,
     @InjectRepository(AddressEntity)
-   private readonly AddressEntityRepository: Repository<AddressEntity>,
-   @InjectRepository(BankDetailEntity)
-  private readonly BankDetailEntityRepository: Repository<BankDetailEntity>,
+    private readonly AddressEntityRepository: Repository<AddressEntity>,
+    @InjectRepository(BankDetailEntity)
+    private readonly BankDetailEntityRepository: Repository<BankDetailEntity>,
   ) {}
   async getWardById(wardId: string) {
     return await this.WardEntityRepository.findOneBy({
       id: Number(wardId),
     });
   }
-async  getBankById(bankId: string)  {
+  async getBankById(bankId: string) {
     return await this.BankEntityRepository.findOneBy({
       id: Number(bankId),
     });
   }
-async  saveAddress(address: Address)  {
-  const ward = await this.WardEntityRepository.findOneBy({
-    id: Number(address.WardId.value),
-  });
+  async saveAddress(address: Address) {
+    const ward = await this.WardEntityRepository.findOneBy({
+      id: Number(address.WardId.value),
+    });
 
     const newAddress = this.AddressEntityRepository.create({
-      id:  (address.id.value),
-      note:address.note,
+      id: address.id.value,
+      note: address.note,
       ward: ward,
     });
 
     await this.AddressEntityRepository.save(newAddress);
   }
- async saveBankDetail(bankDetail: BankDetail)  {
+  async saveBankDetail(bankDetail: BankDetail) {
     const bank = await this.BankEntityRepository.findOneBy({
       id: Number(bankDetail.BankId.value),
     });
 
-   
-
     const newBankDetail = this.BankDetailEntityRepository.create({
-      id:  (bankDetail.id.value),
-      accountBank:bankDetail.accountBank,
+      id: bankDetail.id.value,
+      accountBank: bankDetail.accountBank,
       bank: bank,
     });
 
     await this.BankDetailEntityRepository.save(newBankDetail);
   }
-  saveTaxPayer(taxPayer: TaxPayer)  {
+  saveTaxPayer(taxPayer: TaxPayer) {
     return null;
   }
 
-//   accountBank: '53074617'
-// 🚀 ~ execute ~ newTaxPayer: TaxPayer {
-//   _id: TaxCode { value: '5d61fc31-0366-46f1-9b88-f00b59ec742d' },
-//   name: 'Arturo Luettgen',
-//   password: '_H5EHIukPY8AdgT',
-//   email: Email { value: 'Olin_Rosenbaum@yahoo.com' },
-//   phoneNumber: PhoneNumber { value: '1-372-882-1463 x445' },
-//   taxOfficeId: TaxOfficeId { value: '1054029' },
-//   bankDetailId: BankDetailId { value: '189140ec-3574-4395-9e0f-b94fbea01803' },
-//   addressId: AddressId { value: '03f8d518-1369-4dcb-890c-a19dec07ca7b' }
-// }
+  //   accountBank: '53074617'
+  // 🚀 ~ execute ~ newTaxPayer: TaxPayer {
+  //   _id: TaxCode { value: '5d61fc31-0366-46f1-9b88-f00b59ec742d' },
+  //   name: 'Arturo Luettgen',
+  //   password: '_H5EHIukPY8AdgT',
+  //   email: Email { value: 'Olin_Rosenbaum@yahoo.com' },
+  //   phoneNumber: PhoneNumber { value: '1-372-882-1463 x445' },
+  //   taxOfficeId: TaxOfficeId { value: '1054029' },
+  //   bankDetailId: BankDetailId { value: '189140ec-3574-4395-9e0f-b94fbea01803' },
+  //   addressId: AddressId { value: '03f8d518-1369-4dcb-890c-a19dec07ca7b' }
+  // }
   // async save(product: Product): Promise<Product> {
   //   const persistenceModel = ProductAdapter.toPersistence(product);
   //   const newEntity = await this.productRepository.save(persistenceModel);
