@@ -8,7 +8,8 @@ export class PhoneNumber extends DomainValueObject {
   }
 
   validate() {
-    const regex =  /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/ 
+    const regex =
+      /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
 
     if (!regex.test(this.value)) {
       throw new TaxPayerException('Số điện thoại không đúng định dạng.');

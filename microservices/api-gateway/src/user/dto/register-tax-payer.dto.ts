@@ -3,7 +3,7 @@ import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator';
 
 import * as faker from 'faker';
 
-export class RegisterTaxPayerDto{
+export class RegisterTaxPayerDto {
   @ApiProperty({
     description: 'Tên của người nộp thuế',
     example: faker.name.findName(),
@@ -12,9 +12,6 @@ export class RegisterTaxPayerDto{
   @IsNotEmpty()
   @IsString()
   readonly name: string;
-
-
-
 
   @ApiProperty({
     description: 'Mật khẩu của tài khoản',
@@ -25,9 +22,6 @@ export class RegisterTaxPayerDto{
   @IsString()
   readonly password: string;
 
-
-
-
   @ApiProperty({
     description: 'Email của người nộp thuế',
     example: faker.internet.email(),
@@ -35,10 +29,10 @@ export class RegisterTaxPayerDto{
   })
   @IsNotEmpty()
   @IsEmail()
-  @Matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,{message: 'Email không đúng định dạng.'})
+  @Matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, {
+    message: 'Email không đúng định dạng.',
+  })
   readonly email: string;
-
- 
 
   @ApiProperty({
     description: 'Số điện thoại của người nộp thuế',
@@ -46,66 +40,49 @@ export class RegisterTaxPayerDto{
     required: true,
   })
   @IsNotEmpty()
-  @Matches( /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-  {message: "Số điện thoại không đúng định dạng."})
+  @Matches(
+    /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+    { message: 'Số điện thoại không đúng định dạng.' },
+  )
   phoneNumber: string;
 
-
-
-
-
   @ApiProperty({
-    description: "Mã số  cơ quan thuế quản lý",
-    example: "1054029",
+    description: 'Mã số  cơ quan thuế quản lý',
+    example: '1054029',
     required: true,
   })
   @IsNotEmpty()
   taxOfficeId: string;
 
-
-
   @ApiProperty({
-    description: "Mã số ngân hàng",
-    example: "1",
+    description: 'Mã số ngân hàng',
+    example: '1',
     required: true,
   })
   @IsNotEmpty()
   BankId: string;
 
-
   @ApiProperty({
-    description: "Số tài khoản ngân hàng",
+    description: 'Số tài khoản ngân hàng',
     example: faker.finance.account(),
     required: true,
   })
   @IsNotEmpty()
   accountBank: string;
 
-
-
-
-
-
   @ApiProperty({
-    description: "Mã số phường/xã",
-    example: "277",
+    description: 'Mã số phường/xã',
+    example: '277',
     required: true,
   })
   @IsNotEmpty()
   WardId: string;
 
-
-
-
   @ApiProperty({
-    description: "Địa chỉ chi tiết",
+    description: 'Địa chỉ chi tiết',
     example: faker.address.streetAddress(),
     required: true,
   })
   @IsNotEmpty()
   note: string;
-
-
-
-
 }

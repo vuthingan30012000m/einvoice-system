@@ -13,11 +13,10 @@ import { CreateUserDto } from '../dto/create-user.dto';
 
 @Controller('user')
 export class UserController {
-
   @MessagePattern({ cmd: 'register' })
   create(@Payload() createUserDto: CreateUserDto) {
     console.log('🚀 ~ UserController ~ create ~ createUserDto:', createUserDto);
-    return "createUserDto";
+    return 'createUserDto';
     // return this.userService.create(createUserDto);
   }
 

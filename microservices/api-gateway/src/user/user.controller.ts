@@ -13,7 +13,6 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { ClientProxy } from '@nestjs/microservices';
 
-
 import { RegisterTaxPayerDto } from './dto/register-tax-payer.dto';
 
 @Controller('user')
