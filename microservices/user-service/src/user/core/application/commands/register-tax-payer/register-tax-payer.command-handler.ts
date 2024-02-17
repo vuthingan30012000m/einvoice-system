@@ -68,8 +68,8 @@ export class RegisterTaxPayerCommandHandler
       .withAddressId(newAddress.id)
       .build();
 
-    const eventXXX=this.taxPayerDomainService.RegisterTaxPayer(newTaxPayer,newBankDetail,newAddress)
-
+      
+      // const eventXXX=this.taxPayerDomainService.RegisterTaxPayer(newTaxPayer,newBankDetail,newAddress)
     await this.registerTaxPayerPort.saveAddress(newAddress)
     await this.registerTaxPayerPort.saveBankDetail(newBankDetail)
     await this.registerTaxPayerPort.saveTaxPayer(newTaxPayer)
