@@ -16,6 +16,12 @@ import { AddressId } from 'src/user/core/domain/value-objects/address-id';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 
+import { TaxPayerRepository } from '../../ports/dataaccess/repositories/tax-payer.repository';
+import { TaxOfficeRepository } from '../../ports/dataaccess/repositories/tax-office.repository';
+import { BankRepository } from '../../ports/dataaccess/repositories/bank.repository';
+import { WardRepository } from '../../ports/dataaccess/repositories/ward.repository';
+import { BankDetailRepository } from '../../ports/dataaccess/repositories/bank-detail.repository';
+import { AddressRepository } from '../../ports/dataaccess/repositories/address.repository';
 
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
@@ -23,6 +29,12 @@ export class RegisterTaxPayerCommandHandler
 {
   constructor(
     private readonly eventBus: EventBus,
+    private readonly TaxPayerRepository: TaxPayerRepository,
+    private readonly TaxOfficeRepository: TaxOfficeRepository,
+    private readonly BankRepository: BankRepository,
+    private readonly WardRepository: WardRepository,
+    private readonly BankDetailRepository: BankDetailRepository,
+    private readonly AddressRepository: AddressRepository,
   ) {}
 
   private readonly logger = new Logger(RegisterTaxPayerCommandHandler.name);
@@ -32,51 +44,60 @@ export class RegisterTaxPayerCommandHandler
       this.logger.log(
         `> RegisterTaxPayerCommand:   ${JSON.stringify(payload)}`,
       );
-      
-      //     TaxPayer     Repository
-      // public readonly email: string,
-      // public readonly phoneNumber: string,
 
-      //     TaxOffice     Repository
-      // public readonly taxOfficeId: string,
-
-      //     Bank     Repository
-      // public readonly bankId: string,
-
-      const existingBank = await this.registerTaxPayerPort.getBankById(
-        payload.bankId,
+      const existingEmail = await this.TaxPayerRepository.getOneByEmail(
+        new Email(payload.email),
       );
+      if (existingEmail) {
+        throw new TaxPayerException('Email already exists');
+      }
 
+      const existingPhoneNumber =
+        await this.TaxPayerRepository.getOneByPhoneNumber(
+          new PhoneNumber(payload.phoneNumber),
+        );
+      if (existingPhoneNumber) {
+        throw new TaxPayerException('Phone number already exists');
+      }
+
+      const existingTaxOffice = await this.TaxOfficeRepository.getOneById(
+        new TaxOfficeId(payload.taxOfficeId),
+      );
+      if (!existingTaxOffice) {
+        throw new TaxPayerException('Tax office not found');
+      }
+
+      const existingBank = await this.BankRepository.getOneById(
+        new BankId(payload.bankId),
+      );
       if (!existingBank) {
         throw new TaxPayerException('Bank not found');
       }
 
-      //     BankDetail     Repository
-      // public readonly accountBank: string,
-      
-      //     Ward     Repository
-      // public readonly wardId: string,
-
-      const exitingWard = await this.registerTaxPayerPort.getWardById(
-        payload.wardId,
+      const exitingWard = await this.WardRepository.getOneById(
+        new WardId(payload.wardId),
       );
-
       if (!exitingWard) {
         throw new TaxPayerException('Ward not found');
       }
 
+      const exitingBankDetail = await this.BankDetailRepository.getAccountBank(
+        payload.accountBank,
+        new BankId(payload.bankId),
+      );
+      if (exitingBankDetail) {
+        throw new TaxPayerException('Account bank already exists');
+      }
 
       const newAddress = Address.Builder(new AddressId(randomUUID()))
         .withWardId(new WardId(payload.wardId))
         .withNoteAddress(payload.noteAddress)
         .build();
-      //       Address     Repository
 
       const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
         .withBankId(new BankId(payload.bankId))
         .withAccountBank(payload.accountBank)
         .build();
-      //       BankDetail     Repository
 
       const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
         .withName(payload.name)
@@ -87,13 +108,11 @@ export class RegisterTaxPayerCommandHandler
         .withBankId(newBankDetail.id)
         .withAddressId(newAddress.id)
         .build();
-      //     TaxPayer     Repository
 
+      await this.AddressRepository.save(newAddress);
+      await this.BankDetailRepository.save(newBankDetail);
+      await this.TaxPayerRepository.save(newTaxPayer);
 
-      await this.registerTaxPayerPort.saveAddress(newAddress);
-      await this.registerTaxPayerPort.saveBankDetail(newBankDetail);
-      console.log('🚀 ~ execute ~ newTaxPayer:', newTaxPayer);
-      await this.registerTaxPayerPort.saveTaxPayer(newTaxPayer);
       // this.eventBus.publish(new ProductCreatedEvent(product));
       return 'newTaxPayer';
     } catch (error) {
