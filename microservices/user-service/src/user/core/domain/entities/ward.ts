@@ -1,8 +1,8 @@
-import { BaseEntity } from '../../../../common/core/domain/entities/base-entity';
+import { DomainEntity } from '../../../../common/core/domain/entities/domain.entity';
 import { WardId } from '../value-objects/ward-id';
 import { District } from './district';
 
-export class Ward extends BaseEntity<WardId> {
+export class Ward extends DomainEntity<WardId> {
   name: string;
   district: District;
 

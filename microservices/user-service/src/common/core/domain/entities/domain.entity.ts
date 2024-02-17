@@ -1,4 +1,4 @@
-export abstract class BaseEntity<T> {
+export abstract class DomainEntity<T> {
   protected readonly _id: T;
 
   createdAt: Date;
@@ -13,7 +13,7 @@ export abstract class BaseEntity<T> {
     return this._id;
   }
 
-  public equals(object?: BaseEntity<T>): boolean {
+  public equals(object?: DomainEntity<T>): boolean {
     if (object == null || object == undefined) {
       return false;
     }
@@ -22,7 +22,7 @@ export abstract class BaseEntity<T> {
       return true;
     }
 
-    if (!(object instanceof BaseEntity)) {
+    if (!(object instanceof DomainEntity)) {
       return false;
     }
 
