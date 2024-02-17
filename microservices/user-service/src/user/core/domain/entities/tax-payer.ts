@@ -26,8 +26,7 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   }
 }
 
-
-  class TaxPayerBuilder {
+class TaxPayerBuilder {
   private taxPayer: TaxPayer;
 
   constructor(taxCode: TaxCode) {
@@ -77,4 +76,3 @@ export class TaxPayer extends DomainEntity<TaxCode> {
     return this.taxPayer;
   }
 }
-

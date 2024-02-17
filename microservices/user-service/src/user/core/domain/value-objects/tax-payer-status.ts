@@ -4,4 +4,3 @@ export enum TaxPayerStatus {
   INACTIVE = 'INACTIVE',
   DELETED = 'DELETED',
 }
- 

@@ -1,4 +1,4 @@
-import { DomainValueObject } from "../../../../common/ddd/oop/core/domain/value-objects/domain.value-object";
+import { DomainValueObject } from '../../../../common/ddd/oop/core/domain/value-objects/domain.value-object';
 
 import { TaxPayerException } from '../exceptions/tax-payer.exception';
 
