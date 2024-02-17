@@ -28,19 +28,14 @@ export class UserController {
 
 
   // signatures
-
-  // @Post('login')
-  // @ApiOperation({ summary: 'Đăng nhập tài khoản' })
-  // login(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
-  //   return this.natsClient.send({ cmd: 'login' }, registerTaxPayerDto);
-  // }
+ 
 
 
-  // @Post('login')
-  // @ApiOperation({ summary: 'Đăng nhập tài khoản' })
-  // login(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
-  //   return this.natsClient.send({ cmd: 'login' }, registerTaxPayerDto);
-  // }
+  @Post('login')
+  @ApiOperation({ summary: 'Đăng nhập tài khoản' })
+  login(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
+    return this.natsClient.send({ cmd: 'login' }, registerTaxPayerDto);
+  }
 
 
 

@@ -20,10 +20,10 @@ export class TaxPayerEntity {
   name: string;
 
   @Column({ nullable: false })
-  password: string;
+  email: string;
 
   @Column({ nullable: false })
-  email: string;
+  password: string;
 
   @Column({ nullable: false })
   phoneNumber: string;

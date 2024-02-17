@@ -18,8 +18,8 @@ export class TaxPayerAdapter {
 
     const TaxPayerModel = TaxPayer.Builder(new TaxCode(TaxPayerEntity.id))
       .withName(TaxPayerEntity.name)
-      .withPassword(TaxPayerEntity.password)
       .withEmail(new Email(TaxPayerEntity.email))
+      .withPassword(TaxPayerEntity.password)
       .withPhoneNumber(new PhoneNumber(TaxPayerEntity.phoneNumber))
       .withTaxOfficeId(new TaxOfficeId(TaxPayerEntity.taxOffice.id))
       .withBankDetailId(new BankDetailId(TaxPayerEntity.bankDetail.id))
@@ -37,8 +37,8 @@ export class TaxPayerAdapter {
 
     entity.id = TaxPayer.id.value;
     entity.name = TaxPayer.name;
-    entity.password = TaxPayer.password;
     entity.email = TaxPayer.email.value;
+    entity.password = TaxPayer.password;
     entity.phoneNumber = TaxPayer.phoneNumber.value;
 
     const TaxOffice = new TaxOfficeEntity();

@@ -48,7 +48,12 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
         address: true,
       },
     });
-    // const entity = await this.TaxPayerEntityRepository.findOne(id);
+
+
+
+
+
+
     return TaxPayerAdapter.toDomain(entity);
   }
 

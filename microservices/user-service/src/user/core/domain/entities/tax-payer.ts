@@ -9,8 +9,8 @@ import { BankDetailId } from '../value-objects/bank-detail-id';
 
 export class TaxPayer extends DomainEntity<TaxCode> {
   name: string;
-  password: string;
   email: Email;
+  password: string;
   phoneNumber: PhoneNumber;
   taxPayerStatus: TaxPayerStatus;
 

@@ -14,15 +14,6 @@ export class RegisterTaxPayerDto {
   readonly name: string;
 
   @ApiProperty({
-    description: 'Mật khẩu của tài khoản',
-    example: faker.internet.password(),
-    required: true,
-  })
-  @IsNotEmpty()
-  @IsString()
-  readonly password: string;
-
-  @ApiProperty({
     description: 'Email của người nộp thuế',
     example: faker.internet.email(),
     required: true,
@@ -33,6 +24,28 @@ export class RegisterTaxPayerDto {
     message: 'Email không đúng định dạng.',
   })
   readonly email: string;
+
+
+
+
+
+
+  @ApiProperty({
+    description: 'Mật khẩu của tài khoản',
+    example: faker.internet.password(),
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly password: string;
+
+
+
+
+
+
+
+  
 
   @ApiProperty({
     description: 'Số điện thoại của người nộp thuế',
