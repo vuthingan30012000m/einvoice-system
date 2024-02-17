@@ -1,6 +1,6 @@
 import { TaxPayer } from '../entities/tax-payer';
 import { AddressId } from '../value-objects/address-id';
-import { BankId } from '../value-objects/bank-id';
+import { BankDetailId } from '../value-objects/bank-detail-id';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
 import { TaxCode } from '../value-objects/tax-code';
@@ -38,8 +38,8 @@ export class TaxPayerBuilder {
     this.taxPayer.addressId = addressId;
     return this;
   }
-  withBankId(bankId: BankId): TaxPayerBuilder {
-    this.taxPayer.bankId = bankId;
+  withBankId(bankDetailId: BankDetailId): TaxPayerBuilder {
+    this.taxPayer.bankDetailId = bankDetailId;
     return this;
   }
 

@@ -1,3 +1,8 @@
+
+
+
+BankDetail
+bank-detail
 <!-- Coi nhuw xong domain roi  -->
 <!-- DatabaseConfig  -->
 <!-- nest g resource   report -->
