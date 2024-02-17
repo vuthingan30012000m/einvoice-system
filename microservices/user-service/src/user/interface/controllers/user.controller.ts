@@ -19,16 +19,18 @@ export class UserController {
     private readonly queryBus: QueryBus,
   ) {}
 
-
   @MessagePattern({ cmd: 'register' })
   create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
-    console.log('🚀 ~ UserController ~ create ~ registerTaxPayerDto:', registerTaxPayerDto);
+    console.log(
+      '🚀 ~ UserController ~ create ~ registerTaxPayerDto:',
+      registerTaxPayerDto,
+    );
 
-  //   const newProduct = await this.commandBus.execute(
-  //     new CreateProductCommand(createProductDto.name),
-  //   );
-  //   return classToPlain(new ResponseCreateProductDto(newProduct));
-  // }
+    //   const newProduct = await this.commandBus.execute(
+    //     new CreateProductCommand(createProductDto.name),
+    //   );
+    //   return classToPlain(new ResponseCreateProductDto(newProduct));
+    // }
     return 'registerTaxPayerDto';
     // return this.userService.create(registerTaxPayerDto);
   }

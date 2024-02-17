@@ -1,2 +1,1 @@
-export abstract class RegisterTaxPayerPort {
-}
+export abstract class RegisterTaxPayerPort {}

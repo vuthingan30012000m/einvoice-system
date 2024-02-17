@@ -8,7 +8,6 @@ import { UserApplications } from './core/application/user.application';
 import { UserInterface } from './interface/user.interface';
 import { UserInfrastructure } from './infrastructure/user.infrastructure';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
