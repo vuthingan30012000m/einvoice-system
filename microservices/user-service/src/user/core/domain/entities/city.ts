@@ -1,4 +1,5 @@
-import { DomainEntity } from '../../../../common/core/domain/entities/domain.entity';
+import { DomainEntity } from '../../../../common/ddd/oop/core/domain/entities/domain.entity';
+
 import { CityId } from '../value-objects/city-id';
 
 export class City extends DomainEntity<CityId> {
