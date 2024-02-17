@@ -1,11 +1,14 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './core/user.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from '@hapi/joi';
+import { CqrsModule } from '@nestjs/cqrs';
+
+import { UserApplications } from './core/application/user.application';
 import { UserInterface } from './interface/user.interface';
 import { UserInfrastructure } from './infrastructure/user.infrastructure';
-import { CqrsModule } from '@nestjs/cqrs';
+
+import { UserService } from './core/user.service';
 
 @Module({
   imports: [
@@ -20,16 +23,16 @@ import { CqrsModule } from '@nestjs/cqrs';
       }),
     }),
     CqrsModule,
-    TypeOrmModule.forFeature([...UserInfrastructure.repositories]),
     ...UserInfrastructure.configs,
+    TypeOrmModule.forFeature([...UserInfrastructure.repositories]),
   ],
   controllers: [...UserInterface.controllers],
   providers: [
     ...UserInfrastructure.seeders,
     UserService,
-    // ...UserInterface.resolvers,
-    //  ...UserInfrastructure.providers,
-    // ...UserApplications,
+    ...UserInterface.resolvers,
+    ...UserInfrastructure.providers,
+    ...UserApplications,
   ],
 })
 export class UserModule {}
