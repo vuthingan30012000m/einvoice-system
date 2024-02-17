@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { TaxPayerRepository } from 'src/user/core/application/ports/dataaccess/repositories/tax-payer.repository';
+import { TaxPayerRepository } from './../../../core/application/ports/dataaccess/repositories/tax-payer.repository';
 
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayerAdapter } from '../mappers/tax-payer.adapter';
 import { TaxPayer } from './../../../core/domain/entities/tax-payer';
-import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
-import { Email } from 'src/user/core/domain/value-objects/email';
-import { PhoneNumber } from 'src/user/core/domain/value-objects/phone-number';
+import { TaxCode } from './../../../core/domain/value-objects/tax-code';
+import { Email } from './../../../core/domain/value-objects/email';
+import { PhoneNumber } from './../../../core/domain/value-objects/phone-number';
 
 @Injectable()
 export class TaxPayerOrmRepository implements TaxPayerRepository {
@@ -26,14 +26,27 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
   }
 
   async getAll(): Promise<TaxPayer[]> {
-    const entities = await this.TaxPayerEntityRepository.find();
+    const entities = await this.TaxPayerEntityRepository.find({
+      relations: {
+        taxOffice: true,
+        bankDetail: true,
+        address: true,
+      },
+    });
 
     return entities.map((item) => TaxPayerAdapter.toDomain(item));
   }
 
   async getOneById(id: TaxCode): Promise<TaxPayer> {
-    const entity = await this.TaxPayerEntityRepository.findOneBy({
-      id: id.value,
+    const entity = await this.TaxPayerEntityRepository.findOne({
+      where: {
+        id: id.value,
+      },
+      relations: {
+        taxOffice: true,
+        bankDetail: true,
+        address: true,
+      },
     });
     // const entity = await this.TaxPayerEntityRepository.findOne(id);
     return TaxPayerAdapter.toDomain(entity);
@@ -46,16 +59,65 @@ export class TaxPayerOrmRepository implements TaxPayerRepository {
   }
 
   async getOneByEmail(email: Email): Promise<TaxPayer> {
-    const entity = await this.TaxPayerEntityRepository.findOneBy({
+    console.log('🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ email:', email);
+    const entity = await this.TaxPayerEntityRepository.
+    
+    
+
+
+
+
+
+    findOne({
+      where: {
       email: email.value,
+      },
+      relations: {
+        taxOffice: true,
+        bankDetail: true,
+        address: true,
+      },
     });
+
+
+
+
+
+
+    console.log('🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ entity:', entity);
+    console.log(
+      '🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~  TaxPayerAdapter.toDomain(entity):',
+      TaxPayerAdapter.toDomain(entity),
+    );
     return TaxPayerAdapter.toDomain(entity);
   }
 
   async getOneByPhoneNumber(PhoneNumber: PhoneNumber): Promise<TaxPayer> {
-    const entity = await this.TaxPayerEntityRepository.findOneBy({
+    const entity = await this.TaxPayerEntityRepository.
+
+
+
+
+
+
+
+    findOne({
+      where: {
       phoneNumber: PhoneNumber.value,
+      },
+      relations: {
+        taxOffice: true,
+        bankDetail: true,
+        address: true,
+      },
     });
+
+
+
+
+
+
+
     return TaxPayerAdapter.toDomain(entity);
   }
 }

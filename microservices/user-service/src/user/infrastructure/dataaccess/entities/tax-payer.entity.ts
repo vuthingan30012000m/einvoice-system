@@ -31,6 +31,12 @@ export class TaxPayerEntity {
   @Column({ nullable: false })
   taxPayerStatus: TaxPayerStatus;
 
+
+
+
+
+
+  
   @ManyToOne(() => TaxOfficeEntity, (taxOffice) => taxOffice.taxPayers, {
     nullable: false,
   })

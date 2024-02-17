@@ -24,14 +24,58 @@ export class WardOrmRepository implements WardRepository {
   }
 
   async getAll(): Promise<Ward[]> {
-    const entities = await this.WardEntityRepository.find();
+    const entities = await this.WardEntityRepository.
+    
+
+
+ 
+find({
+     relations: {
+      addresses: true,
+      district: true,
+     },
+   }); 
+
+
+
+
+
+
+
 
     return entities.map((item) => WardAdapter.toDomain(item));
   }
 
   async getOneById(id: WardId): Promise<Ward> {
-    const entity = await this.WardEntityRepository.findOneBy({ id: id.value });
-    return WardAdapter.toDomain(entity);
+    const entity = await this.WardEntityRepository.
+    
+    
+   findOne({
+    where: {
+      id: id.value,
+    },
+    relations: {
+      addresses: true,
+      district: true,
+    },
+  });
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return WardAdapter.toDomain(entity);
   }
 
   async delete(Ward: Ward): Promise<boolean> {

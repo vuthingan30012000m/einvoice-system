@@ -23,13 +23,46 @@ export class BankOrmRepository implements BankRepository {
   }
 
   async getAll(): Promise<Bank[]> {
-    const entities = await this.BankEntityRepository.find();
+    const entities = await this.BankEntityRepository.
+
+   
+    find({
+         relations: {
+           bankDetails: true,
+         },
+       }); 
+   
+   
+   
+   
+      
+
+
+
+
 
     return entities.map((item) => BankAdapter.toDomain(item));
   }
 
   async getOneById(id: BankId): Promise<Bank> {
-    const entity = await this.BankEntityRepository.findOneBy({ id: id.value });
+    const entity = await this.BankEntityRepository.
+    
+      
+    findOne({
+      where: {
+        id: id.value,
+      },
+      relations: {
+        bankDetails: true,
+      },
+    });
+
+
+
+
+
+
+
     return BankAdapter.toDomain(entity);
   }
 

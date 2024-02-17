@@ -23,16 +23,26 @@ export class AddressOrmRepository implements AddressRepository {
   }
 
   async getAll(): Promise<Address[]> {
-    const entities = await this.AddressEntityRepository.find();
+    const entities = await this.AddressEntityRepository.find({
+      relations: {
+        ward: true,
+      },
+    });
 
     return entities.map((item) => AddressAdapter.toDomain(item));
   }
 
   async getOneById(id: AddressId): Promise<Address> {
-    const entity = await this.AddressEntityRepository.findOneBy({
-      id: id.value,
+    const entity = await this.AddressEntityRepository.
+    findOne({
+      where: {
+        id: id.value,
+      },
+      relations: {
+        ward: true,
+      },
     });
-    // const entity = await this.AddressEntityRepository.findOne(id);
+
     return AddressAdapter.toDomain(entity);
   }
 

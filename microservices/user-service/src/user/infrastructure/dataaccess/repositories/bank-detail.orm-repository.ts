@@ -25,15 +25,38 @@ export class BankDetailOrmRepository implements BankDetailRepository {
   }
 
   async getAll(): Promise<BankDetail[]> {
-    const entities = await this.BankDetailEntityRepository.find();
+    const entities = await this.BankDetailEntityRepository.
+    find({
+         relations: {
+           bank: true,
+         },
+       }); 
+   
+   
+   
 
-    return entities.map((item) => BankDetailAdapter.toDomain(item));
+
+
+       return entities.map((item) => BankDetailAdapter.toDomain(item));
   }
 
   async getOneById(id: BankDetailId): Promise<BankDetail> {
-    const entity = await this.BankDetailEntityRepository.findOneBy({
+    const entity = await this.BankDetailEntityRepository.
+    
+    
+   
+    findOne({
+      where: {
       id: id.value,
+      },
+      relations: {
+        bank: true,
+      },
     });
+
+
+
+
     return BankDetailAdapter.toDomain(entity);
   }
 
