@@ -3,9 +3,7 @@ import { BankId } from '../value-objects/bank-id';
 
 export class Bank extends DomainEntity<BankId> {
   name: string;
-
   code: string;
-
   shortName: string;
 
   constructor(bankId: BankId) {

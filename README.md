@@ -1,8 +1,6 @@
 
 
-BankId
 
-<!-- Coi nhuw xong domain roi  -->
 <!-- DatabaseConfig  -->
 <!-- nest g resource   report -->
 

@@ -1,10 +1,10 @@
+import { BankId } from './../value-objects/bank-id';
 import { DomainEntity } from '../../../../common/core/domain/entities/domain.entity';
 import { BankDetailId } from '../value-objects/bank-detail-id';
-import { Bank } from './bank';
 
 export class BankDetail extends DomainEntity<BankDetailId> {
   accountBank: string;
-  bank: Bank;
+  BankId: BankId;
 
   constructor(bankDetailId: BankDetailId) {
     super(bankDetailId);

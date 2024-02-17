@@ -16,7 +16,6 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   taxPayerStatus: TaxPayerStatus;
   taxOfficeId: TaxOfficeId;
   bankDetailId: BankDetailId;
-
   addressId: AddressId;
 
   constructor(taxCode: TaxCode) {

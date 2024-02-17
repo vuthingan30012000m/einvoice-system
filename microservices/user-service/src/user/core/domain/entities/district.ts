@@ -1,10 +1,10 @@
+import { CityId } from './../value-objects/city-id';
 import { DomainEntity } from '../../../../common/core/domain/entities/domain.entity';
 import { DistrictId } from '../value-objects/district-id';
-import { City } from './city';
 
 export class District extends DomainEntity<DistrictId> {
   name: string;
-  city: City;
+  CityId: CityId;
 
   constructor(districtId: DistrictId) {
     super(districtId);
