@@ -23,6 +23,7 @@ export class UserController {
   @MessagePattern({ cmd: 'register' })
   async create(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
     return await this.commandBus.execute(
+    // const { password, ...result } = await this.commandBus.execute(
       new RegisterTaxPayerCommand(
         registerTaxPayerDto.name,
         registerTaxPayerDto.password,
@@ -35,6 +36,8 @@ export class UserController {
         registerTaxPayerDto.noteAddress,
       ),
     );
+
+    // return result;
   }
 
   // @Get()
