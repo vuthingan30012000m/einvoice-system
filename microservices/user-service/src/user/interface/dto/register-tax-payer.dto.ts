@@ -32,7 +32,7 @@ export class RegisterTaxPayerDto {
   @Matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, {
     message: 'Email không đúng định dạng.',
   })
-  readonly email: string;
+  readonly         email: string;
 
   @ApiProperty({
     description: 'Số điện thoại của người nộp thuế',
@@ -44,7 +44,7 @@ export class RegisterTaxPayerDto {
     /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
     { message: 'Số điện thoại không đúng định dạng.' },
   )
-  phoneNumber: string;
+  readonly         phoneNumber: string;
 
   @ApiProperty({
     description: 'Mã số  cơ quan thuế quản lý',
@@ -52,7 +52,7 @@ export class RegisterTaxPayerDto {
     required: true,
   })
   @IsNotEmpty()
-  taxOfficeId: string;
+  readonly          taxOfficeId: string;
 
   @ApiProperty({
     description: 'Mã số ngân hàng',
@@ -60,7 +60,7 @@ export class RegisterTaxPayerDto {
     required: true,
   })
   @IsNotEmpty()
-  BankId: string;
+  readonly         BankId: string;
 
   @ApiProperty({
     description: 'Số tài khoản ngân hàng',
@@ -68,7 +68,7 @@ export class RegisterTaxPayerDto {
     required: true,
   })
   @IsNotEmpty()
-  accountBank: string;
+  readonly         accountBank: string;
 
   @ApiProperty({
     description: 'Mã số phường/xã',
@@ -76,7 +76,7 @@ export class RegisterTaxPayerDto {
     required: true,
   })
   @IsNotEmpty()
-  WardId: string;
+  readonly         wardId: string;
 
   @ApiProperty({
     description: 'Địa chỉ chi tiết',
@@ -84,5 +84,5 @@ export class RegisterTaxPayerDto {
     required: true,
   })
   @IsNotEmpty()
-  note: string;
+  readonly         note: string;
 }
