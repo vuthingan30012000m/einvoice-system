@@ -1,9 +1,8 @@
-import { IQuery, IQueryResult } from '@nestjs/cqrs';
+import { IQuery } from '@nestjs/cqrs';
 
 export class LoginTaxPayerQuery implements IQuery {
-  constructor(public readonly payload: {}) {}
-}
-
-export class LoginTaxPayerQueryResult implements IQueryResult {
-  constructor() {}
+  constructor(
+    public readonly email: string,
+    public readonly password: string,
+  ) {}
 }

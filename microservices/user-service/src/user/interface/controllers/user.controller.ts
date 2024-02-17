@@ -16,6 +16,7 @@ import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/regi
 import { RemovePasswordInterceptor } from 'src/common/api/interceptors/remove-password.interceptor';
 import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-value.interceptor';
 import { LoginTaxPayerDto } from '../dto/login/login-tax-payer.dto';
+import { LoginTaxPayerQuery } from 'src/user/core/application/queries/login-tax-payer/login-tax-payer.query';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
