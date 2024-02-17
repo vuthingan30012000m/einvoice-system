@@ -1,14 +1,14 @@
 import { DomainEntity } from '../../../../common/core/domain/entities/domain.entity';
-import { BankInformationId } from '../value-objects/bank-information-id';
+import { BankId } from '../value-objects/bank-id';
 
-export class BankInformation extends DomainEntity<BankInformationId> {
+export class BankInformation extends DomainEntity<BankId> {
   name: string;
 
   code: string;
 
   shortName: string;
 
-  constructor(bankInformationId: BankInformationId) {
-    super(bankInformationId);
+  constructor(bankId: BankId) {
+    super(bankId);
   }
 }
