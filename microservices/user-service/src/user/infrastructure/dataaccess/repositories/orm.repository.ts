@@ -12,7 +12,7 @@ import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
 import { BankDetail } from 'src/user/core/domain/entities/bank-detail';
 import { BankDetailEntity } from '../entities/bank-detail.entity';
 
-@Injectable()
+@Injectable() 
 export class OrmRepository implements RegisterTaxPayerPort {
   constructor(
     @InjectRepository(WardEntity)
