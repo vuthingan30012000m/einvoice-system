@@ -3,48 +3,7 @@ import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator';
 
 import * as faker from 'faker';
 
-// 
-class RegisterTaxPayerBankDetailDto {
-  @ApiProperty({
-    description: 'Mã số ngân hàng',
-    example: '1',
-    required: true,
-  })
-  @IsNotEmpty()
-  readonly bankId: string;
-
-  @ApiProperty({
-    description: 'Số tài khoản ngân hàng',
-    example: faker.finance.account(),
-    required: true,
-  })
-  @IsNotEmpty()
-  readonly accountBank: string;
-}
-// 
-class RegisterTaxPayerAddressDto {
-  
-  @ApiProperty({
-    description: 'Mã số phường/xã',
-    example: '277',
-    required: true,
-  })
-  @IsNotEmpty()
-  readonly wardId: string;
-
-  @ApiProperty({
-    description: 'Địa chỉ chi tiết',
-    example: faker.address.streetAddress(),
-    required: true,
-  })
-  @IsNotEmpty()
-  readonly noteAddress: string;
-}
-// 
-
- 
 export class RegisterTaxPayerDto {
-
   @ApiProperty({
     description: 'Tên của người nộp thuế',
     example: faker.name.findName(),
@@ -95,17 +54,35 @@ export class RegisterTaxPayerDto {
   @IsNotEmpty()
   readonly taxOfficeId: string;
 
+  @ApiProperty({
+    description: 'Mã số ngân hàng',
+    example: '1',
+    required: true,
+  })
+  @IsNotEmpty()
+  readonly bankId: string;
 
+  @ApiProperty({
+    description: 'Số tài khoản ngân hàng',
+    example: faker.finance.account(),
+    required: true,
+  })
+  @IsNotEmpty()
+  readonly accountBank: string;
 
+  @ApiProperty({
+    description: 'Mã số phường/xã',
+    example: '277',
+    required: true,
+  })
+  @IsNotEmpty()
+  readonly wardId: string;
 
-
-
-
-  @ApiProperty({})
-  bankDetail: RegisterTaxPayerBankDetailDto;
-
-  @ApiProperty({})
-  address: RegisterTaxPayerAddressDto;
-  
-
+  @ApiProperty({
+    description: 'Địa chỉ chi tiết',
+    example: faker.address.streetAddress(),
+    required: true,
+  })
+  @IsNotEmpty()
+  readonly noteAddress: string;
 }
