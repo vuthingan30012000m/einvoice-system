@@ -57,7 +57,7 @@ export class RegisterTaxPayerCommandHandler
           new PhoneNumber(payload.phoneNumber),
         );
       if (existingPhoneNumber) {
-        throw new TaxPayerException('Phone number  đã tồn tại.');
+        throw new TaxPayerException('Số điện thoại đã tồn tại.');
       }
 
       const existingTaxOffice = await this.TaxOfficeRepository.getOneById(

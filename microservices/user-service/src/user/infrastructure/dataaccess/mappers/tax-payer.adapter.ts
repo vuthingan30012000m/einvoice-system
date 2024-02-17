@@ -14,10 +14,6 @@ import { AddressEntity } from '../entities/address.entity';
 
 export class TaxPayerAdapter {
   static toDomain(TaxPayerEntity: TaxPayerEntity): TaxPayer {
-    console.log(
-      '🚀 ~ TaxPayerAdapter ~ toDomain ~ TaxPayerEntity:',
-      TaxPayerEntity,
-    );
     if (!TaxPayerEntity) return null;
 
     const TaxPayerModel = TaxPayer.Builder(new TaxCode(TaxPayerEntity.id))
@@ -35,7 +31,6 @@ export class TaxPayerAdapter {
   }
 
   static toPersistence(TaxPayer: TaxPayer): TaxPayerEntity {
-    console.log('🚀 ~ TaxPayerAdapter ~ toPersistence ~ TaxPayer:', TaxPayer);
     if (!TaxPayer) return null;
 
     const entity = new TaxPayerEntity();
