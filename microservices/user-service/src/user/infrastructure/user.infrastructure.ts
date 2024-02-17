@@ -1,23 +1,32 @@
-// import { BankSeeder } from './dataaccess/seeders/bank.seeder';
-// import { Address } from './dataaccess/entities/address.entity';
-// import { Bank } from './dataaccess/entities/bank.entity';
-// import { City } from './dataaccess/entities/city.entity';
-// import { District } from './dataaccess/entities/district.entity';
-// import { TaxOffice } from './dataaccess/entities/tax-office.entity';
-// import { Ward } from './dataaccess/entities/ward.entity';
-// import { TaxOfficeSeeder } from './dataaccess/seeders/tax-office.seeder';
-// import { AddressSeeder } from './dataaccess/seeders/address.seeder';
-// import { DatabaseConfig } from './dataaccess/config/database.config';
+import { DatabaseConfig } from './dataaccess/config/database.config';
+import { RegisterTaxPayerPort } from "../core/application/commands/register-tax-payer/register-tax-payer.port";
+import { WardEntity } from "./dataaccess/entities/ward.entity";
+import { OrmRepository } from "./dataaccess/repositories/orm.repository";
+import { TaxOfficeEntity } from './dataaccess/entities/tax-office.entity';
+import { BankEntity } from './dataaccess/entities/bank.entity';
+import { CityEntity } from './dataaccess/entities/city.entity';
+import { DistrictEntity } from './dataaccess/entities/district.entity';
+import { AddressEntity } from './dataaccess/entities/address.entity';
+import { TaxOfficeEntitySeeder } from './dataaccess/seeders/tax-office.seeder';
+import { BankEntitySeeder } from './dataaccess/seeders/bank.seeder';
+import { AddressSeeder } from './dataaccess/seeders/address.seeder';
+import { BankDetailEntity } from './dataaccess/entities/bank-detail.entity';
 
 export const UserInfrastructure = {
-  providers: [],
+  providers: [ {
+    provide: RegisterTaxPayerPort,
+    useClass: OrmRepository,
+  },],
   configs: [
-    // DatabaseConfig.init()
+    DatabaseConfig.init()
   ],
   repositories: [
-    // TaxOffice, Bank, City, District, Ward, Address
+    TaxOfficeEntity,
+    BankEntity, CityEntity, DistrictEntity,
+     WardEntity,
+     AddressEntity,BankDetailEntity
   ],
   seeders: [
-    // TaxOfficeSeeder, BankSeeder, AddressSeeder
+    TaxOfficeEntitySeeder, BankEntitySeeder, AddressSeeder
   ],
 };

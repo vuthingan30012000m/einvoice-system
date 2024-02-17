@@ -26,7 +26,7 @@ import { UserInfrastructure } from './infrastructure/user.infrastructure';
   ],
   controllers: [...UserInterface.controllers],
   providers: [
-    ...UserInfrastructure.seeders,
+    // ...UserInfrastructure.seeders,
     ...UserInterface.resolvers,
     ...UserInfrastructure.providers,
     ...UserApplications,

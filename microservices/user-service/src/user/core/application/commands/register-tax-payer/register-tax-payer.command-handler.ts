@@ -22,30 +22,37 @@ import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exc
 export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
-    constructor(
-      private readonly taxPayerDomainService: TaxPayerDomainService
-      ,private readonly registerTaxPayerPort: RegisterTaxPayerPort
-      ,private readonly eventBus: EventBus
-    ) {}
+  constructor(
+    private readonly taxPayerDomainService: TaxPayerDomainService,
+    private readonly registerTaxPayerPort: RegisterTaxPayerPort,
+    private readonly eventBus: EventBus,
+  ) {}
 
   private readonly logger = new Logger(RegisterTaxPayerCommandHandler.name);
 
-  public async execute(payload: RegisterTaxPayerCommand)  {
+  public async execute(payload: RegisterTaxPayerCommand) {
+    try {
     this.logger.log(`> RegisterTaxPayerCommand:   ${JSON.stringify(payload)}`);
 
+    const exitingWard = await this.registerTaxPayerPort.getWardById(
+      payload.wardId,
+    ); 
 
-    const exitingWard=await this.registerTaxPayerPort.getWardById(payload.wardId)
 
-    if(!exitingWard){
-      throw new TaxPayerException('Ward not found')
+
+    if (!exitingWard) {
+      throw new TaxPayerException('Ward not found');
     }
 
-    const existingBank=await this.registerTaxPayerPort.getBankById(payload.bankId)
 
-    if(!existingBank){
-      throw new TaxPayerException('Bank not found')
+
+    const existingBank = await this.registerTaxPayerPort.getBankById(
+      payload.bankId,
+    ); 
+
+    if (!existingBank) {
+      throw new TaxPayerException('Bank not found');
     }
-
 
     const newAddress = Address.Builder(new AddressId(randomUUID()))
       .withWardId(new WardId(payload.wardId))
@@ -57,7 +64,6 @@ export class RegisterTaxPayerCommandHandler
       .withAccountBank(payload.accountBank)
       .build();
 
-
     const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
       .withName(payload.name)
       .withPassword(payload.password)
@@ -68,12 +74,16 @@ export class RegisterTaxPayerCommandHandler
       .withAddressId(newAddress.id)
       .build();
 
-      
-      // const eventXXX=this.taxPayerDomainService.RegisterTaxPayer(newTaxPayer,newBankDetail,newAddress)
-    await this.registerTaxPayerPort.saveAddress(newAddress)
-    await this.registerTaxPayerPort.saveBankDetail(newBankDetail)
-    await this.registerTaxPayerPort.saveTaxPayer(newTaxPayer)
+    // const eventXXX=this.taxPayerDomainService.RegisterTaxPayer(newTaxPayer,newBankDetail,newAddress)
+
+    await this.registerTaxPayerPort.saveAddress(newAddress);
+    await this.registerTaxPayerPort.saveBankDetail(newBankDetail);
+    console.log("🚀 ~ execute ~ newTaxPayer:", newTaxPayer)
+    await this.registerTaxPayerPort.saveTaxPayer(newTaxPayer);
     // this.eventBus.publish(new ProductCreatedEvent(product));
-        return "newTaxPayer";
+    return 'newTaxPayer';
+  }catch (error) {
+    this.logger.error(`> ${error}`);
   }
+}
 }

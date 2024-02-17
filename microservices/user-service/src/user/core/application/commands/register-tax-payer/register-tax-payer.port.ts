@@ -1,7 +1,11 @@
+import { Address } from "src/user/core/domain/entities/address";
+import { BankDetail } from "src/user/core/domain/entities/bank-detail";
+import { TaxPayer } from "src/user/core/domain/entities/tax-payer";
+
 export abstract class RegisterTaxPayerPort {
-    abstract getWardById(wardId: string): Promise<any>;
-    abstract getBankById(bankId: string): Promise<any>;
-    abstract saveAddress(address: any): Promise<any>;
-    abstract saveBankDetail(bankDetail: any): Promise<any>;
-    abstract saveTaxPayer(taxPayer: any): Promise<any>;
+  abstract getWardById(wardId: string) ;
+  abstract getBankById(bankId: string) ;
+  abstract saveAddress(address: Address) ;
+  abstract saveBankDetail(bankDetail: BankDetail) ;
+  abstract saveTaxPayer(taxPayer: TaxPayer) ;
 }

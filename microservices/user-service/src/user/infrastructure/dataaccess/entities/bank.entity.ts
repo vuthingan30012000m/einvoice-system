@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { 
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  ManyToOne, } from 'typeorm';
+import { BankDetailEntity } from './bank-detail.entity';
 
 @Entity()
 export class BankEntity {
@@ -13,4 +19,10 @@ export class BankEntity {
 
   @Column({ nullable: false })
   shortName: string;
+
+
+
+
+  @OneToMany(() => BankDetailEntity, (bankDetail) => bankDetail.bank, { cascade: true })
+  bankDetails: BankDetailEntity[];
 }
