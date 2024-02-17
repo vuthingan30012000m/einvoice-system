@@ -2,7 +2,7 @@ import { DomainEntity } from '../../../../common/core/domain/entities/domain.ent
 import { BankDetailId } from '../value-objects/bank-detail-id';
 import { BankInformation } from './bank-information';
 
-export class Bank extends DomainEntity<BankDetailId> {
+export class BankDetail extends DomainEntity<BankDetailId> {
   accountBank: string;
   bankInformation: BankInformation;
 
