@@ -1,8 +1,8 @@
-import { BaseValueObject } from "../../../../common/ddd/oop/core/domain/value-objects/domain.value-object";
+import { DomainValueObject } from "../../../../common/ddd/oop/core/domain/value-objects/domain.value-object";
 
 import { TaxPayerException } from '../exceptions/tax-payer.exception';
 
-export class Email extends BaseValueObject {
+export class Email extends DomainValueObject {
   constructor(readonly value: string) {
     super(value);
     this.validate();

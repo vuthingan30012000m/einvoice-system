@@ -1,3 +1,3 @@
-export abstract class BaseValueObject {
+export abstract class DomainValueObject {
   constructor(readonly value: string) {}
 }
