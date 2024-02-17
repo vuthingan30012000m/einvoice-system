@@ -28,7 +28,7 @@ export class AddressSeeder implements OnModuleInit {
     try {
       for (const item of dataCity) {
         const existingCity = await this.cityRepository.findOneBy({
-          id: Number(item.id),
+          id: String(item.id),
         });
 
         if (existingCity) {
@@ -37,7 +37,7 @@ export class AddressSeeder implements OnModuleInit {
           // });
         } else {
           const newCity = this.cityRepository.create({
-            id: Number(item.id),
+            id: String(item.id),
             name: item.name,
           });
 
@@ -47,7 +47,7 @@ export class AddressSeeder implements OnModuleInit {
 
       for (const item of dataDistrict) {
         const existingDistrict = await this.districtRepository.findOneBy({
-          id: Number(item.id),
+          id: String(item.id),
         });
 
         if (existingDistrict) {
@@ -56,11 +56,11 @@ export class AddressSeeder implements OnModuleInit {
           // });
         } else {
           const city = await this.cityRepository.findOneBy({
-            id: Number(item.city),
+            id: String(item.city),
           });
 
           const newDistrict = this.districtRepository.create({
-            id: Number(item.id),
+            id: String(item.id),
             name: item.name,
             city: city,
           });
@@ -71,7 +71,7 @@ export class AddressSeeder implements OnModuleInit {
 
       for (const item of dataWard) {
         const existingWard = await this.wardRepository.findOneBy({
-          id: Number(item.id),
+          id: String(item.id),
         });
 
         if (existingWard) {
@@ -80,11 +80,11 @@ export class AddressSeeder implements OnModuleInit {
           // });
         } else {
           const district = await this.districtRepository.findOneBy({
-            id: Number(item.district),
+            id: String(item.district),
           });
 
           const newWard = this.wardRepository.create({
-            id: Number(item.id),
+            id: String(item.id),
             name: item.name,
             district: district,
           });

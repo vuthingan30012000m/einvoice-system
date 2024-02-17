@@ -2,45 +2,66 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { TaxOfficeRepository } from 'src/user/core/application/ports/dataaccess/repositories/tax-office.repository';
+import { TaxPayerRepository } from 'src/user/core/application/ports/dataaccess/repositories/tax-payer.repository';
 
-import { TaxOfficeEntity } from '../entities/tax-office.entity';
-import { TaxOfficeAdapter } from '../mappers/tax-office.adapter';
-import { TaxOffice } from './../../../core/domain/entities/tax-office';
-import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
+import { TaxPayerEntity } from '../entities/tax-payer.entity';
+import { TaxPayerAdapter } from '../mappers/tax-payer.adapter';
+import { TaxPayer } from './../../../core/domain/entities/tax-payer';
+import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
+import { Email } from 'src/user/core/domain/value-objects/email';
+import { PhoneNumber } from 'src/user/core/domain/value-objects/phone-number';
 
 @Injectable()
-export class TaxOfficeOrmRepository implements TaxOfficeRepository {
+export class TaxPayerOrmRepository implements TaxPayerRepository {
   constructor(
-    @InjectRepository(TaxOfficeEntity)
-    private readonly TaxOfficeEntityRepository: Repository<TaxOfficeEntity>,
+    @InjectRepository(TaxPayerEntity)
+    private readonly TaxPayerEntityRepository: Repository<TaxPayerEntity>,
   ) {}
 
-  async save(TaxOffice: TaxOffice): Promise<TaxOffice> {
-    const persistenceModel = TaxOfficeAdapter.toPersistence(TaxOffice);
+  async save(TaxPayer: TaxPayer): Promise<TaxPayer> {
+    const persistenceModel = TaxPayerAdapter.toPersistence(TaxPayer);
     const newEntity =
-      await this.TaxOfficeEntityRepository.save(persistenceModel);
-    return TaxOfficeAdapter.toDomain(newEntity);
+      await this.TaxPayerEntityRepository.save(persistenceModel);
+    return TaxPayerAdapter.toDomain(newEntity);
   }
 
-  async getAll(): Promise<TaxOffice[]> {
-    const entities = await this.TaxOfficeEntityRepository.find();
+  async getAll(): Promise<TaxPayer[]> {
+    const entities = await this.TaxPayerEntityRepository.find();
 
-    return entities.map((item) => TaxOfficeAdapter.toDomain(item));
+    return entities.map((item) => TaxPayerAdapter.toDomain(item));
   }
 
-  async getOneById(id: TaxOfficeId): Promise<TaxOffice> {
-    const entity = await this.TaxOfficeEntityRepository.findOneBy({
+  async getOneById(id: TaxCode): Promise<TaxPayer> {
+    const entity = await this.TaxPayerEntityRepository.findOneBy({
       id: id.value,
     });
-    // const entity = await this.TaxOfficeEntityRepository.findOne(id);
-    return TaxOfficeAdapter.toDomain(entity);
+    // const entity = await this.TaxPayerEntityRepository.findOne(id);
+    return TaxPayerAdapter.toDomain(entity);
   }
 
-  async delete(TaxOffice: TaxOffice): Promise<boolean> {
-    const persistenceModel = TaxOfficeAdapter.toPersistence(TaxOffice);
+  async delete(TaxPayer: TaxPayer): Promise<boolean> {
+    const persistenceModel = TaxPayerAdapter.toPersistence(TaxPayer);
     const result =
-      await this.TaxOfficeEntityRepository.delete(persistenceModel);
+      await this.TaxPayerEntityRepository.delete(persistenceModel);
     return result.affected > 0;
+  }
+
+ async getOneByEmail(email: Email): Promise<TaxPayer> {
+  console.log("🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ email:", email)
+  const entity = await this.TaxPayerEntityRepository.findOneBy({
+    email: email.value,
+  });
+  console.log("🚀 ~ TaxPayerOrmRepository ~ getOneByEmail ~ entity:", entity)
+  // const entity = await this.TaxPayerEntityRepository.findOne(id);
+  return TaxPayerAdapter.toDomain(entity);
+  }
+
+
+  async getOneByPhoneNumber(PhoneNumber: PhoneNumber): Promise<TaxPayer> {
+    const entity = await this.TaxPayerEntityRepository.findOneBy({
+      phoneNumber: PhoneNumber.value,
+    });
+    // const entity = await this.TaxPayerEntityRepository.findOne(id);
+    return TaxPayerAdapter.toDomain(entity);
   }
 }

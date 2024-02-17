@@ -47,10 +47,10 @@ export class RegisterTaxPayerCommandHandler
 
       const existingEmail = await this.TaxPayerRepository.getOneByEmail(
         new Email(payload.email),
-      );
-      if (existingEmail) {
-        throw new TaxPayerException('Email already exists');
-      }
+        );
+        if (existingEmail) {
+          throw new TaxPayerException('Email already exists');
+        }
 
       const existingPhoneNumber =
         await this.TaxPayerRepository.getOneByPhoneNumber(
@@ -105,8 +105,8 @@ export class RegisterTaxPayerCommandHandler
         .withEmail(new Email(payload.email))
         .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
         .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
-        .withBankId(newBankDetail.id)
-        .withAddressId(newAddress.id)
+        .withBankDetailId(new BankDetailId(newBankDetail.id.value))
+        .withAddressId(new AddressId(newAddress.id.value))
         .build();
 
       await this.AddressRepository.save(newAddress);

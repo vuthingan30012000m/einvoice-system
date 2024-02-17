@@ -18,7 +18,7 @@ export class TaxOfficeEntitySeeder implements OnModuleInit {
       for (const item of dataTaxOfficeEntity) {
         const existingTaxOfficeEntity =
           await this.TaxOfficeEntityRepository.findOneBy({
-            id: Number(item.id),
+            id: String(item.id),
           });
 
         if (existingTaxOfficeEntity) {
@@ -27,7 +27,7 @@ export class TaxOfficeEntitySeeder implements OnModuleInit {
           // });
         } else {
           const newTaxOfficeEntity = this.TaxOfficeEntityRepository.create({
-            id: Number(item.id),
+            id: String(item.id),
             name: item.name,
           });
           await this.TaxOfficeEntityRepository.save(newTaxOfficeEntity);

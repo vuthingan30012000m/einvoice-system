@@ -17,7 +17,7 @@ export class BankEntitySeeder implements OnModuleInit {
     try {
       for (const item of dataBank) {
         const existingBankEntity = await this.BankEntityRepository.findOneBy({
-          id: item.id,
+          id: String(item.id),
         });
 
         if (existingBankEntity) {
@@ -28,7 +28,7 @@ export class BankEntitySeeder implements OnModuleInit {
           // });
         } else {
           const newBankEntity = this.BankEntityRepository.create({
-            id: item.id,
+            id: String(item.id),
             name: item.name,
             code: item.code,
             shortName: item.shortName,

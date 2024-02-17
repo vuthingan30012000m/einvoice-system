@@ -14,6 +14,8 @@ import { AddressEntity } from '../entities/address.entity';
 
 export class TaxPayerAdapter {
   static toDomain(TaxPayerEntity: TaxPayerEntity): TaxPayer {
+    if (!TaxPayerEntity) return null;
+    
     const TaxPayerModel = TaxPayer.Builder(new TaxCode(TaxPayerEntity.id))
       .withName(TaxPayerEntity.name)
       .withPassword(TaxPayerEntity.password)

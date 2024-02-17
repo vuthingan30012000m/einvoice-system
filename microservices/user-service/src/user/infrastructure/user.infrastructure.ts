@@ -9,13 +9,46 @@ import { TaxOfficeEntitySeeder } from './dataaccess/seeders/tax-office.seeder';
 import { BankEntitySeeder } from './dataaccess/seeders/bank.seeder';
 import { AddressSeeder } from './dataaccess/seeders/address.seeder';
 import { BankDetailEntity } from './dataaccess/entities/bank-detail.entity';
+import { TaxPayerRepository } from '../core/application/ports/dataaccess/repositories/tax-payer.repository';
+import { TaxPayerOrmRepository } from './dataaccess/repositories/tax-payer.orm-repository';
+import { TaxPayerEntity } from './dataaccess/entities/tax-payer.entity';
+import { TaxOfficeRepository } from '../core/application/ports/dataaccess/repositories/tax-office.repository';
+import { TaxOfficeOrmRepository } from './dataaccess/repositories/tax-office.orm-repository';
+import { BankRepository } from '../core/application/ports/dataaccess/repositories/bank.repository';
+import { BankOrmRepository } from './dataaccess/repositories/bank.orm-repository';
+import { WardRepository } from '../core/application/ports/dataaccess/repositories/ward.repository';
+import { WardOrmRepository } from './dataaccess/repositories/ward.orm-repository';
+import { BankDetailRepository } from '../core/application/ports/dataaccess/repositories/bank-detail.repository';
+import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.orm-repository';
+import { AddressRepository } from '../core/application/ports/dataaccess/repositories/address.repository';
+import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
 
 export const UserInfrastructure = {
   providers: [
-    // {
-    //   provide: RegisterTaxPayerPort,
-    //   useClass: OrmRepository,
-    // },
+    {
+      provide: TaxPayerRepository,
+      useClass: TaxPayerOrmRepository,
+    },
+    {
+      provide: TaxOfficeRepository,
+      useClass: TaxOfficeOrmRepository, 
+    }, 
+    {
+      provide: BankRepository,
+      useClass: BankOrmRepository,
+    }, 
+    {
+      provide: WardRepository,
+      useClass: WardOrmRepository,
+    }, 
+    {
+      provide: BankDetailRepository,
+      useClass: BankDetailOrmRepository,
+    }, 
+    {
+      provide: AddressRepository,
+      useClass: AddressOrmRepository,
+    }, 
   ],
   configs: [DatabaseConfig.init()],
   repositories: [
@@ -26,6 +59,7 @@ export const UserInfrastructure = {
     WardEntity,
     AddressEntity,
     BankDetailEntity,
+    TaxPayerEntity
   ],
   seeders: [TaxOfficeEntitySeeder, BankEntitySeeder, AddressSeeder],
 };
