@@ -5,6 +5,8 @@ import * as Joi from '@hapi/joi';
 import { UserModule } from './user/user.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { LoggingMiddleware } from './common/api/logging.middleware';
+import { APP_FILTER } from '@nestjs/core';
+import { AllExceptionFilter } from './common/api/all-exception.filter';
 
 @Module({
   imports: [
@@ -28,7 +30,12 @@ import { LoggingMiddleware } from './common/api/logging.middleware';
     InvoiceModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionFilter,
+    },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
