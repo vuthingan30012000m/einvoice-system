@@ -24,7 +24,7 @@ import { AddressRepository } from '../core/application/ports/dataaccess/reposito
 import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
 import { MailerConfig } from './mailer/config/mailer.config';
 import * as Joi from '@hapi/joi';
-import { MailerAdapter } from './mailer/mappers/mailer.adapter';
+import { MailerAdapter } from './mailer/adapters/mailer.adapter';
 import { Mailer } from '../core/application/ports/mailer/actions/mailer.action';
 
 export const UserInfrastructure = {
