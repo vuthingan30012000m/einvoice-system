@@ -8,8 +8,19 @@ import { UserApplications } from './core/application/user.application';
 import { UserInterface } from './interface/user.interface';
 import { UserInfrastructure } from './infrastructure/user.infrastructure';
 
+
+import { MailerModule } from '@nestjs-modules/mailer';
+
 @Module({
-  imports: [
+  imports: [MailerModule.forRoot({
+    transport:{
+      host: "mailhog",
+      port: 1025,
+    }
+    ,defaults:{
+      from:"no-reply@vvn20206205@mailhog.com" 
+    }
+  }),
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
