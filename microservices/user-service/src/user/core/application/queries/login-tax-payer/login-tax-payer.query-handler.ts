@@ -34,9 +34,9 @@ export class LoginTaxPayerQueryHandler
       //   throw new TaxPayerException('Tài khoản của bạn đã bị từ chối.');
       // }
       // f pending
-// Bạn đã gửi
-// if email
-// 
+      // Bạn đã gửi
+      // if email
+      //
     } catch (error) {
       return { error: error.message };
     }

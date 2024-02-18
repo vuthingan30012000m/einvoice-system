@@ -43,11 +43,4 @@ export class TaxPayerEntity {
   @OneToOne(() => AddressEntity)
   @JoinColumn()
   address: AddressEntity;
-
-
-
-
-
-
-  
 }
