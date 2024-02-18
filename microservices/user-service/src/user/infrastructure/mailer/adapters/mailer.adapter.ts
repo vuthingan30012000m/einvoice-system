@@ -1,11 +1,11 @@
-import { Mailer } from 'src/user/core/application/ports/mailer/actions/mailer.action';
+import { MailerPort } from '../../../core/application/ports/mailer/actions/mailer.port';
 import { MailerService } from '@nestjs-modules/mailer';
 import { Email } from 'src/user/core/domain/value-objects/email';
 
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export abstract class MailerAdapter implements Mailer {
+export abstract class MailerAdapter implements MailerPort {
   constructor(private readonly mailerService: MailerService) {}
 
   async send(receiver: Email, title: string, htmlContent: string) {

@@ -25,7 +25,7 @@ import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repo
 import { MailerConfig } from './mailer/config/mailer.config';
 import * as Joi from '@hapi/joi';
 import { MailerAdapter } from './mailer/adapters/mailer.adapter';
-import { Mailer } from '../core/application/ports/mailer/actions/mailer.action';
+import { MailerPort } from '../core/application/ports/mailer/actions/mailer.port';
 
 export const UserInfrastructure = {
   validations: Joi.object({
@@ -77,7 +77,7 @@ export const UserInfrastructure = {
       useClass: AddressOrmRepository,
     },
     {
-      provide: Mailer,
+      provide: MailerPort,
       useClass: MailerAdapter,
     },
   ],
