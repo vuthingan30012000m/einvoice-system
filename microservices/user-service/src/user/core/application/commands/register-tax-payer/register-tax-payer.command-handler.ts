@@ -20,7 +20,7 @@ import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-
 import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
 import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
 import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
-import { BankDetailRepository } from '../../ports/dataaccess/repositories/bank-detail.repository';
+import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
 import { AddressRepository } from '../../ports/dataaccess/repositories/address.repository';
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
@@ -35,7 +35,7 @@ export class RegisterTaxPayerCommandHandler
     private readonly TaxOfficeRepository: TaxOfficeRepositoryPort,
     private readonly BankRepository: BankRepositoryPort,
     private readonly WardRepository: WardRepositoryPort,
-    private readonly BankDetailRepository: BankDetailRepository,
+    private readonly BankDetailRepository: BankDetailRepositoryPort,
     private readonly AddressRepository: AddressRepository,
   ) {}
 

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { BankDetailRepository } from '../../../core/application/ports/dataaccess/repositories/bank-detail.repository';
+import { BankDetailRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/bank-detail.repository.port';
 
 import { BankDetailEntity } from '../entities/bank-detail.entity';
 import { BankDetailAdapter } from '../mappers/bank-detail.adapter';
@@ -11,7 +11,7 @@ import { BankId } from 'src/user/core/domain/value-objects/bank-id';
 import { BankDetailId } from 'src/user/core/domain/value-objects/bank-detail-id';
 
 @Injectable()
-export class BankDetailOrmRepository implements BankDetailRepository {
+export class BankDetailOrmRepository implements BankDetailRepositoryPort {
   constructor(
     @InjectRepository(BankDetailEntity)
     private readonly BankDetailEntityRepository: Repository<BankDetailEntity>,

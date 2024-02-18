@@ -18,7 +18,7 @@ import { BankRepositoryPort } from '../core/application/ports/dataaccess/reposit
 import { BankOrmRepository } from './dataaccess/repositories/bank.orm-repository';
 import { WardRepositoryPort } from '../core/application/ports/dataaccess/repositories/ward.repository.port';
 import { WardOrmRepository } from './dataaccess/repositories/ward.orm-repository';
-import { BankDetailRepository } from '../core/application/ports/dataaccess/repositories/bank-detail.repository';
+import { BankDetailRepositoryPort } from '../core/application/ports/dataaccess/repositories/bank-detail.repository.port';
 import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.orm-repository';
 import { AddressRepository } from '../core/application/ports/dataaccess/repositories/address.repository';
 import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
@@ -69,7 +69,7 @@ export const UserInfrastructure = {
       useClass: WardOrmRepository,
     },
     {
-      provide: BankDetailRepository,
+      provide: BankDetailRepositoryPort,
       useClass: BankDetailOrmRepository,
     },
     {
