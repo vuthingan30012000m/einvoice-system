@@ -18,9 +18,15 @@ export class TaxPayerRegisteredEventHandler
       `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
     );
 
-
-
-
+    //   ma hoa token
+    //   ma hoa token
+    //   ma hoa token
+    //   ma hoa token
+    //   ma hoa token
+    //   ma hoa token
+    //   ma hoa token
+    //   ma hoa token
+    //   ma hoa token
     const token = '1234567890';
     // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
     // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
@@ -30,10 +36,6 @@ export class TaxPayerRegisteredEventHandler
     // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
     // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
     // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-
-
-
-
 
     this.Mailer.send(
       TaxPayerRegisteredEvent.TaxPayer.email,

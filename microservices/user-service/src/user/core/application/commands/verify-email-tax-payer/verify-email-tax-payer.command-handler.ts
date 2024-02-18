@@ -11,11 +11,14 @@ export class VerifyEmailTaxPayerCommandHandler
 
   private readonly logger = new Logger(VerifyEmailTaxPayerCommandHandler.name);
 
-  public async execute(payload: VerifyEmailTaxPayerCommand): Promise<void> {
+  public async execute(payload: VerifyEmailTaxPayerCommand) {
     this.logger.log(`> VerifyEmailTaxPayerCommand: ${JSON.stringify(payload)}`);
+    // giai ma token
 
     // ddungs thif status
 
     // sai thif baso eroor
+
+    return payload;
   }
 }
