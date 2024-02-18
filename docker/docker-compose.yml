@@ -57,8 +57,6 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_NAME: user
 
-
-
       MAIL_HOST: mailhog
       MAIL_PORT: 1025
   # invoice:

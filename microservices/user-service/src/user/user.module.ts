@@ -12,15 +12,7 @@ import { UserInfrastructure } from './infrastructure/user.infrastructure';
 import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
-  imports: [MailerModule.forRoot({
-    transport:{
-      host: "mailhog",
-      port: 1025,
-    }
-    ,defaults:{
-      from:"no-reply@vvn20206205@mailhog.com" 
-    }
-  }),
+  imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
@@ -29,6 +21,9 @@ import { MailerModule } from '@nestjs-modules/mailer';
         DATABASE_USERNAME: Joi.string().required(),
         DATABASE_PASSWORD: Joi.string().required(),
         DATABASE_NAME: Joi.string().required(),
+        // 
+        MAIL_HOST: Joi.string().required(),
+        MAIL_PORT: Joi.string().required(),
       }),
     }),
     CqrsModule,

@@ -22,6 +22,7 @@ import { BankDetailRepository } from '../core/application/ports/dataaccess/repos
 import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.orm-repository';
 import { AddressRepository } from '../core/application/ports/dataaccess/repositories/address.repository';
 import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
+import { MailerConfig } from './mailer/config/mailer.config';
 
 export const UserInfrastructure = {
   providers: [
@@ -50,7 +51,13 @@ export const UserInfrastructure = {
       useClass: AddressOrmRepository,
     },
   ],
-  configs: [DatabaseConfig.init()],
+  configs: [
+    DatabaseConfig.init()
+    ,
+    MailerConfig.init()
+
+  
+],
   repositories: [
     TaxOfficeEntity,
     BankEntity,

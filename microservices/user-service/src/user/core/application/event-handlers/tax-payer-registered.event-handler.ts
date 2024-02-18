@@ -23,9 +23,11 @@ export class TaxPayerRegisteredEventHandler
     // send email
     this.MailerService.sendMail({
       to: TaxPayerRegisteredEvent.TaxPayer.email.value,
-      subject: 'Tax Payer Registered',
+      subject: 'Xác thực email',
      html: `<h1>Hi ${TaxPayerRegisteredEvent.TaxPayer.name},</h1>`
     });
-
+    this.logger.log(
+      `> Send email:   ${JSON.stringify(TaxPayerRegisteredEvent.TaxPayer.email.value)}`,
+    );
   }
 }
