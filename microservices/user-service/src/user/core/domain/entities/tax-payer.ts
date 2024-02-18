@@ -6,6 +6,7 @@ import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 import { TaxOfficeId } from '../value-objects/tax-office-id';
 import { AddressId } from '../value-objects/address-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
+import { TaxPayerException } from '../exceptions/tax-payer.exception';
 
 export class TaxPayer extends DomainEntity<TaxCode> {
   name: string;
@@ -19,6 +20,13 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   bankDetailId: BankDetailId;
 
   addressId: AddressId;
+
+  verifyEmail() {
+    if (this.taxPayerStatus != TaxPayerStatus.PENDING) {
+      throw new TaxPayerException('Trạng thái của người nộp thuế không đúng.');
+    }
+    this.taxPayerStatus = TaxPayerStatus.VERIFY_EMAIL;
+  }
 
   constructor(taxCode: TaxCode) {
     super(taxCode);

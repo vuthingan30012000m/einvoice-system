@@ -32,8 +32,10 @@ export class TaxPayerRegisteredEventHandler
       `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
     );
 
-    const token =  this. encryptEmail( TaxPayerRegisteredEvent.TaxPayer.email.value, process.env['VERIFY_EMAIL_SECRET'] );
-
+    const token = this.encryptEmail(
+      TaxPayerRegisteredEvent.TaxPayer.email.value,
+      process.env['VERIFY_EMAIL_SECRET'],
+    );
 
     this.mailerPort.send(
       TaxPayerRegisteredEvent.TaxPayer.email,
