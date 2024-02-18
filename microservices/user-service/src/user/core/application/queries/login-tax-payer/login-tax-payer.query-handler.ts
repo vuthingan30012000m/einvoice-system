@@ -62,11 +62,6 @@ export class LoginTaxPayerQueryHandler
         }
       }
 
-
-
-
-
-      
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.DELETED) {
         throw new TaxPayerException('Tài khoản     đã bị xóa.');
       }

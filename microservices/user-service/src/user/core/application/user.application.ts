@@ -9,7 +9,11 @@ import { EncryptionEmailService } from '../domain/services/encryption-email.serv
 import { RegisterUsbTokenCommandHandler } from './commands/register-usb-token/register-usb-token.command-handler';
 import { UsbTokenAuthenticationService } from '../domain/services/usb-token-authentication.service';
 
-const UserDomainServices: any[] = [EncryptionEmailService, HashPasswordService];
+const UserDomainServices: any[] = [
+  EncryptionEmailService,
+  HashPasswordService,
+  UsbTokenAuthenticationService,
+];
 const UserCommandHandlers: any[] = [
   RegisterTaxPayerCommandHandler,
   VerifyEmailTaxPayerCommandHandler,

@@ -24,7 +24,7 @@ export class TaxPayer extends DomainEntity<TaxCode> {
 
   verifyEmail() {
     if (this.taxPayerStatus != TaxPayerStatus.VERIFY_EMAIL) {
-      throw new TaxPayerException('Trạng thái của người nộp thuế không đúng.');
+      throw new TaxPayerException('Người nộp thuế đã xác thực email.');
     }
     this.taxPayerStatus = TaxPayerStatus.REGISTER_USB_TOKEN;
   }

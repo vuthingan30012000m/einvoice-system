@@ -2,12 +2,6 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { RegisterUsbTokenCommand } from './register-usb-token.command';
 
-
-
-
-
-
-
 import { UsbTokenAuthenticationService } from 'src/user/core/domain/services/usb-token-authentication.service';
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
@@ -38,7 +32,6 @@ export class RegisterUsbTokenCommandHandler
       if (!findTaxPayer) {
         throw new Error('Người nộp thuế không tồn tại.');
       }
-
 
       findTaxPayer.registerUsbToken(usbToken);
 

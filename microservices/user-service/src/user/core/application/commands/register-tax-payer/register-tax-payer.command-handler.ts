@@ -25,14 +25,14 @@ import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/addre
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
 import { JwtService } from '@nestjs/jwt';
-import { HashDataService } from '../../../domain/services/hash-password.service';
+import { HashPasswordService } from '../../../domain/services/hash-password.service';
 
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
   constructor(
-    private readonly HashDataService: HashDataService,
+    private readonly HashPasswordService: HashPasswordService,
     private readonly eventBus: EventBus,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly TaxOfficeRepository: TaxOfficeRepositoryPort,
@@ -103,7 +103,9 @@ export class RegisterTaxPayerCommandHandler
         .withAccountBank(payload.accountBank)
         .build();
 
-      const hashPassword = await this.HashDataService.hash(payload.password);
+      const hashPassword = await this.HashPasswordService.hash(
+        payload.password,
+      );
 
       const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
         .withName(payload.name)
