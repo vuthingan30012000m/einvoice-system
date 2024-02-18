@@ -18,7 +18,7 @@ import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exc
 
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
-import { BankRepository } from '../../ports/dataaccess/repositories/bank.repository';
+import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
 import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
 import { BankDetailRepository } from '../../ports/dataaccess/repositories/bank-detail.repository';
 import { AddressRepository } from '../../ports/dataaccess/repositories/address.repository';
@@ -33,7 +33,7 @@ export class RegisterTaxPayerCommandHandler
     private readonly eventBus: EventBus,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly TaxOfficeRepository: TaxOfficeRepositoryPort,
-    private readonly BankRepository: BankRepository,
+    private readonly BankRepository: BankRepositoryPort,
     private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepository,
     private readonly AddressRepository: AddressRepository,
