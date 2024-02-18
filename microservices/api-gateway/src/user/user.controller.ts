@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Inject,
+  Res,
 } from '@nestjs/common';
 
 import {
@@ -24,6 +25,9 @@ import {
   TaxPayer,
   TaxPayerJwtPayload,
 } from 'src/common/api/decorators/tax-payer.decorator';
+
+import { Response } from 'express';
+import { QRCodeSegment, toFileStream } from 'qrcode';
 
 @Controller('user')
 @ApiTags('user-service')
@@ -51,12 +55,22 @@ export class UserController {
   @Get('register-usb-token')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Đăng ký  chữ ký số USB Token' })
-  registerUsbToken(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
+  async registerUsbToken(
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+    @Res() Response: Response,
+  ) {
     if (!TaxPayer) {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
+    Response.type('png');
 
+    const result = await this.registerUsbToken2(TaxPayer);
+    result.subscribe((data: string | QRCodeSegment[]) => {
+      toFileStream(Response, data);
+    });
+  }
+  registerUsbToken2(TaxPayer: TaxPayerJwtPayload) {
     return this.natsClient.send(
       { cmd: 'register-usb-token' },
       { taxCode: TaxPayer.taxCode },

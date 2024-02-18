@@ -43,4 +43,10 @@ export class TaxPayerEntity {
   @OneToOne(() => AddressEntity)
   @JoinColumn()
   address: AddressEntity;
+
+  @Column({ default: false })
+  isUsbToken: boolean;
+
+  @Column({ nullable: true })
+  usbToken: string;
 }

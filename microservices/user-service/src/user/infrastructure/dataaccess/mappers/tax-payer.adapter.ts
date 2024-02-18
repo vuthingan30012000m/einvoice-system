@@ -25,6 +25,8 @@ export class TaxPayerAdapter {
       .withBankDetailId(new BankDetailId(TaxPayerEntity.bankDetail.id))
       .withAddressId(new AddressId(TaxPayerEntity.address.id))
       .withTaxPayerStatus(TaxPayerEntity.taxPayerStatus)
+      .withIsUsbToken(TaxPayerEntity.isUsbToken)
+      .withUsbToken(TaxPayerEntity.usbToken)
       .build();
 
     return TaxPayerModel;
@@ -54,6 +56,9 @@ export class TaxPayerAdapter {
     entity.address = Address;
 
     entity.taxPayerStatus = TaxPayer.taxPayerStatus;
+
+    entity.isUsbToken = TaxPayer.isUsbToken;
+    entity.usbToken = TaxPayer.usbToken;
 
     return entity;
   }

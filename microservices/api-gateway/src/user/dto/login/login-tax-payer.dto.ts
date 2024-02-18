@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsNumberString,
+  IsOptional,
+  IsString,
+  Matches,
+} from 'class-validator';
 
 import * as faker from 'faker';
 
@@ -21,4 +28,12 @@ export class LoginTaxPayerDto {
   @IsNotEmpty()
   @IsString()
   readonly password: string;
+
+  @ApiProperty({
+    description: 'Chữ ký số USB Token',
+    example: faker.internet.password(),
+    required: false,
+  })
+  @IsOptional()
+  readonly usbToken?: string;
 }

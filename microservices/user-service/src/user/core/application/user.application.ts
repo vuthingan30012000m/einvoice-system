@@ -7,6 +7,7 @@ import { VerifyEmailTaxPayerCommandHandler } from './commands/verify-email-tax-p
 import { HashPasswordService } from '../domain/services/hash-password.service';
 import { EncryptionEmailService } from '../domain/services/encryption-email.service';
 import { RegisterUsbTokenCommandHandler } from './commands/register-usb-token/register-usb-token.command-handler';
+import { UsbTokenAuthenticationService } from '../domain/services/usb-token-authentication.service';
 
 const UserDomainServices: any[] = [EncryptionEmailService, HashPasswordService];
 const UserCommandHandlers: any[] = [

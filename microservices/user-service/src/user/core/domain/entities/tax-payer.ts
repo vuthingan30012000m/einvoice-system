@@ -16,16 +16,23 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   taxPayerStatus: TaxPayerStatus;
 
   taxOfficeId: TaxOfficeId;
-
   bankDetailId: BankDetailId;
-
   addressId: AddressId;
+
+  isUsbToken: boolean;
+  usbToken: string;
 
   verifyEmail() {
     if (this.taxPayerStatus != TaxPayerStatus.VERIFY_EMAIL) {
       throw new TaxPayerException('Trạng thái của người nộp thuế không đúng.');
     }
     this.taxPayerStatus = TaxPayerStatus.REGISTER_USB_TOKEN;
+  }
+
+  registerUsbToken(secret: string) {
+    this.isUsbToken = true;
+    this.usbToken = secret;
+    this.taxPayerStatus = TaxPayerStatus.ACTIVE;
   }
 
   constructor(taxCode: TaxCode) {
@@ -80,6 +87,16 @@ class TaxPayerBuilder {
 
   withTaxPayerStatus(taxPayerStatus: TaxPayerStatus): TaxPayerBuilder {
     this.taxPayer.taxPayerStatus = taxPayerStatus;
+    return this;
+  }
+
+  withIsUsbToken(isUsbToken: boolean): TaxPayerBuilder {
+    this.taxPayer.isUsbToken = isUsbToken;
+    return this;
+  }
+
+  withUsbToken(usbToken: string): TaxPayerBuilder {
+    this.taxPayer.usbToken = usbToken;
     return this;
   }
 

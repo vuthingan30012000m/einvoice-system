@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseInterceptors,
+  Res,
 } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
@@ -61,6 +62,7 @@ export class UserController {
       new LoginTaxPayerQuery(
         LoginTaxPayerDto.taxCode,
         LoginTaxPayerDto.password,
+        LoginTaxPayerDto.usbToken,
       ),
     );
   }
@@ -71,6 +73,7 @@ export class UserController {
       new RegisterUsbTokenCommand(RegisterUsbTokenDto.taxCode),
     );
   }
+
   // @Get()
   // findAll() {
   // return this.userService.findAll();
