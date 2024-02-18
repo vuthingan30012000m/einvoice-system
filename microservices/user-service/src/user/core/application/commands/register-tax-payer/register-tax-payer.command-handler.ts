@@ -119,17 +119,10 @@ export class RegisterTaxPayerCommandHandler
 
       this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
 
-      const accessToken = await this.JwtService.signAsync(
-        {
-          taxCode: newTaxPayer.id.value,
-          statusTaxPayer: newTaxPayer.taxPayerStatus,
-        },
-        {
-          expiresIn: process.env['JWT_ACCESS_TOKEN_EXPIRE'],
-        },
-      );
-
-
+      const accessToken = await this.JwtService.signAsync({
+        taxCode: newTaxPayer.id.value,
+        statusTaxPayer: newTaxPayer.taxPayerStatus,
+      });
 
       return { accessToken };
     } catch (error) {
