@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { WardRepository } from 'src/user/core/application/ports/dataaccess/repositories/ward.repository';
+import { WardRepositoryPort } from 'src/user/core/application/ports/dataaccess/repositories/ward.repository';
 
 import { WardEntity } from '../entities/ward.entity';
 import { WardAdapter } from '../mappers/ward.adapter';
@@ -11,7 +11,7 @@ import { BankId } from 'src/user/core/domain/value-objects/bank-id';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 
 @Injectable()
-export class WardOrmRepository implements WardRepository {
+export class WardOrmRepository implements WardRepositoryPort {
   constructor(
     @InjectRepository(WardEntity)
     private readonly WardEntityRepository: Repository<WardEntity>,

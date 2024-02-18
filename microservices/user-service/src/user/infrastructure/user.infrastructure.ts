@@ -16,7 +16,7 @@ import { TaxOfficeRepository } from '../core/application/ports/dataaccess/reposi
 import { TaxOfficeOrmRepository } from './dataaccess/repositories/tax-office.orm-repository';
 import { BankRepository } from '../core/application/ports/dataaccess/repositories/bank.repository';
 import { BankOrmRepository } from './dataaccess/repositories/bank.orm-repository';
-import { WardRepository } from '../core/application/ports/dataaccess/repositories/ward.repository';
+import { WardRepositoryPort } from '../core/application/ports/dataaccess/repositories/ward.repository';
 import { WardOrmRepository } from './dataaccess/repositories/ward.orm-repository';
 import { BankDetailRepository } from '../core/application/ports/dataaccess/repositories/bank-detail.repository';
 import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.orm-repository';
@@ -65,7 +65,7 @@ export const UserInfrastructure = {
       useClass: BankOrmRepository,
     },
     {
-      provide: WardRepository,
+      provide: WardRepositoryPort,
       useClass: WardOrmRepository,
     },
     {
