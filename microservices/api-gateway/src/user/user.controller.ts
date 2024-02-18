@@ -15,6 +15,7 @@ import { ClientProxy } from '@nestjs/microservices';
 
 import { RegisterTaxPayerDto } from './dto/register/register-tax-payer.dto';
 import { LoginTaxPayerDto } from './dto/login/login-tax-payer.dto';
+import { TaxPayer } from 'src/common/api/decorators/tax-payer.decorator';
 
 @Controller('user')
 @ApiTags('user-service')
@@ -23,8 +24,10 @@ export class UserController {
 
   @Post('register')
   @ApiOperation({ summary: 'Đăng ký tài khoản' })
-  register(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
-    return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
+  register(@Body() registerTaxPayerDto: RegisterTaxPayerDto,@TaxPayer() TaxPayer) {
+    console.log("🚀 ~ register ~ TaxPayer:", TaxPayer)
+    
+    // return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
   }
 
   @Get('verify-email/:tokenEmail')
