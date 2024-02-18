@@ -47,7 +47,7 @@ export class RegisterTaxPayerDto {
   readonly phoneNumber: string;
 
   @ApiProperty({
-    description: 'Mã số  cơ quan thuế quản lý',
+    description: 'Mã số cơ quan thuế quản lý',
     example: '1054029',
     required: true,
   })

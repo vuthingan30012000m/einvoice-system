@@ -274,8 +274,8 @@ export const dataTaxOfficeEntity: { id: string; name: string }[] = [
   { id: '1129918', name: 'Chi cục Thuế khu vực Nho Quan - Gia Viễn' },
   // { id: '3029828', name: 'CHI CỤC THUẾ KHU VỰC CẦN GIUỘC - CẦN ĐƯỚC' },
   // {
-  //   id: '3029827',
-  //   name: 'Chi cục Thuế khu vực Ninh Phước - Thuận Nam',
+  // id: '3029827',
+  // name: 'Chi cục Thuế khu vực Ninh Phước - Thuận Nam',
   // },
   { id: '1129917', name: 'Chi cục Thuế khu vực Đắk Mil - Đắk Song' },
   { id: '1129916', name: 'Chi cục Thuế khu vực Quảng Ngãi- Sơn Tịnh' },

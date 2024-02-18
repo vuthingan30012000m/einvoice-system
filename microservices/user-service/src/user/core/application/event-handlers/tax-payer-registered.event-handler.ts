@@ -12,7 +12,7 @@ export class TaxPayerRegisteredEventHandler
   constructor(private readonly MailerService: MailerService) {}
   handle(TaxPayerRegisteredEvent: TaxPayerRegisteredEvent) {
     this.logger.debug(
-      `> TaxPayerRegisteredEvent:   ${JSON.stringify(TaxPayerRegisteredEvent)}`,
+      `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
     );
     // queue
     // send email
@@ -22,7 +22,7 @@ export class TaxPayerRegisteredEventHandler
       html: `<h1>Hi ${TaxPayerRegisteredEvent.TaxPayer.name},</h1>`,
     });
     this.logger.log(
-      `> Send email:   ${JSON.stringify(TaxPayerRegisteredEvent.TaxPayer.email.value)}`,
+      `> Send email: ${JSON.stringify(TaxPayerRegisteredEvent.TaxPayer.email.value)}`,
     );
   }
 }
