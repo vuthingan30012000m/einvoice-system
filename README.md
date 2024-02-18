@@ -1,15 +1,13 @@
 touch   
 
-    
+  
 {
-  "taxCode": "bf7bf2dc-2eb8-47a0-bc27-14659eb6461b",
-  "password": "LafLLCna0o2iF0c"
+"taxCode": "3eb57e6b-367f-492d-944a-a57d7fad3acf",
+"password": "vyMPPcFiqK5fHCs"
 }
 
 
-
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YXhDb2RlIjoiN2UyZmU1YjctMWE5Ny00MDkzLWIzMTMtOTE0MjljOTQxM2U0Iiwic3RhdHVzVGF4UGF5ZXIiOiJWRVJJRllfRU1BSUwiLCJpYXQiOjE3MDgyNjkwMTcsImV4cCI6MTcwODI2OTMxN30.UYX1lKWrdx85395RHC6V6c-a74V_I4L0yS3TcpzTvV4
-
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YXhDb2RlIjoiM2ViNTdlNmItMzY3Zi00OTJkLTk0NGEtYTU3ZDdmYWQzYWNmIiwiaWF0IjoxNzA4MjcyNDYwLCJleHAiOjE3MDgyNzI3NjB9.PzFV7sC4A650kaODycHee9P5Oru3YiK2rW3prcSP4N8
 
 .addBearerAuth();
 <!-- html -->

@@ -11,7 +11,7 @@ import { UserInfrastructure } from './infrastructure/user.infrastructure';
   imports: [
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '300s' },
+      signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
     }),
     ConfigModule.forRoot({
       isGlobal: true,

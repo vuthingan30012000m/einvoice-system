@@ -15,6 +15,7 @@ import { UserModule } from './user/user.module';
         VERIFY_EMAIL_SECRET: Joi.string().required(),
 
         JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRES_IN: Joi.string().required(),
       }),
     }),
     UserModule,

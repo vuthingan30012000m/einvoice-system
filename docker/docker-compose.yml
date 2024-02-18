@@ -44,6 +44,7 @@ services:
       NATS_SERVICE: ${NATS_SERVICE}
 
       JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
 
   user:
     build: ../microservices/user-service
@@ -70,6 +71,7 @@ services:
       VERIFY_EMAIL_SECRET: ${VERIFY_EMAIL_SECRET}
 
       JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
   # invoice:
   #   build: ../microservices/invoice-service
   #   restart: always

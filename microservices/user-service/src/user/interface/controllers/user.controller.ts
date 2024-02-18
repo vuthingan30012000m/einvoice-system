@@ -62,6 +62,11 @@ export class UserController {
     );
   }
 
+  @MessagePattern({ cmd: 'register-usb-token' })
+  async registerUsbToken(@Payload() taxCode: string) {
+    console.log("🚀 ~ UserController ~ registerUsbToken ~ taxCode:", taxCode)
+    return taxCode + 'Hãy đăng nhập để thực hiện chức năng này.';
+  }
   // @Get()
   // findAll() {
   // return this.userService.findAll();

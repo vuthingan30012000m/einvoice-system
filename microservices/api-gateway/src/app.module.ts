@@ -14,7 +14,7 @@ import { JwtModule } from '@nestjs/jwt';
   imports: [
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '300s' },
+      signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -22,6 +22,7 @@ import { JwtModule } from '@nestjs/jwt';
         PORT: Joi.string().required(),
         NATS_SERVICE: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRES_IN: Joi.string().required(),
       }),
     }),
     ClientsModule.register([

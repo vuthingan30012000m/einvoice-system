@@ -4,13 +4,12 @@ import {
   ExecutionContext,
 } from '@nestjs/common';
 
-export interface TaxPayer {
+export interface TaxPayerJwtPayload {
   taxCode: string;
   // statusTaxPayer: string;
   iat: number;
   exp: number;
 }
-
 
 export const TaxPayer = createParamDecorator(
   (data, context: ExecutionContext) => {
