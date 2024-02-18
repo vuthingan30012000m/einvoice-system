@@ -9,7 +9,7 @@ import {
   Inject,
 } from '@nestjs/common';
 
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBasicAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { ClientProxy } from '@nestjs/microservices';
 
@@ -33,13 +33,20 @@ export class UserController {
     return this.natsClient.send({ cmd: 'verify-email' }, tokenEmail);
   }
 
-  // signatures USB Token
-
   @Post('login')
+  @ApiBasicAuth()
   @ApiOperation({ summary: 'Đăng nhập tài khoản' })
   login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
     return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);
   }
+
+
+  // @Post('register-usb-token')
+  // @ApiOperation({ summary: 'Đăng ký  chữ ký số USB Token' })
+  // registerUsbToken(@Param('tokenEmail') tokenEmail: string) {
+  //   return this.natsClient.send({ cmd: 'verify-email' }, tokenEmail);
+  // }
+
 
   // @Get()
   // @Get(':id')

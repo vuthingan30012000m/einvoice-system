@@ -24,7 +24,7 @@ export class LoginTaxPayerQueryHandler
   public async execute(payload: LoginTaxPayerQuery) {
     try {
       this.logger.debug(
-        `> TaxPayerRegisteredEvent: ${JSON.stringify(payload)}`,
+        `> LoginTaxPayerQuery: ${JSON.stringify(payload)}`,
       );
 
       const existingTaxPayer = await this.TaxPayerRepository.getOneById(
@@ -47,11 +47,6 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Hãy thực hiện  xác thực email.');
       }
 
-      if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.VERIFY_EMAIL) {
-        throw new TaxPayerException(
-          'Hãy thực hiện thêm đăng ký chữ ký số USB Token.',
-        );
-      }
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.DELETED) {
         throw new TaxPayerException('Tài khoản     đã bị xóa.');

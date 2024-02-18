@@ -1,7 +1,12 @@
 touch       
+{
+  "taxCode": "6487b7bf-0d82-422f-b30d-ee5aa30961ad",
+  "password": "nghia"
+}
 
-<!-- .addBearerAuth(); -->
 
+.addBearerAuth();
+<!-- html -->
 
 
 <!-- len name -->
