@@ -6,13 +6,16 @@ const scryptAsync = promisify(scrypt);
 
 @Injectable()
 export class HashPasswordService {
-  async hashPassword(password: string) {
+  async hash(password: string): Promise<string> {
     const salt = randomBytes(8).toString('hex');
     const buf = (await scryptAsync(password, salt, 64)) as Buffer;
     return `${buf.toString('hex')}.${salt}`;
   }
 
-  async comparePasswords(hashedPassword: string, plainPassword: string) {
+  async compare(
+    hashedPassword: string,
+    plainPassword: string,
+  ): Promise<boolean> {
     const [hashed, salt] = hashedPassword.split('.');
     const buf = (await scryptAsync(plainPassword, salt, 64)) as Buffer;
     return buf.toString('hex') === hashed;

@@ -21,8 +21,6 @@ export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {
   async save(TaxPayer: TaxPayer): Promise<TaxPayer> {
     const persistenceModel = TaxPayerAdapter.toPersistence(TaxPayer);
 
-    persistenceModel.password = await this.hashPassword(TaxPayer.password);
-
     const newEntity =
       await this.TaxPayerEntityRepository.save(persistenceModel);
     return TaxPayerAdapter.toDomain(newEntity);
