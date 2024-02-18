@@ -53,23 +53,16 @@ export class LoginTaxPayerQueryHandler
         );
       }
 
-
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.DELETED) {
-        throw new TaxPayerException(
-          'Tài khoản     đã bị xóa.',
-        );
+        throw new TaxPayerException('Tài khoản     đã bị xóa.');
       }
- 
 
-      return 'Đăng nhập thành công';
+      const accessToken = await this.JwtService.signAsync({
+        taxCode: existingTaxPayer.id.value,
+        statusTaxPayer: existingTaxPayer.taxPayerStatus,
+      });
 
-
-
-
-
-
-
-
+      return { accessToken };
     } catch (error) {
       return { error: error.message };
     }
