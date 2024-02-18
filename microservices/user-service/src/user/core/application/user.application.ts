@@ -5,8 +5,9 @@ import { TaxPayerRegisteredEventHandler } from './event-handlers/tax-payer-regis
 import { LoginTaxPayerQueryHandler } from './queries/login-tax-payer/login-tax-payer.query-handler';
 import { VerifyEmailTaxPayerCommandHandler } from './commands/verify-email-tax-payer/verify-email-tax-payer.command-handler';
 import { HashPasswordService } from '../domain/services/hash-password.service';
+import { EncryptionEmailService } from '../domain/services/encryption-email.service';
 
-const UserDomainServices: any[] = [HashPasswordService];
+const UserDomainServices: any[] = [EncryptionEmailService, HashPasswordService];
 const UserCommandHandlers: any[] = [
   RegisterTaxPayerCommandHandler,
   VerifyEmailTaxPayerCommandHandler,

@@ -4,26 +4,25 @@ import { VerifyEmailTaxPayerCommand } from './verify-email-tax-payer.command';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { Email } from 'src/user/core/domain/value-objects/email';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
-import { JwtService } from '@nestjs/jwt';
+import { EncryptionEmailService } from 'src/user/core/domain/services/encryption-email.service';
 
 @CommandHandler(VerifyEmailTaxPayerCommand)
 export class VerifyEmailTaxPayerCommandHandler
   implements ICommandHandler<VerifyEmailTaxPayerCommand>
 {
   constructor(
-    private readonly JwtService: JwtService,
+    private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
   ) {}
 
   private readonly logger = new Logger(VerifyEmailTaxPayerCommandHandler.name);
- 
 
   public async execute(payload: VerifyEmailTaxPayerCommand) {
     try {
       this.logger.log(
         `> VerifyEmailTaxPayerCommand: ${JSON.stringify(payload)}`,
       );
-      const email = this.decryptEmail(
+      const email = this.EncryptionEmailService.decrypt(
         payload.tokenEmail,
         process.env['VERIFY_EMAIL_SECRET'],
       );
@@ -38,22 +37,11 @@ export class VerifyEmailTaxPayerCommandHandler
       findTaxPayer.verifyEmail();
 
       await this.TaxPayerRepository.save(findTaxPayer);
-   
-   
-   
-   
-   
-      return { message: "Xác thực email thành công. Hãy thực hiện thêm đăng ký chữ ký số."}
-      
 
-
-
-
-
-
-
-
-
+      return {
+        message:
+          'Xác thực email thành công. Hãy thực hiện thêm đăng ký chữ ký số.',
+      };
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };

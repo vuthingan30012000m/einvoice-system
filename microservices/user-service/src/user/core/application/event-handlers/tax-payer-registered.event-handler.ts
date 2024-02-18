@@ -2,7 +2,7 @@ import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { TaxPayerRegisteredEvent } from '../../domain/events/tax-payer-registered.event';
 import { MailerPort } from '../ports/mailer/mailer.port';
-// import * as crypto from 'crypto';
+import { EncryptionEmailService } from '../../domain/services/encryption-email.service';
 
 @EventsHandler(TaxPayerRegisteredEvent)
 export class TaxPayerRegisteredEventHandler
@@ -12,9 +12,9 @@ export class TaxPayerRegisteredEventHandler
 
   constructor(
     // private readonly kafka: kafka,
+    private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly mailerPort: MailerPort,
   ) {}
-
 
   handle(TaxPayerRegisteredEvent: TaxPayerRegisteredEvent) {
     try {
@@ -22,7 +22,7 @@ export class TaxPayerRegisteredEventHandler
         `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
       );
 
-      const tokenEmail = this.encryptEmail(
+      const tokenEmail = this.EncryptionEmailService.encrypt(
         TaxPayerRegisteredEvent.TaxPayer.email.value,
         process.env['VERIFY_EMAIL_SECRET'],
       );
