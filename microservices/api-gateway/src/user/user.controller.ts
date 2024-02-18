@@ -33,7 +33,7 @@ export class UserController {
     return this.natsClient.send({ cmd: 'verify-email' }, token);
   }
 
-  // signatures
+  // signatures USB Token
 
   @Post('login')
   @ApiOperation({ summary: 'Đăng nhập tài khoản' })

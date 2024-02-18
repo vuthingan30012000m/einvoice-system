@@ -1,6 +1,6 @@
 touch       
 <!-- mitgatetion -->
-
+npm install --save @nestjs/jwt passport-jwt
 
 
 
@@ -8,6 +8,16 @@ touch
 
 
 <!--   jsonwebtoken     -->
+tãcode
+status
+active moiws ddc
+
+  <!-- PENDING = 'PENDING', -->
+  <!-- VERIFY_EMAIL = 'VERIFY_EMAIL', -->
+  USB_TOKEN = 'USB_TOKEN',
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  DELETED = 'DELETED',
  
 <!-- nest g resource   report -->
 
