@@ -22,7 +22,9 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
-      if (!(await bcryptjs.compare(payload.password, existingTaxPayer.password))) {
+      if (
+        !(await bcryptjs.compare(payload.password, existingTaxPayer.password))
+      ) {
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
