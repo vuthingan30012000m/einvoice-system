@@ -24,7 +24,7 @@ export class VerifyEmailTaxPayerCommandHandler
       );
       const email = this.EncryptionEmailService.decrypt(
         payload.tokenEmail,
-        process.env['VERIFY_EMAIL_SECRET'],
+        process.env.VERIFY_EMAIL_SECRET,
       );
 
       const findTaxPayer = await this.TaxPayerRepository.getOneByEmail(

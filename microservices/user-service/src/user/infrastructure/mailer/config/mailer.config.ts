@@ -4,8 +4,8 @@ export class MailerConfig {
   static init() {
     return MailerModule.forRoot({
       transport: {
-        host: process.env['MAIL_HOST'],
-        port: Number(process.env['MAIL_PORT']),
+        host: process.env.MAIL_HOST,
+        port: Number(process.env.MAIL_PORT),
       },
       defaults: {
         from: 'no-reply@20206205',

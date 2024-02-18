@@ -24,7 +24,7 @@ export class TaxPayerRegisteredEventHandler
 
       const tokenEmail = this.EncryptionEmailService.encrypt(
         TaxPayerRegisteredEvent.TaxPayer.email.value,
-        process.env['VERIFY_EMAIL_SECRET'],
+        process.env.VERIFY_EMAIL_SECRET,
       );
 
       this.mailerPort.send(
@@ -51,7 +51,7 @@ Vui lòng nhấn vào nút bên dưới để xác nhận địa chỉ email c�
  padding: 10px;
  text-decoration: none;
  border-radius: 12px; "
- href="${process.env['APP_DOMAIN']}:${process.env['APP_PORT']}/api/user/verify-email/${tokenEmail}" target="_blank" >
+ href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${tokenEmail}" target="_blank" >
  &#128073; Xác thực email</a >
 
 
