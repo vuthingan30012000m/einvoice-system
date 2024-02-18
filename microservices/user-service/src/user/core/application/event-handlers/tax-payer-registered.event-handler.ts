@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { TaxPayerRegisteredEvent } from '../../domain/events/tax-payer-registered.event';
-import { MailerService } from '@nestjs-modules/mailer';
+import { Mailer } from '../../../core/application/ports/mailer/mailer';
 
 @EventsHandler(TaxPayerRegisteredEvent)
 export class TaxPayerRegisteredEventHandler
@@ -9,14 +9,17 @@ export class TaxPayerRegisteredEventHandler
 {
   private readonly logger = new Logger(TaxPayerRegisteredEventHandler.name);
 
-  constructor(private readonly MailerService: MailerService) {}
+  constructor(
+    // private readonly eventBus: EventBus,
+    private readonly Mailer: Mailer  ,
+  ) {}
   handle(TaxPayerRegisteredEvent: TaxPayerRegisteredEvent) {
     this.logger.debug(
       `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
     );
     // queue
     // send email
-    this.MailerService.sendMail({
+    this.Mailer.send  ({
       to: TaxPayerRegisteredEvent.TaxPayer.email.value,
       subject: 'Xác thực email',
       html: `<h1>Hi ${TaxPayerRegisteredEvent.TaxPayer.name},</h1>`,
@@ -26,3 +29,5 @@ export class TaxPayerRegisteredEventHandler
     );
   }
 }
+
+// private readonly MailerService: MailerService
