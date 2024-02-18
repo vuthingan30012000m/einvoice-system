@@ -19,7 +19,7 @@ import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exc
 import { TaxPayerRepository } from '../../ports/dataaccess/repositories/tax-payer.repository';
 import { TaxOfficeRepository } from '../../ports/dataaccess/repositories/tax-office.repository';
 import { BankRepository } from '../../ports/dataaccess/repositories/bank.repository';
-import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository';
+import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
 import { BankDetailRepository } from '../../ports/dataaccess/repositories/bank-detail.repository';
 import { AddressRepository } from '../../ports/dataaccess/repositories/address.repository';
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
