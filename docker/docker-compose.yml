@@ -21,7 +21,7 @@ services:
       MYSQL_TCP_PORT: 3306
     command: --init-file /init.sql
     volumes:
-      # - ./mysql/var/lib/mysql:/var/lib/mysql
+      - ./mysql/var/lib/mysql:/var/lib/mysql
       - ./mysql/init.sql:/init.sql
 
   mailhog:
@@ -39,8 +39,10 @@ services:
       - ../microservices/api-gateway:/usr/src/app
     command: npm run start:dev
     environment:
-      PORT: 3001
+      PORT: ${APP_PORT}
+      
       NATS_SERVICE: ${NATS_SERVICE}
+
 
   user:
     build: ../microservices/user-service
@@ -49,6 +51,12 @@ services:
       - ../microservices/user-service:/usr/src/app
     command: npm run start:dev
     environment:
+      APP_NAME: ${APP_NAME}
+      APP_PORT: ${APP_PORT}
+      APP_DOMAIN: ${APP_DOMAIN}
+
+
+
       NATS_SERVICE: ${NATS_SERVICE}
 
       DATABASE_HOST: ${DATABASE_HOST}
@@ -59,6 +67,13 @@ services:
 
       MAIL_HOST: ${MAIL_HOST}
       MAIL_PORT: ${MAIL_PORT}
+
+
+
+
+
+
+
   # invoice:
   #   build: ../microservices/invoice-service
   #   restart: always

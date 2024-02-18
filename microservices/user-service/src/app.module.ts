@@ -8,6 +8,9 @@ import { UserModule } from './user/user.module';
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
+        APP_NAME: Joi.string().required(),
+        APP_PORT: Joi.string().required(),
+        APP_DOMAIN: Joi.string().required(),
         NATS_SERVICE: Joi.string().required(),
       }),
     }),
