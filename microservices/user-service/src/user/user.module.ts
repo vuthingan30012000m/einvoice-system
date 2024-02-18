@@ -9,17 +9,19 @@ import { UserInfrastructure } from './infrastructure/user.infrastructure';
 
 @Module({
   imports: [
-    CqrsModule,
-
-
+    // CqrsModule,
+    // CqrsModule,
+    // CqrsModule,
+    // CqrsModule,
+    // CqrsModule,
+    // CqrsModule,
+    // CqrsModule,
+    // CqrsModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      validationSchema:  UserInfrastructure.validations,
+      validationSchema: UserInfrastructure.validations,
     }),
-
-
     ...UserInfrastructure.configs,
-
     TypeOrmModule.forFeature([...UserInfrastructure.repositories]),
   ],
   controllers: [...UserInterface.controllers],
