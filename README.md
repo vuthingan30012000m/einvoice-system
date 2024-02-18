@@ -1,6 +1,8 @@
 touch       
-bam  mk
-
+<!-- bam  mk -->
+npm i bcryptjs 
+npm i -D @types/bcryptjs
+<!-- body-parser cors dotenv express jsonwebtoken mongoose nodemon -->
  
 <!-- nest g resource   report -->
 
