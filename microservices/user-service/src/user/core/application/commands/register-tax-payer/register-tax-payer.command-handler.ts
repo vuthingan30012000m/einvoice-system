@@ -24,12 +24,14 @@ import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/ba
 import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
+import { JwtService } from '@nestjs/jwt';
 
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
   constructor(
+    private readonly JwtService: JwtService,
     private readonly eventBus: EventBus,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly TaxOfficeRepository: TaxOfficeRepositoryPort,
@@ -117,7 +119,19 @@ export class RegisterTaxPayerCommandHandler
 
       this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
 
-      return newTaxPayer;
+      const accessToken = await this.JwtService.signAsync(
+        {
+          taxCode: newTaxPayer.id.value,
+          statusTaxPayer: newTaxPayer.taxPayerStatus,
+        },
+        {
+          expiresIn: process.env['JWT_ACCESS_TOKEN_EXPIRE'],
+        },
+      );
+
+
+
+      return { accessToken };
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };

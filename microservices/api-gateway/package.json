@@ -26,6 +26,7 @@
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/cqrs": "^10.2.7",
+    "@nestjs/jwt": "^10.2.0",
     "@nestjs/microservices": "^10.3.3",
     "@nestjs/mongoose": "^10.0.4",
     "@nestjs/platform-express": "^10.0.0",
@@ -39,6 +40,7 @@
     "mysql2": "^3.9.1",
     "nats": "^2.19.0",
     "nodemailer": "^6.9.9",
+    "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.20"
@@ -52,6 +54,7 @@
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
     "@types/nodemailer": "^6.4.14",
+    "@types/passport-jwt": "^4.0.1",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",

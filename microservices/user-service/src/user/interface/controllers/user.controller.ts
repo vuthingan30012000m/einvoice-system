@@ -28,7 +28,7 @@ export class UserController {
   ) {}
 
   @MessagePattern({ cmd: 'register' })
-  @UseInterceptors(RemovePasswordInterceptor)
+  // @UseInterceptors(RemovePasswordInterceptor)
   async register(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
     return await this.commandBus.execute(
       new RegisterTaxPayerCommand(

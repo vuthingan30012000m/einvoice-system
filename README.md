@@ -1,8 +1,16 @@
 touch       
 <!-- mitgatetion -->
-npm install --save @nestjs/jwt passport-jwt
 
 
+Crud
+Jwt
+Đăng nhập
+Không giới hạn thời gian
+Đổi mật khẩu
+....
+Crud onvoice
+Factory
+AR
 
 
 

@@ -28,17 +28,14 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
-
-
-
-
-
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.PENDING) {
         throw new TaxPayerException('Hãy xác thực email.');
       }
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.VERIFY_EMAIL) {
-        throw new TaxPayerException('Hãy   thực hiện đăng ký  chữ ký số USB Token.');
+        throw new TaxPayerException(
+          'Hãy   thực hiện đăng ký  chữ ký số USB Token.',
+        );
       }
       // if
       // if

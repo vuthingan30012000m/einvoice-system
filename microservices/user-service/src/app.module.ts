@@ -13,6 +13,8 @@ import { UserModule } from './user/user.module';
         APP_DOMAIN: Joi.string().required(),
         NATS_SERVICE: Joi.string().required(),
         VERIFY_EMAIL_SECRET: Joi.string().required(),
+
+        JWT_SECRET: Joi.string().required(),
       }),
     }),
     UserModule,
