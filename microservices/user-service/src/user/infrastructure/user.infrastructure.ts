@@ -20,7 +20,7 @@ import { WardRepositoryPort } from '../core/application/ports/dataaccess/reposit
 import { WardOrmRepository } from './dataaccess/repositories/ward.orm-repository';
 import { BankDetailRepositoryPort } from '../core/application/ports/dataaccess/repositories/bank-detail.repository.port';
 import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.orm-repository';
-import { AddressRepository } from '../core/application/ports/dataaccess/repositories/address.repository';
+import { AddressRepositoryPort } from '../core/application/ports/dataaccess/repositories/address.repository.port';
 import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
 import { MailerConfig } from './mailer/config/mailer.config';
 import * as Joi from '@hapi/joi';
@@ -73,7 +73,7 @@ export const UserInfrastructure = {
       useClass: BankDetailOrmRepository,
     },
     {
-      provide: AddressRepository,
+      provide: AddressRepositoryPort,
       useClass: AddressOrmRepository,
     },
     {

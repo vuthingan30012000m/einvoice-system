@@ -21,7 +21,7 @@ import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax
 import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
 import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
 import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
-import { AddressRepository } from '../../ports/dataaccess/repositories/address.repository';
+import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
 
@@ -36,7 +36,7 @@ export class RegisterTaxPayerCommandHandler
     private readonly BankRepository: BankRepositoryPort,
     private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
-    private readonly AddressRepository: AddressRepository,
+    private readonly AddressRepository: AddressRepositoryPort,
   ) {}
 
   private readonly logger = new Logger(RegisterTaxPayerCommandHandler.name);

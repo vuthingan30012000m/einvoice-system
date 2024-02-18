@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { AddressRepository } from '../../../core/application/ports/dataaccess/repositories/address.repository';
+import { AddressRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/address.repository.port';
 
 import { AddressEntity } from '../entities/address.entity';
 import { AddressAdapter } from '../mappers/address.adapter';
@@ -10,7 +10,7 @@ import { Address } from './../../../core/domain/entities/address';
 import { AddressId } from 'src/user/core/domain/value-objects/address-id';
 
 @Injectable()
-export class AddressOrmRepository implements AddressRepository {
+export class AddressOrmRepository implements AddressRepositoryPort {
   constructor(
     @InjectRepository(AddressEntity)
     private readonly AddressEntityRepository: Repository<AddressEntity>,
