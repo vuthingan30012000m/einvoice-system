@@ -6,6 +6,7 @@ import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exc
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
 import { Logger } from '@nestjs/common';
+import { HashPasswordService } from 'src/user/core/domain/services/hash-password.service';
 
 @QueryHandler(LoginTaxPayerQuery)
 export class LoginTaxPayerQueryHandler
@@ -13,7 +14,10 @@ export class LoginTaxPayerQueryHandler
 {
   private readonly logger = new Logger(LoginTaxPayerQueryHandler.name);
 
-  constructor(private readonly TaxPayerRepository: TaxPayerRepositoryPort) {}
+  constructor(
+    private readonly TaxPayerRepository: TaxPayerRepositoryPort,
+    private readonly HashPasswordService: HashPasswordService,
+  ) {}
 
   public async execute(payload: LoginTaxPayerQuery) {
     try {
@@ -29,7 +33,7 @@ export class LoginTaxPayerQueryHandler
       }
 
       if (
-        !(await this.comparePasswords(
+        !(await this.HashPasswordService.compare(
           existingTaxPayer.password,
           payload.password,
         ))
