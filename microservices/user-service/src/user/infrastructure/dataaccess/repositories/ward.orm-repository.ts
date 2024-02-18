@@ -7,7 +7,6 @@ import { WardRepositoryPort } from '../../../core/application/ports/dataaccess/r
 import { WardEntity } from '../entities/ward.entity';
 import { WardAdapter } from '../mappers/ward.adapter';
 import { Ward } from './../../../core/domain/entities/ward';
-import { BankId } from 'src/user/core/domain/value-objects/bank-id';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 
 @Injectable()

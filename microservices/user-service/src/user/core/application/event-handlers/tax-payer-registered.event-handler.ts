@@ -17,8 +17,24 @@ export class TaxPayerRegisteredEventHandler
     this.logger.debug(
       `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
     );
+
+
+
+
     const token = '1234567890';
     // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+
+
+
+
+
     this.Mailer.send(
       TaxPayerRegisteredEvent.TaxPayer.email,
       'Xác thực email',
