@@ -40,9 +40,8 @@ services:
     command: npm run start:dev
     environment:
       PORT: ${APP_PORT}
-      
-      NATS_SERVICE: ${NATS_SERVICE}
 
+      NATS_SERVICE: ${NATS_SERVICE}
 
   user:
     build: ../microservices/user-service
@@ -55,8 +54,6 @@ services:
       APP_PORT: ${APP_PORT}
       APP_DOMAIN: ${APP_DOMAIN}
 
-
-
       NATS_SERVICE: ${NATS_SERVICE}
 
       DATABASE_HOST: ${DATABASE_HOST}
@@ -68,12 +65,9 @@ services:
       MAIL_HOST: ${MAIL_HOST}
       MAIL_PORT: ${MAIL_PORT}
 
+      VERIFY_EMAIL_SECRET: ${VERIFY_EMAIL_SECRET}
 
-
-
-
-
-
+      JWT_SECRET: ${JWT_SECRET}
   # invoice:
   #   build: ../microservices/invoice-service
   #   restart: always
