@@ -1,4 +1,4 @@
-import { IRepository } from 'src/common/ddd/oop/core/application/ports/dataaccess/repositories/repository';
+import { IRepository } from 'src/common/ddd/oop/core/application/ports/dataaccess/repositories/i-repository';
 import { Address } from 'src/user/core/domain/entities/address';
 import { AddressId } from 'src/user/core/domain/value-objects/address-id';
 

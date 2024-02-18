@@ -1,4 +1,4 @@
-import { IRepository } from 'src/common/ddd/oop/core/application/ports/dataaccess/repositories/repository';
+import { IRepository } from 'src/common/ddd/oop/core/application/ports/dataaccess/repositories/i-repository';
 import { Ward } from 'src/user/core/domain/entities/ward';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 
