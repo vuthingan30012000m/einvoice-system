@@ -2,6 +2,7 @@ import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { TaxPayerRegisteredEvent } from '../../domain/events/tax-payer-registered.event';
 import { MailerPort } from '../ports/mailer/mailer.port';
+import * as crypto from 'crypto';
 
 @EventsHandler(TaxPayerRegisteredEvent)
 export class TaxPayerRegisteredEventHandler
@@ -11,33 +12,30 @@ export class TaxPayerRegisteredEventHandler
 
   constructor(
     // private readonly kafka: kafka,
-    private readonly Mailer: MailerPort,
+    private readonly mailerPort: MailerPort,
   ) {}
+
+  encryptEmail(email: string, secretKey: string): string {
+    const iv = crypto.randomBytes(16);
+    const cipher = crypto.createCipheriv(
+      'aes-256-cbc',
+      Buffer.from(secretKey),
+      iv,
+    );
+    let encrypted = cipher.update(email, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    return iv.toString('hex') + encrypted;
+  }
+
   handle(TaxPayerRegisteredEvent: TaxPayerRegisteredEvent) {
     this.logger.debug(
       `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
     );
 
-    //   ma hoa token
-    //   ma hoa token
-    //   ma hoa token
-    //   ma hoa token
-    //   ma hoa token
-    //   ma hoa token
-    //   ma hoa token
-    //   ma hoa token
-    //   ma hoa token
-    const token = '1234567890';
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
-    // const token = TaxPayerRegisteredEvent.TaxPayer.emailVerificationToken.value;
+    const token =  this. encryptEmail( TaxPayerRegisteredEvent.TaxPayer.email.value, process.env['VERIFY_EMAIL_SECRET'] );
 
-    this.Mailer.send(
+
+    this.mailerPort.send(
       TaxPayerRegisteredEvent.TaxPayer.email,
       'Xác thực email',
       `<h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
