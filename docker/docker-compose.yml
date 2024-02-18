@@ -43,6 +43,8 @@ services:
 
       NATS_SERVICE: ${NATS_SERVICE}
 
+      JWT_SECRET: ${JWT_SECRET}
+
   user:
     build: ../microservices/user-service
     restart: always

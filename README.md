@@ -1,8 +1,22 @@
-touch       
-{
-  "taxCode": "6487b7bf-0d82-422f-b30d-ee5aa30961ad",
-  "password": "nghia"
+touch   
+export enum TaxPayerStatus {
+  PENDING = 'PENDING',
+  VERIFY_EMAIL = 'VERIFY_EMAIL',
+  USB_TOKEN = 'USB_TOKEN',
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  DELETED = 'DELETED',
 }
+
+    
+{
+  "taxCode": "bf7bf2dc-2eb8-47a0-bc27-14659eb6461b",
+  "password": "LafLLCna0o2iF0c"
+}
+
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YXhDb2RlIjoiN2UyZmU1YjctMWE5Ny00MDkzLWIzMTMtOTE0MjljOTQxM2U0Iiwic3RhdHVzVGF4UGF5ZXIiOiJWRVJJRllfRU1BSUwiLCJpYXQiOjE3MDgyNjkwMTcsImV4cCI6MTcwODI2OTMxN30.UYX1lKWrdx85395RHC6V6c-a74V_I4L0yS3TcpzTvV4
 
 
 .addBearerAuth();

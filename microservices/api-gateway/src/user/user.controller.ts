@@ -9,7 +9,12 @@ import {
   Inject,
 } from '@nestjs/common';
 
-import { ApiBasicAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBasicAuth,
+  ApiBearerAuth,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { ClientProxy } from '@nestjs/microservices';
 
@@ -24,13 +29,8 @@ export class UserController {
 
   @Post('register')
   @ApiOperation({ summary: 'Đăng ký tài khoản' })
-  register(
-    @Body() registerTaxPayerDto: RegisterTaxPayerDto,
-    @TaxPayer() TaxPayer,
-  ) {
-    console.log('🚀 ~ register ~ TaxPayer:', TaxPayer);
-
-    // return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
+  register(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
+    return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
   }
 
   @Get('verify-email/:tokenEmail')
@@ -39,8 +39,22 @@ export class UserController {
     return this.natsClient.send({ cmd: 'verify-email' }, tokenEmail);
   }
 
+  @Get('testTaxPayer')
+  @ApiBearerAuth()
+  testTaxPayer(@TaxPayer() TaxPayer) {
+    console.log('🚀 ~ register ~ TaxPayer:', TaxPayer);
+
+
+
+// api_gateway-1  | 🚀 ~ register ~ TaxPayer: {
+//   api_gateway-1  |   taxCode: 'bf7bf2dc-2eb8-47a0-bc27-14659eb6461b',
+//   api_gateway-1  |   statusTaxPayer: 'VERIFY_EMAIL',
+//   api_gateway-1  |   iat: 1708270739,
+//   api_gateway-1  |   exp: 1708271039
+//   api_gateway-1  | }
+  }
+
   @Post('login')
-  @ApiBasicAuth()
   @ApiOperation({ summary: 'Đăng nhập tài khoản' })
   login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
     return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);

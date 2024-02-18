@@ -4,56 +4,22 @@ import {
   ExecutionContext,
   CallHandler,
 } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class TaxPayerInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, handler: CallHandler) {
-    
-        const request = context.switchToHttp().getRequest();
-        console.log("🚀 ~ TaxPayerInterceptor ~ intercept ~ request:", request)
-    
-    
-    
-    
-    
-// @Injectable()
-// export class ExtractUserIdInterceptor implements NestInterceptor {
-//   constructor(private readonly jwtService: JwtService) {}
+  constructor(private readonly jwtService: JwtService) {}
 
-//   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-//     const token = request.headers.authorization?.split(' ')[1]; // Giả sử JWT được gửi dưới dạng "Bearer <token>"
+  intercept(context: ExecutionContext, next: CallHandler) {
+    const request = context.switchToHttp().getRequest();
+    const token = request?.headers?.authorization?.split('Bearer ')[1];
 
-//     if (token) {
-//       const decoded = this.jwtService.verify(token);
-//       request.user = decoded; // Lưu thông tin giải mã vào request.user hoặc bạn có thể trích xuất từ decoded để lấy user ID cụ thể
-//     }
+    if (token) {
+      const decoded = this.jwtService.verify(token);
+      request.taxPayer = decoded;
+    }
 
-//     return next.handle();
-//   }
-// }
-    
-    
-    
-    
-    return handler.handle();
-    // return handler.handle().pipe(
-    //   map((data) => {
-    //     if (data) {
-    //       return this.excludeValue(data);
-    //     }
-    //     return data;
-    //   }),
-    // );
+    return next.handle();
   }
-
-  // private excludeValue(data: any): any {
-  //   Object.keys(data).forEach((key) => {
-  //     if (data[key]?.hasOwnProperty('value')) {
-  //       data[key] = data[key].value;
-  //     }
-  //   });
-  //   return data;
-  // }
 }

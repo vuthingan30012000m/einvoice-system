@@ -23,9 +23,7 @@ export class LoginTaxPayerQueryHandler
 
   public async execute(payload: LoginTaxPayerQuery) {
     try {
-      this.logger.debug(
-        `> LoginTaxPayerQuery: ${JSON.stringify(payload)}`,
-      );
+      this.logger.debug(`> LoginTaxPayerQuery: ${JSON.stringify(payload)}`);
 
       const existingTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxCode),
@@ -47,7 +45,6 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Hãy thực hiện  xác thực email.');
       }
 
-
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.DELETED) {
         throw new TaxPayerException('Tài khoản     đã bị xóa.');
       }
@@ -57,7 +54,7 @@ export class LoginTaxPayerQueryHandler
         statusTaxPayer: existingTaxPayer.taxPayerStatus,
       });
 
-      return { accessToken };
+      return accessToken;
     } catch (error) {
       return { error: error.message };
     }
