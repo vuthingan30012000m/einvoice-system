@@ -12,7 +12,7 @@ import { BankDetailEntity } from './dataaccess/entities/bank-detail.entity';
 import { TaxPayerRepositoryPort } from '../core/application/ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxPayerOrmRepository } from './dataaccess/repositories/tax-payer.orm-repository';
 import { TaxPayerEntity } from './dataaccess/entities/tax-payer.entity';
-import { TaxOfficeRepository } from '../core/application/ports/dataaccess/repositories/tax-office.repository';
+import { TaxOfficeRepositoryPort } from '../core/application/ports/dataaccess/repositories/tax-office.repository.port';
 import { TaxOfficeOrmRepository } from './dataaccess/repositories/tax-office.orm-repository';
 import { BankRepository } from '../core/application/ports/dataaccess/repositories/bank.repository';
 import { BankOrmRepository } from './dataaccess/repositories/bank.orm-repository';
@@ -57,7 +57,7 @@ export const UserInfrastructure = {
       useClass: TaxPayerOrmRepository,
     },
     {
-      provide: TaxOfficeRepository,
+      provide: TaxOfficeRepositoryPort,
       useClass: TaxOfficeOrmRepository,
     },
     {

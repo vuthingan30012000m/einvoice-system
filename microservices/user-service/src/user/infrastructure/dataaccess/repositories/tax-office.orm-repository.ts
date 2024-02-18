@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { TaxOfficeRepository } from 'src/user/core/application/ports/dataaccess/repositories/tax-office.repository';
+import { TaxOfficeRepositoryPort } from 'src/user/core/application/ports/dataaccess/repositories/tax-office.repository.port';
 
 import { TaxOfficeEntity } from '../entities/tax-office.entity';
 import { TaxOfficeAdapter } from '../mappers/tax-office.adapter';
@@ -10,7 +10,7 @@ import { TaxOffice } from './../../../core/domain/entities/tax-office';
 import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
 
 @Injectable()
-export class TaxOfficeOrmRepository implements TaxOfficeRepository {
+export class TaxOfficeOrmRepository implements TaxOfficeRepositoryPort {
   constructor(
     @InjectRepository(TaxOfficeEntity)
     private readonly TaxOfficeEntityRepository: Repository<TaxOfficeEntity>,
