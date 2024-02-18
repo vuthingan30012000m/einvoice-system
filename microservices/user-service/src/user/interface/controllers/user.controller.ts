@@ -17,6 +17,7 @@ import { RemovePasswordInterceptor } from 'src/common/api/interceptors/remove-pa
 import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-value.interceptor';
 import { LoginTaxPayerDto } from '../dto/login/login-tax-payer.dto';
 import { LoginTaxPayerQuery } from 'src/user/core/application/queries/login-tax-payer/login-tax-payer.query';
+import { VerifyEmailTaxPayerCommand } from 'src/user/core/application/commands/verify-email-tax-payer/verify-email-tax-payer.command';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
@@ -45,8 +46,8 @@ export class UserController {
   }
 
   @MessagePattern({ cmd: 'verify-email' })
-  verifyEmail(@Payload() token: string) {
-    return `Hello, ${token}!`;
+  async verifyEmail(@Payload() token: string) {
+    return await this.commandBus.execute(new VerifyEmailTaxPayerCommand(token));
   }
 
   @MessagePattern({ cmd: 'login' })
