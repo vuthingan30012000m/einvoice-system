@@ -9,7 +9,7 @@ def format(directory):
                 contents = file.read()
             while "  " in contents:
                 contents = contents.replace("  ", " ")
-            # contents = contents.replace("token", " ")
+            # contents = contents.replace("process.env[", "process.env.")
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(contents)
 list_code=[
