@@ -53,7 +53,7 @@ export class UserController {
   @MessagePattern({ cmd: 'login' })
   async login(@Payload() LoginTaxPayerDto: LoginTaxPayerDto) {
     return await this.queryBus.execute(
-      new LoginTaxPayerQuery(LoginTaxPayerDto.email, LoginTaxPayerDto.password),
+      new LoginTaxPayerQuery(LoginTaxPayerDto.taxCode, LoginTaxPayerDto.password),
     );
   }
 

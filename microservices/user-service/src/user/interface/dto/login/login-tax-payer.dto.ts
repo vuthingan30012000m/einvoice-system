@@ -5,16 +5,13 @@ import * as faker from 'faker';
 
 export class LoginTaxPayerDto {
   @ApiProperty({
-    description: 'Email của người nộp thuế',
-    example: faker.internet.email(),
+    description: 'Mã số thuế  của người nộp thuế',
+    example: faker.datatype.uuid(),
     required: true,
   })
+  @IsString()
   @IsNotEmpty()
-  @IsEmail()
-  @Matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, {
-    message: 'Email không đúng định dạng.',
-  })
-  readonly email: string;
+  readonly taxCode: string;
 
   @ApiProperty({
     description: 'Mật khẩu của tài khoản',

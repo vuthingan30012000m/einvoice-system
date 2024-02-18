@@ -5,6 +5,7 @@ import { Email } from 'src/user/core/domain/value-objects/email';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 import * as bcryptjs from 'bcryptjs';
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
+import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
 
 @QueryHandler(LoginTaxPayerQuery)
 export class LoginTaxPayerQueryHandler
@@ -14,14 +15,14 @@ export class LoginTaxPayerQueryHandler
 
   public async execute(payload: LoginTaxPayerQuery) {
     try {
-      const existingEmail = await this.TaxPayerRepository.getOneByEmail(
-        new Email(payload.email),
+      const existingTaxPayer = await this.TaxPayerRepository.getOneById(
+        new TaxCode(payload.taxCode),
       );
-      if (!existingEmail) {
+      if (!existingTaxPayer) {
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
-      if (!(await bcryptjs.compare(payload.password, existingEmail.password))) {
+      if (!(await bcryptjs.compare(payload.password, existingTaxPayer.password))) {
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
@@ -50,7 +51,7 @@ export class LoginTaxPayerQueryHandler
       // if
       // if
       // if
-      if (existingEmail.taxPayerStatus != TaxPayerStatus.ACTIVE) {
+      if (existingTaxPayer.taxPayerStatus != TaxPayerStatus.ACTIVE) {
         throw new TaxPayerException('Đăng nhập không thành công.');
       }
 
