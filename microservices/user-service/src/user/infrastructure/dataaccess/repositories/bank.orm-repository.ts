@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { BankRepositoryPort } from 'src/user/core/application/ports/dataaccess/repositories/bank.repository.port';
+import { BankRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/bank.repository.port';
 
 import { BankEntity } from '../entities/bank.entity';
 import { BankAdapter } from '../mappers/bank.adapter';

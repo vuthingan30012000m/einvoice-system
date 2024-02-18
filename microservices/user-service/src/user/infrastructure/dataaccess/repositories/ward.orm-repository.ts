@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { WardRepositoryPort } from 'src/user/core/application/ports/dataaccess/repositories/ward.repository.port';
+import { WardRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/ward.repository.port';
 
 import { WardEntity } from '../entities/ward.entity';
 import { WardAdapter } from '../mappers/ward.adapter';

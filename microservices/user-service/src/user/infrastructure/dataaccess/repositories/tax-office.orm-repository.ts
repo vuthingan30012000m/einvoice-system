@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { TaxOfficeRepositoryPort } from 'src/user/core/application/ports/dataaccess/repositories/tax-office.repository.port';
+import { TaxOfficeRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/tax-office.repository.port';
 
 import { TaxOfficeEntity } from '../entities/tax-office.entity';
 import { TaxOfficeAdapter } from '../mappers/tax-office.adapter';
