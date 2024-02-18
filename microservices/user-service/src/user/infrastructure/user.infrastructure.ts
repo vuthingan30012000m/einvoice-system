@@ -23,8 +23,33 @@ import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.o
 import { AddressRepository } from '../core/application/ports/dataaccess/repositories/address.repository';
 import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
 import { MailerConfig } from './mailer/config/mailer.config';
+import * as Joi from '@hapi/joi';
 
 export const UserInfrastructure = {
+  validations:    Joi.object({
+      DATABASE_HOST: Joi.string().required(),
+      DATABASE_PORT: Joi.string().required(),
+      DATABASE_USERNAME: Joi.string().required(),
+      DATABASE_PASSWORD: Joi.string().required(),
+      DATABASE_NAME: Joi.string().required(),
+
+      MAIL_HOST: Joi.string().required(),
+      MAIL_PORT: Joi.string().required(),
+    }),
+    configs: [DatabaseConfig.init(), MailerConfig.init()],
+
+
+    repositories: [
+      TaxOfficeEntity,
+      BankEntity,
+      CityEntity,
+      DistrictEntity,
+      WardEntity,
+      AddressEntity,
+      BankDetailEntity,
+      TaxPayerEntity,
+    ],
+    seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
   providers: [
     {
       provide: TaxPayerRepository,
@@ -51,16 +76,7 @@ export const UserInfrastructure = {
       useClass: AddressOrmRepository,
     },
   ],
-  configs: [DatabaseConfig.init(), MailerConfig.init()],
-  repositories: [
-    TaxOfficeEntity,
-    BankEntity,
-    CityEntity,
-    DistrictEntity,
-    WardEntity,
-    AddressEntity,
-    BankDetailEntity,
-    TaxPayerEntity,
-  ],
-  seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
+
+
+
 };

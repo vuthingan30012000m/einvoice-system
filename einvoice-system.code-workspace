@@ -75,7 +75,8 @@
       "libeo.ddd-hexagonal-generator",
       "github.copilot",
       "github.copilot-chat",
-      "christian-kohler.path-intellisense"
+      "christian-kohler.path-intellisense",
+      "foxundermoon.shell-format"
     ]
   }
 }

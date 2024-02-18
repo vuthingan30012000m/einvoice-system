@@ -57,8 +57,8 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_NAME: user
 
-      MAIL_HOST: mailhog
-      MAIL_PORT: 1025
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
   # invoice:
   #   build: ../microservices/invoice-service
   #   restart: always
