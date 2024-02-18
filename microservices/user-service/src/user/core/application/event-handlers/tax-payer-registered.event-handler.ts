@@ -28,22 +28,31 @@ export class TaxPayerRegisteredEventHandler
   }
 
   handle(TaxPayerRegisteredEvent: TaxPayerRegisteredEvent) {
-    this.logger.debug(
-      `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
-    );
+    try {
+      this.logger.debug(
+        `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
+      );
 
-    const tokenEmail = this.encryptEmail(
-      TaxPayerRegisteredEvent.TaxPayer.email.value,
-      process.env['VERIFY_EMAIL_SECRET'],
-    );
+      const tokenEmail = this.encryptEmail(
+        TaxPayerRegisteredEvent.TaxPayer.email.value,
+        process.env['VERIFY_EMAIL_SECRET'],
+      );
 
-    this.mailerPort.send(
-      TaxPayerRegisteredEvent.TaxPayer.email,
-      'Xác thực email',
-      `<h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
+      this.mailerPort.send(
+        TaxPayerRegisteredEvent.TaxPayer.email,
+        'Xác thực email',
+        `<h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
 
  <p>
-Cảm ơn bạn đã đăng ký. 
+Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${TaxPayerRegisteredEvent.TaxPayer.id.value}</strong>.
+</p>
+
+
+<br />
+
+
+
+<p>
 Để hoàn tất quá trình đăng ký, bạn cần xác nhận địa chỉ email của mình. 
 Vui lòng nhấn vào nút bên dưới để xác nhận địa chỉ email của bạn.
 </p>
@@ -69,12 +78,15 @@ Vui lòng nhấn vào nút bên dưới để xác nhận địa chỉ email c�
 <p>Trân trọng,</p>
 <p><strong> Vũ Văn Nghĩa </strong></p>
 <p><strong> MSSV: 20206205 </strong></p>`,
-    );
+      );
 
-    this.logger.log(
-      `> Gửi xác thực email: ${JSON.stringify(TaxPayerRegisteredEvent.TaxPayer.email.value)}`,
-    );
+      this.logger.log(
+        `> Gửi xác thực email: ${JSON.stringify(TaxPayerRegisteredEvent.TaxPayer.email.value)}`,
+      );
 
-    // queue
+      // queue
+    } catch (error) {
+      return { error: error.message };
+    }
   }
 }

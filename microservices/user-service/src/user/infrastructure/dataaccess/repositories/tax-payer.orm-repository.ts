@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import * as bcryptjs from 'bcryptjs';
-
 import { TaxPayerRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/tax-payer.repository.port';
 
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
@@ -23,7 +21,7 @@ export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {
   async save(TaxPayer: TaxPayer): Promise<TaxPayer> {
     const persistenceModel = TaxPayerAdapter.toPersistence(TaxPayer);
 
-    persistenceModel.password = await bcryptjs.hash(TaxPayer.password, 12);
+    persistenceModel.password = await this.hashPassword(TaxPayer.password);
 
     const newEntity =
       await this.TaxPayerEntityRepository.save(persistenceModel);
