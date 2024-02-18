@@ -1,9 +1,15 @@
 touch       
 
+return
+DDanwg kys thanhf coong mail
+Xac nhan mail tha hf cong
+
+
+
 
 <!-- len name -->
 <!-- len passs -->
-<!-- mitgatetion -->
+<!-- typeorm migration -->
 
   <!-- createdAt: Date; -->
   <!-- updatedAt: Date; -->
