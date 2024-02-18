@@ -4,12 +4,9 @@ import { Email } from 'src/user/core/domain/value-objects/email';
 
 import { Injectable } from '@nestjs/common';
 
-
-
-
 @Injectable()
 export abstract class MailerAdapter implements Mailer {
-  constructor(private readonly mailerService: MailerService) {} 
+  constructor(private readonly mailerService: MailerService) {}
 
   async send(receiver: Email, title: string, htmlContent: string) {
     await this.mailerService.sendMail({
