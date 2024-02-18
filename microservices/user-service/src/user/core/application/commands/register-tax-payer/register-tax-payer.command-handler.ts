@@ -23,6 +23,7 @@ import { WardRepository } from '../../ports/dataaccess/repositories/ward.reposit
 import { BankDetailRepository } from '../../ports/dataaccess/repositories/bank-detail.repository';
 import { AddressRepository } from '../../ports/dataaccess/repositories/address.repository';
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
+import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
 
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
@@ -114,7 +115,9 @@ export class RegisterTaxPayerCommandHandler
       await this.BankDetailRepository.save(newBankDetail);
       await this.TaxPayerRepository.save(newTaxPayer);
 
-      // this.eventBus.publish(new ProductCreatedEvent(product));
+      this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
+
+
       return newTaxPayer;
     } catch (error) {
       this.logger.error(`> ${error}`);

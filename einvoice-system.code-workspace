@@ -53,7 +53,8 @@
       "einvoice",
       "nats",
       "nestjs",
-      "typeorm"
+      "typeorm",
+      "mailhog"
     ]
   },
   "extensions": {

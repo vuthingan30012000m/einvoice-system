@@ -27,6 +27,14 @@ export class UserController {
     return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
   }
 
+
+  
+  @Post('verify-email')
+  @ApiOperation({ summary: 'Xác thực email' })
+  verifyEmail(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
+    return this.natsClient.send({ cmd: 'verify-email' }, registerTaxPayerDto);
+  }
+
   // signatures
 
   @Post('login')

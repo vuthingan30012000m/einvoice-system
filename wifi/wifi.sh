@@ -22,4 +22,14 @@ echo "Tải nats"
 # docker save -o wifi/image/nats_image.tar nats
 docker load -i wifi/image/nats_image.tar
 echo "Xong nats"
+
+
+
+
+echo "Tải mailhog"
+# docker pull  mailhog/mailhog
+# docker save -o wifi/image/mailhog_image.tar mailhog/mailhog
+docker load -i wifi/image/mailhog_image.tar
+echo "Xong mailhog"
  
+
