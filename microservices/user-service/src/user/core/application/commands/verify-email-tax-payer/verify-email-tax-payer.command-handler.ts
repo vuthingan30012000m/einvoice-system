@@ -5,12 +5,17 @@ import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-
 import * as crypto from 'crypto';
 import { Email } from 'src/user/core/domain/value-objects/email';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
+import { JwtService } from '@nestjs/jwt';
 
 @CommandHandler(VerifyEmailTaxPayerCommand)
 export class VerifyEmailTaxPayerCommandHandler
   implements ICommandHandler<VerifyEmailTaxPayerCommand>
 {
-  constructor(private readonly TaxPayerRepository: TaxPayerRepositoryPort) {}
+  constructor(
+    
+    
+    private readonly JwtService: JwtService,
+    private readonly TaxPayerRepository: TaxPayerRepositoryPort) {}
 
   private readonly logger = new Logger(VerifyEmailTaxPayerCommandHandler.name);
 
@@ -37,18 +42,35 @@ export class VerifyEmailTaxPayerCommandHandler
         process.env['VERIFY_EMAIL_SECRET'],
       );
 
-      const taxPayer = await this.TaxPayerRepository.getOneByEmail(
+      const findTaxPayer = await this.TaxPayerRepository.getOneByEmail(
         new Email(email),
       );
-      if (!taxPayer) {
+      if (!findTaxPayer) {
         throw new TaxPayerException('Người nộp thuế không tồn tại.');
       }
 
-      taxPayer.verifyEmail();
+      findTaxPayer.verifyEmail();
 
-      await this.TaxPayerRepository.save(taxPayer);
+      await this.TaxPayerRepository.save(findTaxPayer);
 
-      return payload;
+    
+    
+    
+    
+    
+    
+      const accessToken = await this.JwtService.signAsync({
+        taxCode: findTaxPayer.id.value,
+        statusTaxPayer: findTaxPayer.taxPayerStatus,
+      });
+
+      return { accessToken };
+    
+    
+    
+    
+    
+    
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };
