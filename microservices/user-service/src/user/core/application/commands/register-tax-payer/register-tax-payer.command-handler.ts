@@ -125,12 +125,21 @@ export class RegisterTaxPayerCommandHandler
 
       this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
 
-      const accessToken = await this.JwtService.signAsync({
-        taxCode: newTaxPayer.id.value,
-        statusTaxPayer: newTaxPayer.taxPayerStatus,
-      });
+      return { message: 'Đăng ký thành công. Hãy thực hiện xác nhận email.' };
+  
+      
 
-      return { accessToken };
+
+
+
+
+
+
+
+
+
+
+      
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };
