@@ -1,5 +1,7 @@
 export enum TaxPayerStatus {
   PENDING = 'PENDING',
+  VERIFY_EMAIL= 'VERIFY_EMAIL',
+  USB_TOKEN= 'USB_TOKEN',
   ACTIVE = 'ACTIVE',
   INACTIVE = 'INACTIVE',
   DELETED = 'DELETED',

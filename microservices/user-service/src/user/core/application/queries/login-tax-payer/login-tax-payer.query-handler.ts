@@ -3,6 +3,7 @@ import { LoginTaxPayerQuery } from './login-tax-payer.query';
 import { TaxPayerRepository } from '../../ports/dataaccess/repositories/tax-payer.repository';
 import { Email } from 'src/user/core/domain/value-objects/email';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
+import * as bcryptjs from 'bcryptjs';
 
 @QueryHandler(LoginTaxPayerQuery)
 export class LoginTaxPayerQueryHandler
@@ -19,7 +20,8 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
-      if (existingEmail.password !== payload.password) {
+
+      if(!await bcryptjs.compare(payload.password, existingEmail.password)){
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
