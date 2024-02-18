@@ -6,11 +6,13 @@ import { LoginTaxPayerQueryHandler } from './queries/login-tax-payer/login-tax-p
 import { VerifyEmailTaxPayerCommandHandler } from './commands/verify-email-tax-payer/verify-email-tax-payer.command-handler';
 import { HashPasswordService } from '../domain/services/hash-password.service';
 import { EncryptionEmailService } from '../domain/services/encryption-email.service';
+import { RegisterUsbTokenCommandHandler } from './commands/register-usb-token/register-usb-token.command-handler';
 
 const UserDomainServices: any[] = [EncryptionEmailService, HashPasswordService];
 const UserCommandHandlers: any[] = [
   RegisterTaxPayerCommandHandler,
   VerifyEmailTaxPayerCommandHandler,
+  RegisterUsbTokenCommandHandler,
 ];
 const UserEventHandlers: any[] = [TaxPayerRegisteredEventHandler];
 const UserQueryHandlers: any[] = [LoginTaxPayerQueryHandler];

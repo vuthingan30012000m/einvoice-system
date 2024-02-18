@@ -18,6 +18,9 @@ import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-val
 import { LoginTaxPayerDto } from '../dto/login/login-tax-payer.dto';
 import { LoginTaxPayerQuery } from 'src/user/core/application/queries/login-tax-payer/login-tax-payer.query';
 import { VerifyEmailTaxPayerCommand } from 'src/user/core/application/commands/verify-email-tax-payer/verify-email-tax-payer.command';
+import { RegisterUsbTokenDto } from '../dto/register-usb-token/register-usb-token.dto';
+import { RegisterUsbTokenCommandHandler } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command-handler';
+import { RegisterUsbTokenCommand } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
@@ -63,9 +66,10 @@ export class UserController {
   }
 
   @MessagePattern({ cmd: 'register-usb-token' })
-  async registerUsbToken(@Payload() taxCode: string) {
-    console.log("🚀 ~ UserController ~ registerUsbToken ~ taxCode:", taxCode)
-    return taxCode + 'Hãy đăng nhập để thực hiện chức năng này.';
+  async registerUsbToken(@Payload() RegisterUsbTokenDto: RegisterUsbTokenDto) {
+    return await this.commandBus.execute(
+      new RegisterUsbTokenCommand(RegisterUsbTokenDto.taxCode),
+    );
   }
   // @Get()
   // findAll() {
