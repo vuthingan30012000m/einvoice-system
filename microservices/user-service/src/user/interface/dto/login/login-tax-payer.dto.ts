@@ -5,7 +5,7 @@ import * as faker from 'faker';
 
 export class LoginTaxPayerDto {
   @ApiProperty({
-    description: 'Mã số thuế  của người nộp thuế',
+    description: 'Mã số thuế của người nộp thuế',
     example: faker.datatype.uuid(),
     required: true,
   })

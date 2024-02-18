@@ -1,5 +1,5 @@
 import { ICommand } from '@nestjs/cqrs';
 
 export class VerifyEmailTaxPayerCommand implements ICommand {
-  constructor(public readonly token: string) {}
+  constructor(public readonly tokenEmail: string) {}
 }

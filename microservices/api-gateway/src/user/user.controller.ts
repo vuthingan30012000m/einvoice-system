@@ -27,10 +27,10 @@ export class UserController {
     return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
   }
 
-  @Get('verify-email/:token')
+  @Get('verify-email/:tokenEmail')
   @ApiOperation({ summary: 'Xác thực email' })
-  verifyEmail(@Param('token') token: string) {
-    return this.natsClient.send({ cmd: 'verify-email' }, token);
+  verifyEmail(@Param('tokenEmail') tokenEmail: string) {
+    return this.natsClient.send({ cmd: 'verify-email' }, tokenEmail);
   }
 
   // signatures USB Token

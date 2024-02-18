@@ -32,7 +32,7 @@ export class TaxPayerRegisteredEventHandler
       `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
     );
 
-    const token = this.encryptEmail(
+    const tokenEmail = this.encryptEmail(
       TaxPayerRegisteredEvent.TaxPayer.email.value,
       process.env['VERIFY_EMAIL_SECRET'],
     );
@@ -42,30 +42,30 @@ export class TaxPayerRegisteredEventHandler
       'Xác thực email',
       `<h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
 
-      <p>
+ <p>
 Cảm ơn bạn đã đăng ký. 
 Để hoàn tất quá trình đăng ký, bạn cần xác nhận địa chỉ email của mình. 
 Vui lòng nhấn vào nút bên dưới để xác nhận địa chỉ email của bạn.
 </p>
 
-<a style="     background-color: #04aa6d;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 12px;  "
-  href="${process.env['APP_DOMAIN']}:${process.env['APP_PORT']}/api/user/verify-email/${token}"   target="_blank" >
-  &#128073; Xác thực email</a >
+<a style=" background-color: #04aa6d;
+ color: white;
+ padding: 10px;
+ text-decoration: none;
+ border-radius: 12px; "
+ href="${process.env['APP_DOMAIN']}:${process.env['APP_PORT']}/api/user/verify-email/${tokenEmail}" target="_blank" >
+ &#128073; Xác thực email</a >
 
 
 
 
 
-  
-  
+ 
+ 
 
 
 
-  <br />
+ <br />
 <p>Trân trọng,</p>
 <p><strong> Vũ Văn Nghĩa </strong></p>
 <p><strong> MSSV: 20206205 </strong></p>`,

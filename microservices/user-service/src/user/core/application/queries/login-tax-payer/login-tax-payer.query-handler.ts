@@ -34,7 +34,7 @@ export class LoginTaxPayerQueryHandler
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.VERIFY_EMAIL) {
         throw new TaxPayerException(
-          'Hãy   thực hiện đăng ký  chữ ký số USB Token.',
+          'Hãy thực hiện đăng ký chữ ký số USB Token.',
         );
       }
       // if

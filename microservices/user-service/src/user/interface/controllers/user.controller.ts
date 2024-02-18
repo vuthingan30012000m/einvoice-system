@@ -46,8 +46,10 @@ export class UserController {
   }
 
   @MessagePattern({ cmd: 'verify-email' })
-  async verifyEmail(@Payload() token: string) {
-    return await this.commandBus.execute(new VerifyEmailTaxPayerCommand(token));
+  async verifyEmail(@Payload() tokenEmail: string) {
+    return await this.commandBus.execute(
+      new VerifyEmailTaxPayerCommand(tokenEmail),
+    );
   }
 
   @MessagePattern({ cmd: 'login' })

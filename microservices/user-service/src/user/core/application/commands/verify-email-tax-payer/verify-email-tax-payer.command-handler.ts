@@ -12,10 +12,9 @@ export class VerifyEmailTaxPayerCommandHandler
   implements ICommandHandler<VerifyEmailTaxPayerCommand>
 {
   constructor(
-    
-    
     private readonly JwtService: JwtService,
-    private readonly TaxPayerRepository: TaxPayerRepositoryPort) {}
+    private readonly TaxPayerRepository: TaxPayerRepositoryPort,
+  ) {}
 
   private readonly logger = new Logger(VerifyEmailTaxPayerCommandHandler.name);
 
@@ -38,7 +37,7 @@ export class VerifyEmailTaxPayerCommandHandler
         `> VerifyEmailTaxPayerCommand: ${JSON.stringify(payload)}`,
       );
       const email = this.decryptEmail(
-        payload.token,
+        payload.tokenEmail,
         process.env['VERIFY_EMAIL_SECRET'],
       );
 
@@ -53,24 +52,12 @@ export class VerifyEmailTaxPayerCommandHandler
 
       await this.TaxPayerRepository.save(findTaxPayer);
 
-    
-    
-    
-    
-    
-    
       const accessToken = await this.JwtService.signAsync({
         taxCode: findTaxPayer.id.value,
         statusTaxPayer: findTaxPayer.taxPayerStatus,
       });
 
       return { accessToken };
-    
-    
-    
-    
-    
-    
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };
