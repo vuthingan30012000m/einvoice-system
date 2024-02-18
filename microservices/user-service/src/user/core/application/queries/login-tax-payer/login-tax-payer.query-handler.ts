@@ -7,6 +7,7 @@ import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-sta
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
 import { Logger } from '@nestjs/common';
 import { HashPasswordService } from 'src/user/core/domain/services/hash-password.service';
+import { JwtService } from '@nestjs/jwt';
 
 @QueryHandler(LoginTaxPayerQuery)
 export class LoginTaxPayerQueryHandler
@@ -15,6 +16,7 @@ export class LoginTaxPayerQueryHandler
   private readonly logger = new Logger(LoginTaxPayerQueryHandler.name);
 
   constructor(
+    private readonly JwtService: JwtService,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly HashPasswordService: HashPasswordService,
   ) {}
@@ -42,44 +44,32 @@ export class LoginTaxPayerQueryHandler
       }
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.PENDING) {
-        throw new TaxPayerException('Hãy xác thực email.');
+        throw new TaxPayerException('Hãy thực hiện  xác thực email.');
       }
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.VERIFY_EMAIL) {
         throw new TaxPayerException(
-          'Hãy thực hiện đăng ký chữ ký số USB Token.',
+          'Hãy thực hiện thêm đăng ký chữ ký số USB Token.',
         );
       }
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      // if
-      if (existingTaxPayer.taxPayerStatus != TaxPayerStatus.ACTIVE) {
-        throw new TaxPayerException('Đăng nhập không thành công.');
+
+
+      if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.DELETED) {
+        throw new TaxPayerException(
+          'Tài khoản     đã bị xóa.',
+        );
       }
+ 
 
       return 'Đăng nhập thành công';
+
+
+
+
+
+
+
+
     } catch (error) {
       return { error: error.message };
     }
