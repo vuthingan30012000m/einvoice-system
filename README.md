@@ -83,31 +83,3 @@ validation
 
 
 
-
-
-
-@Get('register-usb-token')
-@ApiBearerAuth()
-@ApiOperation({ summary: 'Đăng ký  chữ ký số USB Token' })
-async registerUsbTokenHandler(
-  @TaxPayer() TaxPayer: TaxPayerJwtPayload,
-  @Res() Response: Response,
-) {
-  if (!TaxPayer) {
-    return 'Hãy đăng nhập để thực hiện chức năng này.';
-  }
-
-  Response.type('png');
-
-  const result = await this.registerUsbToken(TaxPayer);
-  result.subscribe((data: string | QRCodeSegment[]) => {
-    toFileStream(Response, data);
-  });
-}
-
-registerUsbToken(TaxPayer: TaxPayerJwtPayload) {
-  return this.natsClient.send(
-    { cmd: 'register-usb-token' },
-    { taxCode: TaxPayer.taxCode },
-  );
-}

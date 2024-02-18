@@ -55,7 +55,7 @@ export class UserController {
   @Get('register-usb-token')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Đăng ký  chữ ký số USB Token' })
-  async registerUsbToken(
+  async registerUsbTokenHandler(
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
     @Res() Response: Response,
   ) {
@@ -65,12 +65,13 @@ export class UserController {
 
     Response.type('png');
 
-    const result = await this.registerUsbToken2(TaxPayer);
+    const result = await this.registerUsbToken(TaxPayer);
     result.subscribe((data: string | QRCodeSegment[]) => {
       toFileStream(Response, data);
     });
   }
-  registerUsbToken2(TaxPayer: TaxPayerJwtPayload) {
+
+  registerUsbToken(TaxPayer: TaxPayerJwtPayload) {
     return this.natsClient.send(
       { cmd: 'register-usb-token' },
       { taxCode: TaxPayer.taxCode },
