@@ -12,7 +12,7 @@ export class TaxOfficeEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: false })
+  @Column({ unique: true, nullable: false })
   name: string;
 
   @OneToMany(() => TaxPayerEntity, (taxPayer) => taxPayer.taxOffice, {
