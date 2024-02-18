@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 
 import * as bcryptjs from 'bcryptjs';
 
-import { TaxPayerRepository } from './../../../core/application/ports/dataaccess/repositories/tax-payer.repository';
+import { TaxPayerRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/tax-payer.repository.port';
 
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayerAdapter } from '../mappers/tax-payer.adapter';
@@ -14,7 +14,7 @@ import { Email } from './../../../core/domain/value-objects/email';
 import { PhoneNumber } from './../../../core/domain/value-objects/phone-number';
 
 @Injectable()
-export class TaxPayerOrmRepository implements TaxPayerRepository {
+export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {
   constructor(
     @InjectRepository(TaxPayerEntity)
     private readonly TaxPayerEntityRepository: Repository<TaxPayerEntity>,

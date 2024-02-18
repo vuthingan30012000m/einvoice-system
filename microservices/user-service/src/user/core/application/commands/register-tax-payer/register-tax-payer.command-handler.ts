@@ -16,7 +16,7 @@ import { AddressId } from 'src/user/core/domain/value-objects/address-id';
 import { WardId } from 'src/user/core/domain/value-objects/ward-id';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 
-import { TaxPayerRepository } from '../../ports/dataaccess/repositories/tax-payer.repository';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxOfficeRepository } from '../../ports/dataaccess/repositories/tax-office.repository';
 import { BankRepository } from '../../ports/dataaccess/repositories/bank.repository';
 import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
@@ -31,7 +31,7 @@ export class RegisterTaxPayerCommandHandler
 {
   constructor(
     private readonly eventBus: EventBus,
-    private readonly TaxPayerRepository: TaxPayerRepository,
+    private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly TaxOfficeRepository: TaxOfficeRepository,
     private readonly BankRepository: BankRepository,
     private readonly WardRepository: WardRepositoryPort,

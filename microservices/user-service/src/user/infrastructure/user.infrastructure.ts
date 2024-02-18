@@ -9,7 +9,7 @@ import { TaxOfficeSeeder } from './dataaccess/seeders/tax-office.seeder';
 import { BankSeeder } from './dataaccess/seeders/bank.seeder';
 import { AddressSeeder } from './dataaccess/seeders/address.seeder';
 import { BankDetailEntity } from './dataaccess/entities/bank-detail.entity';
-import { TaxPayerRepository } from '../core/application/ports/dataaccess/repositories/tax-payer.repository';
+import { TaxPayerRepositoryPort } from '../core/application/ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxPayerOrmRepository } from './dataaccess/repositories/tax-payer.orm-repository';
 import { TaxPayerEntity } from './dataaccess/entities/tax-payer.entity';
 import { TaxOfficeRepository } from '../core/application/ports/dataaccess/repositories/tax-office.repository';
@@ -53,7 +53,7 @@ export const UserInfrastructure = {
   seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
   providers: [
     {
-      provide: TaxPayerRepository,
+      provide: TaxPayerRepositoryPort,
       useClass: TaxPayerOrmRepository,
     },
     {

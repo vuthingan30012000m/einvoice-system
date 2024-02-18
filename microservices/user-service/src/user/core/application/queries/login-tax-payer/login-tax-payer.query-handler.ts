@@ -1,6 +1,6 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { LoginTaxPayerQuery } from './login-tax-payer.query';
-import { TaxPayerRepository } from '../../ports/dataaccess/repositories/tax-payer.repository';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { Email } from 'src/user/core/domain/value-objects/email';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 import * as bcryptjs from 'bcryptjs';
@@ -10,7 +10,7 @@ import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-sta
 export class LoginTaxPayerQueryHandler
   implements IQueryHandler<LoginTaxPayerQuery>
 {
-  constructor(private readonly TaxPayerRepository: TaxPayerRepository) {}
+  constructor(private readonly TaxPayerRepository: TaxPayerRepositoryPort) {}
 
   public async execute(payload: LoginTaxPayerQuery) {
     try {
