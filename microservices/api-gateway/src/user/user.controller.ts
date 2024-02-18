@@ -24,9 +24,12 @@ export class UserController {
 
   @Post('register')
   @ApiOperation({ summary: 'Đăng ký tài khoản' })
-  register(@Body() registerTaxPayerDto: RegisterTaxPayerDto,@TaxPayer() TaxPayer) {
-    console.log("🚀 ~ register ~ TaxPayer:", TaxPayer)
-    
+  register(
+    @Body() registerTaxPayerDto: RegisterTaxPayerDto,
+    @TaxPayer() TaxPayer,
+  ) {
+    console.log('🚀 ~ register ~ TaxPayer:', TaxPayer);
+
     // return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
   }
 
@@ -43,13 +46,11 @@ export class UserController {
     return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);
   }
 
-
   // @Post('register-usb-token')
   // @ApiOperation({ summary: 'Đăng ký  chữ ký số USB Token' })
   // registerUsbToken(@Param('tokenEmail') tokenEmail: string) {
   //   return this.natsClient.send({ cmd: 'verify-email' }, tokenEmail);
   // }
-
 
   // @Get()
   // @Get(':id')
