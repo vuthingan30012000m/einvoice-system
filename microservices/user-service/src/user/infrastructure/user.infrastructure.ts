@@ -51,13 +51,7 @@ export const UserInfrastructure = {
       useClass: AddressOrmRepository,
     },
   ],
-  configs: [
-    DatabaseConfig.init()
-    ,
-    MailerConfig.init()
-
-  
-],
+  configs: [DatabaseConfig.init(), MailerConfig.init()],
   repositories: [
     TaxOfficeEntity,
     BankEntity,

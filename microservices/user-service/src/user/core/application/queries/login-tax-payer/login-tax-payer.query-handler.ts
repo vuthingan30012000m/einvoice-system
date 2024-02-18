@@ -21,18 +21,38 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
-
-      if(!await bcryptjs.compare(payload.password, existingEmail.password)){
+      if (!(await bcryptjs.compare(payload.password, existingEmail.password))) {
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
-
-
-      if (existingEmail.taxPayerStatus !=TaxPayerStatus.ACTIVE) {
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      // if 
+      if (existingEmail.taxPayerStatus != TaxPayerStatus.ACTIVE) {
         throw new TaxPayerException('Đăng nhập không thành công.');
       }
-
-
 
       return 'Đăng nhập thành công';
     } catch (error) {

@@ -117,7 +117,6 @@ export class RegisterTaxPayerCommandHandler
 
       this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
 
-
       return newTaxPayer;
     } catch (error) {
       this.logger.error(`> ${error}`);

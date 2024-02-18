@@ -8,7 +8,6 @@ import { UserApplications } from './core/application/user.application';
 import { UserInterface } from './interface/user.interface';
 import { UserInfrastructure } from './infrastructure/user.infrastructure';
 
-
 import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
@@ -21,7 +20,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
         DATABASE_USERNAME: Joi.string().required(),
         DATABASE_PASSWORD: Joi.string().required(),
         DATABASE_NAME: Joi.string().required(),
-        // 
+        //
         MAIL_HOST: Joi.string().required(),
         MAIL_PORT: Joi.string().required(),
       }),
