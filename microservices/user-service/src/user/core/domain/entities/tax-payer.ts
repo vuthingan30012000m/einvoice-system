@@ -22,10 +22,10 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   addressId: AddressId;
 
   verifyEmail() {
-    if (this.taxPayerStatus != TaxPayerStatus.PENDING) {
+    if (this.taxPayerStatus != TaxPayerStatus.VERIFY_EMAIL) {
       throw new TaxPayerException('Trạng thái của người nộp thuế không đúng.');
     }
-    this.taxPayerStatus = TaxPayerStatus.VERIFY_EMAIL;
+    this.taxPayerStatus = TaxPayerStatus.REGISTER_USB_TOKEN;
   }
 
   constructor(taxCode: TaxCode) {

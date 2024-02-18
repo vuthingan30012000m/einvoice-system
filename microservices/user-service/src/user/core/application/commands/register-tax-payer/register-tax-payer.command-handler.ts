@@ -115,7 +115,7 @@ export class RegisterTaxPayerCommandHandler
         .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
         .withBankDetailId(new BankDetailId(newBankDetail.id.value))
         .withAddressId(new AddressId(newAddress.id.value))
-        .withTaxPayerStatus(TaxPayerStatus.PENDING)
+        .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
         .build();
 
       await this.AddressRepository.save(newAddress);
