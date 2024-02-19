@@ -12,6 +12,15 @@ import * as faker from 'faker';
 
 export class DeleteTaxPayerDto {
   @ApiProperty({
+    description: 'Mã số thuế của người nộp thuế',
+    example: faker.datatype.uuid(),
+    required: true,
+  })
+  @IsString()
+  @IsNotEmpty()
+  readonly taxCode: string;
+
+  @ApiProperty({
     description: 'Chữ ký số USB Token',
     example: faker.datatype
       .number({ min: 1, max: 999999 })

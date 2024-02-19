@@ -22,6 +22,8 @@ import { ChangePasswordCommand } from 'src/user/core/application/commands/change
 import { ChangePasswordDto } from '../dto/change-password/change-password.dto';
 import { UpdateTaxPayerCommand } from 'src/user/core/application/commands/update-tax-payer/update-tax-payer.command';
 import { UpdateTaxPayerDto } from '../dto/update-tax-payer/update-tax-payer.dto';
+import { DeleteTaxPayerDto } from '../dto/delete-tax-payer/delete-tax-payer.dto';
+import { DeleteTaxPayerCommand } from 'src/user/core/application/commands/delete-tax-payer/delete-tax-payer.command';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)

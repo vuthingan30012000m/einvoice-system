@@ -12,6 +12,8 @@ import { GetTaxPayerCurrentQueryHandler } from './queries/get-tax-payer-current/
 import { RequestResetPasswordQueryHandler } from './queries/request-reset-password/request-reset-password.query-handler';
 import { VerifyResetPasswordCommandHandler } from './commands/verify-reset-password/verify-reset-password.command-handler';
 import { ChangePasswordCommandHandler } from './commands/change-password/change-password.command-handler';
+import { DeleteTaxPayerCommandHandler } from './commands/delete-tax-payer/delete-tax-payer.command-handler';
+import { UpdateTaxPayerCommandHandler } from './commands/update-tax-payer/update-tax-payer.command-handler';
 
 const UserDomainServices: any[] = [
   EncryptionEmailService,
@@ -24,6 +26,8 @@ const UserCommandHandlers: any[] = [
   RegisterUsbTokenCommandHandler,
   VerifyResetPasswordCommandHandler,
   ChangePasswordCommandHandler,
+  UpdateTaxPayerCommandHandler,
+  DeleteTaxPayerCommandHandler,
 ];
 const UserEventHandlers: any[] = [TaxPayerRegisteredEventHandler];
 const UserQueryHandlers: any[] = [
