@@ -28,6 +28,7 @@ import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-sta
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
 import { JwtService } from '@nestjs/jwt';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';
+import { UsbTokenAuthenticationService } from 'src/user/core/domain/services/usb-token-authentication.service';
 
 @CommandHandler(UpdateTaxPayerCommand)
 export class UpdateTaxPayerCommandHandler
@@ -40,6 +41,7 @@ export class UpdateTaxPayerCommandHandler
     private readonly BankRepository: BankRepositoryPort,
     private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
+    private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
     private readonly AddressRepository: AddressRepositoryPort,
   ) {}
 
@@ -48,6 +50,30 @@ export class UpdateTaxPayerCommandHandler
   public async execute(payload: UpdateTaxPayerCommand) {
     try {
       this.logger.log(`> UpdateTaxPayerCommand: ${JSON.stringify(payload)}`);
+
+      const findTaxPayer = await this.TaxPayerRepository.getOneById(
+        new TaxCode(payload.taxCode),
+      );
+      if (!findTaxPayer) {
+        throw new Error('Người nộp thuế không tồn tại.');
+      }
+
+      const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(
+        payload.usbToken,
+        findTaxPayer.usbToken,
+      );
+
+      if (!isValidUsbToken) {
+        throw new TaxPayerException('Chữ ký số không đúng.');
+      }
+
+      findTaxPayer.update(
+        payload.name,
+        new Email(payload.email),
+        new PhoneNumber(payload.phoneNumber),
+      );
+
+      await this.TaxPayerRepository.save(findTaxPayer);
 
       return { message: 'Cập nhật người nộp thuế thành công.' };
     } catch (error) {
