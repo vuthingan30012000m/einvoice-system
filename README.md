@@ -35,8 +35,6 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YXhDb2RlIjoiM2ViNTdlNmItMzY3Zi00OTJkLTk
 
 <!--@u -->
 
-Xem thông tin nnt
-Cá nhân
 
 <!-- - resetPassword() -->
 <!-- Không cần đăng nhập -->
@@ -49,7 +47,7 @@ Comffim
 <!-- - getTaxPayer() -->
   <!-- + updateTaxPayer() -->
 
-Cập nhật thông tin nnt
+Cập nhật thông tin người nộp thuế
 
 Id .... ìnor
 
@@ -59,7 +57,7 @@ Giống update CRUD
 
 Taxpayer delete erorr
 
-Xóa tài khoản nnt
+Xóa tài khoản người nộp thuế
 
 Id
 

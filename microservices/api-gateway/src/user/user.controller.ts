@@ -77,6 +77,14 @@ export class UserController {
       { taxCode: TaxPayer.taxCode },
     );
   }
+
+
+
+Xem thông tin người nộp thuế
+Cá nhân
+
+
+
   //  return "Controller"
   // @Get()
   // @Get(':id')
