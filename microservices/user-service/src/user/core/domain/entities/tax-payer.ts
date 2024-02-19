@@ -39,6 +39,10 @@ export class TaxPayer extends DomainEntity<TaxCode> {
     this.password = newPassword;
   }
 
+  changePassword(newPassword: string) {
+    this.password = newPassword;
+  }
+
   constructor(taxCode: TaxCode) {
     super(taxCode);
   }

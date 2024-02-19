@@ -27,6 +27,7 @@ import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-sta
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
 import { JwtService } from '@nestjs/jwt';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';
+import { UsbTokenAuthenticationService } from 'src/user/core/domain/services/usb-token-authentication.service';
 
 @CommandHandler(ChangePasswordCommand)
 export class ChangePasswordCommandHandler
@@ -40,6 +41,7 @@ export class ChangePasswordCommandHandler
     private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
     private readonly AddressRepository: AddressRepositoryPort,
+    private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
   ) {}
 
   private readonly logger = new Logger(ChangePasswordCommandHandler.name);
@@ -48,12 +50,33 @@ export class ChangePasswordCommandHandler
     try {
       this.logger.log(`> ChangePasswordCommand: ${JSON.stringify(payload)}`);
 
-      // public readonly taxCode: string,
+      if (payload.password != payload.passwordConfirm) {
+        throw new Error('Mật khẩu không trùng khớp.');
+      }
 
-      // public readonly usbToken: string,
+      const findTaxPayer = await this.TaxPayerRepository.getOneById(
+        new TaxCode(payload.taxCode),
+      );
+      if (!findTaxPayer) {
+        throw new Error('Người nộp thuế không tồn tại.');
+      }
 
-      // public readonly password: string,
-      // public readonly passwordConfirm: string,
+      const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(
+        payload.usbToken,
+        findTaxPayer.usbToken,
+      );
+
+      if (!isValidUsbToken) {
+        throw new TaxPayerException('Chữ ký số không đúng.');
+      }
+
+      const hashPassword = await this.HashPasswordService.hash(
+        payload.password,
+      );
+
+      findTaxPayer.changePassword(hashPassword);
+
+      await this.TaxPayerRepository.save(findTaxPayer);
 
       return { message: 'Đổi mật khẩu  thành công.' };
     } catch (error) {
