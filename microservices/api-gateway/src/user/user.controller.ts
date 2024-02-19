@@ -28,6 +28,7 @@ import {
 
 import { Response } from 'express';
 import { QRCodeSegment, toFileStream } from 'qrcode';
+import { ResetPasswordDto } from './dto/reset-password/reset-password.dto';
 
 @Controller('user')
 @ApiTags('Dịch vụ quản lý người dùng')
@@ -60,7 +61,10 @@ export class UserController {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    return this.natsClient.send({ cmd: 'get-taxpayer-current' },  { taxCode: TaxPayer.taxCode });
+    return this.natsClient.send(
+      { cmd: 'get-taxpayer-current' },
+      { taxCode: TaxPayer.taxCode },
+    );
   }
 
   @Get('register-usb-token')
@@ -89,30 +93,33 @@ export class UserController {
     );
   }
 
-  // <!-- - resetPassword() -->
-  // <!-- Không cần đăng nhập -->
-  // Quên mật khẩu
+  @Post('reset-password')
+  @ApiOperation({ summary: 'Quên mật khẩu' })
+  resetPassword(@Body() ResetPasswordDto: ResetPasswordDto) {
+    return this.natsClient.send({ cmd: 'reset-password' }, ResetPasswordDto);
+  }
+
+  // @ApiOperation({ summary: 'DDooir mật khẩu' })
   // UsbToken
   // Pas
   // Comffim
-  
   // <!-- + updateTaxPayer() -->
-  
+
   // Cập nhật thông tin người nộp thuế
-  
+
   // Id .... ìnor
-  
+
   // Giống update CRUD
-  
+
   // <!-- + deleteTaxPayer() -->
-  
+
   // Taxpayer delete erorr
-  
+
   // Xóa tài khoản người nộp thuế
-  
+
   // Id
-  
+
   // Status =xóa
-  
+
   // return "Controller"
 }

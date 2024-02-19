@@ -1,6 +1,8 @@
 <!-- nest g resource   report -->
 <!-- touch    -->
 
+<!-- guard -->
+
 <!-- html -->
 <!-- user=api=tct -->
  

@@ -24,6 +24,7 @@ import { RegisterUsbTokenCommandHandler } from 'src/user/core/application/comman
 import { RegisterUsbTokenCommand } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command';
 import { GetTaxPayerCurrentDto } from '../dto/get-tax-payer-current/get-tax-payer-current.dto';
 import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
+import { ResetPasswordDto } from '../dto/reset-password/reset-password.dto';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
@@ -84,16 +85,12 @@ export class UserController {
     );
   }
 
-  // @Get()
-  // findAll() {
-  // return this.userService.findAll();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  // return this.userService.findOne(+id);
-  // }
-
+  @MessagePattern({ cmd: 'reset-password' })
+  async resetPassword(@Payload() resetPasswordDto: ResetPasswordDto) {
+    // return await this.commandBus.execute(
+    // new resetPasswordCommand(resetPasswordDto.taxCode),
+    // );
+  }
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
   // return this.userService.update(+id, updateUserDto);
