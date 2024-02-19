@@ -4,6 +4,8 @@ import { VerifyResetPasswordCommand } from './verify-reset-password.command';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 import { EncryptionEmailService } from 'src/user/core/domain/services/encryption-email.service';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { Email } from 'src/user/core/domain/value-objects/email';
+import * as faker from 'faker';
 
 @CommandHandler(VerifyResetPasswordCommand)
 export class VerifyResetPasswordCommandHandler
@@ -22,7 +24,34 @@ export class VerifyResetPasswordCommandHandler
         `> VerifyResetPasswordCommand: ${JSON.stringify(payload)}`,
       );
 
-      return 'newPassword';
+      const payloadDecrypt = this.EncryptionEmailService.decrypt(
+        payload.tokenPassword,
+        process.env.VERIFY_RESET_PASSWORD_SECRET,
+      );
+
+      const [email, dateRequest] = payloadDecrypt.split(' ');
+
+      if (
+        new Date(dateRequest) <
+        new Date(new Date().getTime() - 3600 * 1000 * 24)
+      ) {
+        throw new TaxPayerException('Yêu cầu khôi phục mật khẩu hết hạn');
+      }
+
+      const findTaxPayer = await this.TaxPayerRepository.getOneByEmail(
+        new Email(email),
+      );
+      if (!findTaxPayer) {
+        throw new TaxPayerException('Không tìm thấy thông tin người nộp thuế.');
+      }
+
+      const newPassword=  faker.internet.password();
+
+      findTaxPayer.resetPassword(newPassword);
+
+      await this.TaxPayerRepository.save(findTaxPayer);
+
+      return {newPassword};
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };

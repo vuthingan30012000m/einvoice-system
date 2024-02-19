@@ -81,7 +81,7 @@ export class UserController {
     );
   }
 
-  @MessagePattern('verify-reset-password')
+  @MessagePattern({ cmd: 'verify-reset-password' })
   async verifyResetPassword(@Payload() tokenPassword: string) {
     return await this.commandBus.execute(
       new VerifyResetPasswordCommand(tokenPassword),

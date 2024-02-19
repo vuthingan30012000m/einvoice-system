@@ -68,18 +68,18 @@ export class RequestResetPasswordQueryHandler
       const existingEmail = await this.TaxPayerRepository.getOneByEmail(
         new Email(payload.email),
       );
-      if (existingEmail) {
+      if (!existingEmail) {
         throw new TaxPayerException('Không tìm thấy thông tin người nộp thuế.');
       }
 
       const tokenPassword = this.EncryptionEmailService.encrypt(
-        payload.email + new Date().toISOString(),
+        payload.email + ' ' + new Date().toISOString(),
         process.env.VERIFY_RESET_PASSWORD_SECRET,
       );
 
       this.mailerPort.send(
         new Email(payload.email),
-        'Xác thực email',
+        'Đặt lại mật khẩu',
         `
 <p>Chúng tôi nhận được yêu cầu khôi phục mật khẩu từ bạn.</p>
 
@@ -124,7 +124,9 @@ export class RequestResetPasswordQueryHandler
 `,
       );
 
-      this.logger.log(`> Gửi xác thực email: ${JSON.stringify(payload.email)}`);
+      this.logger.log(
+        `> Gửi đặt lại mật khẩu: ${JSON.stringify(payload.email)}`,
+      );
 
       return {
         message:
