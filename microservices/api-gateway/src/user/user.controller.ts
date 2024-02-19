@@ -30,6 +30,7 @@ import { Response } from 'express';
 import { QRCodeSegment, toFileStream } from 'qrcode';
 import { RequestResetPasswordDto } from './dto/request-reset-password/request-reset-password.dto';
 import { ChangePasswordDto } from './dto/change-password/change-password.dto';
+import { UpdateTaxPayerDto } from './dto/update-tax-payer/update-tax-payer.dto';
 
 @Controller('user')
 @ApiTags('Dịch vụ quản lý người dùng')
@@ -140,22 +141,23 @@ export class UserController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Cập nhật thông tin người nộp thuế' })
   updateTaxPayer(
-    // @Body() changePasswordDto: ChangePasswordDto,
+    @Body() UpdateTaxPayerDto: UpdateTaxPayerDto,
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   ) {
     if (!TaxPayer) {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    // return this.natsClient.send(
-    //   { cmd: 'change-password' },
-    //   {
-    //     taxCode: TaxPayer.taxCode,
-    //     password: changePasswordDto.password,
-    //     passwordConfirm: changePasswordDto.passwordConfirm,
-    //     usbToken: changePasswordDto.usbToken,
-    //   },
-    // );
+    return this.natsClient.send(
+      { cmd: 'update-tax-payer' },
+      {
+        taxCode: TaxPayer.taxCode,
+        name: UpdateTaxPayerDto.name,
+        email: UpdateTaxPayerDto.email,
+        phoneNumber: UpdateTaxPayerDto.phoneNumber,
+        usbToken: UpdateTaxPayerDto.usbToken,
+      },
+    );
   }
 
   // <!-- + deleteTaxPayer() -->

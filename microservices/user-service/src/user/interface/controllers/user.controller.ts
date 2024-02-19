@@ -108,14 +108,16 @@ export class UserController {
       ),
     );
   }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  // return this.userService.update(+id, updateUserDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  // return this.userService.remove(+id);
-  // }
+  @MessagePattern({ cmd: 'update-tax-payer' })
+  async updateTaxPayer(@Payload() updateTaxPayerDto: UpdateTaxPayerDto) {
+    return await this.commandBus.execute(
+      new UpdateTaxPayerCommand(
+        updateTaxPayerDto.taxCode,
+        updateTaxPayerDto.name,
+        updateTaxPayerDto.email,
+        updateTaxPayerDto.phoneNumber,
+        updateTaxPayerDto.usbToken,
+      ),
+    );
+  }
 }
