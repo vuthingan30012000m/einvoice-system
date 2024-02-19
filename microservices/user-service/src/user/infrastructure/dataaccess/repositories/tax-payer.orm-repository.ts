@@ -54,9 +54,7 @@ export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {
   }
 
   async delete(TaxPayer: TaxPayer): Promise<boolean> {
-    const persistenceModel = TaxPayerAdapter.toPersistence(TaxPayer);
-    const result = await this.TaxPayerEntityRepository.delete(persistenceModel);
-    return result.affected > 0;
+    throw new Error('Method not implemented.');
   }
 
   async getOneByEmail(email: Email): Promise<TaxPayer> {

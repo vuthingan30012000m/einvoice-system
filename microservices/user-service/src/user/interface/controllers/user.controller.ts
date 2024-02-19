@@ -65,7 +65,7 @@ export class UserController {
     );
   }
 
-  @MessagePattern({ cmd: 'get-taxpayer-current' })
+  @MessagePattern({ cmd: 'get-tax-payer-current' })
   async getTaxPayerCurrent(
     @Payload() getTaxPayerCurrentDto: GetTaxPayerCurrentDto,
   ) {

@@ -54,7 +54,7 @@ export class UserController {
     return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);
   }
 
-  @Get('get-taxpayer-current')
+  @Get('get-tax-payer-current')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
   getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
@@ -63,7 +63,7 @@ export class UserController {
     }
 
     return this.natsClient.send(
-      { cmd: 'get-taxpayer-current' },
+      { cmd: 'get-tax-payer-current' },
       { taxCode: TaxPayer.taxCode },
     );
   }
@@ -136,13 +136,27 @@ export class UserController {
     );
   }
 
-  // <!-- + updateTaxPayer() -->
+  @Post('update-tax-payer')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Cập nhật thông tin người nộp thuế' })
+  updateTaxPayer(
+    // @Body() changePasswordDto: ChangePasswordDto,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+  ) {
+    if (!TaxPayer) {
+      return 'Hãy đăng nhập để thực hiện chức năng này.';
+    }
 
-  // Cập nhật thông tin người nộp thuế
-
-  // Id .... ìnor
-
-  // Giống update CRUD
+    // return this.natsClient.send(
+    //   { cmd: 'change-password' },
+    //   {
+    //     taxCode: TaxPayer.taxCode,
+    //     password: changePasswordDto.password,
+    //     passwordConfirm: changePasswordDto.passwordConfirm,
+    //     usbToken: changePasswordDto.usbToken,
+    //   },
+    // );
+  }
 
   // <!-- + deleteTaxPayer() -->
 
