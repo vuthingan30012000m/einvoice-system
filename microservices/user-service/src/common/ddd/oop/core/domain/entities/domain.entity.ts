@@ -1,9 +1,9 @@
 export abstract class DomainEntity<T> {
   protected readonly _id: T;
 
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
+  // createdAt: Date;
+  // updatedAt: Date;
+  // deletedAt: Date;
 
   constructor(id: T) {
     this._id = id;
