@@ -34,6 +34,10 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YXhDb2RlIjoiM2ViNTdlNmItMzY3Zi00OTJkLTk
 <!-- @ApiTags('Dịch vụ quản lý người dùng') -->
 
 <!--@u -->
+
+Xem thông tin nnt
+Cá nhân
+
 <!-- - resetPassword() -->
 <!-- Không cần đăng nhập -->
 
@@ -89,15 +93,6 @@ Sản phẩm
 
 Giống tokenEmail
 
-<!--@  -->
-<!--@  -->
-<!--@  -->
-<!--@  -->
-<!--@  -->
-
-Xem thông tin nnt
-Cá nhân
-
 Lập hóa đơn mới
 Lập hóa đơn thay thế
 Xóa hóa đơn
@@ -107,5 +102,11 @@ Tìm
 Tìm người
 
 Sản phẩm
+
+<!--@  -->
+<!--@  -->
+<!--@  -->
+<!--@  -->
+<!--@  -->
 
 Nginx load bln
