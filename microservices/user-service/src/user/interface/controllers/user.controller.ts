@@ -78,15 +78,15 @@ export class UserController {
     );
   }
 
-  @MessagePattern({ cmd: 'reset-password' })
-  async resetPassword(@Payload() resetPasswordDto: ResetPasswordDto) {
+  @MessagePattern({ cmd: 'request-reset-password' })
+  async requestResetPassword(@Payload() requestResetPasswordDto: RequestResetPasswordDto) {
     console.log(
-      '🚀 ~ UserController ~ resetPassword ~ resetPasswordDto:',
-      resetPasswordDto,
+      '🚀 ~ UserController ~ requestResetPassword ~ requestResetPasswordDto:',
+      requestResetPasswordDto,
     );
-    return resetPasswordDto;
+    return requestResetPasswordDto;
     // return await this.commandBus.execute(
-    // new resetPasswordCommand(resetPasswordDto.taxCode),
+    // new requestResetPasswordCommand(requestResetPasswordDto.taxCode),
     // );
   }
 

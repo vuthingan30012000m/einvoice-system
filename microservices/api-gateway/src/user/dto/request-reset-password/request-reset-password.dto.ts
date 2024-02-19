@@ -10,7 +10,7 @@ import {
 
 import * as faker from 'faker';
 
-export class ResetPasswordDto {
+export class RequestResetPasswordDto {
   @ApiProperty({
     description: 'Email của người nộp thuế',
     example: faker.internet.email(),
