@@ -56,6 +56,10 @@ export class TaxPayer extends DomainEntity<TaxCode> {
     }
   }
 
+  delete() {
+    this.taxPayerStatus = TaxPayerStatus.DELETED;
+  }
+
   constructor(taxCode: TaxCode) {
     super(taxCode);
   }
