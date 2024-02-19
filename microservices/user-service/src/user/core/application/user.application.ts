@@ -9,6 +9,7 @@ import { EncryptionEmailService } from '../domain/services/encryption-email.serv
 import { RegisterUsbTokenCommandHandler } from './commands/register-usb-token/register-usb-token.command-handler';
 import { UsbTokenAuthenticationService } from '../domain/services/usb-token-authentication.service';
 import { GetTaxPayerCurrentQueryHandler } from './queries/get-tax-payer-current/get-tax-payer-current.query-handler';
+import { RequestResetPasswordQueryHandler } from './queries/request-reset-password/request-reset-password.query-handler';
 
 const UserDomainServices: any[] = [
   EncryptionEmailService,
@@ -24,6 +25,7 @@ const UserEventHandlers: any[] = [TaxPayerRegisteredEventHandler];
 const UserQueryHandlers: any[] = [
   LoginTaxPayerQueryHandler,
   GetTaxPayerCurrentQueryHandler,
+  RequestResetPasswordQueryHandler,
 ];
 
 export const UserApplications = {

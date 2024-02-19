@@ -25,6 +25,7 @@ import { RegisterUsbTokenCommand } from 'src/user/core/application/commands/regi
 import { GetTaxPayerCurrentDto } from '../dto/get-tax-payer-current/get-tax-payer-current.dto';
 import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
 import { RequestResetPasswordDto } from '../dto/request-reset-password/request-reset-password.dto';
+import { RequestResetPasswordQuery } from 'src/user/core/application/queries/request-reset-password/request-reset-password.query';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
@@ -79,15 +80,17 @@ export class UserController {
   }
 
   @MessagePattern({ cmd: 'request-reset-password' })
-  async requestResetPassword(@Payload() requestResetPasswordDto: RequestResetPasswordDto) {
+  async requestResetPassword(
+    @Payload() requestResetPasswordDto: RequestResetPasswordDto,
+  ) {
     console.log(
       '🚀 ~ UserController ~ requestResetPassword ~ requestResetPasswordDto:',
       requestResetPasswordDto,
     );
-    return requestResetPasswordDto;
-    // return await this.commandBus.execute(
-    // new requestResetPasswordCommand(requestResetPasswordDto.taxCode),
-    // );
+
+    return this.queryBus.execute(
+      new RequestResetPasswordQuery(requestResetPasswordDto.email),
+    );
   }
 
   @MessagePattern({ cmd: 'register-usb-token' })
