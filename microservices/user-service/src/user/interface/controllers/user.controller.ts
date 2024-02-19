@@ -24,7 +24,7 @@ import { RegisterUsbTokenCommandHandler } from 'src/user/core/application/comman
 import { RegisterUsbTokenCommand } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command';
 import { GetTaxPayerCurrentDto } from '../dto/get-tax-payer-current/get-tax-payer-current.dto';
 import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
-import { ResetPasswordDto } from '../dto/reset-password/reset-password.dto';
+import { RequestResetPasswordDto } from '../dto/request-reset-password/request-reset-password.dto';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
