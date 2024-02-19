@@ -79,7 +79,7 @@ export class UserController {
   }
 
   @Get('verify-reset-password/:tokenPassword')
-  @ApiOperation({ summary: 'Xác thực     quên mật khẩu' })
+  @ApiOperation({ summary: 'Xác thực quên mật khẩu' })
   verifyResetPassword(@Param('tokenPassword') tokenPassword: string) {
     return this.natsClient.send(
       { cmd: 'verify-reset-password' },

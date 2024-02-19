@@ -31,9 +31,9 @@ export class TaxPayerRegisteredEventHandler
         TaxPayerRegisteredEvent.TaxPayer.email,
         'Xác thực email',
         `
-        <h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
+<h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
 
- <p>
+<p>
 Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${TaxPayerRegisteredEvent.TaxPayer.id.value}</strong>
 </p>
 
@@ -48,23 +48,23 @@ Vui lòng nhấn vào nút bên dưới để xác nhận địa chỉ email c�
 </p>
 
 <a style=" background-color: #04aa6d;
- color: white;
- padding: 10px;
- text-decoration: none;
- border-radius: 12px; "
- href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${tokenEmail}" target="_blank" >
- &#128073; Xác thực email</a >
+color: white;
+padding: 10px;
+text-decoration: none;
+border-radius: 12px; "
+href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${tokenEmail}" target="_blank" >
+&#128073; Xác thực email</a >
 
 
 
 
 
- 
- 
 
 
 
- <br />
+
+
+<br />
 <p>Trân trọng,</p>
 <p><strong> Vũ Văn Nghĩa </strong></p>
 <p><strong> MSSV: 20206205 </strong></p>

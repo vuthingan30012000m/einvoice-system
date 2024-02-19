@@ -87,9 +87,9 @@ export class RequestResetPasswordQueryHandler
 <br />
 
 
-<p>Vui lòng nhấn vào nút bên dưới để  khôi phục mật khẩu.</p>
+<p>Vui lòng nhấn vào nút bên dưới để khôi phục mật khẩu.</p>
 
-     
+ 
 
 
 <br />
@@ -101,7 +101,7 @@ export class RequestResetPasswordQueryHandler
  text-decoration: none;
  border-radius: 12px; "
  href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-reset-password/${tokenPassword}" target="_blank" >
- &#128073;                          Đặt lại mật khẩu       </a >
+ &#128073; Đặt lại mật khẩu </a >
 
  <br />
 
@@ -129,8 +129,7 @@ export class RequestResetPasswordQueryHandler
       );
 
       return {
-        message:
-          'Yêu cầu quên mật khẩu  thành công. Hãy       kiểm tra  email.',
+        message: 'Yêu cầu quên mật khẩu thành công. Hãy kiểm tra email.',
       };
     } catch (error) {
       return { error: error.message };

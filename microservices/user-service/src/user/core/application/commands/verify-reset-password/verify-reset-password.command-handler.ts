@@ -45,13 +45,13 @@ export class VerifyResetPasswordCommandHandler
         throw new TaxPayerException('Không tìm thấy thông tin người nộp thuế.');
       }
 
-      const newPassword=  faker.internet.password();
+      const newPassword = faker.internet.password();
 
       findTaxPayer.resetPassword(newPassword);
 
       await this.TaxPayerRepository.save(findTaxPayer);
 
-      return {newPassword};
+      return { newPassword };
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { error: error.message };
