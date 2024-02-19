@@ -39,12 +39,11 @@ export class VerifyEmailTaxPayerCommandHandler
       await this.TaxPayerRepository.save(findTaxPayer);
 
       return {
-        message:
-          'Xác thực email thành công. Hãy thực hiện thêm đăng ký chữ ký số.',
+        message: 'Xác thực email thành công.',
       };
     } catch (error) {
       this.logger.error(`> ${error}`);
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }

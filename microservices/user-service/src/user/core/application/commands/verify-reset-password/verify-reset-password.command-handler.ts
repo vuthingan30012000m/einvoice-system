@@ -6,12 +6,14 @@ import { EncryptionEmailService } from 'src/user/core/domain/services/encryption
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { Email } from 'src/user/core/domain/value-objects/email';
 import * as faker from 'faker';
+import { HashPasswordService } from '../../../domain/services/hash-password.service';
 
 @CommandHandler(VerifyResetPasswordCommand)
 export class VerifyResetPasswordCommandHandler
   implements ICommandHandler<VerifyResetPasswordCommand>
 {
   constructor(
+    private readonly HashPasswordService: HashPasswordService,
     private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
   ) {}
@@ -47,7 +49,9 @@ export class VerifyResetPasswordCommandHandler
 
       const newPassword = faker.internet.password();
 
-      findTaxPayer.resetPassword(newPassword);
+      const hashPassword = await this.HashPasswordService.hash(newPassword);
+
+      findTaxPayer.resetPassword(hashPassword);
 
       await this.TaxPayerRepository.save(findTaxPayer);
 

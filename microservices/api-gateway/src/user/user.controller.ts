@@ -113,7 +113,7 @@ export class UserController {
     );
   }
 
-  // @ApiOperation({ summary: 'DDooir mật khẩu' })
+  // @ApiOperation({ summary: 'DDooir mật khẩu' }) Đổi mật khẩu Change Password
 
   // @Post('request-password')
   // @ApiOperation({ summary: 'Yêu cầu quên mật khẩu' })

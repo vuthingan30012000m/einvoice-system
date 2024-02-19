@@ -11,6 +11,7 @@ def format(directory):
                 contents = contents.replace("  ", " ")
             contents = contents.replace("process.env['", "process.env.")
             contents = contents.replace("process.env[\"", "process.env.")
+            contents = contents.replace("return { error: error.message };", "return { message: error.message };")
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(contents)
 list_code=[
