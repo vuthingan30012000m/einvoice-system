@@ -52,10 +52,21 @@ export class UserController {
     return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);
   }
 
+  @Get('get-taxpayer-current')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
+  getTaxpayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
+    if (!TaxPayer) {
+      return 'Hãy đăng nhập để thực hiện chức năng này.';
+    }
+
+    return 'Controller';
+  }
+
   @Get('register-usb-token')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Đăng ký  chữ ký số USB Token' })
-  async registerUsbTokenHandler(
+  registerUsbTokenHandler(
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
     @Res() Response: Response,
   ) {
@@ -65,7 +76,7 @@ export class UserController {
 
     Response.type('png');
 
-    const result = await this.registerUsbToken(TaxPayer);
+    const result = this.registerUsbToken(TaxPayer);
     result.subscribe((data: string | QRCodeSegment[]) => {
       toFileStream(Response, data);
     });
@@ -78,18 +89,5 @@ export class UserController {
     );
   }
 
-
-
-Xem thông tin người nộp thuế
-Cá nhân
-
-
-
   //  return "Controller"
-  // @Get()
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  // @Delete(':id')
 }
