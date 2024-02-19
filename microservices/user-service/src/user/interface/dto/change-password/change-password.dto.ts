@@ -12,6 +12,15 @@ import * as faker from 'faker';
 
 export class ChangePasswordDto {
   @ApiProperty({
+    description: 'Mã số thuế của người nộp thuế',
+    example: faker.datatype.uuid(),
+    required: true,
+  })
+  @IsString()
+  @IsNotEmpty()
+  readonly taxCode: string;
+
+  @ApiProperty({
     description: 'Mật khẩu mới',
     example: faker.internet.password(),
     required: true,

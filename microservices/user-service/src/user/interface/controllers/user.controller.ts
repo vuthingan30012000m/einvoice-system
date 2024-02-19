@@ -101,6 +101,7 @@ export class UserController {
   async changePassword(@Payload() changePasswordDto: ChangePasswordDto) {
     return await this.commandBus.execute(
       new ChangePasswordCommand(
+        changePasswordDto.taxCode,
         changePasswordDto.password,
         changePasswordDto.passwordConfirm,
         changePasswordDto.usbToken,

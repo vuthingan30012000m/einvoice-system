@@ -117,12 +117,23 @@ export class UserController {
   @Post('change-password')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Đổi mật khẩu' })
-  changePassword(@Body() changePasswordDto: ChangePasswordDto) {
+  changePassword(
+    @Body() changePasswordDto: ChangePasswordDto,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+  ) {
     if (!TaxPayer) {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    return this.natsClient.send({ cmd: 'change-password' }, changePasswordDto);
+    return this.natsClient.send(
+      { cmd: 'change-password' },
+      {
+        taxCode: TaxPayer.taxCode,
+        password: changePasswordDto.password,
+        passwordConfirm: changePasswordDto.passwordConfirm,
+        usbToken: changePasswordDto.usbToken,
+      },
+    );
   }
 
   // <!-- + updateTaxPayer() -->
