@@ -10,18 +10,9 @@ import {
 
 import * as faker from 'faker';
 
-export class LoginTaxPayerDto {
+export class ChangePasswordDto {
   @ApiProperty({
-    description: 'Mã số thuế của người nộp thuế',
-    example: faker.datatype.uuid(),
-    required: true,
-  })
-  @IsString()
-  @IsNotEmpty()
-  readonly taxCode: string;
-
-  @ApiProperty({
-    description: 'Mật khẩu của tài khoản',
+    description: 'Mật khẩu mới',
     example: faker.internet.password(),
     required: true,
   })
@@ -30,13 +21,22 @@ export class LoginTaxPayerDto {
   readonly password: string;
 
   @ApiProperty({
+    description: 'Mật khẩu xác nhận',
+    example: faker.internet.password(),
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly passwordConfirm: string;
+
+  @ApiProperty({
     description: 'Chữ ký số USB Token',
     example: faker.datatype
       .number({ min: 1, max: 999999 })
       .toString()
       .padStart(6, '0'),
-    required: false,
+    required: true,
   })
-  @IsOptional()
-  readonly usbToken?: string;
+  @IsNumberString()
+  readonly usbToken: string;
 }

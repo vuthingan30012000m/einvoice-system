@@ -29,13 +29,14 @@ import {
 import { Response } from 'express';
 import { QRCodeSegment, toFileStream } from 'qrcode';
 import { RequestResetPasswordDto } from './dto/request-reset-password/request-reset-password.dto';
+import { ChangePasswordDto } from './dto/change-password/change-password.dto';
 
 @Controller('user')
 @ApiTags('Dịch vụ quản lý người dùng')
 export class UserController {
   constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
 
-  @Post('register')
+  @Post('register-tax-payer')
   @ApiOperation({ summary: 'Đăng ký tài khoản' })
   register(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
     return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
@@ -47,7 +48,7 @@ export class UserController {
     return this.natsClient.send({ cmd: 'verify-email' }, tokenEmail);
   }
 
-  @Post('login')
+  @Post('login-tax-payer')
   @ApiOperation({ summary: 'Đăng nhập tài khoản' })
   login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
     return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);
@@ -113,33 +114,17 @@ export class UserController {
     );
   }
 
-  // @Post('change-password')
-  // @ApiOperation({ summary: 'Đổi mật khẩu' })
-  // changePassword(
-  // @Body() changePasswordDto: changePasswordDto,
-  // ) {
-  // return this.natsClient.send(
-  // { cmd: 'change-reset-password' },
-  // changePasswordDto,
-  // );
-  // }
+  @Post('change-password')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Đổi mật khẩu' })
+  changePassword(@Body() changePasswordDto: ChangePasswordDto) {
+    if (!TaxPayer) {
+      return 'Hãy đăng nhập để thực hiện chức năng này.';
+    }
 
-  // @Get('get-taxpayer-current')
-  // @ApiBearerAuth()
-  // @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
-  // getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
-  // if (!TaxPayer) {
-  // return 'Hãy đăng nhập để thực hiện chức năng này.';
-  // }
+    return this.natsClient.send({ cmd: 'change-password' }, changePasswordDto);
+  }
 
-  // return this.natsClient.send(
-  // { cmd: 'get-taxpayer-current' },
-  // { taxCode: TaxPayer.taxCode },
-  // );
-  // }
-  // UsbToken
-  // Pas
-  // Comffim
   // <!-- + updateTaxPayer() -->
 
   // Cập nhật thông tin người nộp thuế
