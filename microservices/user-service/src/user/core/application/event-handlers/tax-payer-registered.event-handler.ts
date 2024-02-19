@@ -30,7 +30,8 @@ export class TaxPayerRegisteredEventHandler
       this.mailerPort.send(
         TaxPayerRegisteredEvent.TaxPayer.email,
         'Xác thực email',
-        `<h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
+        `
+        <h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
 
  <p>
 Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${TaxPayerRegisteredEvent.TaxPayer.id.value}</strong>
@@ -66,7 +67,8 @@ Vui lòng nhấn vào nút bên dưới để xác nhận địa chỉ email c�
  <br />
 <p>Trân trọng,</p>
 <p><strong> Vũ Văn Nghĩa </strong></p>
-<p><strong> MSSV: 20206205 </strong></p>`,
+<p><strong> MSSV: 20206205 </strong></p>
+`,
       );
 
       this.logger.log(
