@@ -47,7 +47,6 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Hãy thực hiện xác thực email.');
       }
 
-
       if (existingTaxPayer.isUsbToken) {
         const isValid = await this.UsbTokenAuthenticationService.verify(
           payload.usbToken,
@@ -65,7 +64,6 @@ export class LoginTaxPayerQueryHandler
 
       const accessToken = await this.JwtService.signAsync({
         taxCode: existingTaxPayer.id.value,
-        statusTaxPayer: existingTaxPayer.taxPayerStatus,
       });
 
       return accessToken;

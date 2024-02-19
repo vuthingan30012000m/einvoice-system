@@ -55,12 +55,12 @@ export class UserController {
   @Get('get-taxpayer-current')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
-  getTaxpayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
+  getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
     if (!TaxPayer) {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    return 'Controller';
+    return this.natsClient.send({ cmd: 'get-taxpayer-current' },  { taxCode: TaxPayer.taxCode });
   }
 
   @Get('register-usb-token')

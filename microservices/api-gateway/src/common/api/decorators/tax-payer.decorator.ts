@@ -6,7 +6,6 @@ import {
 
 export interface TaxPayerJwtPayload {
   taxCode: string;
-  // statusTaxPayer: string;
   iat: number;
   exp: number;
 }
