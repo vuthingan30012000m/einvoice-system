@@ -71,7 +71,7 @@ export class DeleteTaxPayerCommandHandler
 
       await this.TaxPayerRepository.save(findTaxPayer);
 
-      return { message: 'Xóa tài khoản người nộp thuế        thành công.' };
+      return { message: 'Xóa tài khoản người nộp thuế thành công.' };
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };

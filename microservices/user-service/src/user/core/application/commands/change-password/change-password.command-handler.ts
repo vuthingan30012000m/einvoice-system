@@ -78,7 +78,7 @@ export class ChangePasswordCommandHandler
 
       await this.TaxPayerRepository.save(findTaxPayer);
 
-      return { message: 'Đổi mật khẩu  thành công.' };
+      return { message: 'Đổi mật khẩu thành công.' };
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };
