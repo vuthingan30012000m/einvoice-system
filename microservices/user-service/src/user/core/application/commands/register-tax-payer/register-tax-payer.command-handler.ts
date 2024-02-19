@@ -22,6 +22,7 @@ import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.rep
 import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
 import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
 import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
+
 import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
 import { JwtService } from '@nestjs/jwt';
