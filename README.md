@@ -20,37 +20,40 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YXhDb2RlIjoiM2ViNTdlNmItMzY3Zi00OTJkLTk
 <!-- updatedAt: Date; -->
 <!-- deletedAt: Date; -->
 
-Crud onvoice
+<!-- Factory -->
+<!-- AR -->
 
-<!-- Đổi mật khẩu -->
-
-Factory
-AR
-
+<!--@  -->
+<!--@  -->
+<!--@  -->
+<!--@  -->
+<!--@  -->
 <!-- Luôn cần đăng nhập -->
+<!-- Không rest  -->
+<!-- UsbTokenn stting Vui lòng ký số -->
+<!-- @ApiTags('Dịch vụ quản lý người dùng') -->
 
-- forgotPassword()
-- changePassword()
-- getTaxPayer()
+<!--@u -->
+<!-- - resetPassword() -->
+<!-- Không cần đăng nhập -->
+
+Quên mật khẩu
+UsbToken
+Pas
+Comffim
+
+<!-- - getTaxPayer() -->
   <!-- + updateTaxPayer() -->
-  <!-- + deleteTaxPayer() -->
-  <!-- + verifyTaxPayerBank() -->
-  <!-- + verifyTaxPayerAddress() -->
-
-Hóa đơn
-Sản phẩm
-
-Find taxpayers by tax code
-
-Tra cứu người nộp thuế theo mã số thuế
-
-Giống tokenEmail
 
 Cập nhật thông tin nnt
 
 Id .... ìnor
 
-Giống update
+Giống update CRUD
+
+  <!-- + deleteTaxPayer() -->
+
+Taxpayer delete erorr
 
 Xóa tài khoản nnt
 
@@ -58,41 +61,9 @@ Id
 
 Status =xóa
 
-Quên mật khẩu
-
-UsbToken
-Pas
-Comffim
-
-For got....
-
-Không cần đăng nhập
-
-Bạn đã thu hồi một tin nhắn
-
-Bạn đã thu hồi một tin nhắn
-
-Không rest
-
-🥳
-
-Crud sản phẩm
-
-Crud hóa đơn
-
-Vui lòng ký số
-
-UsbTokenn stting
-
-Bạn đã thu hồi một tin nhắn
-
-Bạn đã thu hồi một tin nhắn
-
-Bạn đã thu hồi một tin nhắn
-
-🥳
-
-Taxpayer delete erorr
+  <!-- + verifyTaxPayerBank() -->
+  <!-- + verifyTaxPayerAddress() -->
+<!--@i -->
 
 1 u
 N sp
@@ -106,31 +77,31 @@ n chi tiết
 1 chi tiết
 N sp
 
-Src0
+Crud sản phẩm
 
-Src1
-08:46
+Crud hóa đơn
 
-Tìm u bênhoas đơn
+Hóa đơn
+Sản phẩm
 
-Apitag
-09:46
+<!-- Find taxpayers by tax code -->
+<!-- Tra cứu người nộp thuế theo mã số thuế -->
+
+Giống tokenEmail
+
+<!--@  -->
+<!--@  -->
+<!--@  -->
+<!--@  -->
+<!--@  -->
 
 Xem thông tin nnt
-
 Cá nhân
-10:17
-
-🥳
 
 Lập hóa đơn mới
-
 Lập hóa đơn thay thế
-
 Xóa hóa đơn
-
 Tìm
-
 Đầu ra đầu vào
 
 Tìm người

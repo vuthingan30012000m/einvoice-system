@@ -30,7 +30,7 @@ import { Response } from 'express';
 import { QRCodeSegment, toFileStream } from 'qrcode';
 
 @Controller('user')
-@ApiTags('user-service')
+@ApiTags('Dịch vụ quản lý người dùng')
 export class UserController {
   constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
 
