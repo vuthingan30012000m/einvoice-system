@@ -1,3 +1,4 @@
+import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetTaxPayerCurrentQuery } from './get-tax-payer-current.query';
 import { Logger } from '@nestjs/common';
@@ -46,18 +47,56 @@ export class GetTaxPayerCurrentQueryHandler
       );
       console.log('🚀 ~ execute ~ existingTaxOffice:', existingTaxOffice);
 
-      const existingBank = await this.BankDetailRepository.getOneById(
+      const existingBankDetail = await this.BankDetailRepository.getOneById(
         existingTaxPayer.bankDetailId,
       );
-      console.log('🚀 ~ execute ~ existingBank:', existingBank);
+      console.log('🚀 ~ execute ~ existingBankDetail:', existingBankDetail);
+
+      const existingBank = await this.BankRepository.getOneById(
+        existingBankDetail.BankId,
+      );
+      console.log('🚀 ~ execute ~ existingBank :', existingBank);
 
       const existingAddress = await this.AddressRepository.getOneById(
         existingTaxPayer.addressId,
       );
       console.log('🚀 ~ execute ~ existingAddress:', existingAddress);
 
-      const { password, usbToken, ...result } = existingTaxPayer;
-      return result;
+      const existingWard = await this.WardRepository.getOneById(
+        existingAddress.WardId,
+      );
+      console.log('🚀 ~ execute ~ existingWard:', existingWard);
+
+      const {
+        password,
+        usbToken,
+        taxOfficeId,
+        bankDetailId,
+        addressId,
+        ...result
+      } = existingTaxPayer;
+
+      return {
+        ...result,
+        taxOffice: {
+          id: existingTaxOffice.id.value,
+          name: existingTaxOffice.name,
+        },
+        bankDetail: {
+          accountBank: existingBankDetail.accountBank,
+          bank: {
+            name: existingBank.name,
+            code: existingBank.code,
+            shortName: existingBank.shortName,
+          },
+        },
+        address: {
+          note: existingAddress.note,
+          ward: {
+            name: existingWard.name,
+          },
+        },
+      };
     } catch (error) {
       return { error: error.message };
     }
