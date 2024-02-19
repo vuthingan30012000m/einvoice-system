@@ -69,8 +69,22 @@ export class UserController {
 
   @Post('request-reset-password')
   @ApiOperation({ summary: 'Yêu cầu quên mật khẩu' })
-  requestResetPassword(@Body() requestResetPasswordDto: RequestResetPasswordDto) {
-    return this.natsClient.send({ cmd: 'request-reset-password' }, requestResetPasswordDto);
+  requestResetPassword(
+    @Body() requestResetPasswordDto: RequestResetPasswordDto,
+  ) {
+    return this.natsClient.send(
+      { cmd: 'request-reset-password' },
+      requestResetPasswordDto,
+    );
+  }
+
+  @Get('verify-reset-password/:tokenPassword')
+  @ApiOperation({ summary: 'Xác thực     quên mật khẩu' })
+  verifyResetPassword(@Param('tokenPassword') tokenPassword: string) {
+    return this.natsClient.send(
+      { cmd: 'verify-reset-password' },
+      tokenPassword,
+    );
   }
 
   @Get('register-usb-token')
