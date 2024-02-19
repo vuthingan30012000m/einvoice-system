@@ -114,6 +114,31 @@ export class UserController {
   }
 
   // @ApiOperation({ summary: 'DDooir mật khẩu' })
+
+  // @Post('request-password')
+  // @ApiOperation({ summary: 'Yêu cầu quên mật khẩu' })
+  // requestResetPassword(
+  //   @Body() requestResetPasswordDto: RequestResetPasswordDto,
+  // ) {
+  //   return this.natsClient.send(
+  //     { cmd: 'request-reset-password' },
+  //     requestResetPasswordDto,
+  //   );
+  // }
+
+  // @Get('get-taxpayer-current')
+  // @ApiBearerAuth()
+  // @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
+  // getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
+  //   if (!TaxPayer) {
+  //     return 'Hãy đăng nhập để thực hiện chức năng này.';
+  //   }
+
+  //   return this.natsClient.send(
+  //     { cmd: 'get-taxpayer-current' },
+  //     { taxCode: TaxPayer.taxCode },
+  //   );
+  // }
   // UsbToken
   // Pas
   // Comffim
