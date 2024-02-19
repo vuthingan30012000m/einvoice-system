@@ -65,7 +65,7 @@ export class UserController {
 
   @Get('register-usb-token')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Đăng ký  chữ ký số USB Token' })
+  @ApiOperation({ summary: 'Đăng ký chữ ký số USB Token' })
   registerUsbTokenHandler(
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
     @Res() Response: Response,
@@ -89,5 +89,5 @@ export class UserController {
     );
   }
 
-  //  return "Controller"
+  // return "Controller"
 }

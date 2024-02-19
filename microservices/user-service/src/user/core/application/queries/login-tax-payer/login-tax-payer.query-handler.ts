@@ -44,12 +44,9 @@ export class LoginTaxPayerQueryHandler
       }
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.VERIFY_EMAIL) {
-        throw new TaxPayerException('Hãy thực hiện  xác thực email.');
+        throw new TaxPayerException('Hãy thực hiện xác thực email.');
       }
 
-      // if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.REGISTER_USB_TOKEN) {
-      //   throw new TaxPayerException('Hãy thực hiện  xác thực email.');
-      // }
 
       if (existingTaxPayer.isUsbToken) {
         const isValid = await this.UsbTokenAuthenticationService.verify(
@@ -63,7 +60,7 @@ export class LoginTaxPayerQueryHandler
       }
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.DELETED) {
-        throw new TaxPayerException('Tài khoản     đã bị xóa.');
+        throw new TaxPayerException('Tài khoản đã bị xóa.');
       }
 
       const accessToken = await this.JwtService.signAsync({
