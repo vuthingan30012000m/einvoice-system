@@ -89,5 +89,30 @@ export class UserController {
     );
   }
 
+  // <!-- - resetPassword() -->
+  // <!-- Không cần đăng nhập -->
+  // Quên mật khẩu
+  // UsbToken
+  // Pas
+  // Comffim
+  
+  // <!-- + updateTaxPayer() -->
+  
+  // Cập nhật thông tin người nộp thuế
+  
+  // Id .... ìnor
+  
+  // Giống update CRUD
+  
+  // <!-- + deleteTaxPayer() -->
+  
+  // Taxpayer delete erorr
+  
+  // Xóa tài khoản người nộp thuế
+  
+  // Id
+  
+  // Status =xóa
+  
   // return "Controller"
 }

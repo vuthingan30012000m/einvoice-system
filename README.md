@@ -3,46 +3,14 @@
 
 <!-- html -->
 <!-- user=api=tct -->
-
-<!--@  -->
-<!--@  -->
-<!--@  -->
-<!--@  -->
+ 
 <!--@  -->
 <!-- Luôn cần đăng nhập -->
 <!-- Không rest  -->
 <!-- UsbTokenn stting Vui lòng ký số -->
 <!-- @ApiTags('Dịch vụ quản lý người dùng') -->
+ 
 
-<!--@u -->
-
-<!-- - resetPassword() -->
-<!-- Không cần đăng nhập -->
-Quên mật khẩu
-UsbToken
-Pas
-Comffim
-
-<!-- + updateTaxPayer() -->
-
-Cập nhật thông tin người nộp thuế
-
-Id .... ìnor
-
-Giống update CRUD
-
-<!-- + deleteTaxPayer() -->
-
-Taxpayer delete erorr
-
-Xóa tài khoản người nộp thuế
-
-Id
-
-Status =xóa
-
-<!-- + verifyTaxPayerBank() -->
-<!-- + verifyTaxPayerAddress() -->
 <!--@i -->
 
 1 u
@@ -98,6 +66,11 @@ Nginx load bln
 <!-- createdAt: Date; -->
 <!-- updatedAt: Date; -->
 <!-- deletedAt: Date; -->
+
+<!-- + verifyTaxPayerBank() -->
+<!-- + verifyTaxPayerAddress() -->
+
+
 
 <!-- Factory -->
 <!-- AR -->
