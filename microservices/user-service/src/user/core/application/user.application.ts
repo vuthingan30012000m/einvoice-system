@@ -11,6 +11,7 @@ import { UsbTokenAuthenticationService } from '../domain/services/usb-token-auth
 import { GetTaxPayerCurrentQueryHandler } from './queries/get-tax-payer-current/get-tax-payer-current.query-handler';
 import { RequestResetPasswordQueryHandler } from './queries/request-reset-password/request-reset-password.query-handler';
 import { VerifyResetPasswordCommandHandler } from './commands/verify-reset-password/verify-reset-password.command-handler';
+import { ChangePasswordCommandHandler } from './commands/change-password/change-password.command-handler';
 
 const UserDomainServices: any[] = [
   EncryptionEmailService,
@@ -22,6 +23,7 @@ const UserCommandHandlers: any[] = [
   VerifyEmailTaxPayerCommandHandler,
   RegisterUsbTokenCommandHandler,
   VerifyResetPasswordCommandHandler,
+  ChangePasswordCommandHandler,
 ];
 const UserEventHandlers: any[] = [TaxPayerRegisteredEventHandler];
 const UserQueryHandlers: any[] = [

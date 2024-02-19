@@ -18,6 +18,7 @@ import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-t
 import { RequestResetPasswordDto } from '../dto/request-reset-password/request-reset-password.dto';
 import { RequestResetPasswordQuery } from 'src/user/core/application/queries/request-reset-password/request-reset-password.query';
 import { VerifyResetPasswordCommand } from 'src/user/core/application/commands/verify-reset-password/verify-reset-password.command';
+import { ChangePasswordCommand } from 'src/user/core/application/commands/change-password/change-password.command';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
@@ -94,6 +95,18 @@ export class UserController {
       new RegisterUsbTokenCommand(RegisterUsbTokenDto.taxCode),
     );
   }
+
+  @MessagePattern({ cmd: 'change-password' })
+  async changePassword(@Payload() changePasswordDto: ChangePasswordDto) {
+    return await this.commandBus.execute(
+      new ChangePasswordCommand(
+        changePasswordDto.password,
+        changePasswordDto.passwordConfirm,
+        changePasswordDto.usbToken,
+      ),
+    );
+  }
+
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
   // return this.userService.update(+id, updateUserDto);
