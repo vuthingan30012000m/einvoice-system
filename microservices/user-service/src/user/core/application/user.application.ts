@@ -8,6 +8,7 @@ import { HashPasswordService } from '../domain/services/hash-password.service';
 import { EncryptionEmailService } from '../domain/services/encryption-email.service';
 import { RegisterUsbTokenCommandHandler } from './commands/register-usb-token/register-usb-token.command-handler';
 import { UsbTokenAuthenticationService } from '../domain/services/usb-token-authentication.service';
+import { GetTaxPayerCurrentQueryHandler } from './queries/get-tax-payer-current/get-tax-payer-current.query-handler';
 
 const UserDomainServices: any[] = [
   EncryptionEmailService,
@@ -20,7 +21,10 @@ const UserCommandHandlers: any[] = [
   RegisterUsbTokenCommandHandler,
 ];
 const UserEventHandlers: any[] = [TaxPayerRegisteredEventHandler];
-const UserQueryHandlers: any[] = [LoginTaxPayerQueryHandler];
+const UserQueryHandlers: any[] = [
+  LoginTaxPayerQueryHandler,
+  GetTaxPayerCurrentQueryHandler,
+];
 
 export const UserApplications = {
   imports: [CqrsModule],

@@ -23,6 +23,7 @@ import { RegisterUsbTokenDto } from '../dto/register-usb-token/register-usb-toke
 import { RegisterUsbTokenCommandHandler } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command-handler';
 import { RegisterUsbTokenCommand } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command';
 import { GetTaxPayerCurrentDto } from '../dto/get-tax-payer-current/get-tax-payer-current.dto';
+import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
@@ -71,12 +72,9 @@ export class UserController {
   async getTaxPayerCurrent(
     @Payload() getTaxPayerCurrentDto: GetTaxPayerCurrentDto,
   ) {
-    console.log(
-      '🚀 ~ UserController ~ getTaxPayerCurrent ~ getTaxPayerCurrentDto:',
-      getTaxPayerCurrentDto,
+    return await this.queryBus.execute(
+      new GetTaxPayerCurrentQuery(getTaxPayerCurrentDto.taxCode),
     );
-    return getTaxPayerCurrentDto;
-    // return await this.queryBus.execute(new LoginTaxPayerQuery(taxCode));
   }
 
   @MessagePattern({ cmd: 'register-usb-token' })
