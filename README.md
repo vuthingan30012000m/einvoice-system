@@ -83,3 +83,118 @@ validation
 
 
 
+n đã thu hồi một tin nhắn
+
+Bạn đã thu hồi một tin nhắn
+
+Sản phẩm
+
+Hóa đơn
+
+Init
+
+Valideta
+07:45
+
+🥳
+
+Luôn cần đăng nhập
+
+Find taxpayers by tax code
+
+Tra cứu người nộp thuế theo mã số thuế
+
+Giống tokenEmail
+
+Cập nhật thông tin nnt
+
+Id .... ìnor
+
+Giống update
+
+Xóa tài khoản nnt
+
+Id
+
+Status =xóa
+
+Quên mật khẩu
+
+UsbToken
+Pas
+Comffim
+
+For got....
+
+Không cần đăng nhập
+
+Bạn đã thu hồi một tin nhắn
+
+Bạn đã thu hồi một tin nhắn
+
+Không rest
+
+🥳
+
+Crud sản phẩm
+
+Crud hóa đơn
+
+Vui lòng ký số
+
+UsbTokenn  stting
+
+Bạn đã thu hồi một tin nhắn
+
+Bạn đã thu hồi một tin nhắn
+
+Bạn đã thu hồi một tin nhắn
+
+🥳
+
+Taxpayer delete erorr
+
+1 u 
+N sp
+
+1 u 
+N hóa đơn
+
+1 hóa đơn 
+n chi tiết
+
+1 chi tiết
+N sp
+
+Src0
+
+Src1
+08:46
+
+Tìm u bênhoas đơn
+
+Apitag
+09:46
+
+Xem thông tin nnt
+
+Cá nhân
+10:17
+
+🥳
+
+Lập hóa đơn mới
+
+Lập hóa đơn thay thế
+
+Xóa hóa đơn
+
+Tìm
+
+Đầu ra đầu vào
+
+Tìm người
+
+Sản phẩm
+
+Nginx load bln
