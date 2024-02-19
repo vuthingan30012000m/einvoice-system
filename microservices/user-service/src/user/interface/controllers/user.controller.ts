@@ -78,18 +78,23 @@ export class UserController {
     );
   }
 
+  @MessagePattern({ cmd: 'reset-password' })
+  async resetPassword(@Payload() resetPasswordDto: ResetPasswordDto) {
+    console.log(
+      '🚀 ~ UserController ~ resetPassword ~ resetPasswordDto:',
+      resetPasswordDto,
+    );
+    return resetPasswordDto;
+    // return await this.commandBus.execute(
+    // new resetPasswordCommand(resetPasswordDto.taxCode),
+    // );
+  }
+
   @MessagePattern({ cmd: 'register-usb-token' })
   async registerUsbToken(@Payload() RegisterUsbTokenDto: RegisterUsbTokenDto) {
     return await this.commandBus.execute(
       new RegisterUsbTokenCommand(RegisterUsbTokenDto.taxCode),
     );
-  }
-
-  @MessagePattern({ cmd: 'reset-password' })
-  async resetPassword(@Payload() resetPasswordDto: ResetPasswordDto) {
-    // return await this.commandBus.execute(
-    // new resetPasswordCommand(resetPasswordDto.taxCode),
-    // );
   }
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {

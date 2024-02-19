@@ -67,6 +67,12 @@ export class UserController {
     );
   }
 
+  @Post('reset-password')
+  @ApiOperation({ summary: 'Quên mật khẩu' })
+  resetPassword(@Body() ResetPasswordDto: ResetPasswordDto) {
+    return this.natsClient.send({ cmd: 'reset-password' }, ResetPasswordDto);
+  }
+
   @Get('register-usb-token')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Đăng ký chữ ký số USB Token' })
@@ -91,12 +97,6 @@ export class UserController {
       { cmd: 'register-usb-token' },
       { taxCode: TaxPayer.taxCode },
     );
-  }
-
-  @Post('reset-password')
-  @ApiOperation({ summary: 'Quên mật khẩu' })
-  resetPassword(@Body() ResetPasswordDto: ResetPasswordDto) {
-    return this.natsClient.send({ cmd: 'reset-password' }, ResetPasswordDto);
   }
 
   // @ApiOperation({ summary: 'DDooir mật khẩu' })
