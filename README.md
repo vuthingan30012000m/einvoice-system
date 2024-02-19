@@ -1,6 +1,11 @@
 <!-- nest g resource   report -->
 <!-- touch    -->
-prettier --write 
+
+
+
+
+
+
 <!-- guard -->
 
 <!-- html -->

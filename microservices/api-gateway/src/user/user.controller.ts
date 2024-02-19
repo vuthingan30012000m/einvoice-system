@@ -114,7 +114,7 @@ export class UserController {
   }
 
   // @Post('change-password')
-  // @ApiOperation({ summary: 'Đổi mật         khẩu' })
+  // @ApiOperation({ summary: 'Đổi mật khẩu' })
   // changePassword(
   // @Body() changePasswordDto: changePasswordDto,
   // ) {
