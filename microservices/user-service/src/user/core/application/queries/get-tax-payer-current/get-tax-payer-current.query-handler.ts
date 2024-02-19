@@ -37,7 +37,6 @@ export class GetTaxPayerCurrentQueryHandler
       const existingTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxCode),
       );
-      console.log('🚀 ~ execute ~ existingTaxPayer:', existingTaxPayer);
       if (!existingTaxPayer) {
         throw new TaxPayerException('Không tìm thấy thông tin người nộp thuế.');
       }
@@ -45,28 +44,18 @@ export class GetTaxPayerCurrentQueryHandler
       const existingTaxOffice = await this.TaxOfficeRepositoryPort.getOneById(
         existingTaxPayer.taxOfficeId,
       );
-      console.log('🚀 ~ execute ~ existingTaxOffice:', existingTaxOffice);
-
       const existingBankDetail = await this.BankDetailRepository.getOneById(
         existingTaxPayer.bankDetailId,
       );
-      console.log('🚀 ~ execute ~ existingBankDetail:', existingBankDetail);
-
       const existingBank = await this.BankRepository.getOneById(
         existingBankDetail.BankId,
       );
-      console.log('🚀 ~ execute ~ existingBank :', existingBank);
-
       const existingAddress = await this.AddressRepository.getOneById(
         existingTaxPayer.addressId,
       );
-      console.log('🚀 ~ execute ~ existingAddress:', existingAddress);
-
       const existingWard = await this.WardRepository.getOneById(
         existingAddress.WardId,
       );
-      console.log('🚀 ~ execute ~ existingWard:', existingWard);
-
       const {
         password,
         usbToken,
