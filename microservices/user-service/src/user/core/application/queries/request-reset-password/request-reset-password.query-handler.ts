@@ -72,8 +72,8 @@ export class RequestResetPasswordQueryHandler
         throw new TaxPayerException('Không tìm thấy thông tin người nộp thuế.');
       }
 
-      const tokenEmail = this.EncryptionEmailService.encrypt(
-        payload.email,
+      const tokenPassword = this.EncryptionEmailService.encrypt(
+        payload.email + new Date().toISOString(),
         process.env.VERIFY_RESET_PASSWORD_SECRET,
       );
 
@@ -100,7 +100,7 @@ export class RequestResetPasswordQueryHandler
  padding: 10px;
  text-decoration: none;
  border-radius: 12px; "
- href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${tokenEmail}" target="_blank" >
+ href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-reset-password/${tokenPassword}" target="_blank" >
  &#128073;                          Đặt lại mật khẩu       </a >
 
  <br />

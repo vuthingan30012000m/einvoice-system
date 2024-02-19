@@ -1,14 +1,5 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseInterceptors,
-  Res,
-} from '@nestjs/common';
+import { Controller, UseInterceptors } from '@nestjs/common';
+
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
@@ -26,6 +17,7 @@ import { GetTaxPayerCurrentDto } from '../dto/get-tax-payer-current/get-tax-paye
 import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
 import { RequestResetPasswordDto } from '../dto/request-reset-password/request-reset-password.dto';
 import { RequestResetPasswordQuery } from 'src/user/core/application/queries/request-reset-password/request-reset-password.query';
+import { VerifyResetPasswordCommand } from 'src/user/core/application/commands/verify-reset-password/verify-reset-password.command';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
@@ -70,6 +62,7 @@ export class UserController {
       ),
     );
   }
+
   @MessagePattern({ cmd: 'get-taxpayer-current' })
   async getTaxPayerCurrent(
     @Payload() getTaxPayerCurrentDto: GetTaxPayerCurrentDto,
@@ -83,13 +76,15 @@ export class UserController {
   async requestResetPassword(
     @Payload() requestResetPasswordDto: RequestResetPasswordDto,
   ) {
-    console.log(
-      '🚀 ~ UserController ~ requestResetPassword ~ requestResetPasswordDto:',
-      requestResetPasswordDto,
-    );
-
     return this.queryBus.execute(
       new RequestResetPasswordQuery(requestResetPasswordDto.email),
+    );
+  }
+
+  @MessagePattern('verify-reset-password')
+  async verifyResetPassword(@Payload() tokenPassword: string) {
+    return await this.commandBus.execute(
+      new VerifyResetPasswordCommand(tokenPassword),
     );
   }
 
