@@ -12,11 +12,11 @@ import {
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { RegisterTaxPayerDto } from '../dto/register/register-tax-payer.dto';
+import { RegisterTaxPayerDto } from '../dto/register-tax-payer/register-tax-payer.dto';
 import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
 import { RemovePasswordInterceptor } from 'src/common/api/interceptors/remove-password.interceptor';
 import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-value.interceptor';
-import { LoginTaxPayerDto } from '../dto/login/login-tax-payer.dto';
+import { LoginTaxPayerDto } from '../dto/login-tax-payer/login-tax-payer.dto';
 import { LoginTaxPayerQuery } from 'src/user/core/application/queries/login-tax-payer/login-tax-payer.query';
 import { VerifyEmailTaxPayerCommand } from 'src/user/core/application/commands/verify-email-tax-payer/verify-email-tax-payer.command';
 import { RegisterUsbTokenDto } from '../dto/register-usb-token/register-usb-token.dto';
