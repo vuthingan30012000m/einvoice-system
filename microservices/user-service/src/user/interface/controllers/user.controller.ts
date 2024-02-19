@@ -19,6 +19,7 @@ import { RequestResetPasswordDto } from '../dto/request-reset-password/request-r
 import { RequestResetPasswordQuery } from 'src/user/core/application/queries/request-reset-password/request-reset-password.query';
 import { VerifyResetPasswordCommand } from 'src/user/core/application/commands/verify-reset-password/verify-reset-password.command';
 import { ChangePasswordCommand } from 'src/user/core/application/commands/change-password/change-password.command';
+import { ChangePasswordDto } from '../dto/change-password/change-password.dto';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
