@@ -20,6 +20,8 @@ import { RequestResetPasswordQuery } from 'src/user/core/application/queries/req
 import { VerifyResetPasswordCommand } from 'src/user/core/application/commands/verify-reset-password/verify-reset-password.command';
 import { ChangePasswordCommand } from 'src/user/core/application/commands/change-password/change-password.command';
 import { ChangePasswordDto } from '../dto/change-password/change-password.dto';
+import { UpdateTaxPayerCommand } from 'src/user/core/application/commands/update-tax-payer/update-tax-payer.command';
+import { UpdateTaxPayerDto } from '../dto/update-tax-payer/update-tax-payer.dto';
 
 @Controller('user')
 @UseInterceptors(ExcludeValueInterceptor)
