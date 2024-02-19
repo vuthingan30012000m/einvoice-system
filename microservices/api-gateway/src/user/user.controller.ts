@@ -173,7 +173,7 @@ export class UserController {
     }
 
     return this.natsClient.send(
-      { cmd: 'update-tax-payer' },
+      { cmd: 'delete-tax-payer' },
       {
         taxCode: TaxPayer.taxCode,
         usbToken: deleteTaxPayerDto.usbToken,

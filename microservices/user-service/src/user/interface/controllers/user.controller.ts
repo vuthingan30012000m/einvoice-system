@@ -122,4 +122,13 @@ export class UserController {
       ),
     );
   }
+  @MessagePattern({ cmd: 'delete-tax-payer' })
+  async deleteTaxPayer(@Payload() deleteTaxPayerDto: DeleteTaxPayerDto) {
+    return await this.commandBus.execute(
+      new DeleteTaxPayerCommand(
+        deleteTaxPayerDto.taxCode,
+        deleteTaxPayerDto.usbToken,
+      ),
+    );
+  }
 }
