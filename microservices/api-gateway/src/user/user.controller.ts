@@ -19,8 +19,8 @@ import {
 
 import { ClientProxy } from '@nestjs/microservices';
 
-import { RegisterTaxPayerDto } from './dto/register/register-tax-payer.dto';
-import { LoginTaxPayerDto } from './dto/login/login-tax-payer.dto';
+import { RegisterTaxPayerDto } from './dto/register-tax-payer/register-tax-payer.dto';
+import { LoginTaxPayerDto } from './dto/login-tax-payer/login-tax-payer.dto';
 import {
   TaxPayer,
   TaxPayerJwtPayload,
