@@ -113,31 +113,29 @@ export class UserController {
     );
   }
 
-  // @ApiOperation({ summary: 'DDooir mật khẩu' }) Đổi mật khẩu Change Password
-
-  // @Post('request-password')
-  // @ApiOperation({ summary: 'Yêu cầu quên mật khẩu' })
-  // requestResetPassword(
-  //   @Body() requestResetPasswordDto: RequestResetPasswordDto,
+  // @Post('change-password')
+  // @ApiOperation({ summary: 'Đổi mật         khẩu' })
+  // changePassword(
+  // @Body() changePasswordDto: changePasswordDto,
   // ) {
-  //   return this.natsClient.send(
-  //     { cmd: 'request-reset-password' },
-  //     requestResetPasswordDto,
-  //   );
+  // return this.natsClient.send(
+  // { cmd: 'change-reset-password' },
+  // changePasswordDto,
+  // );
   // }
 
   // @Get('get-taxpayer-current')
   // @ApiBearerAuth()
   // @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
   // getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
-  //   if (!TaxPayer) {
-  //     return 'Hãy đăng nhập để thực hiện chức năng này.';
-  //   }
+  // if (!TaxPayer) {
+  // return 'Hãy đăng nhập để thực hiện chức năng này.';
+  // }
 
-  //   return this.natsClient.send(
-  //     { cmd: 'get-taxpayer-current' },
-  //     { taxCode: TaxPayer.taxCode },
-  //   );
+  // return this.natsClient.send(
+  // { cmd: 'get-taxpayer-current' },
+  // { taxCode: TaxPayer.taxCode },
+  // );
   // }
   // UsbToken
   // Pas

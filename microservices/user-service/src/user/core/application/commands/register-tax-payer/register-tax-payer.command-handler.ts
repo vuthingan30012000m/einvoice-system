@@ -128,7 +128,7 @@ export class RegisterTaxPayerCommandHandler
       return { message: 'Đăng ký thành công. Hãy thực hiện xác nhận email.' };
     } catch (error) {
       this.logger.error(`> ${error}`);
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }

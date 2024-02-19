@@ -68,7 +68,7 @@ export class LoginTaxPayerQueryHandler
 
       return accessToken;
     } catch (error) {
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }

@@ -58,7 +58,7 @@ export class VerifyResetPasswordCommandHandler
       return { newPassword };
     } catch (error) {
       this.logger.error(`> ${error}`);
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }

@@ -40,7 +40,7 @@ export class RegisterUsbTokenCommandHandler
       return qrCode;
     } catch (error) {
       this.logger.error(`> ${error}`);
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }

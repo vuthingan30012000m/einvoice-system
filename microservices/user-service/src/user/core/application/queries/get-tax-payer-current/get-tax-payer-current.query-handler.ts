@@ -87,7 +87,7 @@ export class GetTaxPayerCurrentQueryHandler
         },
       };
     } catch (error) {
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }

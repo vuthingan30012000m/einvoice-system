@@ -132,7 +132,7 @@ export class RequestResetPasswordQueryHandler
         message: 'Yêu cầu quên mật khẩu thành công. Hãy kiểm tra email.',
       };
     } catch (error) {
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }

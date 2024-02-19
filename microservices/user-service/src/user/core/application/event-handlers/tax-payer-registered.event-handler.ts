@@ -77,7 +77,7 @@ href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${
 
       // queue
     } catch (error) {
-      return { error: error.message };
+      return { message: error.message };
     }
   }
 }
