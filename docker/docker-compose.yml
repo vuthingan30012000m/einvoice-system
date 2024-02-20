@@ -21,7 +21,6 @@ services:
       MYSQL_TCP_PORT: 3306
     command: --init-file /init.sql
     volumes:
-      - ./mysql/var/lib/mysql:/var/lib/mysql
       - ./mysql/init.sql:/init.sql
 
   phpmyadmin:

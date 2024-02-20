@@ -49,10 +49,6 @@ Crud hóa đơn
 Hóa đơn
 Sản phẩm
 
-<!-- Find taxpayers by tax code -->
-<!-- Tra cứu người nộp thuế theo mã số thuế -->
-
-Giống tokenEmail
 
 Lập hóa đơn mới
 Lập hóa đơn thay thế

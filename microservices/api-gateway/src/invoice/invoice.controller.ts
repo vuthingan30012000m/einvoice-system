@@ -18,4 +18,9 @@ import { UpdateInvoiceDto } from './dto/update-invoice.dto';
 @ApiTags('Dịch vụ quản lý hóa đơn')
 export class InvoiceController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
+
+  // <!-- Find taxpayers by tax code -->
+  // <!-- Tra cứu người nộp thuế theo mã số thuế -->
+  //
+  // Giống tokenEmail
 }
