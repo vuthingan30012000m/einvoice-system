@@ -37,7 +37,7 @@ export class UpdateTaxPayerCommandHandler
   constructor(
     private readonly HashPasswordService: HashPasswordService,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
-    private readonly TaxOfficeRepository: TaxOfficeRepositoryPort,
+    private readonly TaxOfficeRepositoryPort: TaxOfficeRepositoryPort,
     private readonly BankRepository: BankRepositoryPort,
     private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
@@ -67,6 +67,21 @@ export class UpdateTaxPayerCommandHandler
         throw new TaxPayerException('Chữ ký số không đúng.');
       }
 
+      const existingEmail = await this.TaxPayerRepository.getOneByEmail(
+        new Email(payload.email),
+      );
+      if (existingEmail) {
+        throw new TaxPayerException('Email đã tồn tại.');
+      }
+
+      const existingPhoneNumber =
+        await this.TaxPayerRepository.getOneByPhoneNumber(
+          new PhoneNumber(payload.phoneNumber),
+        );
+      if (existingPhoneNumber) {
+        throw new TaxPayerException('Số điện thoại đã tồn tại.');
+      }
+
       findTaxPayer.update(
         payload.name,
         new Email(payload.email),
@@ -74,6 +89,52 @@ export class UpdateTaxPayerCommandHandler
       );
 
       await this.TaxPayerRepository.save(findTaxPayer);
+
+      const existingTaxOffice = await this.TaxOfficeRepositoryPort.getOneById(
+        findTaxPayer.taxOfficeId,
+      );
+      const existingBankDetail = await this.BankDetailRepository.getOneById(
+        findTaxPayer.bankDetailId,
+      );
+      const existingBank = await this.BankRepository.getOneById(
+        existingBankDetail.BankId,
+      );
+      const existingAddress = await this.AddressRepository.getOneById(
+        findTaxPayer.addressId,
+      );
+      const existingWard = await this.WardRepository.getOneById(
+        existingAddress.WardId,
+      );
+      const {
+        password,
+        usbToken,
+        taxOfficeId,
+        bankDetailId,
+        addressId,
+        ...result
+      } = findTaxPayer;
+
+      return {
+        ...result,
+        taxOffice: {
+          id: existingTaxOffice.id.value,
+          name: existingTaxOffice.name,
+        },
+        bankDetail: {
+          accountBank: existingBankDetail.accountBank,
+          bank: {
+            name: existingBank.name,
+            code: existingBank.code,
+            shortName: existingBank.shortName,
+          },
+        },
+        address: {
+          note: existingAddress.note,
+          ward: {
+            name: existingWard.name,
+          },
+        },
+      };
 
       return { message: 'Cập nhật người nộp thuế thành công.' };
     } catch (error) {

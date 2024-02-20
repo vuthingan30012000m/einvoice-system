@@ -15,17 +15,9 @@ export class TaxOfficeSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      for (const item of dataTaxOfficeEntity) {
-        const existingTaxOfficeEntity =
-          await this.TaxOfficeEntityRepository.findOneBy({
-            id: String(item.id),
-          });
-
-        if (existingTaxOfficeEntity) {
-          // await this.TaxOfficeEntityRepository.update(existingTaxOfficeEntity.id, {
-          // name: item.name,
-          // });
-        } else {
+      const sum = await this.TaxOfficeEntityRepository.count();
+      if (sum < dataTaxOfficeEntity.length) {
+        for (const item of dataTaxOfficeEntity) {
           const newTaxOfficeEntity = this.TaxOfficeEntityRepository.create({
             id: String(item.id),
             name: item.name,

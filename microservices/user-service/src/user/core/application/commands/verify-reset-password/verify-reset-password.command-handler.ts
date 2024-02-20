@@ -33,10 +33,7 @@ export class VerifyResetPasswordCommandHandler
 
       const [email, dateRequest] = payloadDecrypt.split(' ');
 
-      if (
-        new Date(dateRequest) <
-        new Date(new Date().getTime() - 3600 * 1000 * 24)
-      ) {
+      if (new Date(dateRequest) < new Date(new Date().getTime() - 60 * 1000)) {
         throw new TaxPayerException('Yêu cầu khôi phục mật khẩu hết hạn');
       }
 

@@ -15,25 +15,13 @@ export class BankSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      for (const item of dataBank) {
-        const existingBankEntity = await this.BankEntityRepository.findOneBy({
-          id: String(item.id),
-        });
-
-        if (existingBankEntity) {
-          // await this.BankEntityRepository.update(existingBankEntity.id, {
-          // name: item.name,
-          // code: item.code,
-          // shortName: item.shortName,
-          // });
-        } else {
+      const sum = await this.BankEntityRepository.count();
+      if (sum < dataBank.length) {
+        for (const item of dataBank) {
           const newBankEntity = this.BankEntityRepository.create({
             id: String(item.id),
             name: item.name,
-            code: item.code,
-            shortName: item.shortName,
           });
-
           await this.BankEntityRepository.save(newBankEntity);
         }
       }

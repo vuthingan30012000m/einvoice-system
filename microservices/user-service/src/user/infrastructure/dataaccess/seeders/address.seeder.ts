@@ -25,35 +25,20 @@ export class AddressSeeder implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      for (const item of dataCity) {
-        const existingCity = await this.cityRepository.findOneBy({
-          id: String(item.id),
-        });
-
-        if (existingCity) {
-          // await this.cityRepository.update(existingCity.id, {
-          // name: item.name,
-          // });
-        } else {
+      const sumCity = await this.cityRepository.count();
+      if (sumCity < dataCity.length) {
+        for (const item of dataCity) {
           const newCity = this.cityRepository.create({
             id: String(item.id),
             name: item.name,
           });
-
           await this.cityRepository.save(newCity);
         }
       }
 
-      for (const item of dataDistrict) {
-        const existingDistrict = await this.districtRepository.findOneBy({
-          id: String(item.id),
-        });
-
-        if (existingDistrict) {
-          // await this.districtRepository.update(existingDistrict.id, {
-          // name: item.name,
-          // });
-        } else {
+      const sumDistrict = await this.districtRepository.count();
+      if (sumDistrict < dataDistrict.length) {
+        for (const item of dataDistrict) {
           const city = await this.cityRepository.findOneBy({
             id: String(item.city),
           });
@@ -68,16 +53,9 @@ export class AddressSeeder implements OnModuleInit {
         }
       }
 
-      for (const item of dataWard) {
-        const existingWard = await this.wardRepository.findOneBy({
-          id: String(item.id),
-        });
-
-        if (existingWard) {
-          // await this.wardRepository.update(existingWard.id, {
-          // name: item.name,
-          // });
-        } else {
+      const sumWard = await this.wardRepository.count();
+      if (sumWard < dataWard.length) {
+        for (const item of dataWard) {
           const district = await this.districtRepository.findOneBy({
             id: String(item.district),
           });

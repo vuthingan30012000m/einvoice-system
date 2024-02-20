@@ -1,9 +1,7 @@
 <!-- nest g resource   report -->
 <!-- touch    -->
 
-
-
-
+<!-- event -->
 
 
 <!-- guard -->
