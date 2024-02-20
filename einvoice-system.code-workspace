@@ -13,11 +13,8 @@
     {
       "path": "microservices/api-gateway/src"
     },
-    {
-      "path": "microservices/user-service/src"
-    },
-    {
-      "path": "microservices/invoice-service/src"
+    { "name": "user-service", "path": "microservices/user-service/src" },
+    { "name": "invoice-service", "path": "microservices/invoice-service/src" },
     },
     {
       "path": "../product-cqrs/src/product"

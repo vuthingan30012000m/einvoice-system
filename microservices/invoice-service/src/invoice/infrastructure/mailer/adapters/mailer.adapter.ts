@@ -1,6 +1,6 @@
 import { MailerPort } from '../../../core/application/ports/mailer/mailer.port';
 import { MailerService } from '@nestjs-modules/mailer';
-import { Email } from 'src/user/core/domain/value-objects/email';
+import { Email } from '../../../core/domain/value-objects/email';
 
 import { Injectable } from '@nestjs/common';
 

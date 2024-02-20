@@ -1,6 +1,6 @@
 import { DomainValueObject } from '../../../../common/ddd/oop/core/domain/value-objects/domain.value-object';
 
-import { TaxPayerException } from '../exceptions/tax-payer.exception'; 
+import { InvoiceException } from '../exceptions/invoice.exception';
 
 export class Email extends DomainValueObject {
   constructor(readonly value: string) {
@@ -12,7 +12,7 @@ export class Email extends DomainValueObject {
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
     if (!regex.test(this.value)) {
-      throw new TaxPayerException('Email không đúng định dạng.');
+      throw new InvoiceException('Email không đúng định dạng.');
     }
   }
 }
