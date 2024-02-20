@@ -21,6 +21,12 @@
     {
       "name": "invoice-service",
       "path": "microservices/invoice-service/src"
+    },
+    {
+      "path": "microservices/user-service/src/user/core/application/event-handlers"
+    },
+    {
+      "path": "microservices/invoice-service/src/invoice/interface/listener"
     }
   ],
   "settings": {
