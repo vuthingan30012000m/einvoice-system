@@ -19,13 +19,19 @@ export class TaxPayerEntity {
   @Column({ nullable: false })
   name: string;
 
-  @Column({ unique: true, nullable: false })
+  @Column({
+    // unique: true,
+    nullable: false,
+  })
   email: string;
 
   @Column({ nullable: false })
   password: string;
 
-  @Column({ unique: true, nullable: false })
+  @Column({
+    // unique: true,
+    nullable: false,
+  })
   phoneNumber: string;
 
   @Column({ nullable: false })

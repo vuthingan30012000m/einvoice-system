@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { MessageQueuePort } from 'src/user/core/application/ports/message-queue/message-queue.port';
+import { MessageQueuePort } from 'src/user/core/application/ports/publisher/message-queue.port';
 
 @Injectable()
 export abstract class QueueAdapter implements MessageQueuePort {
@@ -9,6 +9,6 @@ export abstract class QueueAdapter implements MessageQueuePort {
   ) {}
 
   sendMessage(pattern: string, data: any) {
-    return this.natsMessageQueue.send(pattern, data);
+    return this.natsMessageQueue.emit(pattern, data);
   }
 }

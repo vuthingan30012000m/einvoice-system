@@ -33,7 +33,7 @@ import { MailerPort } from '../core/application/ports/mailer/mailer.port';
 
 import { QueueConfig } from './queue/config/queue.config';
 import { QueueAdapter } from './queue/adapters/queue.adapter';
-import { MessageQueuePort } from '../core/application/ports/message-queue/message-queue.port';
+import { MessageQueuePort } from '../core/application/ports/publisher/message-queue.port';
 
 export const UserInfrastructure = {
   validations: Joi.object({
