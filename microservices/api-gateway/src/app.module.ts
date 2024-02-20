@@ -21,21 +21,8 @@ import { JwtModule } from '@nestjs/jwt';
       validationSchema: Joi.object({
         PORT: Joi.string().required(),
 
-
-
-
-
         NATS_HOST: Joi.string().required(),
 
-
-
-
-
-
-
-
-
-        
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRES_IN: Joi.string().required(),
       }),

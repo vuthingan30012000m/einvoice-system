@@ -36,26 +36,24 @@ import { DeleteTaxPayerDto } from './dto/delete-tax-payer/delete-tax-payer.dto';
 @Controller('user')
 @ApiTags('Dịch vụ quản lý người dùng')
 export class UserController {
-  constructor(
-    @Inject('API_GATEWAY') private natsClient: ClientProxy,
-  ) {}
+  constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
   @Post('register-tax-payer')
   @ApiOperation({ summary: 'Đăng ký tài khoản' })
   register(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
-    return this.natsClient.send({ cmd: 'register' }, registerTaxPayerDto);
+    return this.apiGateway.send({ cmd: 'register' }, registerTaxPayerDto);
   }
 
   @Get('verify-email/:tokenEmail')
   @ApiOperation({ summary: 'Xác thực email' })
   verifyEmail(@Param('tokenEmail') tokenEmail: string) {
-    return this.natsClient.send({ cmd: 'verify-email' }, tokenEmail);
+    return this.apiGateway.send({ cmd: 'verify-email' }, tokenEmail);
   }
 
   @Post('login-tax-payer')
   @ApiOperation({ summary: 'Đăng nhập tài khoản' })
   login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
-    return this.natsClient.send({ cmd: 'login' }, LoginTaxPayerDto);
+    return this.apiGateway.send({ cmd: 'login' }, LoginTaxPayerDto);
   }
 
   @Get('get-tax-payer-current')
@@ -66,7 +64,7 @@ export class UserController {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    return this.natsClient.send(
+    return this.apiGateway.send(
       { cmd: 'get-tax-payer-current' },
       { taxCode: TaxPayer.taxCode },
     );
@@ -77,7 +75,7 @@ export class UserController {
   requestResetPassword(
     @Body() requestResetPasswordDto: RequestResetPasswordDto,
   ) {
-    return this.natsClient.send(
+    return this.apiGateway.send(
       { cmd: 'request-reset-password' },
       requestResetPasswordDto,
     );
@@ -86,7 +84,7 @@ export class UserController {
   @Get('verify-reset-password/:tokenPassword')
   @ApiOperation({ summary: 'Xác thực quên mật khẩu' })
   verifyResetPassword(@Param('tokenPassword') tokenPassword: string) {
-    return this.natsClient.send(
+    return this.apiGateway.send(
       { cmd: 'verify-reset-password' },
       tokenPassword,
     );
@@ -112,7 +110,7 @@ export class UserController {
   }
 
   registerUsbToken(TaxPayer: TaxPayerJwtPayload) {
-    return this.natsClient.send(
+    return this.apiGateway.send(
       { cmd: 'register-usb-token' },
       { taxCode: TaxPayer.taxCode },
     );
@@ -129,7 +127,7 @@ export class UserController {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    return this.natsClient.send(
+    return this.apiGateway.send(
       { cmd: 'change-password' },
       {
         taxCode: TaxPayer.taxCode,
@@ -151,7 +149,7 @@ export class UserController {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    return this.natsClient.send(
+    return this.apiGateway.send(
       { cmd: 'update-tax-payer' },
       {
         taxCode: TaxPayer.taxCode,
@@ -174,7 +172,7 @@ export class UserController {
       return 'Hãy đăng nhập để thực hiện chức năng này.';
     }
 
-    return this.natsClient.send(
+    return this.apiGateway.send(
       { cmd: 'delete-tax-payer' },
       {
         taxCode: TaxPayer.taxCode,
