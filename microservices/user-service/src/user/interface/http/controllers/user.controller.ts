@@ -22,10 +22,9 @@ import { UpdateTaxPayerCommand } from 'src/user/core/application/commands/update
 import { UpdateTaxPayerDto } from '../dtos/update-tax-payer.dto';
 import { DeleteTaxPayerDto } from '../dtos/delete-tax-payer.dto';
 import { DeleteTaxPayerCommand } from 'src/user/core/application/commands/delete-tax-payer/delete-tax-payer.command';
-import { ExcludeValueInterceptor } from 'src/interceptors/exclude-value.interceptor';
+// import { ExcludeValueInterceptor } from 'src/interceptors/exclude-value.interceptor';
 
 @Controller('user')
-@UseInterceptors(ExcludeValueInterceptor)
 export class UserController {
   constructor(
     private readonly commandBus: CommandBus,
@@ -33,7 +32,6 @@ export class UserController {
   ) {}
 
   @MessagePattern({ cmd: 'register' })
-  // @UseInterceptors(RemovePasswordInterceptor)
   async register(@Payload() registerTaxPayerDto: RegisterTaxPayerDto) {
     return await this.commandBus.execute(
       new RegisterTaxPayerCommand(

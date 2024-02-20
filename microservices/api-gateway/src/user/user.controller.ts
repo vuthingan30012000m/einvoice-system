@@ -12,6 +12,7 @@ import {
   NotAcceptableException,
   HttpException,
   HttpStatus,
+  UseInterceptors,
 } from '@nestjs/common';
 
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -32,9 +33,11 @@ import { UpdateTaxPayerDto } from './dtos/update-tax-payer.dto';
 import { DeleteTaxPayerDto } from './dtos/delete-tax-payer.dto';
 import { RegisterTaxPayerDto } from './dtos/register-tax-payer.dto';
 import { LoginTaxPayerDto } from './dtos/login-tax-payer.dto';
+import { ExcludeValueInterceptor } from 'src/interceptors/exclude-value.interceptor';
 
 @ApiTags('Dịch vụ quản lý người dùng')
 @Controller('user')
+@UseInterceptors(ExcludeValueInterceptor)
 export class UserController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
