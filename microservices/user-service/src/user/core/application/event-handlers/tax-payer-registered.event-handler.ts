@@ -2,7 +2,7 @@ import { Inject, Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { TaxPayerRegisteredEvent } from '../../domain/events/tax-payer-registered.event';
 import { MailerPort } from '../ports/mailer/mailer.port';
-import { QueuePort } from '../ports/queue/queue.port';
+import { MessageQueuePort } from '../ports/message-queue/message-queue.port';
 import { EncryptionEmailService } from '../../domain/services/encryption-email.service';
 import { ClientProxy } from '@nestjs/microservices';
 
@@ -15,28 +15,26 @@ export class TaxPayerRegisteredEventHandler
   constructor(
     private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly mailerPort: MailerPort,
-    private readonly QueuePort: QueuePort,
+    private readonly MessageQueuePort: MessageQueuePort,
   ) {}
 
-  handle(TaxPayerRegisteredEvent: TaxPayerRegisteredEvent) {
+  handle(event: TaxPayerRegisteredEvent) {
     try {
-      this.logger.debug(
-        `> TaxPayerRegisteredEvent: ${JSON.stringify(TaxPayerRegisteredEvent)}`,
-      );
+      this.logger.debug(`>  Event : ${JSON.stringify(event)}`);
 
       const tokenEmail = this.EncryptionEmailService.encrypt(
-        TaxPayerRegisteredEvent.TaxPayer.email.value,
+        event.TaxPayer.email.value,
         process.env.VERIFY_EMAIL_SECRET,
       );
 
       this.mailerPort.send(
-        TaxPayerRegisteredEvent.TaxPayer.email,
+        event.TaxPayer.email,
         'Xác thực email',
         `
-<h1>Xin chào <strong>${TaxPayerRegisteredEvent.TaxPayer.name}</strong>,</h1>
+<h1>Xin chào <strong>${event.TaxPayer.name}</strong>,</h1>
 
 <p>
-Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${TaxPayerRegisteredEvent.TaxPayer.id.value}</strong>
+Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${event.TaxPayer.id.value}</strong>
 </p>
 
 
@@ -74,10 +72,11 @@ href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${
       );
 
       this.logger.log(
-        `> Gửi xác thực email: ${JSON.stringify(TaxPayerRegisteredEvent.TaxPayer.email.value)}`,
+        `> Gửi email: ${JSON.stringify(event.TaxPayer.email.value)}`,
       );
 
-      // queue
+      this.MessageQueuePort.sendMessage('tax-payer-registered', event.TaxPayer);
+      this.logger.log(`> Gửi     sự kiện: ${JSON.stringify(event.TaxPayer)}`);
     } catch (error) {
       return { message: error.message };
     }

@@ -2,12 +2,13 @@
 <!-- touch    -->
 
 
-
+<!-- xóa  this.logger.debug(     `>  thành payload: ${JSON.stringify(payload)}`);   -->
 
 <!-- Có thể xóa folder dto dtos -->
-
-
 <!-- Domain service bị sai -->
+
+
+
 
 
 <!-- quue -->
