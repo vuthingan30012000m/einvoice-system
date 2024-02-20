@@ -8,6 +8,10 @@ import {
   Delete,
   Inject,
   Res,
+  NotFoundException,
+  NotAcceptableException,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -77,7 +81,7 @@ export class UserController {
   @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
   getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
     if (!TaxPayer) {
-      return 'Hãy đăng nhập để thực hiện chức năng này.';
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
     return this.apiGateway.send(
@@ -94,7 +98,7 @@ export class UserController {
     @Res() Response: Response,
   ) {
     if (!TaxPayer) {
-      return 'Hãy đăng nhập để thực hiện chức năng này.';
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
     Response.type('png');
@@ -120,7 +124,7 @@ export class UserController {
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   ) {
     if (!TaxPayer) {
-      return 'Hãy đăng nhập để thực hiện chức năng này.';
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
     return this.apiGateway.send(
@@ -142,7 +146,7 @@ export class UserController {
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   ) {
     if (!TaxPayer) {
-      return 'Hãy đăng nhập để thực hiện chức năng này.';
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
     return this.apiGateway.send(
@@ -165,7 +169,7 @@ export class UserController {
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   ) {
     if (!TaxPayer) {
-      return 'Hãy đăng nhập để thực hiện chức năng này.';
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
     return this.apiGateway.send(
