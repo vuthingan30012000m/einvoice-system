@@ -1,21 +1,21 @@
 import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
-import { TaxPayerUpdatedEvent } from '../../domain/events/tax-payer-updated.event';
+import { TaxPayerActivatedEvent } from '../../domain/events/tax-payer-activated.event';
 import { MessageQueuePort } from '../ports/publisher/message-queue.port';
 
-@EventsHandler(TaxPayerUpdatedEvent)
-export class TaxPayerUpdatedEventHandler
-  implements IEventHandler<TaxPayerUpdatedEvent>
+@EventsHandler(TaxPayerActivatedEvent)
+export class TaxPayerActivatedEventHandler
+  implements IEventHandler<TaxPayerActivatedEvent>
 {
-  private readonly logger = new Logger(TaxPayerUpdatedEventHandler.name);
+  private readonly logger = new Logger(TaxPayerActivatedEventHandler.name);
 
   constructor(private readonly MessageQueuePort: MessageQueuePort) {}
 
-  handle(event: TaxPayerUpdatedEvent) {
+  handle(event: TaxPayerActivatedEvent) {
     try {
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
-      this.MessageQueuePort.sendMessage('tax-payer-updated', event);
+      this.MessageQueuePort.sendMessage('tax-payer-activated', event);
       this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event)}`);
     } catch (error) {
       return { message: error.message };
