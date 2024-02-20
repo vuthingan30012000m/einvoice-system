@@ -51,26 +51,6 @@ export class UserController {
     return this.apiGateway.send({ cmd: 'verify-email' }, tokenEmail);
   }
 
-  @Post('login-tax-payer')
-  @ApiOperation({ summary: 'Đăng nhập tài khoản' })
-  login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
-    return this.apiGateway.send({ cmd: 'login' }, LoginTaxPayerDto);
-  }
-
-  @Get('get-tax-payer-current')
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
-  getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
-    if (!TaxPayer) {
-      return 'Hãy đăng nhập để thực hiện chức năng này.';
-    }
-
-    return this.apiGateway.send(
-      { cmd: 'get-tax-payer-current' },
-      { taxCode: TaxPayer.taxCode },
-    );
-  }
-
   @Post('request-reset-password')
   @ApiOperation({ summary: 'Yêu cầu quên mật khẩu' })
   requestResetPassword(
@@ -88,6 +68,26 @@ export class UserController {
     return this.apiGateway.send(
       { cmd: 'verify-reset-password' },
       tokenPassword,
+    );
+  }
+
+  @Post('login-tax-payer')
+  @ApiOperation({ summary: 'Đăng nhập tài khoản' })
+  login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
+    return this.apiGateway.send({ cmd: 'login' }, LoginTaxPayerDto);
+  }
+
+  @ApiBearerAuth()
+  @Get('get-tax-payer-current')
+  @ApiOperation({ summary: 'Xem thông tin người nộp thuế hiện tại' })
+  getTaxPayerCurrent(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
+    if (!TaxPayer) {
+      return 'Hãy đăng nhập để thực hiện chức năng này.';
+    }
+
+    return this.apiGateway.send(
+      { cmd: 'get-tax-payer-current' },
+      { taxCode: TaxPayer.taxCode },
     );
   }
 
