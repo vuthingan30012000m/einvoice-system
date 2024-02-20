@@ -1,4 +1,4 @@
-import { IRepository } from 'src/common/ddd/oop/core/application/ports/dataaccess/repositories/i-repository';
+import { IRepository } from '@vuvannghia/common';
 
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
 import { TaxPayer } from '../../../../domain/entities/tax-payer';

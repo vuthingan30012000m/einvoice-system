@@ -1,4 +1,4 @@
-import { IMailer } from 'src/common/ddd/oop/core/application/ports/mailer/i-mailer';
+import { IMailer } from '@vuvannghia/common';
 import { Email } from 'src/user/core/domain/value-objects/email';
 
 export abstract class MailerPort implements IMailer {

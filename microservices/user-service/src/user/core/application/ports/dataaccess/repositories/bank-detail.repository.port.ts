@@ -1,4 +1,4 @@
-import { IRepository } from 'src/common/ddd/oop/core/application/ports/dataaccess/repositories/i-repository';
+import { IRepository } from '@vuvannghia/common';
 import { BankDetail } from 'src/user/core/domain/entities/bank-detail';
 import { BankDetailId } from 'src/user/core/domain/value-objects/bank-detail-id';
 import { BankId } from 'src/user/core/domain/value-objects/bank-id';
