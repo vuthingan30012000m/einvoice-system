@@ -1,0 +1,7 @@
+/home/vvn20206205/Desktop/vuvannghia/src/index.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/application/ports/mailer/i-mailer.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/application/ports/dataaccess/repositories/i-repository.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/exceptions/domain.exception.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/events/domain.event.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/value-objects/domain.value-object.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/entities/domain.entity.ts
