@@ -64,7 +64,6 @@ export class TaxPayerRegisteredEventHandler
 
       this.MessageQueuePort.sendMessage('tax-payer-registered', event);
       this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event)}`);
-
     } catch (error) {
       return { message: error.message };
     }
