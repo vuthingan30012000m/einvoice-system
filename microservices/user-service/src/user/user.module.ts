@@ -30,5 +30,6 @@ import { UserInfrastructure } from './infrastructure/user.infrastructure';
     ...UserInfrastructure.providers,
     ...UserApplications.providers,
   ],
+  exports: [],
 })
 export class UserModule {}
