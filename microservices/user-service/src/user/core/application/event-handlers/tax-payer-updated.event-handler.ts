@@ -9,9 +9,7 @@ export class TaxPayerUpdatedEventHandler
 {
   private readonly logger = new Logger(TaxPayerUpdatedEventHandler.name);
 
-  constructor(
-    private readonly MessageQueuePort: MessageQueuePort,
-  ) {}
+  constructor(private readonly MessageQueuePort: MessageQueuePort) {}
 
   handle(event: TaxPayerUpdatedEvent) {
     try {

@@ -27,6 +27,9 @@
     },
     {
       "path": "microservices/invoice-service/src/invoice/interface/listener"
+    },
+    {
+      "path": "microservices/user-service/src/user/core/application/commands"
     }
   ],
   "settings": {

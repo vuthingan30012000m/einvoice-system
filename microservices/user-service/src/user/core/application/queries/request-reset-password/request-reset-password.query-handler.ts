@@ -50,8 +50,7 @@ export class RequestResetPasswordQueryHandler
     private readonly AddressRepository: AddressRepositoryPort,
     private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly mailerPort: MailerPort,
-  ) {
-  }
+  ) {}
 
   public async execute(payload: RequestResetPasswordQuery) {
     try {
