@@ -21,10 +21,10 @@ export class TaxPayerRegisteredEventHandler
     try {
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
-      const tokenEmail = this.EncryptionEmailService.encrypt(
-        event.newTaxPayer.email.value,
-        process.env.VERIFY_EMAIL_SECRET,
-      );
+      // const tokenEmail = this.EncryptionEmailService.encrypt(
+      //   event.newTaxPayer.email.value,
+      //   process.env.VERIFY_EMAIL_SECRET,
+      // );
 
       // this.mailerPort.send(
       // event.newTaxPayer.email,
@@ -62,18 +62,11 @@ export class TaxPayerRegisteredEventHandler
         `> Gửi email: ${JSON.stringify(event.newTaxPayer.email.value)}`,
       );
 
-      // this.MessageQueuePort.sendMessage('tax-payer-registered', event.newTaxPayer);
-      // this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event.newTaxPayer)}`);
+      this.MessageQueuePort.sendMessage('tax-payer-registered', event);
+      this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event)}`);
 
-      console.log('🚀 ~ handle ~ event.newTaxPayer:', event.newTaxPayer.taxOfficeId.value);
-      // }
-      // @
-      // @
-      // @
-      // @
     } catch (error) {
       return { message: error.message };
     }
-    console.log('🚀 ~ handle ~ event.TaxPayer:', event.TaxPayer);
   }
 }

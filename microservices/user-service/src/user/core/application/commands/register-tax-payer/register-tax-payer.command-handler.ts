@@ -122,13 +122,9 @@ export class RegisterTaxPayerCommandHandler
       await this.BankDetailRepository.save(newBankDetail);
       await this.TaxPayerRepository.save(newTaxPayer);
 
-      // this.eventBus.publish(
-      //   new TaxPayerRegisteredEvent(newAddress, newBankDetail, newTaxPayer),
-      // );
-      // this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
-      // this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
-      // this.eventBus.publish(new TaxPayerRegisteredEvent(newTaxPayer));
-
+      this.eventBus.publish(
+        new TaxPayerRegisteredEvent(newAddress, newBankDetail, newTaxPayer),
+      );
 
       return { message: 'Đăng ký thành công. Hãy thực hiện xác nhận email.' };
     } catch (error) {
