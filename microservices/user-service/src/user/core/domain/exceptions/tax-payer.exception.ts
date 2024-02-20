@@ -1,4 +1,4 @@
-import { DomainException } from '../../../../common/ddd/oop/core/domain/exceptions/domain.exception';
+import { DomainException } from '@vuvannghia/common';
 
 export class TaxPayerException extends DomainException {
   constructor(message: string) {
