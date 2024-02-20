@@ -22,7 +22,6 @@ import { InvoiceInterface } from './interface/invoice.interface';
     ...InvoiceApplications.imports,
   ],
 
-  
   providers: [
     ...InvoiceInfrastructure.seeders,
     ...InvoiceInterface.resolvers,

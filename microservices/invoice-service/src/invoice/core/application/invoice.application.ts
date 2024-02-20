@@ -1,7 +1,16 @@
-const InvoiceQueryHandlers: any[] = [];
-const InvoiceCommandHandlers: any[] = [];
+import { CqrsModule } from '@nestjs/cqrs';
 
-export const InvoiceApplications = [
-  ...InvoiceQueryHandlers,
-  ...InvoiceCommandHandlers,
-];
+const InvoiceDomainServices: any[] = [];
+const InvoiceCommandHandlers: any[] = [];
+const InvoiceEventHandlers: any[] = [];
+const InvoiceQueryHandlers: any[] = [];
+
+export const InvoiceApplications = {
+  imports: [CqrsModule],
+  providers: [
+    ...InvoiceDomainServices,
+    ...InvoiceCommandHandlers,
+    ...InvoiceEventHandlers,
+    ...InvoiceQueryHandlers,
+  ],
+};
