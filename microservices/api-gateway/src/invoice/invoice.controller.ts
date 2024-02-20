@@ -8,11 +8,14 @@ import {
   Delete,
   Inject,
 } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
+import { ApiTags } from '@nestjs/swagger';
+
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { UpdateInvoiceDto } from './dto/update-invoice.dto';
-import { ClientProxy } from '@nestjs/microservices';
 
 @Controller('invoice')
+@ApiTags('Dịch vụ quản lý hóa đơn')
 export class InvoiceController {
   constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
 
