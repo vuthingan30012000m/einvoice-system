@@ -12,7 +12,8 @@ def format(directory):
                 contents = contents.replace("  ", " ")
             contents = contents.replace("process.env['", "process.env.")
             contents = contents.replace("process.env[\"", "process.env.")
-            contents = contents.replace("return { error: error.message };", "return { message: error.message };")
+            contents = contents.replace("return { error: error.message };", "return { message: error.message };") 
+            contents = contents.replace("NATS_SERVICE", "xxxxxxxxxxxxxxxxxxxxx")
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(contents)
 # prettier --write  file_path
@@ -22,8 +23,8 @@ def format(directory):
 list_code=[
 "/home/vvn20206205/Desktop/einvoice-system/microservices/api-gateway/src",
 "/home/vvn20206205/Desktop/einvoice-system/microservices/user-service/src",
+"/home/vvn20206205/Desktop/einvoice-system/microservices/invoice-service/src",
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/tct-demo/src",
-# "/home/vvn20206205/Desktop/einvoice-system/microservices/invoice-service/src",
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/report-service/src",
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/vuvannghia/src",
 ]

@@ -5,10 +5,10 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
   imports: [
     ClientsModule.register([
       {
-        name: 'NATS_SERVICE',
+        name: 'API_GATEWAY',
         transport: Transport.NATS,
         options: {
-          servers: [process.env.NATS_SERVICE],
+          servers: [process.env.NATS_HOST],
         },
       },
     ]),
@@ -16,10 +16,10 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
   exports: [
     ClientsModule.register([
       {
-        name: 'NATS_SERVICE',
+        name: 'API_GATEWAY',
         transport: Transport.NATS,
         options: {
-          servers: [process.env.NATS_SERVICE],
+          servers: [process.env.NATS_HOST],
         },
       },
     ]),

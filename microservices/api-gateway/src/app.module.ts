@@ -20,17 +20,32 @@ import { JwtModule } from '@nestjs/jwt';
       isGlobal: true,
       validationSchema: Joi.object({
         PORT: Joi.string().required(),
-        NATS_SERVICE: Joi.string().required(),
+
+
+
+
+
+        NATS_HOST: Joi.string().required(),
+
+
+
+
+
+
+
+
+
+        
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRES_IN: Joi.string().required(),
       }),
     }),
     ClientsModule.register([
       {
-        name: 'NATS_SERVICE',
+        name: 'API_GATEWAY',
         transport: Transport.NATS,
         options: {
-          servers: [process.env.NATS_SERVICE],
+          servers: [process.env.NATS_HOST],
         },
       },
     ]),

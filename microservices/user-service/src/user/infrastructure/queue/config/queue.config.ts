@@ -4,10 +4,10 @@ export class QueueConfig {
   static configs() {
     return ClientsModule.register([
       {
-        name: 'NATS_SERVICE',
+        name: 'MESSAGE_QUEUE_EVENT',
         transport: Transport.NATS,
         options: {
-          servers: [process.env.NATS_SERVICE],
+          servers: [process.env.NATS_HOST],
         },
       },
     ]);

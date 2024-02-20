@@ -31,10 +31,6 @@ import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repo
 import { MailerAdapter } from './mailer/adapters/mailer.adapter';
 import { MailerPort } from '../core/application/ports/mailer/mailer.port';
 
-
-
-
-
 import { QueueConfig } from './queue/config/queue.config';
 import { QueuePort } from '../core/application/ports/queue/queue.port';
 import { QueueAdapter } from './queue/adapters/queue.adapter';
@@ -50,10 +46,11 @@ export const UserInfrastructure = {
     MAIL_HOST: Joi.string().required(),
     MAIL_PORT: Joi.string().required(),
   }),
-  configs: [DatabaseConfig.configs(),
-     MailerConfig.configs(),
-      QueueConfig.configs()
-    ],
+  configs: [
+    DatabaseConfig.configs(),
+    MailerConfig.configs(),
+    QueueConfig.configs(),
+  ],
 
   repositories: [
     TaxOfficeEntity,

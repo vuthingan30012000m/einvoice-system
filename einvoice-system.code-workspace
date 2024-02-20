@@ -11,6 +11,7 @@
       "path": "microservices"
     },
     {
+      "name": "api-gateway",
       "path": "microservices/api-gateway/src"
     },
     {

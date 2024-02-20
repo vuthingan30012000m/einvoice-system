@@ -10,8 +10,8 @@ import { InvoiceInterface } from './interface/invoice.interface';
 @Module({
   imports: [
     // JwtModule.register({
-    //   secret: process.env.JWT_SECRET,
-    //   signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
+    // secret: process.env.JWT_SECRET,
+    // signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
     // }),
     ConfigModule.forRoot({
       isGlobal: true,

@@ -11,7 +11,15 @@ import { UserModule } from './user/user.module';
         APP_NAME: Joi.string().required(),
         APP_PORT: Joi.string().required(),
         APP_DOMAIN: Joi.string().required(),
-        NATS_SERVICE: Joi.string().required(),
+        
+        
+        
+        
+        NATS_HOST: Joi.string().required(),
+
+
+
+        
         VERIFY_EMAIL_SECRET: Joi.string().required(),
         VERIFY_RESET_PASSWORD_SECRET: Joi.string().required(),
 

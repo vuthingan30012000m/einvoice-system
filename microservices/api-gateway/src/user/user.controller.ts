@@ -36,7 +36,9 @@ import { DeleteTaxPayerDto } from './dto/delete-tax-payer/delete-tax-payer.dto';
 @Controller('user')
 @ApiTags('Dịch vụ quản lý người dùng')
 export class UserController {
-  constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
+  constructor(
+    @Inject('API_GATEWAY') private natsClient: ClientProxy,
+  ) {}
 
   @Post('register-tax-payer')
   @ApiOperation({ summary: 'Đăng ký tài khoản' })

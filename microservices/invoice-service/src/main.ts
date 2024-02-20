@@ -8,7 +8,7 @@ async function bootstrap() {
     {
       transport: Transport.NATS,
       options: {
-        servers: [process.env.NATS_SERVICE],
+        servers: [process.env.NATS_HOST],
       },
     },
   );
