@@ -40,9 +40,6 @@ export class RequestResetPasswordQueryHandler
   private readonly logger = new Logger(RequestResetPasswordQueryHandler.name);
 
   constructor(
-    // private readonly TaxPayerRepository: TaxPayerRepositoryPort,
-    // private readonly HashPasswordService: HashPasswordService,
-
     private readonly HashPasswordService: HashPasswordService,
     private readonly eventBus: EventBus,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
@@ -54,7 +51,6 @@ export class RequestResetPasswordQueryHandler
     private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly mailerPort: MailerPort,
   ) {
-    // private readonly JwtService: JwtService, // private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
   }
 
   public async execute(payload: RequestResetPasswordQuery) {
@@ -81,7 +77,8 @@ export class RequestResetPasswordQueryHandler
         new Email(payload.email),
         'Đặt lại mật khẩu',
         `
-<p>Chúng tôi nhận được yêu cầu khôi phục mật khẩu từ bạn.</p>
+      <h1>Xin chào <strong>${existingEmail.name}</strong>,</h1>
+      <p>Chúng tôi nhận được yêu cầu khôi phục mật khẩu từ bạn.</p>
 
 
 <br />

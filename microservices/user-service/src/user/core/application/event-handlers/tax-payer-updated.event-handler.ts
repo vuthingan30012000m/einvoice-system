@@ -1,7 +1,5 @@
 import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
-import { MailerPort } from '../ports/mailer/mailer.port';
-import { EncryptionEmailService } from '../../domain/services/encryption-email.service';
 import { TaxPayerUpdatedEvent } from '../../domain/events/tax-payer-updated.event';
 import { MessageQueuePort } from '../ports/publisher/message-queue.port';
 
@@ -12,7 +10,6 @@ export class TaxPayerUpdatedEventHandler
   private readonly logger = new Logger(TaxPayerUpdatedEventHandler.name);
 
   constructor(
-    private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly MessageQueuePort: MessageQueuePort,
   ) {}
 
