@@ -14,6 +14,8 @@ import { VerifyResetPasswordCommandHandler } from './commands/verify-reset-passw
 import { ChangePasswordCommandHandler } from './commands/change-password/change-password.command-handler';
 import { DeleteTaxPayerCommandHandler } from './commands/delete-tax-payer/delete-tax-payer.command-handler';
 import { UpdateTaxPayerCommandHandler } from './commands/update-tax-payer/update-tax-payer.command-handler';
+import { TaxPayerUpdatedEventHandler } from './event-handlers/tax-payer-updated.event-handler';
+import { TaxPayerDeletedEventHandler } from './event-handlers/tax-payer-deleted.event-handler';
 
 const UserDomainServices: any[] = [
   EncryptionEmailService,
@@ -29,7 +31,11 @@ const UserCommandHandlers: any[] = [
   UpdateTaxPayerCommandHandler,
   DeleteTaxPayerCommandHandler,
 ];
-const UserEventHandlers: any[] = [TaxPayerRegisteredEventHandler];
+const UserEventHandlers: any[] = [
+  TaxPayerRegisteredEventHandler,
+  TaxPayerUpdatedEventHandler,
+  TaxPayerDeletedEventHandler,
+];
 const UserQueryHandlers: any[] = [
   LoginTaxPayerQueryHandler,
   GetTaxPayerCurrentQueryHandler,
