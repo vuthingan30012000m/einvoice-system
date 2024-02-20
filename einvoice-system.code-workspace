@@ -5,9 +5,11 @@
       "path": "."
     },
     {
+      "name": "docker",
       "path": "docker"
     },
     {
+      "name": "microservices",
       "path": "microservices"
     },
     {
@@ -23,13 +25,20 @@
       "path": "microservices/invoice-service/src"
     },
     {
+      "name": "commands",
+      "path": "microservices/user-service/src/user/core/application/commands"
+    },
+    {
+      "name": "events",
+      "path": "microservices/user-service/src/user/core/domain/events"
+    },
+    {
+      "name": "event-handlers",
       "path": "microservices/user-service/src/user/core/application/event-handlers"
     },
     {
+      "name": "listener",
       "path": "microservices/invoice-service/src/invoice/interface/listener"
-    },
-    {
-      "path": "microservices/user-service/src/user/core/application/commands"
     }
   ],
   "settings": {
