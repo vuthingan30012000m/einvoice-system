@@ -57,6 +57,9 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   }
 
   delete() {
+    if (this.taxPayerStatus === TaxPayerStatus.DELETED) {
+      throw new TaxPayerException('Người nộp thuế này đã xóa.');
+    }
     this.taxPayerStatus = TaxPayerStatus.DELETED;
   }
 

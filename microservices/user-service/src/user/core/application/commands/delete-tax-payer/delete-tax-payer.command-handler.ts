@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { DeleteTaxPayerCommand } from './delete-tax-payer.command';
 
 import { BankDetailId } from './../../../domain/value-objects/bank-detail-id';
@@ -29,6 +29,7 @@ import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-r
 import { JwtService } from '@nestjs/jwt';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';
 import { UsbTokenAuthenticationService } from 'src/user/core/domain/services/usb-token-authentication.service';
+import { TaxPayerDeletedEvent } from 'src/user/core/domain/events/tax-payer-deleted.event';
 
 @CommandHandler(DeleteTaxPayerCommand)
 export class DeleteTaxPayerCommandHandler
@@ -43,6 +44,8 @@ export class DeleteTaxPayerCommandHandler
     private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
     private readonly AddressRepository: AddressRepositoryPort,
+
+    private readonly eventBus: EventBus,
   ) {}
 
   private readonly logger = new Logger(DeleteTaxPayerCommandHandler.name);
@@ -70,6 +73,8 @@ export class DeleteTaxPayerCommandHandler
       findTaxPayer.delete();
 
       await this.TaxPayerRepository.save(findTaxPayer);
+
+      this.eventBus.publish(new TaxPayerDeletedEvent(findTaxPayer));
 
       return { message: 'Xóa tài khoản người nộp thuế thành công.' };
     } catch (error) {
