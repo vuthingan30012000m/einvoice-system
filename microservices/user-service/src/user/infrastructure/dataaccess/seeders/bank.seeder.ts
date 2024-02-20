@@ -21,6 +21,8 @@ export class BankSeeder implements OnModuleInit {
           const newBankEntity = this.BankEntityRepository.create({
             id: String(item.id),
             name: item.name,
+            code: item.code,
+            shortName: item.shortName,
           });
           await this.BankEntityRepository.save(newBankEntity);
         }

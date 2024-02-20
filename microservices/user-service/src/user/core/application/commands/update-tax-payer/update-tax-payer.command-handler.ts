@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { UpdateTaxPayerCommand } from './update-tax-payer.command';
 
 import { BankDetailId } from './../../../domain/value-objects/bank-detail-id';
@@ -29,6 +29,7 @@ import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-r
 import { JwtService } from '@nestjs/jwt';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';
 import { UsbTokenAuthenticationService } from 'src/user/core/domain/services/usb-token-authentication.service';
+import { TaxPayerUpdatedEvent } from 'src/user/core/domain/events/tax-payer-updated.event';
 
 @CommandHandler(UpdateTaxPayerCommand)
 export class UpdateTaxPayerCommandHandler
@@ -37,6 +38,7 @@ export class UpdateTaxPayerCommandHandler
   constructor(
     private readonly HashPasswordService: HashPasswordService,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
+    private readonly eventBus: EventBus,
     private readonly TaxOfficeRepositoryPort: TaxOfficeRepositoryPort,
     private readonly BankRepository: BankRepositoryPort,
     private readonly WardRepository: WardRepositoryPort,
@@ -67,19 +69,23 @@ export class UpdateTaxPayerCommandHandler
         throw new TaxPayerException('Chữ ký số không đúng.');
       }
 
-      const existingEmail = await this.TaxPayerRepository.getOneByEmail(
-        new Email(payload.email),
-      );
-      if (existingEmail) {
-        throw new TaxPayerException('Email đã tồn tại.');
+      if (payload.email !== findTaxPayer.email.value) {
+        const existingEmail = await this.TaxPayerRepository.getOneByEmail(
+          new Email(payload.email),
+        );
+        if (existingEmail) {
+          throw new TaxPayerException('Email đã tồn tại.');
+        }
       }
 
-      const existingPhoneNumber =
-        await this.TaxPayerRepository.getOneByPhoneNumber(
-          new PhoneNumber(payload.phoneNumber),
-        );
-      if (existingPhoneNumber) {
-        throw new TaxPayerException('Số điện thoại đã tồn tại.');
+      if (payload.phoneNumber !== findTaxPayer.phoneNumber.value) {
+        const existingPhoneNumber =
+          await this.TaxPayerRepository.getOneByPhoneNumber(
+            new PhoneNumber(payload.phoneNumber),
+          );
+        if (existingPhoneNumber) {
+          throw new TaxPayerException('Số điện thoại đã tồn tại.');
+        }
       }
 
       findTaxPayer.update(
@@ -89,6 +95,8 @@ export class UpdateTaxPayerCommandHandler
       );
 
       await this.TaxPayerRepository.save(findTaxPayer);
+
+      this.eventBus.publish(new TaxPayerUpdatedEvent(findTaxPayer));
 
       const existingTaxOffice = await this.TaxOfficeRepositoryPort.getOneById(
         findTaxPayer.taxOfficeId,
@@ -135,8 +143,6 @@ export class UpdateTaxPayerCommandHandler
           },
         },
       };
-
-      return { message: 'Cập nhật người nộp thuế thành công.' };
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };
