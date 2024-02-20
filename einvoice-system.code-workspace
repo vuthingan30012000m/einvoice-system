@@ -43,6 +43,9 @@
     {
       "name": "listener",
       "path": "microservices/invoice-service/src/invoice/interface/listener"
+    },
+    {
+      "path": "../t"
     }
   ],
   "settings": {

@@ -4,10 +4,10 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { UserModule } from './user/user.module';
 import { InvoiceModule } from './invoice/invoice.module';
-import { LoggingRequestMiddleware } from './common/api/middlewares/logging.middleware';
+import { LoggingRequestMiddleware } from './middlewares/logging.middleware';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
-import { AllExceptionFilter } from './common/api/filters/all-exception.filter';
-import { TaxPayerInterceptor } from './common/api/interceptors/tax-payer.interceptor';
+import { AllExceptionFilter } from './filters/all-exception.filter';
+import { TaxPayerInterceptor } from './interceptors/tax-payer.interceptor';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({

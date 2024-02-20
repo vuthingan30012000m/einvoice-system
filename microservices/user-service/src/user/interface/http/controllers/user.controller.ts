@@ -6,7 +6,6 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import { RegisterTaxPayerDto } from '../dtos/register-tax-payer.dto';
 import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
-import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-value.interceptor';
 import { LoginTaxPayerDto } from '../dtos/login-tax-payer.dto';
 import { LoginTaxPayerQuery } from 'src/user/core/application/queries/login-tax-payer/login-tax-payer.query';
 import { VerifyEmailTaxPayerCommand } from 'src/user/core/application/commands/verify-email-tax-payer/verify-email-tax-payer.command';
