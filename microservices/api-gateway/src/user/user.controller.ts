@@ -10,12 +10,7 @@ import {
   Res,
 } from '@nestjs/common';
 
-import {
-  ApiBasicAuth,
-  ApiBearerAuth,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { ClientProxy } from '@nestjs/microservices';
 
@@ -139,7 +134,7 @@ export class UserController {
     );
   }
 
-  @Post('update-tax-payer')
+  @Patch('update-tax-payer')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Cập nhật thông tin người nộp thuế' })
   updateTaxPayer(
