@@ -13,6 +13,10 @@
       "path": "microservices"
     },
     {
+      "name": "common",
+      "path": "../vuvannghia/src"
+    },
+    {
       "name": "api-gateway",
       "path": "microservices/api-gateway/src"
     },
@@ -39,9 +43,6 @@
     {
       "name": "listener",
       "path": "microservices/invoice-service/src/invoice/interface/listener"
-    },
-    {
-      "path": "../vuvannghia"
     }
   ],
   "settings": {
