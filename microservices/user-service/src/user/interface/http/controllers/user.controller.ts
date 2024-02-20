@@ -3,26 +3,26 @@ import { Controller, UseInterceptors } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { RegisterTaxPayerDto } from '../dto/register-tax-payer/register-tax-payer.dto';
+import { RegisterTaxPayerDto } from '../../dto/register-tax-payer/register-tax-payer.dto';
 import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
 import { RemovePasswordInterceptor } from 'src/common/api/interceptors/remove-password.interceptor';
 import { ExcludeValueInterceptor } from 'src/common/api/interceptors/exclude-value.interceptor';
-import { LoginTaxPayerDto } from '../dto/login-tax-payer/login-tax-payer.dto';
+import { LoginTaxPayerDto } from '../../dto/login-tax-payer/login-tax-payer.dto';
 import { LoginTaxPayerQuery } from 'src/user/core/application/queries/login-tax-payer/login-tax-payer.query';
 import { VerifyEmailTaxPayerCommand } from 'src/user/core/application/commands/verify-email-tax-payer/verify-email-tax-payer.command';
-import { RegisterUsbTokenDto } from '../dto/register-usb-token/register-usb-token.dto';
+import { RegisterUsbTokenDto } from '../../dto/register-usb-token/register-usb-token.dto';
 import { RegisterUsbTokenCommandHandler } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command-handler';
 import { RegisterUsbTokenCommand } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command';
-import { GetTaxPayerCurrentDto } from '../dto/get-tax-payer-current/get-tax-payer-current.dto';
+import { GetTaxPayerCurrentDto } from '../../dto/get-tax-payer-current/get-tax-payer-current.dto';
 import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
-import { RequestResetPasswordDto } from '../dto/request-reset-password/request-reset-password.dto';
+import { RequestResetPasswordDto } from '../../dto/request-reset-password/request-reset-password.dto';
 import { RequestResetPasswordQuery } from 'src/user/core/application/queries/request-reset-password/request-reset-password.query';
 import { VerifyResetPasswordCommand } from 'src/user/core/application/commands/verify-reset-password/verify-reset-password.command';
 import { ChangePasswordCommand } from 'src/user/core/application/commands/change-password/change-password.command';
-import { ChangePasswordDto } from '../dto/change-password/change-password.dto';
+import { ChangePasswordDto } from '../../dto/change-password/change-password.dto';
 import { UpdateTaxPayerCommand } from 'src/user/core/application/commands/update-tax-payer/update-tax-payer.command';
-import { UpdateTaxPayerDto } from '../dto/update-tax-payer/update-tax-payer.dto';
-import { DeleteTaxPayerDto } from '../dto/delete-tax-payer/delete-tax-payer.dto';
+import { UpdateTaxPayerDto } from '../../dto/update-tax-payer/update-tax-payer.dto';
+import { DeleteTaxPayerDto } from '../../dto/delete-tax-payer/delete-tax-payer.dto';
 import { DeleteTaxPayerCommand } from 'src/user/core/application/commands/delete-tax-payer/delete-tax-payer.command';
 
 @Controller('user')
