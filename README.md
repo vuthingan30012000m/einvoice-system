@@ -1,10 +1,5 @@
 <!-- nest g resource   report -->
 <!-- touch    -->
-git commit...
-npm publish --access public 
-
-npm i -D typescript del-cli
-<!-- common -->
 
 
 
