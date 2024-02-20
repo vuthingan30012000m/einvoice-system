@@ -1,4 +1,4 @@
-import { DomainEntity } from '../../../../common/ddd/oop/core/domain/entities/domain.entity';
+import { DomainEntity } from '@vuvannghia/common';
 
 import { CityId } from '../value-objects/city-id';
 

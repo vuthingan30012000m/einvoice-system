@@ -1,5 +1,5 @@
 import { BankId } from './../value-objects/bank-id';
-import { DomainEntity } from '../../../../common/ddd/oop/core/domain/entities/domain.entity';
+import { DomainEntity } from '@vuvannghia/common';
 import { BankDetailId } from '../value-objects/bank-detail-id';
 
 export class BankDetail extends DomainEntity<BankDetailId> {
