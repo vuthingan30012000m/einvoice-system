@@ -24,12 +24,9 @@ export class InvoiceController {
   //
   // Giống tokenEmail
 
-
-
   @Get('find-tax-payer/:taxCode')
   @ApiOperation({ summary: 'Tra cứu người nộp thuế theo mã số thuế' })
   findTaxPayer(@Param('taxCode') taxCode: string) {
     return this.apiGateway.send({ cmd: 'find-tax-payer' }, taxCode);
   }
-
 }

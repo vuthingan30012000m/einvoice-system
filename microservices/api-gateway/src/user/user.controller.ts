@@ -19,8 +19,6 @@ import {
 
 import { ClientProxy } from '@nestjs/microservices';
 
-import { RegisterTaxPayerDto } from './dto/register-tax-payer/register-tax-payer.dto';
-import { LoginTaxPayerDto } from './dto/login-tax-payer/login-tax-payer.dto';
 import {
   TaxPayer,
   TaxPayerJwtPayload,
@@ -28,10 +26,13 @@ import {
 
 import { Response } from 'express';
 import { QRCodeSegment, toFileStream } from 'qrcode';
-import { RequestResetPasswordDto } from './dto/request-reset-password/request-reset-password.dto';
-import { ChangePasswordDto } from './dto/change-password/change-password.dto';
-import { UpdateTaxPayerDto } from './dto/update-tax-payer/update-tax-payer.dto';
-import { DeleteTaxPayerDto } from './dto/delete-tax-payer/delete-tax-payer.dto';
+
+import { RequestResetPasswordDto } from './dtos/request-reset-password.dto';
+import { ChangePasswordDto } from './dtos/change-password.dto';
+import { UpdateTaxPayerDto } from './dtos/update-tax-payer.dto';
+import { DeleteTaxPayerDto } from './dtos/delete-tax-payer.dto';
+import { RegisterTaxPayerDto } from './dtos/register-tax-payer.dto';
+import { LoginTaxPayerDto } from './dtos/login-tax-payer.dto';
 
 @Controller('user')
 @ApiTags('Dịch vụ quản lý người dùng')
