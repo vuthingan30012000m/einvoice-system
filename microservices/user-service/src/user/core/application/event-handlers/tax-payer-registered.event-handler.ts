@@ -20,7 +20,7 @@ export class TaxPayerRegisteredEventHandler
 
   handle(event: TaxPayerRegisteredEvent) {
     try {
-      this.logger.debug(`>  Event : ${JSON.stringify(event)}`);
+      this.logger.debug(`>  Event: ${JSON.stringify(event)}`);
 
       const tokenEmail = this.EncryptionEmailService.encrypt(
         event.TaxPayer.email.value,

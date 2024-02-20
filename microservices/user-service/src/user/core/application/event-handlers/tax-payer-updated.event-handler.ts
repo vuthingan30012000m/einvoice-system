@@ -3,6 +3,7 @@ import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { MailerPort } from '../ports/mailer/mailer.port';
 import { EncryptionEmailService } from '../../domain/services/encryption-email.service';
 import { TaxPayerUpdatedEvent } from '../../domain/events/tax-payer-updated.event';
+import { MessageQueuePort } from '../ports/publisher/message-queue.port';
 
 @EventsHandler(TaxPayerUpdatedEvent)
 export class TaxPayerUpdatedEventHandler
@@ -11,18 +12,16 @@ export class TaxPayerUpdatedEventHandler
   private readonly logger = new Logger(TaxPayerUpdatedEventHandler.name);
 
   constructor(
-    // private readonly kafka: kafka,
     private readonly EncryptionEmailService: EncryptionEmailService,
-    private readonly mailerPort: MailerPort,
+    private readonly MessageQueuePort: MessageQueuePort,
   ) {}
 
-  handle(TaxPayerUpdatedEvent: TaxPayerUpdatedEvent) {
+  handle(event: TaxPayerUpdatedEvent) {
     try {
-      this.logger.debug(
-        `> TaxPayerUpdatedEvent: ${JSON.stringify(TaxPayerUpdatedEvent)}`,
-      );
+      this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
-      // queue
+      this.MessageQueuePort.sendMessage('tax-payer-updated', event.TaxPayer);
+      this.logger.log(`> Gửi     sự kiện: ${JSON.stringify(event.TaxPayer)}`);
     } catch (error) {
       return { message: error.message };
     }
