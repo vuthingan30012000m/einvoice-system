@@ -83,20 +83,34 @@ services:
 
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
-  # invoice:
-  #   build: ../microservices/invoice-service
-  #   restart: always
-  #   volumes:
-  #     - ../microservices/invoice-service:/usr/src/app
-  #   command: npm run start:dev
-  #   environment:
-  #     NATS_SERVICE: ${NATS_SERVICE}
 
-  #     DATABASE_HOST: ${DATABASE_HOST}
-  #     DATABASE_PORT: ${DATABASE_PORT}
-  #     DATABASE_USERNAME: ${DATABASE_USERNAME}
-  #     DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-  #     DATABASE_NAME: invoice
+  invoice:
+    build: ../microservices/invoice-service
+    restart: always
+    volumes:
+      - ../microservices/invoice-service:/usr/src/app
+    command: npm run start:dev
+    environment:
+      APP_NAME: ${APP_NAME}
+      APP_PORT: ${APP_PORT}
+      APP_DOMAIN: ${APP_DOMAIN}
+
+      NATS_SERVICE: ${NATS_SERVICE}
+
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: invoice
+
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+
+      # VERIFY_EMAIL_SECRET: ${VERIFY_EMAIL_SECRET}
+      # VERIFY_RESET_PASSWORD_SECRET: ${VERIFY_RESET_PASSWORD_SECRET}
+
+      # JWT_SECRET: ${JWT_SECRET}
+      # JWT_EXPIRES_IN: ${JWT_EXPIRES_IN} 
 
   # report:
   #   build: ../microservices/report-service
