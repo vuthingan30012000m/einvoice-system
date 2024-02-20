@@ -11,6 +11,4 @@ import {
 import { ClientProxy } from '@nestjs/microservices';
 
 @Controller('invoice')
-export class InvoiceController {
-  constructor(@Inject('NATS_SERVICE') private natsClient: ClientProxy) {}
-}
+export class InvoiceController {}

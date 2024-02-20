@@ -1,7 +1,7 @@
 import { MailerModule } from '@nestjs-modules/mailer';
 
 export class MailerConfig {
-  static init() {
+  static configs() {
     return MailerModule.forRoot({
       transport: {
         host: process.env.MAIL_HOST,

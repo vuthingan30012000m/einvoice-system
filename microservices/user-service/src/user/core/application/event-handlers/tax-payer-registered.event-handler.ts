@@ -1,8 +1,10 @@
-import { Logger } from '@nestjs/common';
+import { Inject, Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { TaxPayerRegisteredEvent } from '../../domain/events/tax-payer-registered.event';
 import { MailerPort } from '../ports/mailer/mailer.port';
+import { QueuePort } from '../ports/queue/queue.port';
 import { EncryptionEmailService } from '../../domain/services/encryption-email.service';
+import { ClientProxy } from '@nestjs/microservices';
 
 @EventsHandler(TaxPayerRegisteredEvent)
 export class TaxPayerRegisteredEventHandler
@@ -11,9 +13,9 @@ export class TaxPayerRegisteredEventHandler
   private readonly logger = new Logger(TaxPayerRegisteredEventHandler.name);
 
   constructor(
-    // private readonly kafka: kafka,
     private readonly EncryptionEmailService: EncryptionEmailService,
     private readonly mailerPort: MailerPort,
+    private readonly QueuePort: QueuePort,
   ) {}
 
   handle(TaxPayerRegisteredEvent: TaxPayerRegisteredEvent) {
