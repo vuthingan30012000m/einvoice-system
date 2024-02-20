@@ -21,7 +21,7 @@ import { ClientProxy } from '@nestjs/microservices';
 import {
   TaxPayer,
   TaxPayerJwtPayload,
-} from 'src/common/api/decorators/tax-payer.decorator';
+} from '../decorators/tax-payer.decorator';
 
 import { Response } from 'express';
 import { QRCodeSegment, toFileStream } from 'qrcode';
