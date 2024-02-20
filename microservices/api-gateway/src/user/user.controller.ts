@@ -34,8 +34,8 @@ import { DeleteTaxPayerDto } from './dtos/delete-tax-payer.dto';
 import { RegisterTaxPayerDto } from './dtos/register-tax-payer.dto';
 import { LoginTaxPayerDto } from './dtos/login-tax-payer.dto';
 
-@Controller('user')
 @ApiTags('Dịch vụ quản lý người dùng')
+@Controller('user')
 export class UserController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
