@@ -21,7 +21,7 @@ export class TaxPayerUpdatedEventHandler
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
       this.MessageQueuePort.sendMessage('tax-payer-updated', event.TaxPayer);
-      this.logger.log(`> Gửi     sự kiện: ${JSON.stringify(event.TaxPayer)}`);
+      this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event.TaxPayer)}`);
     } catch (error) {
       return { message: error.message };
     }

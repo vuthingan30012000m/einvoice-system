@@ -20,17 +20,17 @@ export class TaxPayerRegisteredEventHandler
 
   handle(event: TaxPayerRegisteredEvent) {
     try {
-      this.logger.debug(`>  Event: ${JSON.stringify(event)}`);
+      this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
       const tokenEmail = this.EncryptionEmailService.encrypt(
         event.TaxPayer.email.value,
         process.env.VERIFY_EMAIL_SECRET,
       );
 
-      //       this.mailerPort.send(
-      //         event.TaxPayer.email,
-      //         'Xác thực email',
-      //         `
+      // this.mailerPort.send(
+      // event.TaxPayer.email,
+      // 'Xác thực email',
+      // `
       // <h1>Xin chào <strong>${event.TaxPayer.name}</strong>,</h1>
 
       // <p>
@@ -57,14 +57,14 @@ export class TaxPayerRegisteredEventHandler
       // <p><strong> Vũ Văn Nghĩa </strong></p>
       // <p><strong> MSSV: 20206205 </strong></p>
       // `,
-      //       );
+      // );
 
       this.logger.log(
         `> Gửi email: ${JSON.stringify(event.TaxPayer.email.value)}`,
       );
 
       this.MessageQueuePort.sendMessage('tax-payer-registered', event.TaxPayer);
-      this.logger.log(`> Gửi     sự kiện: ${JSON.stringify(event.TaxPayer)}`);
+      this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event.TaxPayer)}`);
     } catch (error) {
       return { message: error.message };
     }

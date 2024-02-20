@@ -18,7 +18,7 @@ export class TaxPayerDeletedEventHandler
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
       this.MessageQueuePort.sendMessage('tax-payer-deleted', event.TaxPayer);
-      this.logger.log(`> Gửi     sự kiện: ${JSON.stringify(event.TaxPayer)}`);
+      this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event.TaxPayer)}`);
     } catch (error) {
       return { message: error.message };
     }

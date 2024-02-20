@@ -8,26 +8,20 @@
 
 
 
-<!-- http cuar user -->
 
-<!-- xóa  this.logger.debug(     `>  thành payload: ${JSON.stringify(payload)}`);   -->
 
-<!-- Có thể xóa folder dto dtos -->
-<!-- Domain service bị sai -->
+<!-- tct? -->
+<!-- user=api=tct -->
 
 
 
 
 
-<!-- quue -->
-
-<!-- event -->
 
 
 <!-- guard -->
 
 <!-- html -->
-<!-- user=api=tct -->
  
 <!--@  -->
 <!-- Luôn cần đăng nhập -->
@@ -95,3 +89,6 @@ Nginx load bln
 
 <!-- Factory -->
 <!-- AR -->
+<!-- xóa  this.logger.  payload hoặc event -->
+
+<!-- Domain service bị sai -->

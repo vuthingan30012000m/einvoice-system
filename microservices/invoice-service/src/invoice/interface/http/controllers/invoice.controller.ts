@@ -21,7 +21,7 @@ export class InvoiceController {
   async findTaxPayer(@Payload() taxCode: string) {
     console.log('🚀 ~ InvoiceController ~ findTaxPayer ~ taxCode:', taxCode);
     // return await this.commandBus.execute(
-    //   new VerifyEmailTaxPayerCommand(tokenEmail),
+    // new VerifyEmailTaxPayerCommand(tokenEmail),
     // );
-  } 
+  }
 }
