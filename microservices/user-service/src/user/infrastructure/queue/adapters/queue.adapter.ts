@@ -4,9 +4,7 @@ import { QueuePort } from 'src/user/core/application/ports/queue/queue.port';
 
 @Injectable()
 export abstract class QueueAdapter implements QueuePort {
-  constructor(
-    @Inject('MESSAGE_QUEUE_EVENT') private natsClient: ClientProxy,
-  ) {}
+  constructor(@Inject('MESSAGE_QUEUE_EVENT') private natsClient: ClientProxy) {}
 
   async send() {
     return this.natsClient.send({ cmd: 'register' }, {});
