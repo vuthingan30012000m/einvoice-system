@@ -46,7 +46,7 @@ services:
       - 3001:3001
     volumes:
       - ../microservices/api-gateway:/usr/src/app
-    command: NEST_DEBUG=true npm run start:dev
+    command: npm run start:dev
     environment:
       PORT: ${APP_PORT}
 
@@ -60,7 +60,7 @@ services:
     restart: always
     volumes:
       - ../microservices/user-service:/usr/src/app
-    command: NEST_DEBUG=true npm run start:dev
+    command: npm run start:dev
     environment:
       APP_NAME: ${APP_NAME}
       APP_PORT: ${APP_PORT}
@@ -88,7 +88,7 @@ services:
     restart: always
     volumes:
       - ../microservices/invoice-service:/usr/src/app
-    command: NEST_DEBUG=true npm run start:dev
+    command: npm run start:dev
     environment:
       APP_NAME: ${APP_NAME}
       APP_PORT: ${APP_PORT}
