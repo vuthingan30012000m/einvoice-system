@@ -1,5 +1,7 @@
-import { ICommand } from "@nestjs/cqrs";
+import { ICommand } from '@nestjs/cqrs';
+
+import { TaxPayer } from '../../../domain/entities/tax-payer';
 
 export class TaxPayerUpdatedEventCommand implements ICommand {
-  constructor(public readonly payload: {}) {}
+  constructor(public readonly TaxPayer: TaxPayer) {}
 }

@@ -41,11 +41,7 @@ export class ListenerEvent {
   async TaxPayerUpdatedEvent(@Payload() event: TaxPayerUpdatedEventDto) {
     this.logger.debug(`> Event: ${JSON.stringify(event)}`);
     await this.commandBus.execute(
-      new   TaxPayerUpdatedEventCommand(
-        event.newAddress,
-        event.newBankDetail,
-        event.newTaxPayer,
-      ),
+      new TaxPayerUpdatedEventCommand(event.TaxPayer),
     );
   }
 

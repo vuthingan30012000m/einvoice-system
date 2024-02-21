@@ -52,7 +52,7 @@ export class UpdateTaxPayerCommandHandler
 
   public async execute(payload: UpdateTaxPayerCommand) {
     try {
-      this.logger.log(`> UpdateTaxPayerCommand: ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxCode),
