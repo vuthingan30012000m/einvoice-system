@@ -1,6 +1,6 @@
 import { DomainEntity } from '@vuvannghia/common';
 import { TaxCode } from '../value-objects/tax-code';
-import { Email } from '../value-objects/email';
+import { Email } from '@vuvannghia/common';
 import { PhoneNumber } from '../value-objects/phone-number';
 import { TaxPayerStatus } from '@vuvannghia/common';
 import { TaxOfficeId } from '../value-objects/tax-office-id';
