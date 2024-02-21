@@ -23,7 +23,6 @@ export class TaxPayerActivatedEventCommandHandler
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         payload.taxCode,
       );
-      console.log("🚀 ~ execute ~ findTaxPayer:", findTaxPayer)
 
       findTaxPayer.registerUsbToken(payload.usbToken);
 

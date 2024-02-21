@@ -14,14 +14,7 @@ import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/addre
 export class TaxPayerDeletedEventCommandHandler
   implements ICommandHandler<TaxPayerDeletedEventCommand>
 {
-  constructor(
-    private readonly TaxPayerRepository: TaxPayerRepositoryPort,
-    private readonly TaxOfficeRepository: TaxOfficeRepositoryPort,
-    private readonly BankRepository: BankRepositoryPort,
-    private readonly WardRepository: WardRepositoryPort,
-    private readonly BankDetailRepository: BankDetailRepositoryPort,
-    private readonly AddressRepository: AddressRepositoryPort,
-  ) {}
+  constructor(private readonly TaxPayerRepository: TaxPayerRepositoryPort) {}
   private readonly logger = new Logger(TaxPayerDeletedEventCommandHandler.name);
 
   public async execute(payload: TaxPayerDeletedEventCommand) {
