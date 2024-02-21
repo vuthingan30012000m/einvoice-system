@@ -1,23 +1,43 @@
 import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { TaxPayerActivatedEventCommand } from './tax-payer-activated-event.command';
-import { TaxPayerActivatedEventPort } from './tax-payer-activated-event.port';
+
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
+import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 
 @CommandHandler(TaxPayerActivatedEventCommand)
 export class TaxPayerActivatedEventCommandHandler
   implements ICommandHandler<TaxPayerActivatedEventCommand>
 {
-  constructor(
-    private readonly taxPayerActivatedEventPort: TaxPayerActivatedEventPort,
-  ) {}
-
   private readonly logger = new Logger(
     TaxPayerActivatedEventCommandHandler.name,
   );
+  constructor(
+    private readonly TaxPayerRepository: TaxPayerRepositoryPort,
+    private readonly BankDetailRepository: BankDetailRepositoryPort,
+    private readonly AddressRepository: AddressRepositoryPort,
+  ) {}
 
-  public async execute({
-    payload,
-  }: TaxPayerActivatedEventCommand): Promise<void> {
-    this.logger.log(`> TaxPayerActivatedEventCommand: called`);
+  public async execute(payload: TaxPayerActivatedEventCommand) {
+    try {
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
+
+      // const findTaxPayer = await this.TaxPayerRepository.getOneById(
+      //   new TaxCode(payload.taxCode),
+      // );
+
+      // if (!findTaxPayer) {
+      //   throw new Error('Người nộp thuế không tồn tại.');
+      // }
+
+      // findTaxPayer.registerUsbToken(payload.usbToken);
+
+      // await this.TaxPayerRepository.save(findTaxPayer);
+    } catch (error) {
+      this.logger.error(`> ${error}`);
+      return { message: error.message };
+    }
   }
 }

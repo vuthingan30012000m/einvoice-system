@@ -29,15 +29,14 @@ import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 export class TaxPayerRegisteredEventCommandHandler
   implements ICommandHandler<TaxPayerRegisteredEventCommand>
 {
+  private readonly logger = new Logger(
+    TaxPayerRegisteredEventCommandHandler.name,
+  );
   constructor(
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
     private readonly AddressRepository: AddressRepositoryPort,
   ) {}
-
-  private readonly logger = new Logger(
-    TaxPayerRegisteredEventCommandHandler.name,
-  );
 
   public async execute(payload: TaxPayerRegisteredEventCommand) {
     try {

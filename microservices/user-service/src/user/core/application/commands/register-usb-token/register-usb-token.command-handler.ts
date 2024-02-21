@@ -40,7 +40,7 @@ export class RegisterUsbTokenCommandHandler
       await this.TaxPayerRepository.save(findTaxPayer);
 
       this.eventBus.publish(
-        new TaxPayerActivatedEvent(new TaxCode(payload.taxCode)),
+        new TaxPayerActivatedEvent(new TaxCode(payload.taxCode), usbToken),
       );
 
       return qrCode;

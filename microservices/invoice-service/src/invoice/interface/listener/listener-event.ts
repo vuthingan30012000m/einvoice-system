@@ -9,6 +9,7 @@ import { TaxPayerUpdatedEventDto } from './dtos/tax-payer-updated.event.dto';
 import { TaxPayerDeletedEventDto } from './dtos/tax-payer-deleted.event.dto';
 
 import { TaxPayerRegisteredEventCommand } from 'src/invoice/core/application/commands/tax-payer-registered-event/tax-payer-registered-event.command';
+import { TaxPayerActivatedEventCommand } from 'src/invoice/core/application/commands/tax-payer-activated-event/tax-payer-activated-event.command';
 
 @Controller()
 export class ListenerEvent {
@@ -30,7 +31,9 @@ export class ListenerEvent {
   @EventPattern('tax-payer-activated')
   async TaxPayerActivatedEvent(@Payload() event: TaxPayerActivatedEventDto) {
     this.logger.debug(`> Event: ${JSON.stringify(event)}`);
-    console.log(event.taxCode);
+    await this.commandBus.execute(
+      new TaxPayerActivatedEventCommand(event.taxCode, event.usbToken),
+    );
   }
 
   @EventPattern('tax-payer-updated')

@@ -1,8 +1,12 @@
 import { CqrsModule } from '@nestjs/cqrs';
-import { RegisterTaxPayerCommandHandler } from './commands/register-tax-payer/register-tax-payer.command-handler';
+import { TaxPayerRegisteredEventCommandHandler } from './commands/tax-payer-registered-event/tax-payer-registered-event.command-handler';
+import { TaxPayerActivatedEventCommandHandler } from './commands/tax-payer-activated-event/tax-payer-activated-event.command-handler';
 
 const InvoiceDomainServices: any[] = [];
-const InvoiceCommandHandlers: any[] = [RegisterTaxPayerCommandHandler];
+const InvoiceCommandHandlers: any[] = [
+  TaxPayerRegisteredEventCommandHandler,
+  TaxPayerActivatedEventCommandHandler,
+];
 const InvoiceEventHandlers: any[] = [];
 const InvoiceQueryHandlers: any[] = [];
 

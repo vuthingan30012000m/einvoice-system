@@ -18,7 +18,6 @@ import {
   Payload,
 } from '@nestjs/microservices';
 
-import { RegisterTaxPayerCommand } from 'src/invoice/core/application/commands/register-tax-payer/register-tax-payer.command';
 import { TaxPayerRegisteredEvent } from 'src/invoice/core/domain/events/tax-payer-registered.event';
 import { TaxPayerRegisteredEventDto } from '../../listener/dtos/tax-payer-registered.event.dto';
 
