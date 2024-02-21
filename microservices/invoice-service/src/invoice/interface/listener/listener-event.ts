@@ -1,16 +1,20 @@
 import { Controller, Logger } from '@nestjs/common';
+
 import { EventPattern, Payload } from '@nestjs/microservices';
 
-import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CommandBus } from '@nestjs/cqrs';
 
+import { TaxPayerRegisteredEventCommand } from '../../core/application/commands/tax-payer-registered-event/tax-payer-registered-event.command';
 import { TaxPayerRegisteredEventDto } from './dtos/tax-payer-registered.event.dto';
-import { TaxPayerActivatedEventDto } from './dtos/tax-payer-activated.event.dto';
-import { TaxPayerUpdatedEventDto } from './dtos/tax-payer-updated.event.dto';
-import { TaxPayerDeletedEventDto } from './dtos/tax-payer-deleted.event.dto';
 
-import { TaxPayerRegisteredEventCommand } from 'src/invoice/core/application/commands/tax-payer-registered-event/tax-payer-registered-event.command';
-import { TaxPayerActivatedEventCommand } from 'src/invoice/core/application/commands/tax-payer-activated-event/tax-payer-activated-event.command';
+import { TaxPayerActivatedEventCommand } from '../../core/application/commands/tax-payer-activated-event/tax-payer-activated-event.command';
+import { TaxPayerActivatedEventDto } from './dtos/tax-payer-activated.event.dto';
+
 import { TaxPayerUpdatedEventCommand } from '../../core/application/commands/tax-payer-updated-event/tax-payer-updated-event.command';
+import { TaxPayerUpdatedEventDto } from './dtos/tax-payer-updated.event.dto';
+
+import { TaxPayerDeletedEventCommand } from '../../core/application/commands/tax-payer-deleted-event/tax-payer-deleted-event.command';
+import { TaxPayerDeletedEventDto } from './dtos/tax-payer-deleted.event.dto';
 
 @Controller()
 export class ListenerEvent {
@@ -48,12 +52,8 @@ export class ListenerEvent {
   @EventPattern('tax-payer-deleted')
   async TaxPayerDeletedEvent(@Payload() event: TaxPayerDeletedEventDto) {
     this.logger.debug(`> Event: ${JSON.stringify(event)}`);
-    // await this.commandBus.execute(
-    //   new RegisterTaxPayerCommand(
-    //     event.newAddress,
-    //     event.newBankDetail,
-    //     event.newTaxPayer,
-    //   ),
-    // );
+    await this.commandBus.execute(
+      new TaxPayerDeletedEventCommand(event.taxCode),
+    );
   }
 }

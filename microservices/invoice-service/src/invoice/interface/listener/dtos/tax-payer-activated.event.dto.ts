@@ -1,10 +1,8 @@
-import { Address } from '../../../core/domain/entities/address';
-import { BankDetail } from '../../../core/domain/entities/bank-detail';
-import { TaxPayer } from '../../../core/domain/entities/tax-payer';
+import { TaxCode } from '../../../core/domain/value-objects/tax-code';
 
 export class TaxPayerActivatedEventDto {
   constructor(
-    public readonly taxCode: string,
+    public readonly taxCode: TaxCode,
     public readonly usbToken: string,
   ) {}
 }

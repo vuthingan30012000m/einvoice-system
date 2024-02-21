@@ -15,8 +15,14 @@ export class TaxPayerDeletedEventHandler
     try {
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
-      this.MessageQueuePort.sendMessage('tax-payer-deleted', event);
-      this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event)}`);
+      this.MessageQueuePort.sendMessage('tax-payer-activated', {
+        taxCode: event.TaxPayer.taxCode.value,
+      });
+      this.logger.log(
+        `> Gửi sự kiện: ${JSON.stringify({
+          taxCode: event.TaxPayer.taxCode.value,
+        })}`,
+      );
     } catch (error) {
       return { message: error.message };
     }

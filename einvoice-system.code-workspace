@@ -127,11 +127,12 @@
     "cSpell.words": [
       "cqrs",
       "dataaccess",
+      "dtos",
       "einvoice",
+      "mailhog",
       "nats",
       "nestjs",
-      "typeorm",
-      "mailhog"
+      "typeorm"
     ]
   },
   "extensions": {
