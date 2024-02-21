@@ -39,7 +39,7 @@ export class TaxPayerAdapter {
 
     const entity = new TaxPayerEntity();
 
-    entity.id = TaxPayer.id.value;
+    entity.id = TaxPayer.taxCode.value;
     entity.name = TaxPayer.name;
     entity.email = TaxPayer.email.value;
     entity.password = TaxPayer.password;

@@ -23,7 +23,7 @@ export class WardAdapter {
 
     const entity = new WardEntity();
 
-    entity.id = Ward.id.value;
+    entity.id = Ward.wardId.value;
 
     entity.name = Ward.name;
 

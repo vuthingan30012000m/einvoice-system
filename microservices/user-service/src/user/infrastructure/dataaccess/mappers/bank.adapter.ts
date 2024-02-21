@@ -19,7 +19,7 @@ export class BankAdapter {
 
     const entity = new BankEntity();
 
-    entity.id = Bank.id.value;
+    entity.id = Bank.bankId.value;
     entity.name = Bank.name;
     entity.code = Bank.code;
     entity.shortName = Bank.shortName;

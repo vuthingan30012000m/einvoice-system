@@ -17,7 +17,7 @@ export class TaxOfficeAdapter {
 
     const entity = new TaxOfficeEntity();
 
-    entity.id = TaxOffice.id.value;
+    entity.id = TaxOffice.taxOfficeId.value;
     entity.name = TaxOffice.name;
 
     return entity;

@@ -1,13 +1,13 @@
-import { DomainEntity } from '@vuvannghia/common';
 import { WardId } from './../value-objects/ward-id';
 import { AddressId } from '../value-objects/address-id';
 
-export class Address extends DomainEntity<AddressId> {
+export class Address {
+  addressId: AddressId;
   note: string;
   WardId: WardId;
 
   constructor(addressId: AddressId) {
-    super(addressId);
+    this.addressId = addressId;
   }
   static Builder(addressId: AddressId): AddressBuilder {
     return new AddressBuilder(addressId);

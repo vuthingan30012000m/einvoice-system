@@ -25,7 +25,7 @@ export class BankDetailAdapter {
 
     const entity = new BankDetailEntity();
 
-    entity.id = BankDetail.id.value;
+    entity.id = BankDetail.bankDetailId.value;
     entity.accountBank = BankDetail.accountBank;
 
     const bank = new BankEntity();
