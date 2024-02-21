@@ -58,8 +58,8 @@ export class TaxPayerRegisteredEventCommandHandler
         .withEmail(new Email(payload.newTaxPayer.email.value))
         .withPhoneNumber(new PhoneNumber(payload.newTaxPayer.phoneNumber.value))
         .withTaxOfficeId(new TaxOfficeId(payload.newTaxPayer.taxOfficeId.value))
-        .withBankDetailId(new BankDetailId(newBankDetail.id.value))
-        .withAddressId(new AddressId(newAddress.id.value))
+        .withBankDetailId(new BankDetailId(newBankDetail.bankDetailId.value))
+        .withAddressId(new AddressId(newAddress.addressId.value))
         .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
         .build();
 
