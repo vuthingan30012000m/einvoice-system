@@ -1,6 +1,6 @@
-import { Address } from './../entities/address';
-import { BankDetail } from './../entities/bank-detail';
-import { TaxPayer } from './../entities/tax-payer';
+import { Address } from '../../../core/domain/entities/address';
+import { BankDetail } from '../../../core/domain/entities/bank-detail';
+import { TaxPayer } from '../../../core/domain/entities/tax-payer';
 
 export class TaxPayerRegisteredEventDto {
   constructor(
