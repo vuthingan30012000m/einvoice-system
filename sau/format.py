@@ -23,9 +23,9 @@ list_code=[
 "/home/vvn20206205/Desktop/einvoice-system/microservices/api-gateway/src",
 "/home/vvn20206205/Desktop/einvoice-system/microservices/user-service/src",
 "/home/vvn20206205/Desktop/einvoice-system/microservices/invoice-service/src",
-# "/home/vvn20206205/Desktop/einvoice-system/microservices/tct-demo/src",
+"/home/vvn20206205/Desktop/einvoice-system/microservices/tct-demo/src",
+"/home/vvn20206205/Desktop/vuvannghia/src",
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/report-service/src",
-# "/home/vvn20206205/Desktop/einvoice-system/microservices/vuvannghia/src",
 ]
 for code in list_code:
     format(code)
