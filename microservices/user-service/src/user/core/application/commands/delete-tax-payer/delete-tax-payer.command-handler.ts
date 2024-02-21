@@ -53,7 +53,7 @@ export class DeleteTaxPayerCommandHandler
 
   public async execute(payload: DeleteTaxPayerCommand) {
     try {
-      this.logger.log(`> DeleteTaxPayerCommand: ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxCode),

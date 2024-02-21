@@ -32,6 +32,19 @@ import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/addre
 // import { JwtService } from '@nestjs/jwt';
 // import { HashPasswordService } from '../../../domain/services/hash-password.service';
 
+import { BankDetailId } from './../../../domain/value-objects/bank-detail-id';
+import { Bank } from './../../../domain/entities/bank';
+import { BankId } from './../../../domain/value-objects/bank-id';
+import { PhoneNumber } from './../../../domain/value-objects/phone-number';
+import { TaxPayer } from 'src/invoice/core/domain/entities/tax-payer';
+import { TaxCode } from 'src/invoice/core/domain/value-objects/tax-code';
+
+import { TaxOfficeId } from 'src/invoice/core/domain/value-objects/tax-office-id';
+import { BankDetail } from 'src/invoice/core/domain/entities/bank-detail';
+
+import { Email } from '../../../domain/value-objects/email';
+import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
+
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
@@ -46,11 +59,32 @@ export class RegisterTaxPayerCommandHandler
 
   public async execute(payload: RegisterTaxPayerCommand) {
     try {
-      this.logger.log(`> : ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
-      await this.AddressRepository.save(payload.newAddress);
-      await this.BankDetailRepository.save(payload.newBankDetail);
-      await this.TaxPayerRepository.save(payload.newTaxPayer);
+      const newAddress = Address.Builder(new AddressId(randomUUID()))
+        .withWardId(new WardId(payload.newAddress.WardId.value))
+        .withNoteAddress(payload.newAddress.note)
+        .build();
+
+      const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
+        .withBankId(new BankId(payload.newBankDetail.BankId.value))
+        .withAccountBank(payload.newBankDetail.accountBank)
+        .build();
+
+      const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
+        .withName(payload.newTaxPayer.name)
+        .withPassword(payload.newTaxPayer.password)
+        .withEmail(new Email(payload.newTaxPayer.email.value))
+        .withPhoneNumber(new PhoneNumber(payload.newTaxPayer.phoneNumber.value))
+        .withTaxOfficeId(new TaxOfficeId(payload.newTaxPayer.taxOfficeId.value))
+        .withBankDetailId(new BankDetailId(newBankDetail.id.value))
+        .withAddressId(new AddressId(newAddress.id.value))
+        .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
+        .build();
+
+      await this.AddressRepository.save(newAddress);
+      await this.BankDetailRepository.save(newBankDetail);
+      await this.TaxPayerRepository.save(newTaxPayer);
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };
