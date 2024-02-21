@@ -13,7 +13,6 @@ export class WardAdapter {
     const WardModel = new Ward(new WardId(WardEntity.id));
     WardModel.name = WardEntity.name;
 
-
     return WardModel;
   }
 
