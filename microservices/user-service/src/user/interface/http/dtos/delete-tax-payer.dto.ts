@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import * as faker from 'faker';
 import {
   IsEmail,
   IsNotEmpty,
@@ -7,8 +8,6 @@ import {
   IsString,
   Matches,
 } from 'class-validator';
-
-import * as faker from 'faker';
 
 export class DeleteTaxPayerDto {
   @ApiProperty({

@@ -7,7 +7,7 @@ import { BankRepositoryPort } from '../../../core/application/ports/dataaccess/r
 import { BankEntity } from '../entities/bank.entity';
 import { BankAdapter } from '../mappers/bank.adapter';
 import { Bank } from './../../../core/domain/entities/bank';
-import { BankId } from 'src/user/core/domain/value-objects/bank-id';
+import { BankId } from '../../../core/domain/value-objects/bank-id';
 
 @Injectable()
 export class BankOrmRepository implements BankRepositoryPort {

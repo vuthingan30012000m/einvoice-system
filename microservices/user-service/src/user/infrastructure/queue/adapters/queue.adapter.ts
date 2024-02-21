@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { MessageQueuePort } from 'src/user/core/application/ports/publisher/message-queue.port';
+import { MessageQueuePort } from '../../../core/application/ports/publisher/message-queue.port';
 
 @Injectable()
 export abstract class QueueAdapter implements MessageQueuePort {

@@ -1,7 +1,7 @@
 import { BankEntity } from '../entities/bank.entity';
-import { Bank } from 'src/user/core/domain/entities/bank';
+import { Bank } from '../../../core/domain/entities/bank';
 
-import { BankId } from 'src/user/core/domain/value-objects/bank-id';
+import { BankId } from '../../../core/domain/value-objects/bank-id';
 
 export class BankAdapter {
   static toDomain(BankEntity: BankEntity): Bank {

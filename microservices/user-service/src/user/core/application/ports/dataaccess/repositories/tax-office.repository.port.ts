@@ -1,6 +1,6 @@
 import { IRepository } from '@vuvannghia/common';
-import { TaxOffice } from 'src/user/core/domain/entities/tax-office';
-import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
+import { TaxOffice } from '../../../../domain/entities/tax-office';
+import { TaxOfficeId } from '../../../../domain/value-objects/tax-office-id';
 
 export abstract class TaxOfficeRepositoryPort
   implements IRepository<TaxOffice>

@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
+
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
+
 import { UserModule } from './user/user.module';
 
 @Module({

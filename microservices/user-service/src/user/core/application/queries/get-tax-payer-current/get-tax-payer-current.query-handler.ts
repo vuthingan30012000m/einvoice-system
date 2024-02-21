@@ -1,9 +1,9 @@
-import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
+import { TaxOfficeId } from '../../../domain/value-objects/tax-office-id';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetTaxPayerCurrentQuery } from './get-tax-payer-current.query';
 import { Logger } from '@nestjs/common';
-import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
-import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
 
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';

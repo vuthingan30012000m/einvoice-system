@@ -7,7 +7,7 @@ import { AddressRepositoryPort } from '../../../core/application/ports/dataacces
 import { AddressEntity } from '../entities/address.entity';
 import { AddressAdapter } from '../mappers/address.adapter';
 import { Address } from './../../../core/domain/entities/address';
-import { AddressId } from 'src/user/core/domain/value-objects/address-id';
+import { AddressId } from '../../../core/domain/value-objects/address-id';
 
 @Injectable()
 export class AddressOrmRepository implements AddressRepositoryPort {

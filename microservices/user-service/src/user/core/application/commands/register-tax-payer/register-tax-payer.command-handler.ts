@@ -5,16 +5,16 @@ import { PhoneNumber } from './../../../domain/value-objects/phone-number';
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { RegisterTaxPayerCommand } from './register-tax-payer.command';
-import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
+import { TaxPayer } from '../../../domain/entities/tax-payer';
 import { randomUUID } from 'crypto';
-import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 
-import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
-import { BankDetail } from 'src/user/core/domain/entities/bank-detail';
-import { Address } from 'src/user/core/domain/entities/address';
-import { AddressId } from 'src/user/core/domain/value-objects/address-id';
-import { WardId } from 'src/user/core/domain/value-objects/ward-id';
-import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
+import { TaxOfficeId } from '../../../domain/value-objects/tax-office-id';
+import { BankDetail } from '../../../domain/entities/bank-detail';
+import { Address } from '../../../domain/entities/address';
+import { AddressId } from '../../../domain/value-objects/address-id';
+import { WardId } from '../../../domain/value-objects/ward-id';
+import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
 
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
@@ -26,7 +26,7 @@ import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/addre
 import { Email } from '../../../domain/value-objects/email';
 import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 
-import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
+import { TaxPayerRegisteredEvent } from '../../../domain/events/tax-payer-registered.event';
 import { JwtService } from '@nestjs/jwt';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';
 

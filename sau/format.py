@@ -14,6 +14,7 @@ def format(directory):
             contents = contents.replace("process.env[\"", "process.env.")
             contents = contents.replace("return { error: error.message };", "return { message: error.message };") 
             # contents = contents.replace("@vuvannghia/common", "@vuvannghia") 
+            # contents = contents.replace("src", "../") 
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(contents)
 # prettier --write  file_path
@@ -21,9 +22,9 @@ def format(directory):
             subprocess.run(["prettier", "--write", file_path], check=True)
 
 list_code=[
-"/home/vvn20206205/Desktop/einvoice-system/microservices/api-gateway/src",
+# "/home/vvn20206205/Desktop/einvoice-system/microservices/api-gateway/src",
 "/home/vvn20206205/Desktop/einvoice-system/microservices/user-service/src",
-"/home/vvn20206205/Desktop/einvoice-system/microservices/invoice-service/src",
+# "/home/vvn20206205/Desktop/einvoice-system/microservices/invoice-service/src",
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/tct-demo/src",
 # "/home/vvn20206205/Desktop/vuvannghia/src",
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/report-service/src",

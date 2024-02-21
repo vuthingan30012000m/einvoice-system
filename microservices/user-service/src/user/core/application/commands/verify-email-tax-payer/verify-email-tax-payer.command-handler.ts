@@ -6,8 +6,8 @@ import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-
 import { Email } from '../../../domain/value-objects/email';
 import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 
-import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
-import { EncryptionEmailService } from 'src/user/core/domain/services/encryption-email.service';
+import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
+import { EncryptionEmailService } from '../../../domain/services/encryption-email.service';
 
 @CommandHandler(VerifyEmailTaxPayerCommand)
 export class VerifyEmailTaxPayerCommandHandler

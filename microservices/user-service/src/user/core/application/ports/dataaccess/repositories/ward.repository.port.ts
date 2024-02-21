@@ -1,6 +1,6 @@
 import { IRepository } from '@vuvannghia/common';
-import { Ward } from 'src/user/core/domain/entities/ward';
-import { WardId } from 'src/user/core/domain/value-objects/ward-id';
+import { Ward } from '../../../../domain/entities/ward';
+import { WardId } from '../../../../domain/value-objects/ward-id';
 
 export abstract class WardRepositoryPort implements IRepository<Ward> {
   abstract save(entity: Ward | Ward[]): Promise<Ward>;

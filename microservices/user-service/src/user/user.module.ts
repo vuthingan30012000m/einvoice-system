@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { JwtModule } from '@nestjs/jwt';
 
 import { UserApplications } from './core/application/user.application';

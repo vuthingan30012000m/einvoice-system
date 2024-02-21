@@ -1,10 +1,10 @@
 import { BankDetailEntity } from '../entities/bank-detail.entity';
-import { BankDetail } from 'src/user/core/domain/entities/bank-detail';
+import { BankDetail } from '../../../core/domain/entities/bank-detail';
 
 import { BankEntity } from '../entities/bank.entity';
 
-import { BankDetailId } from 'src/user/core/domain/value-objects/bank-detail-id';
-import { BankId } from 'src/user/core/domain/value-objects/bank-id';
+import { BankDetailId } from '../../../core/domain/value-objects/bank-detail-id';
+import { BankId } from '../../../core/domain/value-objects/bank-id';
 
 export class BankDetailAdapter {
   static toDomain(BankDetailEntity: BankDetailEntity): BankDetail {

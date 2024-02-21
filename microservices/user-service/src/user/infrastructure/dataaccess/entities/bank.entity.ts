@@ -5,6 +5,7 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
+
 import { BankDetailEntity } from './bank-detail.entity';
 
 @Entity()

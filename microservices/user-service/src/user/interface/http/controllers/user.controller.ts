@@ -4,24 +4,33 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
+import { RegisterTaxPayerCommand } from '../../../core/application/commands/register-tax-payer/register-tax-payer.command';
 import { RegisterTaxPayerDto } from '../dtos/register-tax-payer.dto';
-import { RegisterTaxPayerCommand } from 'src/user/core/application/commands/register-tax-payer/register-tax-payer.command';
-import { LoginTaxPayerDto } from '../dtos/login-tax-payer.dto';
-import { LoginTaxPayerQuery } from 'src/user/core/application/queries/login-tax-payer/login-tax-payer.query';
-import { VerifyEmailTaxPayerCommand } from 'src/user/core/application/commands/verify-email-tax-payer/verify-email-tax-payer.command';
-import { RegisterUsbTokenDto } from '../dtos/register-usb-token.dto';
-import { RegisterUsbTokenCommand } from 'src/user/core/application/commands/register-usb-token/register-usb-token.command';
-import { GetTaxPayerCurrentDto } from '../dtos/get-tax-payer-current.dto';
-import { GetTaxPayerCurrentQuery } from 'src/user/core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
+
+import { VerifyEmailTaxPayerCommand } from '../../../core/application/commands/verify-email-tax-payer/verify-email-tax-payer.command';
+
+import { RequestResetPasswordQuery } from '../../../core/application/queries/request-reset-password/request-reset-password.query';
 import { RequestResetPasswordDto } from '../dtos/request-reset-password.dto';
-import { RequestResetPasswordQuery } from 'src/user/core/application/queries/request-reset-password/request-reset-password.query';
-import { VerifyResetPasswordCommand } from 'src/user/core/application/commands/verify-reset-password/verify-reset-password.command';
-import { ChangePasswordCommand } from 'src/user/core/application/commands/change-password/change-password.command';
+
+import { VerifyResetPasswordCommand } from '../../../core/application/commands/verify-reset-password/verify-reset-password.command';
+
+import { LoginTaxPayerQuery } from '../../../core/application/queries/login-tax-payer/login-tax-payer.query';
+import { LoginTaxPayerDto } from '../dtos/login-tax-payer.dto';
+
+import { GetTaxPayerCurrentQuery } from '../../../core/application/queries/get-tax-payer-current/get-tax-payer-current.query';
+import { GetTaxPayerCurrentDto } from '../dtos/get-tax-payer-current.dto';
+
+import { RegisterUsbTokenCommand } from '../../../core/application/commands/register-usb-token/register-usb-token.command';
+import { RegisterUsbTokenDto } from '../dtos/register-usb-token.dto';
+
+import { ChangePasswordCommand } from '../../../core/application/commands/change-password/change-password.command';
 import { ChangePasswordDto } from '../dtos/change-password.dto';
-import { UpdateTaxPayerCommand } from 'src/user/core/application/commands/update-tax-payer/update-tax-payer.command';
+
+import { UpdateTaxPayerCommand } from '../../../core/application/commands/update-tax-payer/update-tax-payer.command';
 import { UpdateTaxPayerDto } from '../dtos/update-tax-payer.dto';
+
+import { DeleteTaxPayerCommand } from '../../../core/application/commands/delete-tax-payer/delete-tax-payer.command';
 import { DeleteTaxPayerDto } from '../dtos/delete-tax-payer.dto';
-import { DeleteTaxPayerCommand } from 'src/user/core/application/commands/delete-tax-payer/delete-tax-payer.command';
 
 @Controller('user')
 export class UserController {
@@ -54,6 +63,22 @@ export class UserController {
     );
   }
 
+  @MessagePattern({ cmd: 'request-reset-password' })
+  async requestResetPassword(
+    @Payload() requestResetPasswordDto: RequestResetPasswordDto,
+  ) {
+    return this.queryBus.execute(
+      new RequestResetPasswordQuery(requestResetPasswordDto.email),
+    );
+  }
+
+  @MessagePattern({ cmd: 'verify-reset-password' })
+  async verifyResetPassword(@Payload() tokenPassword: string) {
+    return await this.commandBus.execute(
+      new VerifyResetPasswordCommand(tokenPassword),
+    );
+  }
+
   @MessagePattern({ cmd: 'login' })
   async login(@Payload() LoginTaxPayerDto: LoginTaxPayerDto) {
     return await this.queryBus.execute(
@@ -71,22 +96,6 @@ export class UserController {
   ) {
     return await this.queryBus.execute(
       new GetTaxPayerCurrentQuery(getTaxPayerCurrentDto.taxCode),
-    );
-  }
-
-  @MessagePattern({ cmd: 'request-reset-password' })
-  async requestResetPassword(
-    @Payload() requestResetPasswordDto: RequestResetPasswordDto,
-  ) {
-    return this.queryBus.execute(
-      new RequestResetPasswordQuery(requestResetPasswordDto.email),
-    );
-  }
-
-  @MessagePattern({ cmd: 'verify-reset-password' })
-  async verifyResetPassword(@Payload() tokenPassword: string) {
-    return await this.commandBus.execute(
-      new VerifyResetPasswordCommand(tokenPassword),
     );
   }
 
@@ -108,6 +117,7 @@ export class UserController {
       ),
     );
   }
+
   @MessagePattern({ cmd: 'update-tax-payer' })
   async updateTaxPayer(@Payload() updateTaxPayerDto: UpdateTaxPayerDto) {
     return await this.commandBus.execute(
@@ -120,6 +130,7 @@ export class UserController {
       ),
     );
   }
+
   @MessagePattern({ cmd: 'delete-tax-payer' })
   async deleteTaxPayer(@Payload() deleteTaxPayerDto: DeleteTaxPayerDto) {
     return await this.commandBus.execute(

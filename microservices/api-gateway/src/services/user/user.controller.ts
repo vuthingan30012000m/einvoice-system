@@ -42,7 +42,7 @@ import { LoginTaxPayerDto } from './dtos/login-tax-payer.dto';
 export class UserController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
-  @Post('register-tax-payer')
+  @Post('register')
   @ApiOperation({ summary: 'Đăng ký tài khoản' })
   register(@Body() registerTaxPayerDto: RegisterTaxPayerDto) {
     return this.apiGateway.send({ cmd: 'register' }, registerTaxPayerDto);
@@ -74,7 +74,7 @@ export class UserController {
     );
   }
 
-  @Post('login-tax-payer')
+  @Post('login')
   @ApiOperation({ summary: 'Đăng nhập tài khoản' })
   login(@Body() LoginTaxPayerDto: LoginTaxPayerDto) {
     return this.apiGateway.send({ cmd: 'login' }, LoginTaxPayerDto);

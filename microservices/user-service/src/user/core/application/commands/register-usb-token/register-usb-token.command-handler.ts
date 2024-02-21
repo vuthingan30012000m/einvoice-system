@@ -2,10 +2,10 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { RegisterUsbTokenCommand } from './register-usb-token.command';
 
-import { UsbTokenAuthenticationService } from 'src/user/core/domain/services/usb-token-authentication.service';
-import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
+import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { TaxPayerActivatedEvent } from 'src/user/core/domain/events/tax-payer-activated.event';
+import { TaxPayerActivatedEvent } from '../../../domain/events/tax-payer-activated.event';
 
 @CommandHandler(RegisterUsbTokenCommand)
 export class RegisterUsbTokenCommandHandler

@@ -1,4 +1,3 @@
-import { TaxPayerStatus } from '../../../core/domain/value-objects/tax-payer-status';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -7,9 +6,11 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
+
 import { TaxOfficeEntity } from './tax-office.entity';
 import { AddressEntity } from './address.entity';
 import { BankDetailEntity } from './bank-detail.entity';
+import { TaxPayerStatus } from '../../../core/domain/value-objects/tax-payer-status';
 
 @Entity()
 export class TaxPayerEntity {

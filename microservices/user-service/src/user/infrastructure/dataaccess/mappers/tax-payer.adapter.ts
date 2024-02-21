@@ -1,6 +1,6 @@
 import { BankDetail } from './../../../core/domain/entities/bank-detail';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
-import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
+import { TaxPayer } from '../../../core/domain/entities/tax-payer';
 
 import { TaxCode } from '../../../core/domain/value-objects/tax-code';
 
