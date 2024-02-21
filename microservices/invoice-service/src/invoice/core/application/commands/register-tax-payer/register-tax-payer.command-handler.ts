@@ -20,12 +20,12 @@ import { AddressId } from '../../../domain/value-objects/address-id';
 import { WardId } from '../../../domain/value-objects/ward-id';
 // import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
 
-// import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-// import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
-// import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
-// import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
-// import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
-// import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
+import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
+import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
+import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
+import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
 
 // import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 // import { TaxPayerRegisteredEvent } from '../../../domain/events/tax-payer-registered.event';
@@ -37,11 +37,7 @@ export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
   constructor(
-    private readonly HashPasswordService: HashPasswordService,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
-    private readonly TaxOfficeRepository: TaxOfficeRepositoryPort,
-    private readonly BankRepository: BankRepositoryPort,
-    private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
     private readonly AddressRepository: AddressRepositoryPort,
   ) {}
@@ -52,34 +48,9 @@ export class RegisterTaxPayerCommandHandler
     try {
       this.logger.log(`> : ${JSON.stringify(payload)}`);
 
-      const newAddress = Address.Builder(new AddressId(randomUUID()))
-        .withWardId(new WardId(payload.wardId))
-        .withNoteAddress(payload.noteAddress)
-        .build();
-
-      const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
-        .withBankId(new BankId(payload.bankId))
-        .withAccountBank(payload.accountBank)
-        .build();
-
-      const hashPassword = await this.HashPasswordService.hash(
-        payload.password,
-      );
-
-      const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
-        .withName(payload.name)
-        .withPassword(hashPassword)
-        .withEmail(new Email(payload.email))
-        .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
-        .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
-        .withBankDetailId(new BankDetailId(newBankDetail.id.value))
-        .withAddressId(new AddressId(newAddress.id.value))
-        .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
-        .build();
-
-      await this.AddressRepository.save(newAddress);
-      await this.BankDetailRepository.save(newBankDetail);
-      await this.TaxPayerRepository.save(newTaxPayer);
+      await this.AddressRepository.save(payload.newAddress);
+      await this.BankDetailRepository.save(payload.newBankDetail);
+      await this.TaxPayerRepository.save(payload.newTaxPayer);
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };

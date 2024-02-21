@@ -1,8 +1,8 @@
 import { ICommand } from '@nestjs/cqrs';
 
-import { Address } from './../entities/address';
-import { BankDetail } from './../entities/bank-detail';
-import { TaxPayer } from './../entities/tax-payer';
+import { Address } from '../../../domain/entities/address';
+import { BankDetail } from '../../../domain/entities/bank-detail';
+import { TaxPayer } from '../../../domain/entities/tax-payer';
 
 export class RegisterTaxPayerCommand implements ICommand {
   constructor(
