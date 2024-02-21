@@ -9,7 +9,9 @@ import {
 } from '@nestjs/common';
 import { CreateReportDto } from './dtos/create-report.dto';
 import { UpdateReportDto } from './dtos/update-report.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Dịch vụ báo cáo')
 @Controller('report')
 export class ReportController {
   @Post()

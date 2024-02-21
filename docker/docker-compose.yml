@@ -7,6 +7,8 @@ services:
     restart: always
     ports:
       - 4222:4222
+    logging:
+      driver: none
 
   mysql:
     image: mysql
@@ -22,6 +24,8 @@ services:
     command: --init-file /init.sql
     volumes:
       - ./mysql/init.sql:/init.sql
+    logging:
+      driver: none
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -32,12 +36,16 @@ services:
       PMA_HOST: mysql
       PMA_USER: root
       PMA_PASSWORD: nghia
+    logging:
+      driver: none
 
   mailhog:
     image: mailhog/mailhog
     ports:
       - 1025:1025
       - 8025:8025
+    logging:
+      driver: none
 
   api_gateway:
     build: ../microservices/api-gateway
@@ -117,16 +125,16 @@ services:
 
 
 
-  # postgres:
-  #   container_name: postgres-container
-  #   image: postgres:alpine
-  #   ports:
-  #     - 5432:5432
-  #   environment:
-  #     POSTGRES_USER: 'user'
-  #     POSTGRES_PASSWORD: 'password'
-  #     POSTGRES_DB: 'ddh'
-  #   volumes:
-  #     - ddh-postgres:/var/lib/postgresql/data
-  #   networks:
-  #     - postgres
+      # postgres:
+      #   container_name: postgres-container
+      #   image: postgres:alpine
+      #   ports:
+      #     - 5432:5432
+      #   environment:
+      #     POSTGRES_USER: 'user'
+      #     POSTGRES_PASSWORD: 'password'
+      #     POSTGRES_DB: 'ddh'
+      #   volumes:
+      #     - ddh-postgres:/var/lib/postgresql/data
+      #   networks:
+      #     - postgres
