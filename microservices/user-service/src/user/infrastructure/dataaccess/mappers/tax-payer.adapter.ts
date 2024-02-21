@@ -2,12 +2,14 @@ import { BankDetail } from './../../../core/domain/entities/bank-detail';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
 
-import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
-import { Email } from '@vuvannghia/common';
-import { PhoneNumber } from 'src/user/core/domain/value-objects/phone-number';
-import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
-import { BankDetailId } from 'src/user/core/domain/value-objects/bank-detail-id';
-import { AddressId } from 'src/user/core/domain/value-objects/address-id';
+import { TaxCode } from '../../../core/domain/value-objects/tax-code';
+
+import { Email } from '../../../core/domain/value-objects/email';
+
+import { PhoneNumber } from '../../../core/domain/value-objects/phone-number';
+import { TaxOfficeId } from '../../../core/domain/value-objects/tax-office-id';
+import { BankDetailId } from '../../../core/domain/value-objects/bank-detail-id';
+import { AddressId } from '../../../core/domain/value-objects/address-id';
 import { TaxOfficeEntity } from '../entities/tax-office.entity';
 import { BankDetailEntity } from '../entities/bank-detail.entity';
 import { AddressEntity } from '../entities/address.entity';

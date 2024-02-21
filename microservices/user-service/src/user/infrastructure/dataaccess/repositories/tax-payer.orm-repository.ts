@@ -8,7 +8,7 @@ import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayerAdapter } from '../mappers/tax-payer.adapter';
 import { TaxPayer } from './../../../core/domain/entities/tax-payer';
 import { TaxCode } from './../../../core/domain/value-objects/tax-code';
-import { Email } from '@vuvannghia/common';
+import { Email } from '../../../core/domain/value-objects/email';
 import { PhoneNumber } from './../../../core/domain/value-objects/phone-number';
 
 @Injectable()

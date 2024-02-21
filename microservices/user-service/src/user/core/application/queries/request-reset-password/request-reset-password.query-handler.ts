@@ -9,7 +9,7 @@ import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
 import { randomUUID } from 'crypto';
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
-import { Email } from '@vuvannghia/common';
+import { Email } from '../../../domain/value-objects/email';
 import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
 import { BankDetail } from 'src/user/core/domain/entities/bank-detail';
 import { Address } from 'src/user/core/domain/entities/address';
@@ -24,7 +24,7 @@ import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.rep
 import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
 import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
 
-import { TaxPayerStatus } from '@vuvannghia/common';
+import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 import { TaxPayerRegisteredEvent } from 'src/user/core/domain/events/tax-payer-registered.event';
 import { JwtService } from '@nestjs/jwt';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';

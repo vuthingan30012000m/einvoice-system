@@ -4,7 +4,10 @@ import { VerifyResetPasswordCommand } from './verify-reset-password.command';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 import { EncryptionEmailService } from 'src/user/core/domain/services/encryption-email.service';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { Email } from '@vuvannghia/common';
+
+import { Email } from '../../../domain/value-objects/email';
+import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
+
 import * as faker from 'faker';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';
 
