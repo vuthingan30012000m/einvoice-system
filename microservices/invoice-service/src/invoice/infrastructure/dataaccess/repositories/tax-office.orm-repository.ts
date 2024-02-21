@@ -7,7 +7,7 @@ import { TaxOfficeRepositoryPort } from '../../../core/application/ports/dataacc
 import { TaxOfficeEntity } from '../entities/tax-office.entity';
 import { TaxOfficeAdapter } from '../mappers/tax-office.adapter';
 import { TaxOffice } from './../../../core/domain/entities/tax-office';
-import { TaxOfficeId } from './../../../core/domain/value-objects/tax-office-id';
+import { TaxOfficeId } from '../../../core/domain/value-objects/tax-office-id';
 
 @Injectable()
 export class TaxOfficeOrmRepository implements TaxOfficeRepositoryPort {

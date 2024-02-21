@@ -5,6 +5,7 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
+
 import { WardEntity } from './ward.entity';
 import { CityEntity } from './city.entity';
 

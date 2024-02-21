@@ -1,10 +1,10 @@
 import { AddressEntity } from '../entities/address.entity';
-import { Address } from './../../../core/domain/entities/address';
+import { Address } from '../../../core/domain/entities/address';
 
 import { WardEntity } from '../entities/ward.entity';
 
-import { AddressId } from './../../../core/domain/value-objects/address-id';
-import { WardId } from './../../../core/domain/value-objects/ward-id';
+import { AddressId } from '../../../core/domain/value-objects/address-id';
+import { WardId } from '../../../core/domain/value-objects/ward-id';
 
 export class AddressAdapter {
   static toDomain(AddressEntity: AddressEntity): Address {
@@ -23,7 +23,7 @@ export class AddressAdapter {
 
     const entity = new AddressEntity();
 
-    entity.id = Address.id.value;
+    entity.id = Address.addressId.value;
 
     entity.note = Address.note;
 

@@ -1,7 +1,7 @@
 import { BankEntity } from '../entities/bank.entity';
-import { Bank } from './../../../core/domain/entities/bank';
+import { Bank } from '../../../core/domain/entities/bank';
 
-import { BankId } from './../../../core/domain/value-objects/bank-id';
+import { BankId } from '../../../core/domain/value-objects/bank-id';
 
 export class BankAdapter {
   static toDomain(BankEntity: BankEntity): Bank {
@@ -19,7 +19,7 @@ export class BankAdapter {
 
     const entity = new BankEntity();
 
-    entity.id = Bank.id.value;
+    entity.id = Bank.bankId.value;
     entity.name = Bank.name;
     entity.code = Bank.code;
     entity.shortName = Bank.shortName;

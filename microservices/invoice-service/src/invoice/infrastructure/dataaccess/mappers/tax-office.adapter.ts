@@ -1,7 +1,7 @@
 import { TaxOfficeEntity } from '../entities/tax-office.entity';
-import { TaxOffice } from './../../../core/domain/entities/tax-office';
+import { TaxOffice } from '../../../core/domain/entities/tax-office';
 
-import { TaxOfficeId } from './../../../core/domain/value-objects/tax-office-id';
+import { TaxOfficeId } from '../../../core/domain/value-objects/tax-office-id';
 
 export class TaxOfficeAdapter {
   static toDomain(TaxOfficeEntity: TaxOfficeEntity): TaxOffice {
@@ -17,7 +17,7 @@ export class TaxOfficeAdapter {
 
     const entity = new TaxOfficeEntity();
 
-    entity.id = TaxOffice.id.value;
+    entity.id = TaxOffice.taxOfficeId.value;
     entity.name = TaxOffice.name;
 
     return entity;

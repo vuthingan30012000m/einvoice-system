@@ -1,10 +1,10 @@
 import { BankDetailEntity } from '../entities/bank-detail.entity';
-import { BankDetail } from './../../../core/domain/entities/bank-detail';
+import { BankDetail } from '../../../core/domain/entities/bank-detail';
 
 import { BankEntity } from '../entities/bank.entity';
 
-import { BankDetailId } from './../../../core/domain/value-objects/bank-detail-id';
-import { BankId } from './../../../core/domain/value-objects/bank-id';
+import { BankDetailId } from '../../../core/domain/value-objects/bank-detail-id';
+import { BankId } from '../../../core/domain/value-objects/bank-id';
 
 export class BankDetailAdapter {
   static toDomain(BankDetailEntity: BankDetailEntity): BankDetail {
@@ -25,7 +25,7 @@ export class BankDetailAdapter {
 
     const entity = new BankDetailEntity();
 
-    entity.id = BankDetail.id.value;
+    entity.id = BankDetail.bankDetailId.value;
     entity.accountBank = BankDetail.accountBank;
 
     const bank = new BankEntity();

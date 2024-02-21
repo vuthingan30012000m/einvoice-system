@@ -1,6 +1,6 @@
 import { BankDetail } from './../../../core/domain/entities/bank-detail';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
-import { TaxPayer } from './../../../core/domain/entities/tax-payer';
+import { TaxPayer } from '../../../core/domain/entities/tax-payer';
 
 import { TaxCode } from '../../../core/domain/value-objects/tax-code';
 
@@ -39,7 +39,7 @@ export class TaxPayerAdapter {
 
     const entity = new TaxPayerEntity();
 
-    entity.id = TaxPayer.id.value;
+    entity.id = TaxPayer.taxCode.value;
     entity.name = TaxPayer.name;
     entity.email = TaxPayer.email.value;
     entity.password = TaxPayer.password;

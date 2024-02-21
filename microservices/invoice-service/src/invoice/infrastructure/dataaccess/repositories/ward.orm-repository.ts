@@ -7,7 +7,7 @@ import { WardRepositoryPort } from '../../../core/application/ports/dataaccess/r
 import { WardEntity } from '../entities/ward.entity';
 import { WardAdapter } from '../mappers/ward.adapter';
 import { Ward } from './../../../core/domain/entities/ward';
-import { WardId } from './../../../core/domain/value-objects/ward-id';
+import { WardId } from '../../../core/domain/value-objects/ward-id';
 
 @Injectable()
 export class WardOrmRepository implements WardRepositoryPort {
