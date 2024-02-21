@@ -63,7 +63,7 @@ export class LoginTaxPayerQueryHandler
       }
 
       const accessToken = await this.JwtService.signAsync({
-        taxCode: existingTaxPayer.id.value,
+        taxCode: existingTaxPayer.taxCode.value,
       });
 
       return accessToken;

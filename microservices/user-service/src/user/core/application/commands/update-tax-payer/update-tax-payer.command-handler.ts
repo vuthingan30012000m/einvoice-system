@@ -126,7 +126,7 @@ export class UpdateTaxPayerCommandHandler
       return {
         ...result,
         taxOffice: {
-          id: existingTaxOffice.id.value,
+          id: existingTaxOffice.taxOfficeId.value,
           name: existingTaxOffice.name,
         },
         bankDetail: {

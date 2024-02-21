@@ -115,8 +115,8 @@ export class RegisterTaxPayerCommandHandler
         .withEmail(new Email(payload.email))
         .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
         .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
-        .withBankDetailId(new BankDetailId(newBankDetail.id.value))
-        .withAddressId(new AddressId(newAddress.id.value))
+        .withBankDetailId(new BankDetailId(newBankDetail.bankDetailId.value))
+        .withAddressId(new AddressId(newAddress.addressId.value))
         .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
         .build();
 

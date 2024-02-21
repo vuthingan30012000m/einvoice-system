@@ -33,7 +33,7 @@ export class TaxPayerRegisteredEventHandler
       <h1>Xin chào <strong>${event.newTaxPayer.name}</strong>,</h1>
 
       <p>
-      Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${event.newTaxPayer.id.value}</strong>
+      Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${event.newTaxPayer.taxCode.value}</strong>
       </p>
 
       <br />
