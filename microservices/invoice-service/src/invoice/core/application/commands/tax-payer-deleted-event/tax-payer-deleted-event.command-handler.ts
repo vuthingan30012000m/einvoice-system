@@ -28,6 +28,7 @@ export class TaxPayerDeletedEventCommandHandler
     try {
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
+      console.log('🚀 ~ execute ~ payload:', payload);
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         payload.taxCode,
       );

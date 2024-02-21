@@ -14,11 +14,7 @@ export class TaxPayerActivatedEventCommandHandler
   private readonly logger = new Logger(
     TaxPayerActivatedEventCommandHandler.name,
   );
-  constructor(
-    private readonly TaxPayerRepository: TaxPayerRepositoryPort,
-    private readonly BankDetailRepository: BankDetailRepositoryPort,
-    private readonly AddressRepository: AddressRepositoryPort,
-  ) {}
+  constructor(private readonly TaxPayerRepository: TaxPayerRepositoryPort) {}
 
   public async execute(payload: TaxPayerActivatedEventCommand) {
     try {
@@ -27,10 +23,6 @@ export class TaxPayerActivatedEventCommandHandler
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         payload.taxCode,
       );
-
-      if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
-      }
 
       findTaxPayer.registerUsbToken(payload.usbToken);
 
