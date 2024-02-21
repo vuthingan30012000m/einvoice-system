@@ -10,6 +10,7 @@ import { TaxPayerDeletedEventDto } from './dtos/tax-payer-deleted.event.dto';
 
 import { TaxPayerRegisteredEventCommand } from 'src/invoice/core/application/commands/tax-payer-registered-event/tax-payer-registered-event.command';
 import { TaxPayerActivatedEventCommand } from 'src/invoice/core/application/commands/tax-payer-activated-event/tax-payer-activated-event.command';
+import { TaxPayerUpdatedEventCommand } from '../../core/application/commands/tax-payer-updated-event/tax-payer-updated-event.command';
 
 @Controller()
 export class ListenerEvent {
@@ -39,13 +40,13 @@ export class ListenerEvent {
   @EventPattern('tax-payer-updated')
   async TaxPayerUpdatedEvent(@Payload() event: TaxPayerUpdatedEventDto) {
     this.logger.debug(`> Event: ${JSON.stringify(event)}`);
-    // await this.commandBus.execute(
-    //   new RegisterTaxPayerCommand(
-    //     TaxPayerUpdatedEventDto.newAddress,
-    //     TaxPayerUpdatedEventDto.newBankDetail,
-    //     TaxPayerUpdatedEventDto.newTaxPayer,
-    //   ),
-    // );
+    await this.commandBus.execute(
+      new   TaxPayerUpdatedEventCommand(
+        event.newAddress,
+        event.newBankDetail,
+        event.newTaxPayer,
+      ),
+    );
   }
 
   @EventPattern('tax-payer-deleted')
@@ -53,9 +54,9 @@ export class ListenerEvent {
     this.logger.debug(`> Event: ${JSON.stringify(event)}`);
     // await this.commandBus.execute(
     //   new RegisterTaxPayerCommand(
-    //     TaxPayerDeletedEventDto.newAddress,
-    //     TaxPayerDeletedEventDto.newBankDetail,
-    //     TaxPayerDeletedEventDto.newTaxPayer,
+    //     event.newAddress,
+    //     event.newBankDetail,
+    //     event.newTaxPayer,
     //   ),
     // );
   }
