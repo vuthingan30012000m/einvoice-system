@@ -24,17 +24,17 @@ export class TaxPayerActivatedEventCommandHandler
     try {
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
-      // const findTaxPayer = await this.TaxPayerRepository.getOneById(
-      //   new TaxCode(payload.taxCode),
-      // );
+      const findTaxPayer = await this.TaxPayerRepository.getOneById(
+        new TaxCode(payload.taxCode),
+      );
 
-      // if (!findTaxPayer) {
-      //   throw new Error('Người nộp thuế không tồn tại.');
-      // }
+      if (!findTaxPayer) {
+        throw new Error('Người nộp thuế không tồn tại.');
+      }
 
-      // findTaxPayer.registerUsbToken(payload.usbToken);
+      findTaxPayer.registerUsbToken(payload.usbToken);
 
-      // await this.TaxPayerRepository.save(findTaxPayer);
+      await this.TaxPayerRepository.save(findTaxPayer);
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };

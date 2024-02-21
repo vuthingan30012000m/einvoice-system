@@ -17,9 +17,13 @@ export class TaxPayerActivatedEventHandler
 
       this.MessageQueuePort.sendMessage('tax-payer-activated', {
         taxCode: event.taxCode.value,
+        usbToken: event.usbToken,
       });
       this.logger.log(
-        `> Gửi sự kiện: ${JSON.stringify({ taxCode: event.taxCode.value })}`,
+        `> Gửi sự kiện: ${JSON.stringify({
+          taxCode: event.taxCode.value,
+          usbToken: event.usbToken,
+        })}`,
       );
     } catch (error) {
       return { message: error.message };

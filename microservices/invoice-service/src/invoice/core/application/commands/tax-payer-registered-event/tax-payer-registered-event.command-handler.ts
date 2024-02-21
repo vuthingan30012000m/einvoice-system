@@ -42,17 +42,23 @@ export class TaxPayerRegisteredEventCommandHandler
     try {
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
-      const newAddress = Address.Builder(new AddressId(randomUUID()))
+      const newAddress = Address.Builder(
+        new AddressId(payload.newAddress.addressId.value),
+      )
         .withWardId(new WardId(payload.newAddress.WardId.value))
         .withNoteAddress(payload.newAddress.note)
         .build();
 
-      const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
+      const newBankDetail = BankDetail.Builder(
+        new BankDetailId(payload.newBankDetail.bankDetailId.value),
+      )
         .withBankId(new BankId(payload.newBankDetail.BankId.value))
         .withAccountBank(payload.newBankDetail.accountBank)
         .build();
 
-      const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
+      const newTaxPayer = TaxPayer.Builder(
+        new TaxCode(payload.newTaxPayer.taxCode.value),
+      )
         .withName(payload.newTaxPayer.name)
         .withPassword(payload.newTaxPayer.password)
         .withEmail(new Email(payload.newTaxPayer.email.value))
