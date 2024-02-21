@@ -1,2 +1,1 @@
-export abstract class TaxPayerActivatedEventPort {
-}
+export abstract class TaxPayerActivatedEventPort {}
