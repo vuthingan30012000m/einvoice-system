@@ -3,8 +3,12 @@ import { EventPattern, Payload } from '@nestjs/microservices';
 
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { TaxPayerRegisteredEventDto } from './dtos/tax-payer-registered.event.dto';
 import { RegisterTaxPayerCommand } from 'src/invoice/core/application/commands/register-tax-payer/register-tax-payer.command';
+
+import { TaxPayerRegisteredEventDto } from './dtos/tax-payer-registered.event.dto';
+import { TaxPayerActivatedEventDto } from './dtos/tax-payer-activated.event.dto';
+import { TaxPayerUpdatedEventDto } from './dtos/tax-payer-updated.event.dto';
+import { TaxPayerDeletedEventDto } from './dtos/tax-payer-deleted.event.dto';
 
 @Controller()
 export class ListenerEvent {
@@ -18,7 +22,6 @@ export class ListenerEvent {
     @Payload() TaxPayerRegisteredEventDto: TaxPayerRegisteredEventDto,
   ) {
     await this.commandBus.execute(
-      // return await this.commandBus.execute(
       new RegisterTaxPayerCommand(
         TaxPayerRegisteredEventDto.newAddress,
         TaxPayerRegisteredEventDto.newBankDetail,
@@ -27,29 +30,42 @@ export class ListenerEvent {
     );
   }
 
+  @EventPattern('tax-payer-activated')
+  async TaxPayerActivatedEvent(
+    @Payload() TaxPayerActivatedEventDto: TaxPayerActivatedEventDto,
+  ) {
+    await this.commandBus.execute(
+      new RegisterTaxPayerCommand(
+        TaxPayerActivatedEventDto.newAddress,
+        TaxPayerActivatedEventDto.newBankDetail,
+        TaxPayerActivatedEventDto.newTaxPayer,
+      ),
+    );
+  }
+
   @EventPattern('tax-payer-updated')
-  async TaxPayerUpdatedEvent(@Payload() data: any) {}
+  async TaxPayerUpdatedEvent(
+    @Payload() TaxPayerUpdatedEventDto: TaxPayerUpdatedEventDto,
+  ) {
+    await this.commandBus.execute(
+      new RegisterTaxPayerCommand(
+        TaxPayerUpdatedEventDto.newAddress,
+        TaxPayerUpdatedEventDto.newBankDetail,
+        TaxPayerUpdatedEventDto.newTaxPayer,
+      ),
+    );
+  }
 
   @EventPattern('tax-payer-deleted')
-  async TaxPayerDeletedEvent(@Payload() data: any) {}
+  async TaxPayerDeletedEvent(
+    @Payload() TaxPayerDeletedEventDto: TaxPayerDeletedEventDto,
+  ) {
+    await this.commandBus.execute(
+      new RegisterTaxPayerCommand(
+        TaxPayerDeletedEventDto.newAddress,
+        TaxPayerDeletedEventDto.newBankDetail,
+        TaxPayerDeletedEventDto.newTaxPayer,
+      ),
+    );
+  }
 }
-
-// @MessagePattern({ cmd: 'update-tax-payer' })
-// async updateTaxPayer(@Payload() updateTaxPayerDto: UpdateTaxPayerDto) {
-// return await this.commandBus.execute(
-// new UpdateTaxPayerCommand(
-// updateTaxPayerDto.taxCode,
-// updateTaxPayerDto.name,
-// updateTaxPayerDto.email,
-// updateTaxPayerDto.phoneNumber,
-// updateTaxPayerDto.usbToken,
-// ),
-// );
-// }
-// @MessagePattern({ cmd: 'delete-tax-payer' })
-// async deleteTaxPayer(@Payload() deleteTaxPayerDto: DeleteTaxPayerDto) {
-// return await this.commandBus.execute(
-// new DeleteTaxPayerCommand(
-// deleteTaxPayerDto.taxCode,
-// deleteTaxPayerDto.usbToken,
-// ),
