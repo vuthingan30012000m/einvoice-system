@@ -7,3 +7,4 @@
 /home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/entities/domain.entity.ts
 /home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/entities/aggregate-root.ts
 /home/vvn20206205/Desktop/vuvannghia/src/common/ddd/shared-kernel/core/domain/value-objects/tax-payer-status.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/shared-kernel/core/domain/value-objects/email.ts
