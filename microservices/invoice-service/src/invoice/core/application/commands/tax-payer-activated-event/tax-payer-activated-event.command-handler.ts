@@ -25,7 +25,7 @@ export class TaxPayerActivatedEventCommandHandler
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
-        new TaxCode(payload.taxCode),
+        payload.taxCode,
       );
 
       if (!findTaxPayer) {
