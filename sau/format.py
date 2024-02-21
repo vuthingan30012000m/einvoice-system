@@ -19,8 +19,8 @@ def format(directory):
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(contents)
 # prettier --write  file_path
-            subprocess.run(["prettier", "--write", file_path], check=True)
-            subprocess.run(["prettier", "--write", file_path], check=True)
+            # subprocess.run(["prettier", "--write", file_path], check=True)
+            # subprocess.run(["prettier", "--write", file_path], check=True)
 
 list_code=[
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/api-gateway/src",
