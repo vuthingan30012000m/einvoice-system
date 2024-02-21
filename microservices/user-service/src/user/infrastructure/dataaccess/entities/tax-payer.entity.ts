@@ -1,4 +1,4 @@
-import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
+import { TaxPayerStatus }  from '@vuvannghia/common';
 import {
   Entity,
   PrimaryGeneratedColumn,

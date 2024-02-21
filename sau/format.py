@@ -31,3 +31,6 @@ list_code=[
 for code in list_code:
     format(code)
 
+# value-objects/tax-payer-status
+# 'src/user/core/domain/value-objects/tax-payer-status'
+#  from '@vuvannghia/common';

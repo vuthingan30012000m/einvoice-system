@@ -5,3 +5,5 @@
 /home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/events/domain.event.ts
 /home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/value-objects/domain.value-object.ts
 /home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/entities/domain.entity.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/oop/core/domain/entities/aggregate-root.ts
+/home/vvn20206205/Desktop/vuvannghia/src/common/ddd/shared-kernel/core/domain/value-objects/tax-payer-status.ts

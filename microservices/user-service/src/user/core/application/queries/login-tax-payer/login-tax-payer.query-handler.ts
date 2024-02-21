@@ -3,7 +3,7 @@ import { LoginTaxPayerQuery } from './login-tax-payer.query';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { Email } from 'src/user/core/domain/value-objects/email';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
-import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
+import { TaxPayerStatus }  from '@vuvannghia/common';
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
 import { Logger } from '@nestjs/common';
 import { HashPasswordService } from 'src/user/core/domain/services/hash-password.service';
