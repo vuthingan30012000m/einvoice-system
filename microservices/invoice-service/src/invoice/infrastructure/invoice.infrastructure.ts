@@ -27,7 +27,7 @@ export const InvoiceInfrastructure = {
     MAIL_HOST: Joi.string().required(),
     MAIL_PORT: Joi.string().required(),
   }),
-  configs: [DatabaseConfig.configs(), MailerConfig.init()],
+  configs: [DatabaseConfig.configs(), MailerConfig.configs()],
 
   repositories: [
     TaxOfficeEntity,
