@@ -2,13 +2,15 @@ import { Module, Logger, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
-import { UserModule } from './user/user.module';
-import { InvoiceModule } from './invoice/invoice.module';
 import { LoggingRequestMiddleware } from './middlewares/logging.middleware';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { AllExceptionFilter } from './filters/all-exception.filter';
 import { TaxPayerInterceptor } from './interceptors/tax-payer.interceptor';
 import { JwtModule } from '@nestjs/jwt';
+
+import { UserModule } from './services/user/user.module';
+import { InvoiceModule } from './services/invoice/invoice.module';
+import { ReportModule } from './services/report/report.module';
 
 @Module({
   imports: [
@@ -38,6 +40,7 @@ import { JwtModule } from '@nestjs/jwt';
     ]),
     UserModule,
     InvoiceModule,
+    ReportModule,
   ],
   controllers: [],
   providers: [
