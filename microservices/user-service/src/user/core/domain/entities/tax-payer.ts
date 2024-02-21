@@ -2,7 +2,7 @@ import { DomainEntity } from '@vuvannghia/common';
 import { TaxCode } from '../value-objects/tax-code';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
-import { TaxPayerStatus }  from '@vuvannghia/common';
+import { TaxPayerStatus } from '@vuvannghia/common';
 import { TaxOfficeId } from '../value-objects/tax-office-id';
 import { AddressId } from '../value-objects/address-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';

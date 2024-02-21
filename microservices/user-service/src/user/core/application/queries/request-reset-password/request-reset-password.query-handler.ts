@@ -76,8 +76,8 @@ export class RequestResetPasswordQueryHandler
         new Email(payload.email),
         'Đặt lại mật khẩu',
         `
-      <h1>Xin chào <strong>${existingEmail.name}</strong>,</h1>
-      <p>Chúng tôi nhận được yêu cầu khôi phục mật khẩu từ bạn.</p>
+ <h1>Xin chào <strong>${existingEmail.name}</strong>,</h1>
+ <p>Chúng tôi nhận được yêu cầu khôi phục mật khẩu từ bạn.</p>
 
 
 <br />

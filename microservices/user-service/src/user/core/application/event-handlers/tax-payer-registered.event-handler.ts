@@ -22,8 +22,8 @@ export class TaxPayerRegisteredEventHandler
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
       // const tokenEmail = this.EncryptionEmailService.encrypt(
-      //   event.newTaxPayer.email.value,
-      //   process.env.VERIFY_EMAIL_SECRET,
+      // event.newTaxPayer.email.value,
+      // process.env.VERIFY_EMAIL_SECRET,
       // );
 
       // this.mailerPort.send(

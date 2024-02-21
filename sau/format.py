@@ -13,7 +13,7 @@ def format(directory):
             contents = contents.replace("process.env['", "process.env.")
             contents = contents.replace("process.env[\"", "process.env.")
             contents = contents.replace("return { error: error.message };", "return { message: error.message };") 
-            contents = contents.replace("NATS_SERVICE", "xxxxxxxxxxxxxxxxxxxxx")
+            contents = contents.replace("'src/user/core/domain/value-objects/tax-payer-status'", "'@vuvannghia/common'")
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(contents)
 # prettier --write  file_path
@@ -30,7 +30,3 @@ list_code=[
 ]
 for code in list_code:
     format(code)
-
-# value-objects/tax-payer-status
-# 'src/user/core/domain/value-objects/tax-payer-status'
-#  from '@vuvannghia/common';

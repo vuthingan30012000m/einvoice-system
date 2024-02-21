@@ -7,7 +7,7 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
-// import { DomainException } from  
+// import { DomainException } from
 
 @Catch()
 export class AllExceptionFilter implements ExceptionFilter {
@@ -34,7 +34,7 @@ export class AllExceptionFilter implements ExceptionFilter {
     }
 
     // if (exception instanceof DomainException) {
-    //   return new BadRequestException(exception.message);
+    // return new BadRequestException(exception.message);
     // }
 
     if (exception instanceof Error) {
