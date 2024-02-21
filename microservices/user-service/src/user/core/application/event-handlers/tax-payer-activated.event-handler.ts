@@ -15,8 +15,12 @@ export class TaxPayerActivatedEventHandler
     try {
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
-      this.MessageQueuePort.sendMessage('tax-payer-activated', event);
-      this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event)}`);
+      this.MessageQueuePort.sendMessage('tax-payer-activated', {
+        taxCode: event.taxCode.value,
+      });
+      this.logger.log(
+        `> Gửi sự kiện: ${JSON.stringify({ taxCode: event.taxCode.value })}`,
+      );
     } catch (error) {
       return { message: error.message };
     }

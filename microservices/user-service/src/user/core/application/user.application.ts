@@ -16,6 +16,7 @@ import { DeleteTaxPayerCommandHandler } from './commands/delete-tax-payer/delete
 import { UpdateTaxPayerCommandHandler } from './commands/update-tax-payer/update-tax-payer.command-handler';
 import { TaxPayerUpdatedEventHandler } from './event-handlers/tax-payer-updated.event-handler';
 import { TaxPayerDeletedEventHandler } from './event-handlers/tax-payer-deleted.event-handler';
+import { TaxPayerActivatedEventHandler } from './event-handlers/tax-payer-activated.event-handler';
 
 const UserDomainServices: any[] = [
   EncryptionEmailService,
@@ -33,6 +34,7 @@ const UserCommandHandlers: any[] = [
 ];
 const UserEventHandlers: any[] = [
   TaxPayerRegisteredEventHandler,
+  TaxPayerActivatedEventHandler,
   TaxPayerUpdatedEventHandler,
   TaxPayerDeletedEventHandler,
 ];
