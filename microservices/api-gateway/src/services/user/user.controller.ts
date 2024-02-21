@@ -22,12 +22,12 @@ import { ClientProxy } from '@nestjs/microservices';
 import {
   TaxPayer,
   TaxPayerJwtPayload,
-} from '../decorators/tax-payer.decorator';
+} from '../../decorators/tax-payer.decorator';
 
 import { Response } from 'express';
 import { QRCodeSegment, toFileStream } from 'qrcode';
 
-import { ExcludeValueInterceptor } from '../interceptors/exclude-value.interceptor';
+import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
 
 import { RequestResetPasswordDto } from './dtos/request-reset-password.dto';
 import { ChangePasswordDto } from './dtos/change-password.dto';
