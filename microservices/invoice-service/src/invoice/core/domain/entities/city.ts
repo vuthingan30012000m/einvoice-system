@@ -1,11 +1,10 @@
-import { DomainEntity } from '@vuvannghia/common';
-
 import { CityId } from '../value-objects/city-id';
 
-export class City extends DomainEntity<CityId> {
+export class City {
+  cityId: CityId;
   name: string;
 
   constructor(cityId: CityId) {
-    super(cityId);
+    this.cityId = cityId;
   }
 }

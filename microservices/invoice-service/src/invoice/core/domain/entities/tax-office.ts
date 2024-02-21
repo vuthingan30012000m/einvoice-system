@@ -1,11 +1,10 @@
-import { DomainEntity } from '@vuvannghia/common';
-
 import { TaxOfficeId } from '../value-objects/tax-office-id';
 
-export class TaxOffice extends DomainEntity<TaxOfficeId> {
+export class TaxOffice {
+  taxOfficeId: TaxOfficeId;
   name: string;
 
   constructor(taxOfficeId: TaxOfficeId) {
-    super(taxOfficeId);
+    this.taxOfficeId = taxOfficeId;
   }
 }

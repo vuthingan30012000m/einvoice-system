@@ -1,4 +1,3 @@
-import { DomainEntity } from '@vuvannghia/common';
 import { TaxCode } from '../value-objects/tax-code';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
@@ -8,7 +7,8 @@ import { AddressId } from '../value-objects/address-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
 import { TaxPayerException } from '../exceptions/tax-payer.exception';
 
-export class TaxPayer extends DomainEntity<TaxCode> {
+export class TaxPayer {
+  taxCode: TaxCode;
   name: string;
   email: Email;
   password: string;
@@ -64,7 +64,7 @@ export class TaxPayer extends DomainEntity<TaxCode> {
   }
 
   constructor(taxCode: TaxCode) {
-    super(taxCode);
+    this.taxCode = taxCode;
   }
 
   static Builder(taxCode: TaxCode): TaxPayerBuilder {

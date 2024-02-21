@@ -1,13 +1,13 @@
-import { DomainEntity } from '@vuvannghia/common';
 import { BankId } from './../value-objects/bank-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
 
-export class BankDetail extends DomainEntity<BankDetailId> {
+export class BankDetail {
+  bankDetailId: BankDetailId;
   accountBank: string;
   BankId: BankId;
 
   constructor(bankDetailId: BankDetailId) {
-    super(bankDetailId);
+    this.bankDetailId = bankDetailId;
   }
 
   static Builder(bankDetailId: BankDetailId): BankDetailBuilder {
