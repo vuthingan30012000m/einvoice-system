@@ -1,4 +1,4 @@
-import { TaxPayerStatus } from '../../../core/domain/value-objects/tax-payer-status';
+import { TaxPayerStatus } from 'src/user/core/domain/value-objects/tax-payer-status';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -19,13 +19,19 @@ export class TaxPayerEntity {
   @Column({ nullable: false })
   name: string;
 
-  @Column({ unique: true, nullable: false })
+  @Column({
+    // unique: true,
+    nullable: false,
+  })
   email: string;
 
   @Column({ nullable: false })
   password: string;
 
-  @Column({ unique: true, nullable: false })
+  @Column({
+    // unique: true,
+    nullable: false,
+  })
   phoneNumber: string;
 
   @Column({ nullable: false })
