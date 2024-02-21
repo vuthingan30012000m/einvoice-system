@@ -1,7 +1,7 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 export class DatabaseConfig {
-  static init() {
+  static configs() {
     return TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATABASE_HOST,
