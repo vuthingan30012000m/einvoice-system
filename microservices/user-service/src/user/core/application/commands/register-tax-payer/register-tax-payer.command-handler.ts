@@ -8,7 +8,7 @@ import { RegisterTaxPayerCommand } from './register-tax-payer.command';
 import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
 import { randomUUID } from 'crypto';
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
-import { Email } from 'src/user/core/domain/value-objects/email';
+import { Email } from '@vuvannghia/common';
 import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
 import { BankDetail } from 'src/user/core/domain/entities/bank-detail';
 import { Address } from 'src/user/core/domain/entities/address';

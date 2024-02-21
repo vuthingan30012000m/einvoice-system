@@ -3,7 +3,7 @@ import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayer } from 'src/user/core/domain/entities/tax-payer';
 
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
-import { Email } from 'src/user/core/domain/value-objects/email';
+import { Email } from '@vuvannghia/common';
 import { PhoneNumber } from 'src/user/core/domain/value-objects/phone-number';
 import { TaxOfficeId } from 'src/user/core/domain/value-objects/tax-office-id';
 import { BankDetailId } from 'src/user/core/domain/value-objects/bank-detail-id';

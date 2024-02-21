@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { LoginTaxPayerQuery } from './login-tax-payer.query';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { Email } from 'src/user/core/domain/value-objects/email';
+import { Email } from '@vuvannghia/common';
 import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 import { TaxPayerStatus } from '@vuvannghia/common';
 import { TaxCode } from 'src/user/core/domain/value-objects/tax-code';
