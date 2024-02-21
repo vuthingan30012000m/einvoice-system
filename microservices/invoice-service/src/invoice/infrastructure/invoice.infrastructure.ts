@@ -16,6 +16,25 @@ import { TaxOfficeSeeder } from './dataaccess/seeders/tax-office.seeder';
 import { BankSeeder } from './dataaccess/seeders/bank.seeder';
 import { AddressSeeder } from './dataaccess/seeders/address.seeder';
 
+import { TaxPayerRepositoryPort } from '../core/application/ports/dataaccess/repositories/tax-payer.repository.port';
+import { TaxPayerOrmRepository } from './dataaccess/repositories/tax-payer.orm-repository';
+import { TaxOfficeRepositoryPort } from '../core/application/ports/dataaccess/repositories/tax-office.repository.port';
+import { TaxOfficeOrmRepository } from './dataaccess/repositories/tax-office.orm-repository';
+import { BankRepositoryPort } from '../core/application/ports/dataaccess/repositories/bank.repository.port';
+import { BankOrmRepository } from './dataaccess/repositories/bank.orm-repository';
+import { WardRepositoryPort } from '../core/application/ports/dataaccess/repositories/ward.repository.port';
+import { WardOrmRepository } from './dataaccess/repositories/ward.orm-repository';
+import { BankDetailRepositoryPort } from '../core/application/ports/dataaccess/repositories/bank-detail.repository.port';
+import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.orm-repository';
+import { AddressRepositoryPort } from '../core/application/ports/dataaccess/repositories/address.repository.port';
+import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
+import { MailerAdapter } from './mailer/adapters/mailer.adapter';
+import { MailerPort } from '../core/application/ports/mailer/mailer.port';
+
+// import { QueueConfig } from './queue/config/queue.config';
+// import { QueueAdapter } from './queue/adapters/queue.adapter';
+// import { MessageQueuePort } from '../core/application/ports/publisher/message-queue.port';
+
 export const InvoiceInfrastructure = {
   validations: Joi.object({
     DATABASE_HOST: Joi.string().required(),
@@ -27,7 +46,11 @@ export const InvoiceInfrastructure = {
     MAIL_HOST: Joi.string().required(),
     MAIL_PORT: Joi.string().required(),
   }),
-  configs: [DatabaseConfig.configs(), MailerConfig.configs()],
+  configs: [
+    DatabaseConfig.configs(),
+    MailerConfig.configs(),
+    // QueueConfig.configs(),
+  ],
 
   repositories: [
     TaxOfficeEntity,
@@ -40,5 +63,38 @@ export const InvoiceInfrastructure = {
     TaxPayerEntity,
   ],
   seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
-  providers: [],
+  providers: [
+    {
+      provide: TaxPayerRepositoryPort,
+      useClass: TaxPayerOrmRepository,
+    },
+    {
+      provide: TaxOfficeRepositoryPort,
+      useClass: TaxOfficeOrmRepository,
+    },
+    {
+      provide: BankRepositoryPort,
+      useClass: BankOrmRepository,
+    },
+    {
+      provide: WardRepositoryPort,
+      useClass: WardOrmRepository,
+    },
+    {
+      provide: BankDetailRepositoryPort,
+      useClass: BankDetailOrmRepository,
+    },
+    {
+      provide: AddressRepositoryPort,
+      useClass: AddressOrmRepository,
+    },
+    {
+      provide: MailerPort,
+      useClass: MailerAdapter,
+    },
+    // {
+    //   provide: MessageQueuePort,
+    //   useClass: QueueAdapter,
+    // },
+  ],
 };
