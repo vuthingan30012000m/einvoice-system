@@ -1,6 +1,6 @@
 import { IRepository } from '@vuvannghia/common';
-import { Bank } from 'src/invoice/core/domain/entities/bank';
-import { BankId } from 'src/invoice/core/domain/value-objects/bank-id';
+import { Bank } from '../../../../domain/entities/bank';
+import { BankId } from '../../../../domain/value-objects/bank-id';
 
 export abstract class BankRepositoryPort implements IRepository<Bank> {
   abstract save(entity: Bank | Bank[]): Promise<Bank>;

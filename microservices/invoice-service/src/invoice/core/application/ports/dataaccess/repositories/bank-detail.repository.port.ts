@@ -1,7 +1,7 @@
 import { IRepository } from '@vuvannghia/common';
-import { BankDetail } from 'src/invoice/core/domain/entities/bank-detail';
-import { BankDetailId } from 'src/invoice/core/domain/value-objects/bank-detail-id';
-import { BankId } from 'src/invoice/core/domain/value-objects/bank-id';
+import { BankDetail } from '../../../../domain/entities/bank-detail';
+import { BankDetailId } from '../../../../domain/value-objects/bank-detail-id';
+import { BankId } from '../../../../domain/value-objects/bank-id';
 
 export abstract class BankDetailRepositoryPort
   implements IRepository<BankDetail>
