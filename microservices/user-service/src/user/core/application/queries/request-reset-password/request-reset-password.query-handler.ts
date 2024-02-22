@@ -56,8 +56,6 @@ export class RequestResetPasswordQueryHandler
     try {
       this.logger.debug(`> payload: ${JSON.stringify(payload)}`);
 
-      console.log('🚀 ~ execute ~ payload:', payload.email);
-
       const existingEmail = await this.TaxPayerRepository.getOneByEmail(
         new Email(payload.email),
       );

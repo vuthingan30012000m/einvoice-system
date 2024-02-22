@@ -15,7 +15,8 @@ def format(directory):
             contents = contents.replace("return { error: error.message };", "return { message: error.message };") 
             # contents = contents.replace("@vuvannghia/common", "@vuvannghia") 
             # contents = contents.replace("src", "../") //
-            contents = contents.replace("//", "") 
+            # contents = contents.replace("//", "") 
+            # contents = contents.replace("🚀", "") 
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(contents)
 # prettier --write  file_path

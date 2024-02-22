@@ -49,50 +49,50 @@ export class RegisterTaxPayerCommandHandler
 
   public async execute(payload: RegisterTaxPayerCommand) {
     try {
-      this.logger.log(`>  payload: ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       // const existingEmail = await this.TaxPayerRepository.getOneByEmail(
-      //   new Email(payload.email),
+      // new Email(payload.email),
       // );
       // if (existingEmail) {
-      //   throw new TaxPayerException('Email đã tồn tại.');
+      // throw new TaxPayerException('Email đã tồn tại.');
       // }
 
       // const existingPhoneNumber =
-      //   await this.TaxPayerRepository.getOneByPhoneNumber(
-      //     new PhoneNumber(payload.phoneNumber),
-      //   );
+      // await this.TaxPayerRepository.getOneByPhoneNumber(
+      // new PhoneNumber(payload.phoneNumber),
+      // );
       // if (existingPhoneNumber) {
-      //   throw new TaxPayerException('Số điện thoại đã tồn tại.');
+      // throw new TaxPayerException('Số điện thoại đã tồn tại.');
       // }
 
       // const existingTaxOffice = await this.TaxOfficeRepository.getOneById(
-      //   new TaxOfficeId(payload.taxOfficeId),
+      // new TaxOfficeId(payload.taxOfficeId),
       // );
       // if (!existingTaxOffice) {
-      //   throw new TaxPayerException('Cơ quan thuế không tồn tại');
+      // throw new TaxPayerException('Cơ quan thuế không tồn tại');
       // }
 
       // const existingBank = await this.BankRepository.getOneById(
-      //   new BankId(payload.bankId),
+      // new BankId(payload.bankId),
       // );
       // if (!existingBank) {
-      //   throw new TaxPayerException('Ngân hàng không tồn tại');
+      // throw new TaxPayerException('Ngân hàng không tồn tại');
       // }
 
       // const exitingWard = await this.WardRepository.getOneById(
-      //   new WardId(payload.wardId),
+      // new WardId(payload.wardId),
       // );
       // if (!exitingWard) {
-      //   throw new TaxPayerException('Phường/xã không tồn tại');
+      // throw new TaxPayerException('Phường/xã không tồn tại');
       // }
 
       // const exitingBankDetail = await this.BankDetailRepository.getAccountBank(
-      //   payload.accountBank,
-      //   new BankId(payload.bankId),
+      // payload.accountBank,
+      // new BankId(payload.bankId),
       // );
       // if (exitingBankDetail) {
-      //   throw new TaxPayerException('Tài khoản ngân hàng đã tồn tại');
+      // throw new TaxPayerException('Tài khoản ngân hàng đã tồn tại');
       // }
 
       const newAddress = Address.Builder(new AddressId(randomUUID()))
