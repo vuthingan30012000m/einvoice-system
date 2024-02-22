@@ -6,7 +6,7 @@ import { ProductId } from '../value-objects/product-id';
 export class InvoiceItem {
   invoiceItemId: InvoiceItemId;
 
-  // productId: ProductId;
+  productId: ProductId;
 
   quantity: number;
   price: Money;
@@ -29,10 +29,10 @@ class InvoiceItemBuilder {
     this.invoiceItem = new InvoiceItem(invoiceItemId);
   }
 
-  // withProductId(productId: ProductId): InvoiceItemBuilder {
-  //   this.invoiceItem.productId = productId;
-  //   return this;
-  // }
+  withProductId(productId: ProductId): InvoiceItemBuilder {
+    this.invoiceItem.productId = productId;
+    return this;
+  }
 
   withQuantity(quantity: number): InvoiceItemBuilder {
     this.invoiceItem.quantity = quantity;

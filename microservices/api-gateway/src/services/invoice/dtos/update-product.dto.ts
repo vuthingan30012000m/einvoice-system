@@ -41,11 +41,11 @@ export class UpdateProductDto {
 
   @ApiProperty({
     description: 'Giá của sản phẩm',
-    example: faker.commerce.price(10, 100),
+    example: faker.datatype.number({ min: 0, max: 20 }),
     required: false,
   })
-  @IsNumber()
-  readonly price?: number;
+  @IsString()
+  readonly price?: string;
 
   @ApiProperty({
     description: 'Mô tả của sản phẩm',
@@ -63,7 +63,7 @@ export class UpdateProductDto {
   })
   @IsString()
   @IsOptional()
-  readonly taxRate?: number;
+  readonly taxRate?: string;
 
   @ApiProperty({
     description: 'Chữ ký số USB Token',

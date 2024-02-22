@@ -12,6 +12,7 @@ import { InvoiceItem } from 'src/invoice/core/domain/entities/invoice-item';
 import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { InvoiceItemEntity } from '../entities/invoice-item.entity';
 import { map } from 'rxjs';
+import { ProductEntity } from '../entities/product.entity';
 
 export class InvoiceAdapter {
   static toDomain(invoiceEntity: InvoiceEntity): Invoice {
@@ -26,9 +27,10 @@ export class InvoiceAdapter {
       .withItem(
         invoiceEntity.invoiceItems.map((item) =>
           InvoiceItem.Builder(new InvoiceId(item.id))
-          .withQuantity(item.quantity)
-          .withPrice(new Money(item.price))
-          .withTaxRate(item.taxRate)
+            .withProductId(new ProductId(item.product.id))
+            .withQuantity(item.quantity)
+            .withPrice(new Money(item.price))
+            .withTaxRate(item.taxRate)
             .withSubTotal(new Money(item.subTotal))
             .build(),
         ),
@@ -57,6 +59,11 @@ export class InvoiceAdapter {
     entity.invoiceItems = invoice.invoiceItems.map((item) => {
       const invoiceItem = new InvoiceItemEntity();
       invoiceItem.id = item.invoiceItemId.value;
+
+      const product = new ProductEntity();
+      product.id = item.productId.value;
+      invoiceItem.product = product;
+
       invoiceItem.quantity = item.quantity;
       invoiceItem.price = item.price.value;
       invoiceItem.taxRate = item.taxRate;

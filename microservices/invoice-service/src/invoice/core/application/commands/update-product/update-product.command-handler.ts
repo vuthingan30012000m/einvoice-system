@@ -45,8 +45,8 @@ export class UpdateProductCommandHandler
       const findProduct = await this.ProductRepository.getOneById(
         new ProductId(payload.productId),
       );
-      if (!findTaxPayer) {
-        throw new InvoiceException('Người nộp thuế không tồn tại.');
+      if (!findProduct) {
+        throw new InvoiceException('Sản phẩm không  tồn tại.');
       }
 
       findProduct.update(

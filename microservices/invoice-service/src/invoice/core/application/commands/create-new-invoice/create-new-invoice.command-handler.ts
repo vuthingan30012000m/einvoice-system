@@ -49,26 +49,46 @@ export class CreateNewInvoiceCommandHandler
       if (!isValidUsbToken) {
         throw new InvoiceException('Chữ ký số không đúng.');
       }
+
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+      // buyerId ACTI
+
+      // const findProduct = await this.ProductRepository.getOneById(
+      //   new ProductId(payload.productId),
+      // );
+      // if (!findProduct) {
+      //   throw new InvoiceException('Sản phẩm không  tồn tại.');
+      // }
+ 
       const newInvoiceId = new InvoiceId(randomUUID());
 
       const newInvoiceItems = payload.invoiceItems.map((item) => {
         return (
-
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
-      // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
+          // ProductId
           InvoiceItem.Builder(new InvoiceId(randomUUID()))
-            // .withProductId(new ProductId(item.productId))
+            .withProductId(new ProductId(item.productId))
             .withQuantity(Number(item.quantity))
             .withPrice(new Money(Number(item.price)))
             .withTaxRate(Number(item.taxRate))
