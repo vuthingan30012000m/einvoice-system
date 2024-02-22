@@ -52,7 +52,7 @@ export class InvoiceAdapter {
     entity.seller = seller;
 
     const buyer = new TaxPayerEntity();
-     buyer.id = invoice.buyerId.value;
+    buyer.id = invoice.buyerId.value;
     entity.buyer = buyer;
 
     entity.invoiceItems = invoice.invoiceItems.map((item) => {
