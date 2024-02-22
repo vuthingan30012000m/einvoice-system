@@ -21,7 +21,7 @@ const InvoiceEventHandlers: any[] = [];
 const InvoiceQueryHandlers: any[] = [
   FindTaxPayerQueryHandler,
   FindAllProductQueryHandler,
-  FindOneProductQueryHandler
+  FindOneProductQueryHandler,
 ];
 
 export const InvoiceApplications = {

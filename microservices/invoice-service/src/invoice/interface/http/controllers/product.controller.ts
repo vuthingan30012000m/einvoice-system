@@ -27,8 +27,6 @@ import { FindAllProductQuery } from '../../../core/application/queries/find-all-
 import { FindOneProductDto } from '../dtos/find-one-product.dto';
 import { FindOneProductQuery } from '../../../core/application/queries/find-one-product/find-one-product.query';
 
-
-
 @Controller()
 export class ProductController {
   constructor(
@@ -70,9 +68,4 @@ export class ProductController {
       ),
     );
   }
-
-
-
-
-
 }

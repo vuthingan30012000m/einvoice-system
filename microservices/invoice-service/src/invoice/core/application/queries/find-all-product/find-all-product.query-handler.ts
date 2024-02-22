@@ -28,7 +28,7 @@ export class FindAllProductQueryHandler
         new TaxCode(payload.taxPayerId),
       );
       if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
+        throw new InvoiceException('Người nộp thuế không tồn tại.');
       }
 
       const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(

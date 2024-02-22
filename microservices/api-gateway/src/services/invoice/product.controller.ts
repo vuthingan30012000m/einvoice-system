@@ -98,17 +98,33 @@ export class ProductController {
   }
 
 
-  // @Put('product/:id')
-  // @ApiOperation({ summary: 'Cập nhật sản phẩm theo id' })
-  // async update(
-  //   @Param('id') id: string,
-  //   @Body() updateProductDto: UpdateProductDto,
-  // )  {
-  //   return await this.productService.update(id, updateProductDto);
-  // }
+  @ApiBearerAuth()
+  @Patch('create-product')
+  @ApiOperation({ summary: 'Tạo sản phẩm mới' })
+  // @ApiOperation({ summary: 'Cập nhật sản phẩm' })
+  async createProduct(
+    @Body() createProductDto: CreateProductDto,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+  ) {
+    if (!TaxPayer) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+
+    return this.apiGateway.send(
+      { cmd: 'create-product' },
+      {
+        name: createProductDto.name,
+        unit: createProductDto.unit,
+        price: createProductDto.price,
+        description: createProductDto.description,
+        taxPayerId: TaxPayer.taxCode,
+        usbToken: createProductDto.usbToken,
+      },
+    );
+  } 
 
   // @Delete('product/:id')
-  // @ApiOperation({ summary: 'Xóa sản phẩm theo id' })
+  // @ApiOperation({ summary: 'Xóa sản phẩm' })
   // async remove(@Param('id') id: string)  {
   //   return await this.productService.remove(id);
   // }

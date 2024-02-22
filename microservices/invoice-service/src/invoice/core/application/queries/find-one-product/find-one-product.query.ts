@@ -1,4 +1,4 @@
-import { IQuery, IQueryResult } from "@nestjs/cqrs";
+import { IQuery, IQueryResult } from '@nestjs/cqrs';
 
 export class FindOneProductQuery implements IQuery {
   constructor(
@@ -7,4 +7,3 @@ export class FindOneProductQuery implements IQuery {
     public readonly usbToken: string,
   ) {}
 }
- 
