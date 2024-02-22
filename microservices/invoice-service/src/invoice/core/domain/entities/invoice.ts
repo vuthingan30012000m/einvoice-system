@@ -10,7 +10,7 @@ export class Invoice {
   sellerId: SellerId;
   buyerId: BuyerId;
 
-  items = new Array<InvoiceItem>();
+  invoiceItems = new Array<InvoiceItem>();
 
   totalBeforeTax: Money;
   totalAfterTax: Money;
@@ -38,8 +38,8 @@ class InvoiceBuilder {
     this.invoice.buyerId = buyerId;
     return this;
   }
-  withItem(item: InvoiceItem): InvoiceBuilder {
-    this.invoice.items.push(item);
+  withItem(invoiceItem: InvoiceItem): InvoiceBuilder {
+    this.invoice.invoiceItems.push(invoiceItem);
     return this;
   }
   withTotalBeforeTax(totalBeforeTax: Money): InvoiceBuilder {

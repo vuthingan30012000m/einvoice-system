@@ -13,7 +13,7 @@ import * as faker from 'faker';
 
 export class FindOneProductDto {
   @ApiProperty({
-    description: 'Mã sản phẩm',
+    description: 'Mã định danh của sản phẩm',
     example: faker.datatype.uuid(),
     required: true,
   })
