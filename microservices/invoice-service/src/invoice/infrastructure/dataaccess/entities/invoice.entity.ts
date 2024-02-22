@@ -17,13 +17,13 @@ export class InvoiceEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  // @OneToOne(() => TaxPayerEntity)
-  // @JoinColumn()
-  // seller: TaxPayerEntity;
+  @OneToOne(() => TaxPayerEntity)
+  @JoinColumn()
+  seller: TaxPayerEntity;
 
-  // @OneToOne(() => TaxPayerEntity)
-  // @JoinColumn()
-  // buyer: TaxPayerEntity;
+  @OneToOne(() => TaxPayerEntity)
+  @JoinColumn()
+  buyer: TaxPayerEntity;
 
   @OneToMany(() => InvoiceItemEntity, (invoiceItem) => invoiceItem.invoice, {
     cascade: true,

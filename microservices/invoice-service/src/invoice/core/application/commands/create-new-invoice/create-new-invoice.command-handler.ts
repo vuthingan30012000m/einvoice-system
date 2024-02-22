@@ -51,7 +51,7 @@ export class CreateNewInvoiceCommandHandler
       }
 
       const findBuyer = await this.TaxPayerRepository.getOneById(
-        new TaxCode(payload.sellerId),
+        new TaxCode(payload.buyerId),
       );
       if (!findBuyer) {
         throw new InvoiceException('Người  mua không tồn tại.');
@@ -79,8 +79,8 @@ export class CreateNewInvoiceCommandHandler
       });
 
       const newInvoice = Invoice.Builder(newInvoiceId)
-        // .withSellerId(new TaxCode(payload.sellerId))
-        // .withBuyerId(new TaxCode(payload.buyerId))
+        .withSellerId(new TaxCode(payload.sellerId))
+        .withBuyerId(new TaxCode(payload.buyerId))
         .withItem(newInvoiceItems)
         .withTotalBeforeTax(new Money(0))
         .withTotalAfterTax(new Money(0))

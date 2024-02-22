@@ -21,8 +21,8 @@ export class InvoiceAdapter {
     const invoiceId = new InvoiceId(invoiceEntity.id);
 
     const invoiceModel = Invoice.Builder(new InvoiceId(invoiceEntity.id))
-      // .withSellerId(new TaxCode(invoiceEntity.seller.id))
-      // .withBuyerId(new TaxCode(invoiceEntity.buyer.id))
+      .withSellerId(new TaxCode(invoiceEntity.seller.id))
+      .withBuyerId(new TaxCode(invoiceEntity.buyer.id))
       .withItem(
         invoiceEntity.invoiceItems.map((item) =>
           InvoiceItem.Builder(new InvoiceId(item.id))
@@ -47,13 +47,13 @@ export class InvoiceAdapter {
     const entity = new InvoiceEntity();
     entity.id = invoice.invoiceId.value;
 
-    // const seller = new TaxPayerEntity();
-    // entity.seller.id = invoice.sellerId.value;
-    // entity.seller = seller;
+    const seller = new TaxPayerEntity();
+    seller.id = invoice.sellerId.value;
+    entity.seller = seller;
 
-    // const buyer = new TaxPayerEntity();
-    // entity.buyer.id = invoice.buyerId.value;
-    // entity.buyer = buyer;
+    const buyer = new TaxPayerEntity();
+     buyer.id = invoice.buyerId.value;
+    entity.buyer = buyer;
 
     entity.invoiceItems = invoice.invoiceItems.map((item) => {
       const invoiceItem = new InvoiceItemEntity();
