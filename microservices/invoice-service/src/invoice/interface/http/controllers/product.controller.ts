@@ -31,6 +31,7 @@ import { UpdateProductDto } from '../dtos/update-product.dto';
 import { UpdateProductCommand } from '../../../core/application/commands/update-product/update-product.command';
 
 import { DeleteProductDto } from '../dtos/delete-product.dto';
+import { DeleteProductCommand } from '../../../core/application/commands/delete-product/delete-product.command';
 
 @Controller()
 export class ProductController {
@@ -91,8 +92,8 @@ export class ProductController {
 
   @MessagePattern({ cmd: 'delete-product' })
   async deleteProduct(@Payload() deleteProductDto: DeleteProductDto) {
-    return await this.queryBus.execute(
-      new DeleteProductQuery(
+    return await this.commandBus.execute(
+      new DeleteProductCommand(
         deleteProductDto.productId,
         deleteProductDto.taxPayerId,
         deleteProductDto.usbToken,
