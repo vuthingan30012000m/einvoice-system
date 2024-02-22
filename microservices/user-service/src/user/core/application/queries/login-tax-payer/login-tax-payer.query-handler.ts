@@ -25,7 +25,7 @@ export class LoginTaxPayerQueryHandler
 
   public async execute(payload: LoginTaxPayerQuery) {
     try {
-      this.logger.debug(`> LoginTaxPayerQuery: ${JSON.stringify(payload)}`);
+      this.logger.debug(`> payload: ${JSON.stringify(payload)}`);
 
       const existingTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxCode),

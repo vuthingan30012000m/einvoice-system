@@ -49,7 +49,7 @@ export class ChangePasswordCommandHandler
 
   public async execute(payload: ChangePasswordCommand) {
     try {
-      this.logger.log(`> ChangePasswordCommand: ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       if (payload.password != payload.passwordConfirm) {
         throw new Error('Mật khẩu không trùng khớp.');

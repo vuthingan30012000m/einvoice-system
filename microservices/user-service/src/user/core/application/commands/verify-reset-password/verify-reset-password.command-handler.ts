@@ -25,9 +25,7 @@ export class VerifyResetPasswordCommandHandler
 
   public async execute(payload: VerifyResetPasswordCommand) {
     try {
-      this.logger.log(
-        `> VerifyResetPasswordCommand: ${JSON.stringify(payload)}`,
-      );
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const payloadDecrypt = this.EncryptionEmailService.decrypt(
         payload.tokenPassword,

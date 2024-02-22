@@ -54,9 +54,7 @@ export class RequestResetPasswordQueryHandler
 
   public async execute(payload: RequestResetPasswordQuery) {
     try {
-      this.logger.debug(
-        `> RequestResetPasswordQuery: ${JSON.stringify(payload)}`,
-      );
+      this.logger.debug(`> payload: ${JSON.stringify(payload)}`);
 
       console.log('🚀 ~ execute ~ payload:', payload.email);
 

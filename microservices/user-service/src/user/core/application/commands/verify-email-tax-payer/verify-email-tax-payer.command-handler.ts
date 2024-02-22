@@ -22,9 +22,8 @@ export class VerifyEmailTaxPayerCommandHandler
 
   public async execute(payload: VerifyEmailTaxPayerCommand) {
     try {
-      this.logger.log(
-        `> VerifyEmailTaxPayerCommand: ${JSON.stringify(payload)}`,
-      );
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
+
       const email = this.EncryptionEmailService.decrypt(
         payload.tokenEmail,
         process.env.VERIFY_EMAIL_SECRET,

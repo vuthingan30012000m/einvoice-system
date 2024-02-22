@@ -21,7 +21,7 @@ export class RegisterUsbTokenCommandHandler
 
   public async execute(payload: RegisterUsbTokenCommand) {
     try {
-      this.logger.log(`> RegisterUsbTokenCommand: ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const { usbToken, qrCode } =
         await this.UsbTokenAuthenticationService.generate(
