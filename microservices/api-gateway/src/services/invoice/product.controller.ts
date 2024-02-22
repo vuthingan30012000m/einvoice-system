@@ -48,11 +48,19 @@ export class ProductController {
     );
   }
 
-  // @Get('product')
-  // @ApiOperation({ summary: 'Lấy tất cả sản phẩm' })
-  // async findAll()  {
-  //   return await this.productService.findAll();
-  // }
+  @Get('find-all-product')
+  @ApiOperation({ summary: 'Lấy tất cả sản phẩm' })
+  async findAllProduct(
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+
+  )  {
+    if (!TaxPayer) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+
+
+    return this
+  }
 
   // @Get('product/:id')
   // @ApiOperation({ summary: 'Lấy sản phẩm theo id' })
