@@ -64,6 +64,12 @@ export class CreateNewInvoiceCommandHandler
         if (!findProduct) {
           throw new InvoiceException('Sản phẩm không tồn tại.');
         }
+        if (findProduct.taxRate !== Number(item.taxRate)) {
+          throw new InvoiceException('Thuế suất không đúng.');
+        }
+        if (findProduct.price !== new Money(Number(item.price))) {
+          throw new InvoiceException('Giá bán không đúng.');
+        }
       }
 
       const newInvoiceId = new InvoiceId(randomUUID());
@@ -74,7 +80,6 @@ export class CreateNewInvoiceCommandHandler
           .withQuantity(Number(item.quantity))
           .withPrice(new Money(Number(item.price)))
           .withTaxRate(Number(item.taxRate))
-          .withSubTotal(new Money(0))
           .build();
       });
 

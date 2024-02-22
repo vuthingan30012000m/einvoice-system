@@ -13,6 +13,12 @@ export class InvoiceItem {
   taxRate: number;
   subTotal: Money;
 
+  calculateSubTotal(): void {
+    const subTotalAmount = this.price.multiply(this.quantity);
+    const taxAmount = subTotalAmount.multiply(this.taxRate / 100);
+    this.subTotal = subTotalAmount.add(taxAmount);
+  }
+
   constructor(invoiceItemId: InvoiceItemId) {
     this.invoiceItemId = invoiceItemId;
   }
@@ -49,12 +55,8 @@ class InvoiceItemBuilder {
     return this;
   }
 
-  withSubTotal(subTotal: Money): InvoiceItemBuilder {
-    this.invoiceItem.subTotal = subTotal;
-    return this;
-  }
-
   build(): InvoiceItem {
+    this.invoiceItem.calculateSubTotal();
     return this.invoiceItem;
   }
 }
