@@ -11,6 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { UserModule } from './services/user/user.module';
 import { InvoiceModule } from './services/invoice/invoice.module';
 import { ReportModule } from './services/report/report.module';
+import { TctDemoModule } from './services/tct-demo/tct-demo.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { ReportModule } from './services/report/report.module';
         },
       },
     ]),
+    TctDemoModule,
     UserModule,
     InvoiceModule,
     ReportModule,
