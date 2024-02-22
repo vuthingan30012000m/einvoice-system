@@ -34,4 +34,15 @@ export class InvoiceController {
       new FindTaxPayerQuery(FindTaxPayerDto.taxCode),
     );
   }
+
+  @MessagePattern({ cmd: 'create-new-invoice' })
+  async createNewInvoice(@Payload() createNewInvoiceDto: CreateNewInvoiceDto) {
+    console.log(
+      '🚀 ~ InvoiceController ~ createNewInvoice ~ createNewInvoiceDto:',
+      createNewInvoiceDto,
+    );
+    // return await this.commandBus.execute(
+    // new createNewInvoice  (createNewInvoiceDto.taxCode),
+    // );
+  }
 }
