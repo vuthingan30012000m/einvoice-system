@@ -12,22 +12,22 @@ export class AppController {
   @ApiResponse({ status: HttpStatus.CREATED, description: 'Tạo thành công' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Không được chấp nhận' })
   getRandomValue() {
-    const uuid = this.appService.getRandomValue();
+   return this.appService.getRandomValue();
 
-    if (uuid) {
-      const successResponse = {
-        uuid,
-        // statusCode: HttpStatus.CREATED,
-        message: 'Tạo thành công',
-      };
-      throw new HttpException(successResponse, HttpStatus.CREATED);
-    } else {
-      const errorResponse = {
-        uuid,
-        // statusCode: HttpStatus.OK,
-        message: 'Không được chấp nhận',
-      };
-      throw new HttpException(errorResponse, HttpStatus.OK);
-    }
+    // if (uuid) {
+    //   const successResponse = {
+    //     uuid,
+    //     // statusCode: HttpStatus.CREATED,
+    //     message: 'Tạo thành công',
+    //   };
+    //   throw new HttpException(successResponse, HttpStatus.CREATED);
+    // } else {
+    //   const errorResponse = {
+    //     uuid,
+    //     // statusCode: HttpStatus.OK,
+    //     message: 'Không được chấp nhận',
+    //   };
+    //   throw new HttpException(errorResponse, HttpStatus.OK);
+    // }
   }
 }
