@@ -4,6 +4,7 @@ import { TaxPayerActivatedEventCommandHandler } from './commands/tax-payer-activ
 import { TaxPayerUpdatedEventCommandHandler } from './commands/tax-payer-updated-event/tax-payer-updated-event.command-handler';
 import { TaxPayerDeletedEventCommandHandler } from './commands/tax-payer-deleted-event/tax-payer-deleted-event.command-handler';
 import { FindTaxPayerQueryHandler } from './queries/find-tax-payer/find-tax-payer.query-handler';
+import { CreateProductCommandHandler } from './commands/create-product/create-product.command-handler';
 
 const InvoiceDomainServices: any[] = [];
 const InvoiceEventCommandHandlers: any[] = [
@@ -12,7 +13,7 @@ const InvoiceEventCommandHandlers: any[] = [
   TaxPayerUpdatedEventCommandHandler,
   TaxPayerDeletedEventCommandHandler,
 ];
-const InvoiceCommandHandlers: any[] = [];
+const InvoiceCommandHandlers: any[] = [CreateProductCommandHandler];
 const InvoiceEventHandlers: any[] = [];
 const InvoiceQueryHandlers: any[] = [FindTaxPayerQueryHandler];
 

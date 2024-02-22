@@ -49,7 +49,7 @@ export class RegisterTaxPayerCommandHandler
 
   public async execute(payload: RegisterTaxPayerCommand) {
     try {
-      this.logger.log(`> : ${JSON.stringify(payload)}`);
+      this.logger.log(`>  payload: ${JSON.stringify(payload)}`);
 
       // const existingEmail = await this.TaxPayerRepository.getOneByEmail(
       //   new Email(payload.email),
