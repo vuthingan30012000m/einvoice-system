@@ -1,4 +1,5 @@
 export enum TaxPayerStatus {
+  DENIED = 'DENIED',
   VERIFY_EMAIL = 'VERIFY_EMAIL',
   REGISTER_USB_TOKEN = 'REGISTER_USB_TOKEN',
   ACTIVE = 'ACTIVE',
