@@ -2,25 +2,12 @@
 <!-- touch    -->
 
   @IsUUID()
-
+<!-- api-gateway chuaanr -->
 <!--@i -->
-
-1 u
-N sp
-
-1 u
-N hóa đơn
-
-1 hóa đơn
-n chi tiết
-
-1 chi tiết
-N sp
+ 
 
 
-
-
-<!--@  -->
+ 
 
 
 
