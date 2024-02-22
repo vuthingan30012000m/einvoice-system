@@ -21,6 +21,8 @@ import {
 import { CreateProductDto } from '../dtos/create-product.dto';
 import { CreateProductCommand } from '../../../core/application/commands/create-product/create-product.command';
 import { Money } from 'src/invoice/core/domain/value-objects/money';
+import { FindAllProductDto } from '../dtos/find-all-product.dto';
+import { FindAllProductQuery } from '../../../core/application/queries/find-all-product/find-all-product.query';
 @Controller()
 export class ProductController {
   constructor(
@@ -38,6 +40,13 @@ export class ProductController {
         CreateProductDto.description,
         CreateProductDto.taxPayerId,
       ),
+    );
+  }
+
+  @MessagePattern({ cmd: 'find-all-product' })
+  async findAllProduct(@Payload() findAllProductDto: FindAllProductDto) {
+    return await this.queryBus.execute(
+      new FindAllProductQuery(findAllProductDto.taxPayerId),
     );
   }
 }

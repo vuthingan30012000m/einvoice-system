@@ -5,6 +5,7 @@ import { TaxPayerUpdatedEventCommandHandler } from './commands/tax-payer-updated
 import { TaxPayerDeletedEventCommandHandler } from './commands/tax-payer-deleted-event/tax-payer-deleted-event.command-handler';
 import { FindTaxPayerQueryHandler } from './queries/find-tax-payer/find-tax-payer.query-handler';
 import { CreateProductCommandHandler } from './commands/create-product/create-product.command-handler';
+import { FindAllProductQueryHandler } from './queries/find-all-product/find-all-product.query-handler';
 
 const InvoiceDomainServices: any[] = [];
 const InvoiceEventCommandHandlers: any[] = [
@@ -15,7 +16,10 @@ const InvoiceEventCommandHandlers: any[] = [
 ];
 const InvoiceCommandHandlers: any[] = [CreateProductCommandHandler];
 const InvoiceEventHandlers: any[] = [];
-const InvoiceQueryHandlers: any[] = [FindTaxPayerQueryHandler];
+const InvoiceQueryHandlers: any[] = [
+  FindTaxPayerQueryHandler,
+  FindAllProductQueryHandler,
+];
 
 export const InvoiceApplications = {
   imports: [CqrsModule],
