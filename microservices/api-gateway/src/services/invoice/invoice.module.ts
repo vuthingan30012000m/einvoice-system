@@ -5,7 +5,7 @@ import { ProductController } from './product.controller';
 
 @Module({
   imports: [NatsClientModule],
-  controllers: [InvoiceController, ProductController],
+  controllers: [ProductController,InvoiceController],
   providers: [],
 })
 export class InvoiceModule {}

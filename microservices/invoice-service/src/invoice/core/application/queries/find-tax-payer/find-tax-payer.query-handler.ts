@@ -33,7 +33,7 @@ export class FindTaxPayerQueryHandler
       this.logger.debug(`> payload: ${JSON.stringify(payload)}`);
 
       const existingTaxPayer = await this.TaxPayerRepository.getOneById(
-        payload.taxCode,
+       new TaxCode( payload.taxCode)
       );
       if (!existingTaxPayer) {
         throw new Error('Không tìm thấy thông tin người nộp thuế.');
