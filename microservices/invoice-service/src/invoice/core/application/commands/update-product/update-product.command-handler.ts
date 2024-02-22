@@ -30,7 +30,7 @@ export class UpdateProductCommandHandler
         new TaxCode(payload.taxPayerId),
       );
       if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
+        throw new InvoiceException('Người nộp thuế không tồn tại.');
       }
 
       const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(
@@ -45,6 +45,9 @@ export class UpdateProductCommandHandler
       const findProduct = await this.ProductRepository.getOneById(
         new ProductId(payload.productId),
       );
+      if (!findTaxPayer) {
+        throw new InvoiceException('Người nộp thuế không tồn tại.');
+      }
 
       findProduct.update(
         payload.name,
@@ -52,7 +55,6 @@ export class UpdateProductCommandHandler
         new Money(payload.price),
         payload.description,
       );
-
       return await this.ProductRepository.save(findProduct);
     } catch (error) {
       this.logger.error(`> ${error}`);

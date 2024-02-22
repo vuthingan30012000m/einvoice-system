@@ -16,8 +16,8 @@ export class ProductOrmRepository implements ProductRepositoryPort {
     private readonly ProductEntityRepository: Repository<ProductEntity>,
   ) {}
 
-  async save(Product: Product): Promise<Product> {
-    const persistenceModel = ProductAdapter.toPersistence(Product);
+  async save(product: Product): Promise<Product> {
+    const persistenceModel = ProductAdapter.toPersistence(product);
     const newEntity = await this.ProductEntityRepository.save(persistenceModel);
     return ProductAdapter.toDomain(newEntity);
   }
@@ -37,9 +37,9 @@ export class ProductOrmRepository implements ProductRepositoryPort {
       where: {
         id: id.value,
       },
-      // relations: {
-      // ward: true,
-      // },
+      relations: {
+        TaxPayer: true,
+      },
     });
 
     return ProductAdapter.toDomain(entity);

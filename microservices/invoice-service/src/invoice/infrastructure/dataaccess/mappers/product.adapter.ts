@@ -7,6 +7,7 @@ import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { WardId } from '../../../core/domain/value-objects/ward-id';
 import { Money } from 'src/invoice/core/domain/value-objects/money';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
+import { TaxCode } from 'src/invoice/core/domain/value-objects/tax-code';
 
 export class ProductAdapter {
   static toDomain(ProductEntity: ProductEntity): Product {
@@ -17,6 +18,7 @@ export class ProductAdapter {
       .withUnit(ProductEntity.unit)
       .withPrice(new Money(ProductEntity.price))
       .withDescription(ProductEntity.description)
+      .withTaxPayerId(new TaxCode(ProductEntity.TaxPayer.id))
       .build();
 
     return ProductModel;
