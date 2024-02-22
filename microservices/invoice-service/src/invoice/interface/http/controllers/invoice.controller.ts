@@ -34,4 +34,28 @@ export class InvoiceController {
       new FindTaxPayerQuery(FindTaxPayerDto.taxCode),
     );
   }
+
+
+
+
+
+
+
+
+
+
+  @MessagePattern({ cmd: 'find-tax-payer' })
+    async CreateProduct(@Payload() CreateProductDto: CreateProductDto) {
+    return await this.queryBus.execute(
+      new CreateProductQuery(CreateProductDto.taxCode),
+    );
+  }
+
+
+
+
+
+
+
+  
 }

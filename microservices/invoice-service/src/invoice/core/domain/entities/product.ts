@@ -5,8 +5,8 @@ export class Product {
   productId: ProductId;
   name: string;
   unit: string;
-  description: string;
   price: Money;
+  description: string;
 
   constructor(productId: ProductId) {
     this.productId = productId;
