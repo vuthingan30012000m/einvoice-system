@@ -11,7 +11,7 @@ import {
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Dịch vụ báo cáo')
+@ApiTags('TCT Demo')
 @Controller('tct-demo')
 export class TctDemoController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
