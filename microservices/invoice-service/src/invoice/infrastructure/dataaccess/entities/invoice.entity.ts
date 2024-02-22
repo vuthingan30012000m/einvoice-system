@@ -17,18 +17,18 @@ export class InvoiceEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @OneToOne(() => TaxPayerEntity)
-  @JoinColumn()
-  seller: TaxPayerEntity;
+  // @OneToOne(() => TaxPayerEntity)
+  // @JoinColumn()
+  // seller: TaxPayerEntity;
 
-  @OneToOne(() => TaxPayerEntity)
-  @JoinColumn()
-  buyer: TaxPayerEntity;
+  // @OneToOne(() => TaxPayerEntity)
+  // @JoinColumn()
+  // buyer: TaxPayerEntity;
 
-  @OneToMany(() => InvoiceItemEntity, (invoiceItem) => invoiceItem.invoice, {
-    cascade: true,
-  })
-  invoiceItems: InvoiceItemEntity[];
+  // @OneToMany(() => InvoiceItemEntity, (invoiceItem) => invoiceItem.invoice, {
+  //   cascade: true,
+  // })
+  // invoiceItems: InvoiceItemEntity[];
 
   @Column({
     nullable: false,

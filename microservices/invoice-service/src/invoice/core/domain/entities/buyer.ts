@@ -1,11 +1,11 @@
-import { BuyerId } from '../value-objects/buyer-id';
 import { Email } from '../value-objects/email';
 import { PhoneNumber } from '../value-objects/phone-number';
 import { AddressId } from '../value-objects/address-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
+import { TaxCode } from '../value-objects/tax-code';
 
 export class Buyer {
-  buyerId: BuyerId;
+  buyerId: TaxCode;
 
   name: string;
   email: Email;
@@ -14,11 +14,11 @@ export class Buyer {
   addressId: AddressId;
   bankDetailId: BankDetailId;
 
-  constructor(buyerId: BuyerId) {
+  constructor(buyerId: TaxCode) {
     this.buyerId = buyerId;
   }
 
-  static Builder(buyerId: BuyerId): BuyerBuilder {
+  static Builder(buyerId: TaxCode): BuyerBuilder {
     return new BuyerBuilder(buyerId);
   }
 }
@@ -26,7 +26,7 @@ export class Buyer {
 class BuyerBuilder {
   private Buyer: Buyer;
 
-  constructor(buyerId: BuyerId) {
+  constructor(buyerId: TaxCode) {
     this.Buyer = new Buyer(buyerId);
   }
   withName(name: string): BuyerBuilder {
