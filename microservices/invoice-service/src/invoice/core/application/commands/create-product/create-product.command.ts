@@ -6,6 +6,7 @@ export class CreateProductCommand implements ICommand {
     public readonly unit: string,
     public readonly price: number,
     public readonly description: string,
+    public readonly taxRate: number,
     public readonly taxPayerId: string,
     public readonly usbToken: string,
   ) {}

@@ -39,6 +39,12 @@
     {
       "name": "application",
       "path": "microservices/invoice-service/src/invoice/core/application"
+    },
+    {
+      "path": "microservices/invoice-service/src/invoice/core/domain"
+    },
+    {
+      "path": "../002 food-ordering-system"
     }
   ],
   "settings": {

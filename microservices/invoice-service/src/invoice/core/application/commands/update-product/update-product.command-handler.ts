@@ -54,6 +54,7 @@ export class UpdateProductCommandHandler
         payload.unit,
         new Money(payload.price),
         payload.description,
+        Number(payload.taxRate),
       );
       return await this.ProductRepository.save(findProduct);
     } catch (error) {

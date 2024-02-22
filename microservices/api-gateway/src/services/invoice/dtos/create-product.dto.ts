@@ -48,6 +48,15 @@ export class CreateProductDto {
   readonly description?: string;
 
   @ApiProperty({
+    description: 'Thuế suất của sản phẩm',
+    example: faker.datatype.number({ min: 0, max: 20 }),
+    required: true,
+  })
+  @IsString()
+  @IsOptional()
+  readonly taxRate: number;
+
+  @ApiProperty({
     description: 'Chữ ký số USB Token',
     example: faker.datatype
       .number({ min: 1, max: 999999 })

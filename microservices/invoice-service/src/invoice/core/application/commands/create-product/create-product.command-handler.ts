@@ -49,6 +49,7 @@ export class CreateProductCommandHandler
         .withUnit(payload.unit)
         .withPrice(new Money(payload.price))
         .withDescription(payload.description)
+        .withTaxRate(payload.taxRate)
         .withTaxPayerId(new TaxCode(payload.taxPayerId))
         .build();
 

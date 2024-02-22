@@ -5,7 +5,7 @@ import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 import { TaxOfficeId } from '../value-objects/tax-office-id';
 import { AddressId } from '../value-objects/address-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
-import { TaxPayerException } from '../exceptions/tax-payer.exception';
+import { InvoiceException } from '../exceptions/invoice.exception';
 
 export class TaxPayer {
   taxCode: TaxCode;
@@ -24,7 +24,7 @@ export class TaxPayer {
 
   verifyEmail() {
     if (this.taxPayerStatus != TaxPayerStatus.VERIFY_EMAIL) {
-      throw new TaxPayerException('Người nộp thuế đã xác thực email.');
+      throw new InvoiceException('Người nộp thuế đã xác thực email.');
     }
     this.taxPayerStatus = TaxPayerStatus.REGISTER_USB_TOKEN;
   }
@@ -58,7 +58,7 @@ export class TaxPayer {
 
   delete() {
     if (this.taxPayerStatus === TaxPayerStatus.DELETED) {
-      throw new TaxPayerException('Người nộp thuế này đã xóa.');
+      throw new InvoiceException('Người nộp thuế này đã xóa.');
     }
     this.taxPayerStatus = TaxPayerStatus.DELETED;
   }

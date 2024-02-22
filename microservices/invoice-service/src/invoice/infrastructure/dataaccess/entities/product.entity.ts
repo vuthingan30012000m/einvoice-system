@@ -18,6 +18,9 @@ export class ProductEntity {
   @Column({ nullable: false })
   description: string;
 
+  @Column({ nullable: false })
+  taxRate: number;
+
   @ManyToOne(() => TaxPayerEntity, (TaxPayer) => TaxPayer.products, {
     nullable: false,
   })

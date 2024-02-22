@@ -8,10 +8,17 @@ export class Product {
   unit: string;
   price: Money;
   description: string;
+  taxRate: number;
 
   taxPayerId: TaxCode;
 
-  update(name: string, unit: string, price: Money, description: string) {
+  update(
+    name: string,
+    unit: string,
+    price: Money,
+    description: string,
+    taxRate: number,
+  ) {
     if (name) {
       this.name = name;
     }
@@ -26,6 +33,10 @@ export class Product {
 
     if (description) {
       this.description = description;
+    }
+
+    if (taxRate) {
+      this.taxRate = taxRate;
     }
   }
 
@@ -66,6 +77,10 @@ class ProductBuilder {
 
   withTaxPayerId(taxPayerId: TaxCode): ProductBuilder {
     this.product.taxPayerId = taxPayerId;
+    return this;
+  }
+  withTaxRate(taxRate: number): ProductBuilder {
+    this.product.taxRate = taxRate;
     return this;
   }
 

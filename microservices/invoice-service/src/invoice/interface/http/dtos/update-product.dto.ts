@@ -4,6 +4,7 @@ export class UpdateProductDto {
   readonly unit?: string;
   readonly price?: number;
   readonly description?: string;
+  readonly taxRate?: string;
   readonly taxPayerId: string;
   readonly usbToken: string;
 }
