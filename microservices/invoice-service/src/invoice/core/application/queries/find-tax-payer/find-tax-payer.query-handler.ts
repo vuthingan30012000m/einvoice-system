@@ -85,6 +85,7 @@ export class FindTaxPayerQueryHandler
         },
       };
     } catch (error) {
+      this.logger.error(`> ${error}`);
       return { message: error.message };
     }
   }
