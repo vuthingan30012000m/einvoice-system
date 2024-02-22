@@ -71,49 +71,7 @@ export class RequestResetPasswordQueryHandler
       this.mailerPort.send(
         new Email(payload.email),
         'Đặt lại mật khẩu',
-        `
- <h1>Xin chào <strong>${existingEmail.name}</strong>,</h1>
- <p>Chúng tôi nhận được yêu cầu khôi phục mật khẩu từ bạn.</p>
-
-
-<br />
-
-
-<p>Vui lòng nhấn vào nút bên dưới để khôi phục mật khẩu.</p>
-
- 
-
-
-<br />
-
-
-<a style=" background-color: #04aa6d;
- color: white;
- padding: 10px;
- text-decoration: none;
- border-radius: 12px; "
- href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-reset-password/${tokenPassword}" target="_blank" >
- &#128073; Đặt lại mật khẩu </a >
-
- <br />
-
- <p>
- Nếu bạn không yêu cầu việc khôi phục mật khẩu hoặc không nhớ đã thực hiện yêu
- cầu này, xin vui lòng bỏ qua email này hoặc liên hệ với chúng tôi ngay để
- chúng tôi có thể giúp bạn giải quyết tình huống này.
-</p>
-
-
- 
- 
-
-
-
- <br />
-<p>Trân trọng,</p>
-<p><strong> Vũ Văn Nghĩa </strong></p>
-<p><strong> MSSV: 20206205 </strong></p>
-`,
+        ` <h1>Xin chào <strong>${existingEmail.name}</strong>,</h1> <p>Chúng tôi nhận được yêu cầu khôi phục mật khẩu từ bạn.</p>  <a style=" background-color: #04aa6d; color: white; padding: 10px; text-decoration: none; border-radius: 12px; " href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-reset-password/${tokenPassword}" target="_blank" > &#128073; Đặt lại mật khẩu </a > <br /> <p> Nếu bạn không yêu cầu việc khôi phục mật khẩu hoặc không nhớ đã thực hiện yêu cầu này, xin vui lòng bỏ qua email này hoặc liên hệ với chúng tôi ngay để chúng tôi có thể giúp bạn giải quyết tình huống này. </p> <br /> <p>Trân trọng,</p> <p><strong> Vũ Văn Nghĩa </strong></p> <p><strong> MSSV: 20206205 </strong></p> `,
       );
 
       this.logger.log(
