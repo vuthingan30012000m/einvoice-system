@@ -64,21 +64,27 @@ export class InvoiceController {
     );
   }
 
-  // @Get('find-tax-payer/:taxCode')
-  // @ApiOperation({ summary: 'Tra cứu người nộp thuế theo mã số thuế' })
-  // findTaxPayer(
-  //   @Param('taxCode') taxCode: string,
+  // @ApiBearerAuth()
+  // @Post('create-replace-invoice')
+  // @ApiOperation({ summary: 'Lập hóa đơn thay thế' })
+  // async createReplaceInvoice(
+  //   @Body() createReplaceInvoiceDto: createReplaceInvoiceDto,
   //   @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   // ) {
   //   if (!TaxPayer) {
   //     throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
   //   }
 
-  //   return this.apiGateway.send({ cmd: 'find-tax-payer' }, { taxCode });
+  //   return this.apiGateway.send(
+  //     { cmd: 'create-new-invoice' },
+  //     {
+  //       sellerId: TaxPayer.taxCode,
+  //       buyerId: createReplaceInvoiceDto.buyerId,
+  //       invoiceItems: createReplaceInvoiceDto.invoiceItems,
+  //       usbToken: createReplaceInvoiceDto.usbToken,
+  //     },
+  //   );
   // }
-
-  // Create replacement invoice
-  // Lập hóa đơn thay thế
 
   // Delete invoice
   // Xóa hóa đơn
@@ -92,91 +98,3 @@ export class InvoiceController {
   // Find all import
   // Tra cứu tất cả hóa đơn mua vào
 }
-
-//   @ApiBearerAuth()
-//   @Post('find-all-product')
-//   @ApiOperation({ summary: 'Lấy tất cả sản phẩm' })
-//   async findAllProduct(
-//     @Body() findAllProductDto: FindAllProductDto,
-//     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
-//   ) {
-//     if (!TaxPayer) {
-//       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-//     }
-
-//     return this.apiGateway.send(
-//       { cmd: 'find-all-product' },
-//       {
-//         taxPayerId: TaxPayer.taxCode,
-//         usbToken: findAllProductDto.usbToken,
-//       },
-//     );
-//   }
-
-//   @ApiBearerAuth()
-//   @Post('find-one-product')
-//   @ApiOperation({ summary: 'Lấy sản phẩm theo id' })
-//   async findOneProduct(
-//     @Body() findOneProductDto: FindOneProductDto,
-//     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
-//   ) {
-//     if (!TaxPayer) {
-//       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-//     }
-
-//     return this.apiGateway.send(
-//       { cmd: 'find-one-product' },
-//       {
-//         productId: findOneProductDto.productId,
-//         taxPayerId: TaxPayer.taxCode,
-//         usbToken: findOneProductDto.usbToken,
-//       },
-//     );
-//   }
-
-//   @ApiBearerAuth()
-//   @Patch('update-product')
-//   @ApiOperation({ summary: 'Cập nhật sản phẩm' })
-//   async updateProduct(
-//     @Body() updateProductDto: UpdateProductDto,
-//     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
-//   ) {
-//     if (!TaxPayer) {
-//       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-//     }
-
-//     return this.apiGateway.send(
-//       { cmd: 'update-product' },
-//       {
-//         productId: updateProductDto.productId,
-//         name: updateProductDto.name,
-//         unit: updateProductDto.unit,
-//         price: updateProductDto.price,
-//         description: updateProductDto.description,
-//         taxPayerId: TaxPayer.taxCode,
-//         usbToken: updateProductDto.usbToken,
-//       },
-//     );
-//   }
-
-//   @ApiBearerAuth()
-//   @Delete('delete-product')
-//   @ApiOperation({ summary: 'Xóa sản phẩm' })
-//   async deleteProduct(
-//     @Body() DeleteProductDto: DeleteProductDto,
-//     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
-//   ) {
-//     if (!TaxPayer) {
-//       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-//     }
-
-//     return this.apiGateway.send(
-//       { cmd: 'delete-product' },
-//       {
-//         productId: DeleteProductDto.productId,
-//         taxPayerId: TaxPayer.taxCode,
-//         usbToken: DeleteProductDto.usbToken,
-//       },
-//     );
-//   }
-// }
