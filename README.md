@@ -2,6 +2,24 @@
 <!-- touch    -->
 
 
+<!--@i -->
+
+1 u
+N sp
+
+1 u
+N hóa đơn
+
+1 hóa đơn
+n chi tiết
+
+1 chi tiết
+N sp
+
+
+
+
+<!--@  -->
 
 
 
@@ -26,24 +44,6 @@
 <!-- @ApiTags('Dịch vụ quản lý người dùng') -->
  
 
-<!--@i -->
-
-1 u
-N sp
-
-1 u
-N hóa đơn
-
-1 hóa đơn
-n chi tiết
-
-1 chi tiết
-N sp
-
-
-
-
-<!--@  -->
 <!--@  -->
 <!--@  -->
 <!--@  -->
