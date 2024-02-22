@@ -11,7 +11,6 @@ import { TaxCode } from 'src/invoice/core/domain/value-objects/tax-code';
 import { InvoiceItem } from 'src/invoice/core/domain/entities/invoice-item';
 import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { InvoiceItemEntity } from '../entities/invoice-item.entity';
-import { InvoiceItemAdapter } from './invoice-item.adapter';
 import { map } from 'rxjs';
 
 export class InvoiceAdapter {
@@ -31,15 +30,21 @@ export class InvoiceAdapter {
     //     .build();
     // });
 
-    const InvoiceModel = Invoice.Builder(new InvoiceId(invoiceEntity.id))
+    const invoiceModel = Invoice.Builder(new InvoiceId(invoiceEntity.id))
       // .withSellerId(new TaxCode(invoiceEntity.seller.id))
       // .withBuyerId(new TaxCode(invoiceEntity.buyer.id))
-      // .withItem(invoiceItems)
+      .withItem(
+        invoiceEntity.invoiceItems.map((item) =>
+          InvoiceItem.Builder(new InvoiceId(item.id))
+            .withSubTotal(new Money(item.subTotal))
+            .build(),
+        ),
+      )
       .withTotalAfterTax(new Money(invoiceEntity.totalAfterTax))
       .withTotalBeforeTax(new Money(invoiceEntity.totalBeforeTax))
       .build();
 
-    return InvoiceModel;
+    return invoiceModel;
   }
 
   static toPersistence(invoice: Invoice): InvoiceEntity {
@@ -56,6 +61,12 @@ export class InvoiceAdapter {
     // entity.buyer.id = invoice.buyerId.value;
     // entity.buyer = buyer;
 
+    entity.invoiceItems = invoice.invoiceItems.map((item) => {
+      const invoiceItem = new InvoiceItemEntity();
+      invoiceItem.id = item.invoiceItemId.value;
+      invoiceItem.subTotal = item.subTotal.value;
+      return invoiceItem;
+    });
     // entity.invoiceItems = InvoiceItemAdapter.toPersistence(invoice.invoiceItems);
     // invoice.invoiceItems.map((item) =>
     //   entity.invoiceItems.push(InvoiceItemAdapter.toPersistence(item)),

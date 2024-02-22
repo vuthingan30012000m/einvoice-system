@@ -6,7 +6,6 @@ import { InvoiceException } from 'src/invoice/core/domain/exceptions/invoice.exc
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
 import { InvoiceRepositoryPort } from '../../ports/dataaccess/repositories/invoice.repository.port';
-import { InvoiceItemRepositoryPort } from '../../ports/dataaccess/repositories/invoice-item.repository.port';
 
 import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 
@@ -27,7 +26,6 @@ export class CreateNewInvoiceCommandHandler
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
     private readonly InvoiceRepositoryPort: InvoiceRepositoryPort,
-    private readonly InvoiceItemRepositoryPort: InvoiceItemRepositoryPort,
   ) {}
 
   private readonly logger = new Logger(CreateNewInvoiceCommandHandler.name);
@@ -70,13 +68,12 @@ export class CreateNewInvoiceCommandHandler
       const newInvoice = Invoice.Builder(newInvoiceId)
         // .withSellerId(new TaxCode(payload.sellerId))
         // .withBuyerId(new TaxCode(payload.buyerId))
-        // .withItem(newInvoiceItems)
+        .withItem(newInvoiceItems)
         .withTotalBeforeTax(new Money(0))
         .withTotalAfterTax(new Money(0))
         .build();
 
-      this.InvoiceItemRepositoryPort.save(newInvoiceItems);
-      // this.InvoiceRepositoryPort.save(newInvoice);
+      this.InvoiceRepositoryPort.save(newInvoice);
       return newInvoice;
     } catch (error) {
       this.logger.error(`> ${error}`);

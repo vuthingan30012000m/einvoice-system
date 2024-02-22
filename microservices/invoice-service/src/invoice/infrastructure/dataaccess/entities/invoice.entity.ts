@@ -25,18 +25,23 @@ export class InvoiceEntity {
   // @JoinColumn()
   // buyer: TaxPayerEntity;
 
-  // @OneToMany(() => InvoiceItemEntity, (invoiceItem) => invoiceItem.invoice, {
-  //   cascade: true,
-  // })
-  // invoiceItems: InvoiceItemEntity[];
-
-  @Column({
-    nullable: false,
+  @OneToMany(() => InvoiceItemEntity, (invoiceItem) => invoiceItem.invoice, {
+    cascade: true,
   })
+  invoiceItems: InvoiceItemEntity[];
+
+
+
+
+  @Column({ nullable: false })
   totalBeforeTax: number;
 
-  @Column({
-    nullable: false,
-  })
+
+
+
+
+
+  
+  @Column({ nullable: false })
   totalAfterTax: number;
 }

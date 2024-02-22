@@ -43,9 +43,7 @@ import { ProductEntity } from './dataaccess/entities/product.entity';
 import { InvoiceEntity } from './dataaccess/entities/invoice.entity';
 import { InvoiceItemEntity } from './dataaccess/entities/invoice-item.entity';
 import { InvoiceRepositoryPort } from '../core/application/ports/dataaccess/repositories/invoice.repository.port';
-import { InvoiceItemRepositoryPort } from '../core/application/ports/dataaccess/repositories/invoice-item.repository.port';
 import { InvoiceOrmRepository } from './dataaccess/repositories/invoice.orm-repository';
-import { InvoiceItemOrmRepository } from './dataaccess/repositories/bank.orm-repository copy';
 
 export const InvoiceInfrastructure = {
   validations: Joi.object({
@@ -118,10 +116,6 @@ export const InvoiceInfrastructure = {
     {
       provide: InvoiceRepositoryPort,
       useClass: InvoiceOrmRepository,
-    },
-    {
-      provide: InvoiceItemRepositoryPort,
-      useClass: InvoiceItemOrmRepository,
     },
   ],
 };

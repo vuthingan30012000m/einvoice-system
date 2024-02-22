@@ -18,14 +18,8 @@ export class InvoiceOrmRepository implements InvoiceRepositoryPort {
   ) {}
 
   async save(invoice: Invoice): Promise<Invoice> {
-    console.log('🚀 ~ InvoiceOrmRepository ~ save ~ invoice:', invoice);
     const persistenceModel = InvoiceAdapter.toPersistence(invoice);
-    console.log(
-      '🚀 ~ InvoiceOrmRepository ~ save ~ persistenceModel:',
-      persistenceModel,
-    );
-    const newEntity = await this.InvoiceEntityRepository.save(persistenceModel); 
-    console.log('🚀 ~ InvoiceOrmRepository ~ save ~ newEntity:', newEntity);
+    const newEntity = await this.InvoiceEntityRepository.save(persistenceModel);
     return InvoiceAdapter.toDomain(newEntity);
   }
 

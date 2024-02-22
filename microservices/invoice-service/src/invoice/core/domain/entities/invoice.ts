@@ -9,7 +9,7 @@ export class Invoice {
   // sellerId: TaxCode;
   // buyerId: TaxCode;
 
-  // invoiceItems = new Array<InvoiceItem>();
+  invoiceItems = new Array<InvoiceItem>();
 
   totalBeforeTax: Money;
   totalAfterTax: Money;
@@ -40,10 +40,10 @@ class InvoiceBuilder {
   //   return this;
   // }
 
-  // withItem(invoiceItems: InvoiceItem[]): InvoiceBuilder {
-  //   invoiceItems.map((item) => this.invoice.invoiceItems.push(item));
-  //   return this;
-  // }
+  withItem(invoiceItems: InvoiceItem[]): InvoiceBuilder {
+    invoiceItems.map((item) => this.invoice.invoiceItems.push(item));
+    return this;
+  }
 
   withTotalBeforeTax(totalBeforeTax: Money): InvoiceBuilder {
     this.invoice.totalBeforeTax = totalBeforeTax;

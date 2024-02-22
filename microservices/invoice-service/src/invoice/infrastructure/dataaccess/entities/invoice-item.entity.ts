@@ -32,8 +32,8 @@ export class InvoiceItemEntity {
   @Column({ nullable: false })
   subTotal: number;
 
-  // @ManyToOne(() => InvoiceEntity, (invoice) => invoice.invoiceItems, {
-  //   nullable: false,
-  // })
-  // invoice: InvoiceEntity;
+  @ManyToOne(() => InvoiceEntity, (invoice) => invoice.invoiceItems, {
+    nullable: false,
+  })
+  invoice: InvoiceEntity;
 }
