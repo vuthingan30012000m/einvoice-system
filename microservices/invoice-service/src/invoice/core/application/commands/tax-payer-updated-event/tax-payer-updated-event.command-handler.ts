@@ -29,9 +29,6 @@ export class TaxPayerUpdatedEventCommandHandler
   public async execute(payload: TaxPayerUpdatedEventCommand) {
     try {
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
-
-      console.log('🚀 ~ execute ~ payload:', payload.TaxPayer);
-
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.TaxPayer.taxCode.value),
       );

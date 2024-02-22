@@ -52,7 +52,7 @@ export class ListenerEvent {
   @EventPattern('tax-payer-deleted')
   async TaxPayerDeletedEvent(@Payload() event: TaxPayerDeletedEventDto) {
     this.logger.debug(`> Event: ${JSON.stringify(event)}`);
-    await this.commandBus.execute( 
+    await this.commandBus.execute(
       new TaxPayerDeletedEventCommand(event.taxCode),
     );
   }
