@@ -18,6 +18,7 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateProductDto } from './dtos/create-product.dto';
 import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
 import { TaxPayerJwtPayload } from '../../../dist/decorators/tax-payer.decorator';
+import { FindAllProductDto } from './dtos/find-all-product.dto';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')
@@ -44,13 +45,17 @@ export class ProductController {
         price: createProductDto.price,
         description: createProductDto.description,
         taxPayerId: TaxPayer.taxCode,
+        usbToken: createProductDto.usbToken,
       },
     );
   }
 
   @Get('find-all-product')
   @ApiOperation({ summary: 'Lấy tất cả sản phẩm' })
-  async findAllProduct(@TaxPayer() TaxPayer: TaxPayerJwtPayload) {
+  async findAllProduct(
+    @Body() findAllProductDto: FindAllProductDto,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+  ) {
     if (!TaxPayer) {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
@@ -59,6 +64,7 @@ export class ProductController {
       { cmd: 'find-all-product' },
       {
         taxPayerId: TaxPayer.taxCode,
+        usbToken: findAllProductDto.usbToken,
       },
     );
   }

@@ -36,9 +36,10 @@ export class ProductController {
       new CreateProductCommand(
         CreateProductDto.name,
         CreateProductDto.unit,
-        new Money(CreateProductDto.price),
+        CreateProductDto.price,
         CreateProductDto.description,
         CreateProductDto.taxPayerId,
+        CreateProductDto.usbToken,
       ),
     );
   }
@@ -46,7 +47,10 @@ export class ProductController {
   @MessagePattern({ cmd: 'find-all-product' })
   async findAllProduct(@Payload() findAllProductDto: FindAllProductDto) {
     return await this.queryBus.execute(
-      new FindAllProductQuery(findAllProductDto.taxPayerId),
+      new FindAllProductQuery(
+        findAllProductDto.taxPayerId,
+        findAllProductDto.usbToken,
+      ),
     );
   }
 }

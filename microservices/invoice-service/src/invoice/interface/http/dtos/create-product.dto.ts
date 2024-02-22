@@ -54,4 +54,5 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   readonly taxPayerId: string;
+  readonly usbToken: string;
 }
