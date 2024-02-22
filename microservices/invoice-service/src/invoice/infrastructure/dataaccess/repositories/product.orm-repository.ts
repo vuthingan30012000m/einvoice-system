@@ -25,7 +25,7 @@ export class ProductOrmRepository implements ProductRepositoryPort {
   async getAll(): Promise<Product[]> {
     const entities = await this.ProductEntityRepository.find({
       relations: {
-        TaxPayer: true,
+        taxPayer: true,
       },
     });
 
@@ -38,7 +38,7 @@ export class ProductOrmRepository implements ProductRepositoryPort {
         id: id.value,
       },
       relations: {
-        TaxPayer: true,
+        taxPayer: true,
       },
     });
 

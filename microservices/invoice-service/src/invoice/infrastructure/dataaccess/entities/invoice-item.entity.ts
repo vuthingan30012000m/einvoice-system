@@ -27,10 +27,10 @@ export class InvoiceItemEntity {
   price: number;
 
   @Column({ nullable: false })
-  subTotal: number;
+  taxRate: number;
 
   @Column({ nullable: false })
-  taxRate: number;
+  subTotal: number;
 
   @ManyToOne(() => InvoiceEntity, (invoice) => invoice.invoiceItems, {
     nullable: false,

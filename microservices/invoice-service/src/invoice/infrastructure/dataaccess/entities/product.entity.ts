@@ -24,5 +24,5 @@ export class ProductEntity {
   @ManyToOne(() => TaxPayerEntity, (TaxPayer) => TaxPayer.products, {
     nullable: false,
   })
-  TaxPayer: TaxPayerEntity;
+  taxPayer: TaxPayerEntity;
 }

@@ -59,7 +59,7 @@ export class TaxPayerEntity {
   @Column({ nullable: true })
   usbToken: string;
 
-  @OneToMany(() => ProductEntity, (taxPayer) => taxPayer.TaxPayer, {
+  @OneToMany(() => ProductEntity, (taxPayer) => taxPayer.taxPayer, {
     cascade: true,
   })
   products: ProductEntity[];

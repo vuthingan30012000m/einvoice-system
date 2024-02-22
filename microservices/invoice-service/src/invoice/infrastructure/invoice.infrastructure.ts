@@ -40,6 +40,11 @@ import { AddressRepositoryPort } from '../core/application/ports/dataaccess/repo
 import { ProductRepositoryPort } from '../core/application/ports/dataaccess/repositories/product.repository.port';
 import { ProductEntity } from './dataaccess/entities/product.entity';
 
+import { InvoiceEntity } from './dataaccess/entities/invoice.entity';
+import { InvoiceItemEntity } from './dataaccess/entities/invoice-item.entity';
+import { InvoiceRepositoryPort } from '../core/application/ports/dataaccess/repositories/invoice.repository.port';
+import { InvoiceItemRepositoryPort } from '../core/application/ports/dataaccess/repositories/invoice-item.repository.port';
+
 export const InvoiceInfrastructure = {
   validations: Joi.object({
     DATABASE_HOST: Joi.string().required(),
@@ -67,6 +72,8 @@ export const InvoiceInfrastructure = {
     BankDetailEntity,
     TaxPayerEntity,
     ProductEntity,
+    InvoiceEntity,
+    InvoiceItemEntity,
   ],
   seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
   providers: [
@@ -106,5 +113,13 @@ export const InvoiceInfrastructure = {
       provide: ProductRepositoryPort,
       useClass: ProductOrmRepository,
     },
+    // {
+    //   provide: InvoiceRepositoryPort,
+    //   useClass: ProductOrmRepository,
+    // },
+    // {
+    //   provide: InvoiceItemRepositoryPort,
+    //   useClass: ProductOrmRepository,
+    // },
   ],
 };

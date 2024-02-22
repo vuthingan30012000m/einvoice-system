@@ -1,14 +1,13 @@
 import { InvoiceId } from '../value-objects/invoice-id';
-import { SellerId } from '../value-objects/seller-id';
-import { BuyerId } from '../value-objects/buyer-id';
 import { InvoiceItem } from './invoice-item';
 import { Money } from '../value-objects/money';
+import { TaxCode } from '../value-objects/tax-code';
 
 export class Invoice {
   invoiceId: InvoiceId;
 
-  sellerId: SellerId;
-  buyerId: BuyerId;
+  sellerId: TaxCode;
+  buyerId: TaxCode;
 
   invoiceItems = new Array<InvoiceItem>();
 
@@ -30,26 +29,32 @@ class InvoiceBuilder {
   constructor(invoiceId: InvoiceId) {
     this.invoice = new Invoice(invoiceId);
   }
-  withSellerId(sellerId: SellerId): InvoiceBuilder {
+
+  withSellerId(sellerId: TaxCode): InvoiceBuilder {
     this.invoice.sellerId = sellerId;
     return this;
   }
-  withBuyerId(buyerId: BuyerId): InvoiceBuilder {
+
+  withBuyerId(buyerId: TaxCode): InvoiceBuilder {
     this.invoice.buyerId = buyerId;
     return this;
   }
+
   withItem(invoiceItems: InvoiceItem[]): InvoiceBuilder {
     invoiceItems.map((item) => this.invoice.invoiceItems.push(item));
     return this;
   }
+
   withTotalBeforeTax(totalBeforeTax: Money): InvoiceBuilder {
     this.invoice.totalBeforeTax = totalBeforeTax;
     return this;
   }
+
   withTotalAfterTax(totalAfterTax: Money): InvoiceBuilder {
     this.invoice.totalAfterTax = totalAfterTax;
     return this;
   }
+
   build(): Invoice {
     return this.invoice;
   }

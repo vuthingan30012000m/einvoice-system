@@ -17,9 +17,9 @@ export class ProductAdapter {
       .withName(ProductEntity.name)
       .withUnit(ProductEntity.unit)
       .withPrice(new Money(ProductEntity.price))
-      .withDescription(ProductEntity.description)
       .withTaxRate(ProductEntity.taxRate)
-      .withTaxPayerId(new TaxCode(ProductEntity.TaxPayer.id))
+      .withDescription(ProductEntity.description)
+      .withTaxPayerId(new TaxCode(ProductEntity.taxPayer.id))
       .build();
 
     return ProductModel;
@@ -35,12 +35,12 @@ export class ProductAdapter {
     entity.name = Product.name;
     entity.unit = Product.unit;
     entity.price = Product.price.value;
-    entity.description = Product.description;
     entity.taxRate = Product.taxRate;
+    entity.description = Product.description;
 
     const taxPayer = new TaxPayerEntity();
     taxPayer.id = Product.taxPayerId.value;
-    entity.TaxPayer = taxPayer;
+    entity.taxPayer = taxPayer;
 
     return entity;
   }

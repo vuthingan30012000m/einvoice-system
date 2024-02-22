@@ -7,10 +7,11 @@ export class InvoiceItem {
   invoiceItemId: InvoiceItemId;
 
   productId: ProductId;
+
   quantity: number;
   price: Money;
-  subTotal: Money;
   taxRate: number;
+  subTotal: Money;
 
   invoiceId: InvoiceId;
 
@@ -44,12 +45,14 @@ class InvoiceItemBuilder {
     this.invoiceItem.price = price;
     return this;
   }
-  withSubTotal(subTotal: Money): InvoiceItemBuilder {
-    this.invoiceItem.subTotal = subTotal;
-    return this;
-  }
+
   withTaxRate(taxRate: number): InvoiceItemBuilder {
     this.invoiceItem.taxRate = taxRate;
+    return this;
+  }
+
+  withSubTotal(subTotal: Money): InvoiceItemBuilder {
+    this.invoiceItem.subTotal = subTotal;
     return this;
   }
 

@@ -69,9 +69,8 @@ export class CreateNewInvoiceCommandHandler
         .withTotalAfterTax(new Money(0))
         .build();
 
-
-        // save 1
-        // save 2
+      // save 1
+      // save 2
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };

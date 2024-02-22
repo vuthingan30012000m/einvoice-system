@@ -7,8 +7,8 @@ export class Product {
   name: string;
   unit: string;
   price: Money;
-  description: string;
   taxRate: number;
+  description: string;
 
   taxPayerId: TaxCode;
 
@@ -30,13 +30,12 @@ export class Product {
     if (price) {
       this.price = price;
     }
+    if (taxRate) {
+      this.taxRate = taxRate;
+    }
 
     if (description) {
       this.description = description;
-    }
-
-    if (taxRate) {
-      this.taxRate = taxRate;
     }
   }
 
@@ -55,6 +54,7 @@ class ProductBuilder {
   constructor(productId: ProductId) {
     this.product = new Product(productId);
   }
+
   withName(name: string): ProductBuilder {
     this.product.name = name;
     return this;
@@ -70,6 +70,11 @@ class ProductBuilder {
     return this;
   }
 
+  withTaxRate(taxRate: number): ProductBuilder {
+    this.product.taxRate = taxRate;
+    return this;
+  }
+
   withDescription(description: string): ProductBuilder {
     this.product.description = description;
     return this;
@@ -77,10 +82,6 @@ class ProductBuilder {
 
   withTaxPayerId(taxPayerId: TaxCode): ProductBuilder {
     this.product.taxPayerId = taxPayerId;
-    return this;
-  }
-  withTaxRate(taxRate: number): ProductBuilder {
-    this.product.taxRate = taxRate;
     return this;
   }
 
