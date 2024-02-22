@@ -5,6 +5,3 @@ export class ProductId extends DomainValueObject {
     super(value);
   }
 }
-
-
-

@@ -18,7 +18,6 @@ import {
   Payload,
 } from '@nestjs/microservices';
 
-
 import { FindTaxPayerQuery } from '../../../core/application/queries/find-tax-payer/find-tax-payer.query';
 import { FindTaxPayerDto } from '../dtos/find-tax-payer.dto';
 
