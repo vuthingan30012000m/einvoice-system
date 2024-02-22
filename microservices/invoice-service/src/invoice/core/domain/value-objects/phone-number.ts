@@ -1,7 +1,6 @@
 import { DomainValueObject } from '@vuvannghia/common';
 import { InvoiceException } from '../exceptions/invoice.exception';
 
-
 export class PhoneNumber extends DomainValueObject {
   constructor(readonly value: string) {
     super(value);

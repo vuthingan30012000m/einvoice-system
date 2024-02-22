@@ -38,8 +38,8 @@ class InvoiceBuilder {
     this.invoice.buyerId = buyerId;
     return this;
   }
-  withItem(invoiceItem: InvoiceItem): InvoiceBuilder {
-    this.invoice.invoiceItems.push(invoiceItem);
+  withItem(invoiceItems: InvoiceItem[]): InvoiceBuilder {
+    invoiceItems.map((item) => this.invoice.invoiceItems.push(item));
     return this;
   }
   withTotalBeforeTax(totalBeforeTax: Money): InvoiceBuilder {

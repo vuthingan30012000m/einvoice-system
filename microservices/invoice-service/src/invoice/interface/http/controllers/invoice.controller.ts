@@ -21,19 +21,11 @@ import {
 import { FindTaxPayerDto } from '../dtos/find-tax-payer.dto';
 import { FindTaxPayerQuery } from '../../../core/application/queries/find-tax-payer/find-tax-payer.query';
 
-
-
-
-
-
-import { CreateNewInvoiceDto } from '../dtos/create-new-invoice.dto'
-
-
-
-
-
-
-
+import { CreateNewInvoiceDto } from '../dtos/create-new-invoice.dto';
+import {
+  CreateNewInvoiceCommand,
+  CreateNewInvoiceItemCommand,
+} from '../../../core/application/commands/create-new-invoice/create-new-invoice.command';
 
 @Controller()
 export class InvoiceController {
@@ -50,14 +42,38 @@ export class InvoiceController {
   }
 
   @MessagePattern({ cmd: 'create-new-invoice' })
-    async createNewInvoice(@Payload() createNewInvoiceDto: CreateNewInvoiceDto) {
-    console.log(
-      '🚀 ~ InvoiceController ~ createNewInvoice ~ createNewInvoiceDto:',
-      createNewInvoiceDto,
+  async createNewInvoice(@Payload() createNewInvoiceDto: CreateNewInvoiceDto) {
+    return await this.commandBus.execute(
+      new CreateNewInvoiceCommand(
+        createNewInvoiceDto.sellerId,
+        createNewInvoiceDto.buyerId,
+
+        createNewInvoiceDto.invoiceItems.map((item) => {
+          return new CreateNewInvoiceItemCommand(
+            item.productId,
+            item.quantity,
+            item.price,
+            item.taxRate,
+          );
+        }),
+
+        createNewInvoiceDto.usbToken,
+      ),
     );
-    return createNewInvoiceDto
-    // return await this.commandBus.execute(
-    // new createNewInvoice  (createNewInvoiceDto.taxCode),
+
+    //   createNewInvoiceDto.invoiceItems.map(item => {
+    //     return new CreateNewInvoiceItemCommand(
+    //       item.productId,
+    //       item.quantity,
+    //       item.price,
+    //       item.taxRate,
+    //     );
+    //   }
+
+    //   ,
+    //   createNewInvoiceDto.usbToken,
+    // ),
+    // ),
     // );
   }
 }

@@ -40,6 +40,19 @@ class InvoiceItemBuilder {
     return this;
   }
 
+  withPrice(price: Money): InvoiceItemBuilder {
+    this.invoiceItem.price = price;
+    return this;
+  }
+  withSubTotal(subTotal: Money): InvoiceItemBuilder {
+    this.invoiceItem.subTotal = subTotal;
+    return this;
+  }
+  withTaxRate(taxRate: number): InvoiceItemBuilder {
+    this.invoiceItem.taxRate = taxRate;
+    return this;
+  }
+
   withInvoiceId(invoiceId: InvoiceId): InvoiceItemBuilder {
     this.invoiceItem.invoiceId = invoiceId;
     return this;

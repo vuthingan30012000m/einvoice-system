@@ -18,7 +18,7 @@ const InvoiceEventCommandHandlers: any[] = [
   TaxPayerActivatedEventCommandHandler,
   TaxPayerUpdatedEventCommandHandler,
   TaxPayerDeletedEventCommandHandler,
-  CreateNewInvoiceCommandHandler
+  CreateNewInvoiceCommandHandler,
 ];
 const InvoiceCommandHandlers: any[] = [
   CreateProductCommandHandler,
