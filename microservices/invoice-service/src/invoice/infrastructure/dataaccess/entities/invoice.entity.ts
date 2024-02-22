@@ -30,18 +30,9 @@ export class InvoiceEntity {
   })
   invoiceItems: InvoiceItemEntity[];
 
-
-
-
   @Column({ nullable: false })
   totalBeforeTax: number;
 
-
-
-
-
-
-  
   @Column({ nullable: false })
   totalAfterTax: number;
 }

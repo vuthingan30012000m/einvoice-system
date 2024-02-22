@@ -49,18 +49,30 @@ export class CreateNewInvoiceCommandHandler
       if (!isValidUsbToken) {
         throw new InvoiceException('Chữ ký số không đúng.');
       }
-
       const newInvoiceId = new InvoiceId(randomUUID());
 
       const newInvoiceItems = payload.invoiceItems.map((item) => {
         return (
+
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
+      // ProductId
           InvoiceItem.Builder(new InvoiceId(randomUUID()))
             // .withProductId(new ProductId(item.productId))
-            // .withQuantity(Number(item.quantity))
-            // .withPrice(new Money(Number(item.price)))
+            .withQuantity(Number(item.quantity))
+            .withPrice(new Money(Number(item.price)))
+            .withTaxRate(Number(item.taxRate))
             .withSubTotal(new Money(0))
-            // .withTaxRate(Number(item.taxRate))
-            // .withInvoiceId(newInvoiceId)
             .build()
         );
       });

@@ -8,12 +8,10 @@ export class InvoiceItem {
 
   // productId: ProductId;
 
-  // quantity: number;
-  // price: Money;
-  // taxRate: number;
+  quantity: number;
+  price: Money;
+  taxRate: number;
   subTotal: Money;
-
-  // invoiceId: InvoiceId;
 
   constructor(invoiceItemId: InvoiceItemId) {
     this.invoiceItemId = invoiceItemId;
@@ -36,30 +34,25 @@ class InvoiceItemBuilder {
   //   return this;
   // }
 
-  // withQuantity(quantity: number): InvoiceItemBuilder {
-  //   this.invoiceItem.quantity = quantity;
-  //   return this;
-  // }
+  withQuantity(quantity: number): InvoiceItemBuilder {
+    this.invoiceItem.quantity = quantity;
+    return this;
+  }
 
-  // withPrice(price: Money): InvoiceItemBuilder {
-  //   this.invoiceItem.price = price;
-  //   return this;
-  // }
+  withPrice(price: Money): InvoiceItemBuilder {
+    this.invoiceItem.price = price;
+    return this;
+  }
 
-  // withTaxRate(taxRate: number): InvoiceItemBuilder {
-  //   this.invoiceItem.taxRate = taxRate;
-  //   return this;
-  // }
+  withTaxRate(taxRate: number): InvoiceItemBuilder {
+    this.invoiceItem.taxRate = taxRate;
+    return this;
+  }
 
   withSubTotal(subTotal: Money): InvoiceItemBuilder {
     this.invoiceItem.subTotal = subTotal;
     return this;
   }
-
-  // withInvoiceId(invoiceId: InvoiceId): InvoiceItemBuilder {
-  //   this.invoiceItem.invoiceId = invoiceId;
-  //   return this;
-  // }
 
   build(): InvoiceItem {
     return this.invoiceItem;

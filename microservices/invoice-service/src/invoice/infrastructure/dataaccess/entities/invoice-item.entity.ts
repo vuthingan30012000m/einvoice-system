@@ -20,14 +20,14 @@ export class InvoiceItemEntity {
   // @JoinColumn()
   // product: ProductEntity;
 
-  // @Column({ nullable: false })
-  // quantity: number;
+  @Column({ nullable: false })
+  quantity: number;
 
-  // @Column({ nullable: false })
-  // price: number;
+  @Column({ nullable: false })
+  price: number;
 
-  // @Column({ nullable: false })
-  // taxRate: number;
+  @Column({ nullable: false })
+  taxRate: number;
 
   @Column({ nullable: false })
   subTotal: number;

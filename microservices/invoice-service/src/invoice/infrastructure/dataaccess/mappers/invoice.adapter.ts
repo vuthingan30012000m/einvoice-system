@@ -18,17 +18,7 @@ export class InvoiceAdapter {
     if (!invoiceEntity) return null;
 
     const invoiceId = new InvoiceId(invoiceEntity.id);
-
-    // const invoiceItems = invoiceEntity.invoiceItems.map((item) => {
-    //   return InvoiceItem.Builder(new InvoiceId(item.id))
-    //     .withProductId(new ProductId(item.product.id))
-    //     .withQuantity(Number(item.quantity))
-    //     .withPrice(new Money(Number(item.price)))
-    //     .withTaxRate(Number(item.taxRate))
-    //     .withSubTotal(new Money(item.subTotal))
-    //     .withInvoiceId(invoiceId)
-    //     .build();
-    // });
+ 
 
     const invoiceModel = Invoice.Builder(new InvoiceId(invoiceEntity.id))
       // .withSellerId(new TaxCode(invoiceEntity.seller.id))
@@ -36,6 +26,9 @@ export class InvoiceAdapter {
       .withItem(
         invoiceEntity.invoiceItems.map((item) =>
           InvoiceItem.Builder(new InvoiceId(item.id))
+          .withQuantity(item.quantity)
+          .withPrice(new Money(item.price))
+          .withTaxRate(item.taxRate)
             .withSubTotal(new Money(item.subTotal))
             .build(),
         ),
@@ -64,13 +57,12 @@ export class InvoiceAdapter {
     entity.invoiceItems = invoice.invoiceItems.map((item) => {
       const invoiceItem = new InvoiceItemEntity();
       invoiceItem.id = item.invoiceItemId.value;
+      invoiceItem.quantity = item.quantity;
+      invoiceItem.price = item.price.value;
+      invoiceItem.taxRate = item.taxRate;
       invoiceItem.subTotal = item.subTotal.value;
       return invoiceItem;
     });
-    // entity.invoiceItems = InvoiceItemAdapter.toPersistence(invoice.invoiceItems);
-    // invoice.invoiceItems.map((item) =>
-    //   entity.invoiceItems.push(InvoiceItemAdapter.toPersistence(item)),
-    // );
 
     entity.totalAfterTax = invoice.totalAfterTax.value;
     entity.totalBeforeTax = invoice.totalBeforeTax.value;
