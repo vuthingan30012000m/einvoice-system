@@ -35,4 +35,16 @@ export class InvoiceController {
     // new VerifyEmailTaxPayerCommand(tokenEmail),
     // );
   }
+
+
+
+// Tìm người
+// <!-- Crud sản phẩm -->
+// Thêm ...
+// <!-- Crud hóa đơn -->
+// Lập hóa đơn mới
+// Lập hóa đơn thay thế
+// Xóa hóa đơn
+// Tìm
+// Đầu ra đầu vào
 }

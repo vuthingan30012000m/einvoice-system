@@ -15,7 +15,7 @@ export class TaxPayerDeletedEventHandler
     try {
       this.logger.debug(`> Event: ${JSON.stringify(event)}`);
 
-      this.MessageQueuePort.sendMessage('tax-payer-activated', {
+      this.MessageQueuePort.sendMessage('tax-payer-deleted', {
         taxCode: event.TaxPayer.taxCode.value,
       });
       this.logger.log(

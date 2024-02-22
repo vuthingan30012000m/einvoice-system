@@ -41,23 +41,8 @@ n chi tiết
 1 chi tiết
 N sp
 
-Crud sản phẩm
-
-Crud hóa đơn
-
-Hóa đơn
-Sản phẩm
 
 
-Lập hóa đơn mới
-Lập hóa đơn thay thế
-Xóa hóa đơn
-Tìm
-Đầu ra đầu vào
-
-Tìm người
-
-Sản phẩm
 
 <!--@  -->
 <!--@  -->

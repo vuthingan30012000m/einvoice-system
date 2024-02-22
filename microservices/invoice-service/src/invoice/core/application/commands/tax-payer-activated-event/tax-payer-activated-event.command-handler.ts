@@ -3,9 +3,6 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { TaxPayerActivatedEventCommand } from './tax-payer-activated-event.command';
 
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
-import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
 
 @CommandHandler(TaxPayerActivatedEventCommand)
 export class TaxPayerActivatedEventCommandHandler
