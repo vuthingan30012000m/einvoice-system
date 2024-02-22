@@ -32,7 +32,6 @@ export class InvoiceController {
 
     return this.apiGateway.send({ cmd: 'find-tax-payer' }, { taxCode });
   }
- 
 }
 
 // <!-- Crud sản phẩm -->
