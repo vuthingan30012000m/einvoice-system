@@ -35,12 +35,11 @@ export class InvoiceController {
 
     return this.apiGateway.send({ cmd: 'find-tax-payer' }, { taxCode });
   }
-  
+
   // <!-- Crud hóa đơn -->
   // Lập hóa đơn mới
-// Lập hóa đơn thay thế
-// Xóa hóa đơn
-// Tìm
-// Đầu ra đầu vào
-
+  // Lập hóa đơn thay thế
+  // Xóa hóa đơn
+  // Tìm
+  // Đầu ra đầu vào
 }

@@ -6,6 +6,7 @@ import { WardEntity } from '../entities/ward.entity';
 import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { WardId } from '../../../core/domain/value-objects/ward-id';
 import { Money } from 'src/invoice/core/domain/value-objects/money';
+import { TaxPayerEntity } from '../entities/tax-payer.entity';
 
 export class ProductAdapter {
   static toDomain(ProductEntity: ProductEntity): Product {
@@ -32,6 +33,10 @@ export class ProductAdapter {
     entity.unit = Product.unit;
     entity.price = Product.price.value;
     entity.description = Product.description;
+
+    const taxPayer = new TaxPayerEntity();
+    taxPayer.id = Product.taxPayerId.value;
+    entity.TaxPayer = taxPayer;
 
     return entity;
   }

@@ -5,12 +5,14 @@ import {
   ManyToOne,
   OneToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 
 import { TaxOfficeEntity } from './tax-office.entity';
 import { AddressEntity } from './address.entity';
 import { BankDetailEntity } from './bank-detail.entity';
 import { TaxPayerStatus } from '../../../core/domain/value-objects/tax-payer-status';
+import { ProductEntity } from './product.entity';
 
 @Entity()
 export class TaxPayerEntity {
@@ -56,4 +58,9 @@ export class TaxPayerEntity {
 
   @Column({ nullable: true })
   usbToken: string;
+
+  @OneToMany(() => ProductEntity, (taxPayer) => taxPayer.TaxPayer, {
+    cascade: true,
+  })
+  products: ProductEntity[];
 }

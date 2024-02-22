@@ -36,6 +36,7 @@ export class ProductController {
         CreateProductDto.unit,
         new Money(CreateProductDto.price),
         CreateProductDto.description,
+        CreateProductDto.taxPayerId,
       ),
     );
   }

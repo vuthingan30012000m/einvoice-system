@@ -1,3 +1,4 @@
+import { TaxPayer } from './../../decorators/tax-payer.decorator';
 import {
   Controller,
   Get,
@@ -8,12 +9,15 @@ import {
   Delete,
   Inject,
   UseInterceptors,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { CreateProductDto } from './dtos/create-product.dto';
 import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
+import { TaxPayerJwtPayload } from '../../../dist/decorators/tax-payer.decorator';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')
@@ -21,18 +25,27 @@ import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interc
 export class ProductController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
-  // @ApiBearerAuth()
+  @ApiBearerAuth()
   @Post('create-product')
   @ApiOperation({ summary: 'Tạo sản phẩm mới' })
   async createProduct(
     @Body() createProductDto: CreateProductDto,
-    //   @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   ) {
-    //   if (!TaxPayer) {
-    //     throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-    //   }
+    if (!TaxPayer) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
 
-    return this.apiGateway.send({ cmd: 'create-product' }, createProductDto);
+    return this.apiGateway.send(
+      { cmd: 'create-product' },
+      {
+        name: createProductDto.name,
+        unit: createProductDto.unit,
+        price: createProductDto.price,
+        description: createProductDto.description,
+        taxPayerId: TaxPayer.taxCode,
+      },
+    );
   }
 
   // @Get('product')

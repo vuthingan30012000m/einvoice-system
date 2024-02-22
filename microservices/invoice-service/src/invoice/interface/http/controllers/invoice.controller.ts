@@ -34,5 +34,4 @@ export class InvoiceController {
       new FindTaxPayerQuery(FindTaxPayerDto.taxCode),
     );
   }
- 
 }

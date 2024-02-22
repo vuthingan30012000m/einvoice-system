@@ -45,4 +45,13 @@ export class CreateProductDto {
   @IsString()
   @IsOptional()
   readonly description?: string;
+
+  @ApiProperty({
+    description: 'Mã số thuế của người nộp thuế',
+    example: faker.datatype.uuid(),
+    required: true,
+  })
+  @IsString()
+  @IsNotEmpty()
+  readonly taxPayerId: string;
 }

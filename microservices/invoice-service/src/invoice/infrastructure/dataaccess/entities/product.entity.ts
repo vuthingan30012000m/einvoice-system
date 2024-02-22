@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { TaxPayerEntity } from './tax-payer.entity';
 
 @Entity()
 export class ProductEntity {
@@ -16,4 +17,9 @@ export class ProductEntity {
 
   @Column({ nullable: false })
   description: string;
+
+  @ManyToOne(() => TaxPayerEntity, (TaxPayer) => TaxPayer.products, {
+    nullable: false,
+  })
+  TaxPayer: TaxPayerEntity;
 }

@@ -1,5 +1,6 @@
 import { ProductId } from '../value-objects/product-id';
 import { Money } from '../value-objects/money';
+import { TaxCode } from '../value-objects/tax-code';
 
 export class Product {
   productId: ProductId;
@@ -7,8 +8,8 @@ export class Product {
   unit: string;
   price: Money;
   description: string;
-  
-  // productId: ProductId;
+
+  taxPayerId: TaxCode;
 
   constructor(productId: ProductId) {
     this.productId = productId;
@@ -42,6 +43,11 @@ class ProductBuilder {
 
   withDescription(description: string): ProductBuilder {
     this.product.description = description;
+    return this;
+  }
+
+  withTaxPayerId(taxPayerId: TaxCode): ProductBuilder {
+    this.product.taxPayerId = taxPayerId;
     return this;
   }
 

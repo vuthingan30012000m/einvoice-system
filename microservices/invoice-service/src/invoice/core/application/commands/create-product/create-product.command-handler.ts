@@ -5,6 +5,7 @@ import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/produ
 import { ProductId } from '../../../domain/value-objects/product-id';
 import { randomUUID } from 'crypto';
 import { Product } from '../../../domain/entities/product';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 
 @CommandHandler(CreateProductCommand)
 export class CreateProductCommandHandler
@@ -23,6 +24,7 @@ export class CreateProductCommandHandler
         .withUnit(payload.unit)
         .withPrice(payload.price)
         .withDescription(payload.description)
+        .withTaxPayerId(new TaxCode(payload.taxPayerId))
         .build();
 
       return await this.ProductRepository.save(newProduct);

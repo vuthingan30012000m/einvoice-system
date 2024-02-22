@@ -33,6 +33,10 @@
       "path": "microservices/user-service/src/user/core/application"
     },
     {
+      "name": "invoice",
+      "path": "microservices/invoice-service/src/invoice"
+    },
+    {
       "name": "application",
       "path": "microservices/invoice-service/src/invoice/core/application"
     }
