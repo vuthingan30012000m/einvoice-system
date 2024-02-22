@@ -87,8 +87,6 @@ export class CreateNewInvoiceCommandHandler
         .withSellerId(new TaxCode(payload.sellerId))
         .withBuyerId(new TaxCode(payload.buyerId))
         .withItem(newInvoiceItems)
-        .withTotalBeforeTax(new Money(0))
-        .withTotalAfterTax(new Money(0))
         .build();
 
       this.InvoiceRepositoryPort.save(newInvoice);

@@ -14,6 +14,23 @@ export class Invoice {
   totalBeforeTax: Money;
   totalAfterTax: Money;
 
+  calculateTotalBeforeTax(): Money {
+    let totalBeforeTaxAmount = new Money(0);
+    for (const item of this.invoiceItems) {
+      totalBeforeTaxAmount = totalBeforeTaxAmount.add(
+        item.price.multiply(item.quantity),
+      );
+    }
+    return totalBeforeTaxAmount;
+  }
+
+  calculateTotalAfterTax(): Money {
+    let totalAfterTaxAmount = new Money(0);
+    for (const item of this.invoiceItems) {
+      totalAfterTaxAmount = totalAfterTaxAmount.add(item.subTotal);
+    }
+    return totalAfterTaxAmount;
+  }
   constructor(invoiceId: InvoiceId) {
     this.invoiceId = invoiceId;
   }
@@ -45,17 +62,9 @@ class InvoiceBuilder {
     return this;
   }
 
-  withTotalBeforeTax(totalBeforeTax: Money): InvoiceBuilder {
-    this.invoice.totalBeforeTax = totalBeforeTax;
-    return this;
-  }
-
-  withTotalAfterTax(totalAfterTax: Money): InvoiceBuilder {
-    this.invoice.totalAfterTax = totalAfterTax;
-    return this;
-  }
-
   build(): Invoice {
+    this.invoice.totalBeforeTax = this.invoice.calculateTotalBeforeTax();
+    this.invoice.totalAfterTax = this.invoice.calculateTotalAfterTax();
     return this.invoice;
   }
 }
