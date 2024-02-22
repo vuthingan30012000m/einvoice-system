@@ -24,9 +24,9 @@ export class ProductOrmRepository implements ProductRepositoryPort {
 
   async getAll(): Promise<Product[]> {
     const entities = await this.ProductEntityRepository.find({
-      // relations: {
-      // ward: true,
-      // },
+      relations: {
+        TaxPayer: true,
+      },
     });
 
     return entities.map((item) => ProductAdapter.toDomain(item));

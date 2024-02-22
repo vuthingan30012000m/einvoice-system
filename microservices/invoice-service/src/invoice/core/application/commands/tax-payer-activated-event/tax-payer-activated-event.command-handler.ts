@@ -3,6 +3,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { TaxPayerActivatedEventCommand } from './tax-payer-activated-event.command';
 
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 
 @CommandHandler(TaxPayerActivatedEventCommand)
 export class TaxPayerActivatedEventCommandHandler
@@ -18,7 +19,7 @@ export class TaxPayerActivatedEventCommandHandler
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
-        payload.taxCode,
+        new TaxCode(payload.taxCode),
       );
 
       findTaxPayer.registerUsbToken(payload.usbToken);

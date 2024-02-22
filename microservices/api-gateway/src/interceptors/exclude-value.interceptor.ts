@@ -12,7 +12,9 @@ export class ExcludeValueInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
       map((data) => {
-        if (data) {
+        if (Array.isArray(data)) {
+          return this.excludeValuesInArray(data);
+        } else if (data) {
           return this.excludeValue(data);
         }
         return data;
@@ -20,12 +22,18 @@ export class ExcludeValueInterceptor implements NestInterceptor {
     );
   }
 
+  private excludeValuesInArray(arrayData: any[]): any[] {
+    return arrayData.map((item) => this.excludeValue(item));
+  }
+
   private excludeValue(data: any): any {
-    Object.keys(data).forEach((key) => {
-      if (data[key]?.hasOwnProperty('value')) {
-        data[key] = data[key].value;
-      }
-    });
+    if (typeof data === 'object' && data !== null) {
+      Object.keys(data).forEach((key) => {
+        if (data[key]?.hasOwnProperty('value')) {
+          data[key] = data[key].value;
+        }
+      });
+    }
     return data;
   }
 }

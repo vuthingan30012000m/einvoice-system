@@ -6,8 +6,9 @@ import { TaxPayerDeletedEventCommandHandler } from './commands/tax-payer-deleted
 import { FindTaxPayerQueryHandler } from './queries/find-tax-payer/find-tax-payer.query-handler';
 import { CreateProductCommandHandler } from './commands/create-product/create-product.command-handler';
 import { FindAllProductQueryHandler } from './queries/find-all-product/find-all-product.query-handler';
+import { UsbTokenAuthenticationService } from '../domain/services/usb-token-authentication.service';
 
-const InvoiceDomainServices: any[] = [];
+const InvoiceDomainServices: any[] = [UsbTokenAuthenticationService];
 const InvoiceEventCommandHandlers: any[] = [
   TaxPayerRegisteredEventCommandHandler,
   TaxPayerActivatedEventCommandHandler,

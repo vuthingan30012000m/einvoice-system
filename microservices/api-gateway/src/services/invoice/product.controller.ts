@@ -1,4 +1,3 @@
-import { TaxPayer } from './../../decorators/tax-payer.decorator';
 import {
   Controller,
   Get,
@@ -14,10 +13,13 @@ import {
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  TaxPayer,
+  TaxPayerJwtPayload,
+} from './../../decorators/tax-payer.decorator';
 
 import { CreateProductDto } from './dtos/create-product.dto';
 import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
-import { TaxPayerJwtPayload } from '../../../dist/decorators/tax-payer.decorator';
 import { FindAllProductDto } from './dtos/find-all-product.dto';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
@@ -50,7 +52,8 @@ export class ProductController {
     );
   }
 
-  @Get('find-all-product')
+  @ApiBearerAuth()
+  @Post('find-all-product')
   @ApiOperation({ summary: 'Lấy tất cả sản phẩm' })
   async findAllProduct(
     @Body() findAllProductDto: FindAllProductDto,

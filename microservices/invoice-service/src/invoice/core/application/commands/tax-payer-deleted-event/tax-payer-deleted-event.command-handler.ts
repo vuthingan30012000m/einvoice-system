@@ -22,7 +22,7 @@ export class TaxPayerDeletedEventCommandHandler
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
-        payload.taxCode,
+        new TaxCode(payload.taxCode),
       );
 
       findTaxPayer.delete();
