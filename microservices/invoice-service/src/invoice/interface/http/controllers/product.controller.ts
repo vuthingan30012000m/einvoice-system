@@ -27,6 +27,11 @@ import { FindAllProductQuery } from '../../../core/application/queries/find-all-
 import { FindOneProductDto } from '../dtos/find-one-product.dto';
 import { FindOneProductQuery } from '../../../core/application/queries/find-one-product/find-one-product.query';
 
+import { UpdateProductDto } from '../dtos/update-product.dto';
+import { UpdateProductCommand } from '../../../core/application/commands/update-product/update-product.command';
+
+import { DeleteProductDto } from '../dtos/delete-product.dto';
+
 @Controller()
 export class ProductController {
   constructor(
@@ -65,6 +70,32 @@ export class ProductController {
         findOneProductDto.productId,
         findOneProductDto.taxPayerId,
         findOneProductDto.usbToken,
+      ),
+    );
+  }
+
+  @MessagePattern({ cmd: 'update-product' })
+  async updateProduct(@Payload() updateProductDto: UpdateProductDto) {
+    return await this.commandBus.execute(
+      new UpdateProductCommand(
+        updateProductDto.productId,
+        updateProductDto.name,
+        updateProductDto.unit,
+        updateProductDto.price,
+        updateProductDto.description,
+        updateProductDto.taxPayerId,
+        updateProductDto.usbToken,
+      ),
+    );
+  }
+
+  @MessagePattern({ cmd: 'delete-product' })
+  async deleteProduct(@Payload() deleteProductDto: DeleteProductDto) {
+    return await this.queryBus.execute(
+      new DeleteProductQuery(
+        deleteProductDto.productId,
+        deleteProductDto.taxPayerId,
+        deleteProductDto.usbToken,
       ),
     );
   }

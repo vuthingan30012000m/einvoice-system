@@ -1,20 +1,18 @@
 import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { CreateProductCommand } from './create-product.command';
-import { ProductId } from '../../../domain/value-objects/product-id';
-import { randomUUID } from 'crypto';
-import { Product } from '../../../domain/entities/product';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { InvoiceException } from 'src/invoice/core/domain/exceptions/invoice.exception';
-import { Money } from '../../../domain/value-objects/money';
+import { DeleteProductCommand } from './delete-product.command';
 
 import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
+import { ProductId } from 'src/invoice/core/domain/value-objects/product-id';
+import { Money } from 'src/invoice/core/domain/value-objects/money';
 
-@CommandHandler(CreateProductCommand)
-export class CreateProductCommandHandler
-  implements ICommandHandler<CreateProductCommand>
+@CommandHandler(DeleteProductCommand)
+export class DeleteProductCommandHandler
+  implements ICommandHandler<DeleteProductCommand>
 {
   constructor(
     private readonly ProductRepository: ProductRepositoryPort,
@@ -22,9 +20,9 @@ export class CreateProductCommandHandler
     private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
   ) {}
 
-  private readonly logger = new Logger(CreateProductCommandHandler.name);
+  private readonly logger = new Logger(DeleteProductCommandHandler.name);
 
-  public async execute(payload: CreateProductCommand) {
+  public async execute(payload: DeleteProductCommand) {
     try {
       this.logger.log(`>  payload: ${JSON.stringify(payload)}`);
 
@@ -44,15 +42,11 @@ export class CreateProductCommandHandler
         throw new InvoiceException('Chữ ký số không đúng.');
       }
 
-      const newProduct = Product.Builder(new ProductId(randomUUID()))
-        .withName(payload.name)
-        .withUnit(payload.unit)
-        .withPrice(new Money(payload.price))
-        .withDescription(payload.description)
-        .withTaxPayerId(new TaxCode(payload.taxPayerId))
-        .build();
+      const findProduct = await this.ProductRepository.getOneById(
+        new ProductId(payload.productId),
+      );
 
-      return await this.ProductRepository.save(newProduct);
+      return await this.ProductRepository.delete(findProduct);
     } catch (error) {
       this.logger.error(`> ${error}`);
       return { message: error.message };

@@ -11,6 +11,24 @@ export class Product {
 
   taxPayerId: TaxCode;
 
+  update(name: string, unit: string, price: Money, description: string) {
+    if (name) {
+      this.name = name;
+    }
+
+    if (unit) {
+      this.unit = unit;
+    }
+
+    if (price) {
+      this.price = price;
+    }
+
+    if (description) {
+      this.description = description;
+    }
+  }
+
   constructor(productId: ProductId) {
     this.productId = productId;
   }

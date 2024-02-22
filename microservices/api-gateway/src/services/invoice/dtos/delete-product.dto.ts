@@ -11,7 +11,7 @@ import {
 
 import * as faker from 'faker';
 
-export class FindOneProductDto {
+export class DeleteProductDto {
   @ApiProperty({
     description: 'Mã sản phẩm',
     example: faker.datatype.uuid(),

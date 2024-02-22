@@ -18,10 +18,13 @@ import {
   TaxPayerJwtPayload,
 } from './../../decorators/tax-payer.decorator';
 
-import { CreateProductDto } from './dtos/create-product.dto';
 import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
+
+import { CreateProductDto } from './dtos/create-product.dto';
 import { FindAllProductDto } from './dtos/find-all-product.dto';
-import { FindOneProductDto } from './dtos/find-one-product.dto'
+import { FindOneProductDto } from './dtos/find-one-product.dto';
+import { UpdateProductDto } from './dtos/update-product.dto';
+import { DeleteProductDto } from './dtos/delete-product.dto';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')
@@ -73,9 +76,6 @@ export class ProductController {
     );
   }
 
-
-
-
   @ApiBearerAuth()
   @Post('find-one-product')
   @ApiOperation({ summary: 'Lấy sản phẩm theo id' })
@@ -97,13 +97,11 @@ export class ProductController {
     );
   }
 
-
   @ApiBearerAuth()
-  @Patch('create-product')
-  @ApiOperation({ summary: 'Tạo sản phẩm mới' })
-  // @ApiOperation({ summary: 'Cập nhật sản phẩm' })
-  async createProduct(
-    @Body() createProductDto: CreateProductDto,
+  @Patch('update-product')
+  @ApiOperation({ summary: 'Cập nhật sản phẩm' })
+  async updateProduct(
+    @Body() updateProductDto: UpdateProductDto,
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   ) {
     if (!TaxPayer) {
@@ -111,21 +109,37 @@ export class ProductController {
     }
 
     return this.apiGateway.send(
-      { cmd: 'create-product' },
+      { cmd: 'update-product' },
       {
-        name: createProductDto.name,
-        unit: createProductDto.unit,
-        price: createProductDto.price,
-        description: createProductDto.description,
+        productId: updateProductDto.productId,
+        name: updateProductDto.name,
+        unit: updateProductDto.unit,
+        price: updateProductDto.price,
+        description: updateProductDto.description,
         taxPayerId: TaxPayer.taxCode,
-        usbToken: createProductDto.usbToken,
+        usbToken: updateProductDto.usbToken,
       },
     );
-  } 
+  }
 
-  // @Delete('product/:id')
-  // @ApiOperation({ summary: 'Xóa sản phẩm' })
-  // async remove(@Param('id') id: string)  {
-  //   return await this.productService.remove(id);
-  // }
+  @ApiBearerAuth()
+  @Delete('delete-product')
+  @ApiOperation({ summary: 'Xóa sản phẩm' })
+  async deleteProduct(
+    @Body() DeleteProductDto: DeleteProductDto,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+  ) {
+    if (!TaxPayer) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+
+    return this.apiGateway.send(
+      { cmd: 'delete-product' },
+      {
+        productId: DeleteProductDto.productId,
+        taxPayerId: TaxPayer.taxCode,
+        usbToken: DeleteProductDto.usbToken,
+      },
+    );
+  }
 }
