@@ -7,14 +7,17 @@ import {
   Param,
   Delete,
   Inject,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { CreateProductDto } from './dtos/create-product.dto';
+import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')
+@UseInterceptors(ExcludeValueInterceptor)
 export class ProductController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
@@ -62,9 +65,3 @@ export class ProductController {
 
 // <!-- Crud sản phẩm -->
 // Thêm ...
-// <!-- Crud hóa đơn -->
-// Lập hóa đơn mới
-// Lập hóa đơn thay thế
-// Xóa hóa đơn
-// Tìm
-// Đầu ra đầu vào

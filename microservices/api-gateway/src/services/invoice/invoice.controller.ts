@@ -7,15 +7,18 @@ import {
   Param,
   Delete,
   Inject,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { CreateInvoiceDto } from './dtos/create-invoice.dto';
 import { UpdateInvoiceDto } from './dtos/update-invoice.dto';
+import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')
+@UseInterceptors(ExcludeValueInterceptor)
 export class InvoiceController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
@@ -32,13 +35,12 @@ export class InvoiceController {
 
     return this.apiGateway.send({ cmd: 'find-tax-payer' }, { taxCode });
   }
-}
-
-// <!-- Crud sản phẩm -->
-// Thêm ...
-// <!-- Crud hóa đơn -->
-// Lập hóa đơn mới
+  
+  // <!-- Crud hóa đơn -->
+  // Lập hóa đơn mới
 // Lập hóa đơn thay thế
 // Xóa hóa đơn
 // Tìm
 // Đầu ra đầu vào
+
+}

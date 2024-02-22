@@ -7,6 +7,8 @@ export class Product {
   unit: string;
   price: Money;
   description: string;
+  
+  // productId: ProductId;
 
   constructor(productId: ProductId) {
     this.productId = productId;

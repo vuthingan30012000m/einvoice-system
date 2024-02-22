@@ -29,6 +29,7 @@ import { BankOrmRepository } from './dataaccess/repositories/bank.orm-repository
 import { WardOrmRepository } from './dataaccess/repositories/ward.orm-repository';
 import { BankDetailOrmRepository } from './dataaccess/repositories/bank-detail.orm-repository';
 import { AddressOrmRepository } from './dataaccess/repositories/address.orm-repository';
+import {   ProductOrmRepository } from './dataaccess/repositories/product.orm-repository'
 
 import { TaxPayerRepositoryPort } from '../core/application/ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxOfficeRepositoryPort } from '../core/application/ports/dataaccess/repositories/tax-office.repository.port';
@@ -36,6 +37,8 @@ import { BankRepositoryPort } from '../core/application/ports/dataaccess/reposit
 import { WardRepositoryPort } from '../core/application/ports/dataaccess/repositories/ward.repository.port';
 import { BankDetailRepositoryPort } from '../core/application/ports/dataaccess/repositories/bank-detail.repository.port';
 import { AddressRepositoryPort } from '../core/application/ports/dataaccess/repositories/address.repository.port';
+import {   ProductRepositoryPort } from '../core/application/ports/dataaccess/repositories/product.repository.port';
+import { ProductEntity } from './dataaccess/entities/product.entity';
 
 export const InvoiceInfrastructure = {
   validations: Joi.object({
@@ -63,6 +66,7 @@ export const InvoiceInfrastructure = {
     AddressEntity,
     BankDetailEntity,
     TaxPayerEntity,
+    ProductEntity,
   ],
   seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
   providers: [
@@ -97,6 +101,10 @@ export const InvoiceInfrastructure = {
     {
       provide: AddressRepositoryPort,
       useClass: AddressOrmRepository,
+    },
+    {
+      provide: ProductRepositoryPort,
+      useClass: ProductOrmRepository,
     },
   ],
 };

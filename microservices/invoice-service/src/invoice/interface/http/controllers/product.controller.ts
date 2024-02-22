@@ -30,7 +30,7 @@ export class ProductController {
 
   @MessagePattern({ cmd: 'create-product' })
   async createProduct(@Payload() CreateProductDto: CreateProductDto) {
-    return await this.queryBus.execute(
+    return await this.commandBus.execute(
       new CreateProductCommand(
         CreateProductDto.name,
         CreateProductDto.unit,
