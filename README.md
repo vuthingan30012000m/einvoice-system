@@ -1,6 +1,3 @@
-<!-- nest g resource   report -->
-<!-- touch    -->
-
   @IsUUID()
 <!-- api-gateway chuaanr -->
 <!--@i -->
