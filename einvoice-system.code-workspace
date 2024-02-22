@@ -42,9 +42,6 @@
     },
     {
       "path": "microservices/invoice-service/src/invoice/core/domain"
-    },
-    {
-      "path": "../002 food-ordering-system"
     }
   ],
   "settings": {

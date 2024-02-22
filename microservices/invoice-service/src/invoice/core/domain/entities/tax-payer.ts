@@ -9,6 +9,7 @@ import { InvoiceException } from '../exceptions/invoice.exception';
 
 export class TaxPayer {
   taxCode: TaxCode;
+
   name: string;
   email: Email;
   password: string;
