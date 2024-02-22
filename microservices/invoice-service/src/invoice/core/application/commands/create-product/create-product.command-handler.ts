@@ -7,6 +7,9 @@ import { ProductId } from '../../../domain/value-objects/product-id';
 import { randomUUID } from 'crypto';
 import { Product } from '../../../domain/entities/product';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
+import { InvoiceException } from 'src/invoice/core/domain/exceptions/invoice.exception';
+import { Money } from '../../../domain/value-objects/money';
 
 @CommandHandler(CreateProductCommand)
 export class CreateProductCommandHandler
@@ -15,7 +18,7 @@ export class CreateProductCommandHandler
   constructor(
     private readonly ProductRepository: ProductRepositoryPort,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
-    private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationServicePort,
+    private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
   ) {}
 
   private readonly logger = new Logger(CreateProductCommandHandler.name);
@@ -37,13 +40,13 @@ export class CreateProductCommandHandler
       );
 
       if (!isValidUsbToken) {
-        // throw new TaxPayerException('Chữ ký số không đúng.');
+        throw new InvoiceException('Chữ ký số không đúng.');
       }
 
       const newProduct = Product.Builder(new ProductId(randomUUID()))
         .withName(payload.name)
         .withUnit(payload.unit)
-        .withPrice(payload.price)
+        .withPrice(new Money(payload.price))
         .withDescription(payload.description)
         .withTaxPayerId(new TaxCode(payload.taxPayerId))
         .build();

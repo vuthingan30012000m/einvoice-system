@@ -20,9 +20,10 @@ import {
 
 import { CreateProductDto } from '../dtos/create-product.dto';
 import { CreateProductCommand } from '../../../core/application/commands/create-product/create-product.command';
-import { Money } from 'src/invoice/core/domain/value-objects/money';
+
 import { FindAllProductDto } from '../dtos/find-all-product.dto';
 import { FindAllProductQuery } from '../../../core/application/queries/find-all-product/find-all-product.query';
+
 @Controller()
 export class ProductController {
   constructor(
