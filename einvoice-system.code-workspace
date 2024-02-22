@@ -29,13 +29,11 @@
       "path": "microservices/invoice-service/src"
     },
     {
-      "name": "commands",
-      "path": "microservices/user-service/src/user/core/application/commands"
+      "name": "application",
+      "path": "microservices/user-service/src/user/core/application"
     },
     {
-      "path": "microservices/invoice-service/src/invoice/core/application/commands"
-    },
-    {
+      "name": "application",
       "path": "microservices/invoice-service/src/invoice/core/application"
     }
   ],

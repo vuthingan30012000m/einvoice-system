@@ -18,8 +18,9 @@ import {
   Payload,
 } from '@nestjs/microservices';
 
-import { TaxPayerRegisteredEvent } from 'src/invoice/core/domain/events/tax-payer-registered.event';
-import { TaxPayerRegisteredEventDto } from '../../listener/dtos/tax-payer-registered.event.dto';
+
+import { FindTaxPayerQuery } from '../../../core/application/queries/find-tax-payer/find-tax-payer.query';
+import { FindTaxPayerDto } from '../dtos/find-tax-payer.dto';
 
 @Controller()
 export class InvoiceController {
@@ -29,10 +30,9 @@ export class InvoiceController {
   ) {}
 
   @MessagePattern({ cmd: 'find-tax-payer' })
-  async findTaxPayer(@Payload() taxCode: string) {
-    console.log('🚀 ~ InvoiceController ~ findTaxPayer ~ taxCode:', taxCode);
-    // return await this.commandBus.execute(
-    // new VerifyEmailTaxPayerCommand(tokenEmail),
-    // );
+  async findTaxPayer(@Payload() FindTaxPayerDto: FindTaxPayerDto) {
+    return await this.queryBus.execute(
+      new FindTaxPayerQuery(FindTaxPayerDto.taxCode),
+    );
   }
 }

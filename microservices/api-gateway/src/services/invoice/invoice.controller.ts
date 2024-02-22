@@ -19,11 +19,6 @@ import { UpdateInvoiceDto } from './dtos/update-invoice.dto';
 export class InvoiceController {
   constructor(@Inject('API_GATEWAY') private apiGateway: ClientProxy) {}
 
-  // <!-- Find taxpayers by tax code -->
-  // <!-- Tra cứu người nộp thuế theo mã số thuế -->
-  //
-  // Giống tokenEmail
-
   // @ApiBearerAuth()
   @Get('find-tax-payer/:taxCode')
   @ApiOperation({ summary: 'Tra cứu người nộp thuế theo mã số thuế' })
@@ -35,11 +30,10 @@ export class InvoiceController {
     //     throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     //   }
 
-    return this.apiGateway.send({ cmd: 'find-tax-payer' }, taxCode);
+    return this.apiGateway.send({ cmd: 'find-tax-payer' }, {taxCode});
   }
 }
 
-// Tìm người
 // <!-- Crud sản phẩm -->
 // Thêm ...
 // <!-- Crud hóa đơn -->

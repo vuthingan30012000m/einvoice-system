@@ -30,9 +30,7 @@ export class GetTaxPayerCurrentQueryHandler
 
   public async execute(payload: GetTaxPayerCurrentQuery) {
     try {
-      this.logger.debug(
-        `> GetTaxPayerCurrentQuery: ${JSON.stringify(payload)}`,
-      );
+      this.logger.debug(`> payload: ${JSON.stringify(payload)}`);
 
       const existingTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxCode),

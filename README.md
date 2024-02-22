@@ -9,9 +9,6 @@
 
 <!-- đơn vị biến -->
 
-<!-- khong bao cao report,  -->
-report
-coming soon 
 
 
 
