@@ -29,16 +29,19 @@ export class TaxPayer {
     this.taxPayerStatus = TaxPayerStatus.REGISTER_USB_TOKEN;
   }
 
+  resetPassword(newPassword: string, dateRequest: string) {
+    if (new Date(dateRequest) < new Date(new Date().getTime() - 60 * 1000)) {
+      throw new TaxPayerException('Yêu cầu khôi phục mật khẩu hết hạn');
+    }
+
+    this.password = newPassword;
+  }
+
   registerUsbToken(secret: string) {
     this.isUsbToken = true;
     this.usbToken = secret;
     this.taxPayerStatus = TaxPayerStatus.ACTIVE;
   }
-
-  resetPassword(newPassword: string) {
-    this.password = newPassword;
-  }
-
   changePassword(newPassword: string) {
     this.password = newPassword;
   }

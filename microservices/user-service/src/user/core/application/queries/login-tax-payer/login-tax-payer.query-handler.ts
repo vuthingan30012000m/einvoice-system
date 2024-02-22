@@ -43,10 +43,6 @@ export class LoginTaxPayerQueryHandler
         throw new TaxPayerException('Thông tin đăng nhập không đúng.');
       }
 
-      if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.VERIFY_EMAIL) {
-        throw new TaxPayerException('Hãy thực hiện xác thực email.');
-      }
-
       if (existingTaxPayer.isUsbToken) {
         const isValid = await this.UsbTokenAuthenticationService.verify(
           payload.usbToken,
@@ -56,6 +52,10 @@ export class LoginTaxPayerQueryHandler
         if (!isValid) {
           throw new TaxPayerException('Chữ ký số không đúng.');
         }
+      }
+
+      if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.VERIFY_EMAIL) {
+        throw new TaxPayerException('Hãy thực hiện xác thực email.');
       }
 
       if (existingTaxPayer.taxPayerStatus === TaxPayerStatus.DELETED) {
