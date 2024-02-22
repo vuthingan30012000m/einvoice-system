@@ -10,6 +10,7 @@ import { UsbTokenAuthenticationService } from '../domain/services/usb-token-auth
 import { FindOneProductQueryHandler } from './queries/find-one-product/find-one-product.query-handler';
 import { UpdateProductCommandHandler } from './commands/update-product/update-product.command-handler';
 import { DeleteProductCommandHandler } from './commands/delete-product/delete-product.command-handler';
+import { CreateNewInvoiceCommandHandler } from './commands/create-new-invoice/create-new-invoice.command-handler';
 
 const InvoiceDomainServices: any[] = [UsbTokenAuthenticationService];
 const InvoiceEventCommandHandlers: any[] = [
@@ -17,6 +18,7 @@ const InvoiceEventCommandHandlers: any[] = [
   TaxPayerActivatedEventCommandHandler,
   TaxPayerUpdatedEventCommandHandler,
   TaxPayerDeletedEventCommandHandler,
+  CreateNewInvoiceCommandHandler
 ];
 const InvoiceCommandHandlers: any[] = [
   CreateProductCommandHandler,

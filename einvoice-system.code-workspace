@@ -39,9 +39,6 @@
     {
       "name": "application",
       "path": "microservices/invoice-service/src/invoice/core/application"
-    },
-    {
-      "path": "microservices/invoice-service/src/invoice/core/domain"
     }
   ],
   "settings": {

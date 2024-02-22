@@ -49,25 +49,24 @@ export class InvoiceController {
     @Body() createNewInvoiceDto: CreateNewInvoiceDto,
     @TaxPayer() TaxPayer: TaxPayerJwtPayload,
   ) {
-    console.log(
-      '🚀 ~ InvoiceController ~ createNewInvoiceDto:',
-      createNewInvoiceDto,
-    );
+
+
+
     if (!TaxPayer) {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
-    return createNewInvoiceDto;
-    // return this.apiGateway.send(
-    //   { cmd: 'create-new-invoice' },
-    //   {
-    //     name: createNewInvoiceDto.name,
-    //     unit: createNewInvoiceDto.unit,
-    //     price: createNewInvoiceDto.price,
-    //     description: createNewInvoiceDto.description,
-    //     taxPayerId: TaxPayer.taxCode,
-    //     usbToken: createNewInvoiceDto.usbToken,
-    //   },
-    // );
+ 
+
+    return this.apiGateway.send(
+      { cmd: 'create-new-invoice' },
+      {
+        sellerId: TaxPayer.taxCode,
+            buyerId:createNewInvoiceDto.buyerId,
+            invoiceItems: createNewInvoiceDto.invoiceItems,
+        usbToken: createNewInvoiceDto.usbToken, 
+ 
+      },
+    );  
   }
 
   // @Get('find-tax-payer/:taxCode')

@@ -7,11 +7,12 @@ import {
   IsOptional,
   IsString,
   Matches,
+  IsUUID, IsInt, Min, IsArray, ValidateNested
 } from 'class-validator';
-
+import { Type } from 'class-transformer';
 import * as faker from 'faker';
 
-export class InvoiceItem {
+export class InvoiceItemDto {
   @ApiProperty({
     description: 'Mã định danh của sản phẩm',
     example: faker.datatype.uuid(),
@@ -19,6 +20,7 @@ export class InvoiceItem {
   })
   @IsString()
   @IsNotEmpty()
+  @IsUUID()
   readonly productId: string;
 
   @ApiProperty({
@@ -28,15 +30,15 @@ export class InvoiceItem {
   })
   @IsString()
   @IsOptional()
-  readonly quantity: number;
+  readonly quantity: string;
 
   @ApiProperty({
     description: 'Giá của sản phẩm',
-    example: faker.commerce.price(10, 100),
+    example: faker.datatype.number({ min: 0, max: 20 }),
     required: true,
   })
-  @IsNumber()
-  readonly price: number;
+  @IsString()
+  readonly price: string;
 
   @ApiProperty({
     description: 'Thuế suất của sản phẩm',
@@ -45,7 +47,7 @@ export class InvoiceItem {
   })
   @IsString()
   @IsOptional()
-  readonly taxRate: number;
+  readonly taxRate: string;
 }
 export class CreateNewInvoiceDto {
   @ApiProperty({
@@ -57,8 +59,11 @@ export class CreateNewInvoiceDto {
   @IsNotEmpty()
   readonly buyerId: string;
 
-  @ApiProperty({ type: [InvoiceItem] })
-  readonly invoiceItems: Array<{ InvoiceItem }>;
+  @ApiProperty({ type: [InvoiceItemDto] })
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => InvoiceItemDto)
+  readonly invoiceItems: Array<{ InvoiceItemDto }>;
 
   @ApiProperty({
     description: 'Chữ ký số USB Token',

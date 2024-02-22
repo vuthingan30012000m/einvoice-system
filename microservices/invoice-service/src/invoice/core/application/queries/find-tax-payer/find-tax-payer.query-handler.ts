@@ -2,7 +2,6 @@ import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
 import { FindTaxPayerQuery } from './find-tax-payer.query';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
 
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';

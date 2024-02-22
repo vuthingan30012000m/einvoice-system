@@ -1,6 +1,7 @@
 <!-- nest g resource   report -->
 <!-- touch    -->
 
+  @IsUUID()
 
 <!--@i -->
 
