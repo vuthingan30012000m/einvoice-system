@@ -13,7 +13,7 @@ export class TaxPayerUpdatedEventHandler
 
   handle(event: TaxPayerUpdatedEvent) {
     try {
-      this.logger.debug(`> Event: ${JSON.stringify(event)}`);
+      this.logger.debug(`> event: ${JSON.stringify(event)}`);
 
       this.MessageQueuePort.sendMessage('tax-payer-updated', event);
       this.logger.log(`> Gửi sự kiện: ${JSON.stringify(event)}`);

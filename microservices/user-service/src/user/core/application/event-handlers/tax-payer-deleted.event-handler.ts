@@ -13,7 +13,7 @@ export class TaxPayerDeletedEventHandler
 
   handle(event: TaxPayerDeletedEvent) {
     try {
-      this.logger.debug(`> Event: ${JSON.stringify(event)}`);
+      this.logger.debug(`> event: ${JSON.stringify(event)}`);
 
       this.MessageQueuePort.sendMessage('tax-payer-deleted', {
         taxCode: event.TaxPayer.taxCode.value,

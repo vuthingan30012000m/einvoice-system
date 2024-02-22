@@ -13,7 +13,7 @@ export class TaxPayerActivatedEventHandler
 
   handle(event: TaxPayerActivatedEvent) {
     try {
-      this.logger.debug(`> Event: ${JSON.stringify(event)}`);
+      this.logger.debug(`> event: ${JSON.stringify(event)}`);
 
       this.MessageQueuePort.sendMessage('tax-payer-activated', {
         taxCode: event.taxCode.value,
