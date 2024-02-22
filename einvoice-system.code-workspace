@@ -33,19 +33,10 @@
       "path": "microservices/user-service/src/user/core/application/commands"
     },
     {
-      "name": "events",
-      "path": "microservices/user-service/src/user/core/domain/events"
-    },
-    {
-      "name": "event-handlers",
-      "path": "microservices/user-service/src/user/core/application/event-handlers"
-    },
-    {
-      "name": "listener",
-      "path": "microservices/invoice-service/src/invoice/interface/listener"
-    },
-    {
       "path": "microservices/invoice-service/src/invoice/core/application/commands"
+    },
+    {
+      "path": "microservices/invoice-service/src/invoice/core/application"
     }
   ],
   "settings": {

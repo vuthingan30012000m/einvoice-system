@@ -38,7 +38,7 @@ import { ReportModule } from './services/report/report.module';
         },
       },
     ]),
-    UserModule,
+    // UserModule,
     InvoiceModule,
     ReportModule,
   ],
