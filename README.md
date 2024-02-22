@@ -1,16 +1,9 @@
-  @IsUUID()
-<!-- api-gateway chuaanr -->
-<!--@i -->
- 
-
-
- 
-
 
 
 <!-- tct? -->
 <!-- user=api=tct -->
 <!-- Status null k đc .. -->
+<!-- tu choi=ko dc dang nhap -->
 
 
 <!-- đơn vị biến -->
@@ -43,14 +36,8 @@ Nginx load bln
 <!-- len name -->
 <!-- len passs -->
 <!-- init -->
-
-<!-- createdAt: Date; -->
-<!-- updatedAt: Date; -->
-<!-- deletedAt: Date; -->
-
-<!-- + verifyTaxPayerBank() -->
-<!-- + verifyTaxPayerAddress() -->
-
+ 
+ 
 
 
 <!-- Factory -->
