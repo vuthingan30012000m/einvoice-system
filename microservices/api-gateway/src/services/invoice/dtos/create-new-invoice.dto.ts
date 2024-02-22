@@ -7,7 +7,11 @@ import {
   IsOptional,
   IsString,
   Matches,
-  IsUUID, IsInt, Min, IsArray, ValidateNested
+  IsUUID,
+  IsInt,
+  Min,
+  IsArray,
+  ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import * as faker from 'faker';
