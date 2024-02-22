@@ -24,6 +24,11 @@ import { CreateProductCommand } from '../../../core/application/commands/create-
 import { FindAllProductDto } from '../dtos/find-all-product.dto';
 import { FindAllProductQuery } from '../../../core/application/queries/find-all-product/find-all-product.query';
 
+import { FindOneProductDto } from '../dtos/find-one-product.dto';
+import { FindOneProductQuery } from '../../../core/application/queries/find-one-product/find-one-product.query';
+
+
+
 @Controller()
 export class ProductController {
   constructor(
@@ -54,4 +59,20 @@ export class ProductController {
       ),
     );
   }
+
+  @MessagePattern({ cmd: 'find-one-product' })
+  async findOneProduct(@Payload() findOneProductDto: FindOneProductDto) {
+    return await this.queryBus.execute(
+      new FindOneProductQuery(
+        findOneProductDto.productId,
+        findOneProductDto.taxPayerId,
+        findOneProductDto.usbToken,
+      ),
+    );
+  }
+
+
+
+
+
 }

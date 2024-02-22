@@ -21,6 +21,7 @@ import {
 import { CreateProductDto } from './dtos/create-product.dto';
 import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
 import { FindAllProductDto } from './dtos/find-all-product.dto';
+import { FindOneProductDto } from './dtos/find-one-product.dto'
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')
@@ -72,11 +73,30 @@ export class ProductController {
     );
   }
 
-  // @Get('product/:id')
-  // @ApiOperation({ summary: 'Lấy sản phẩm theo id' })
-  // async findOne(@Param('id') id: string) {
-  //   return await this.productService.findOne(id);
-  // }
+
+
+
+  @ApiBearerAuth()
+  @Post('find-one-product')
+  @ApiOperation({ summary: 'Lấy sản phẩm theo id' })
+  async findOneProduct(
+    @Body() findOneProductDto: FindOneProductDto,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+  ) {
+    if (!TaxPayer) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+
+    return this.apiGateway.send(
+      { cmd: 'find-one-product' },
+      {
+        productId: findOneProductDto.productId,
+        taxPayerId: TaxPayer.taxCode,
+        usbToken: findOneProductDto.usbToken,
+      },
+    );
+  }
+
 
   // @Put('product/:id')
   // @ApiOperation({ summary: 'Cập nhật sản phẩm theo id' })

@@ -7,6 +7,7 @@ import { FindTaxPayerQueryHandler } from './queries/find-tax-payer/find-tax-paye
 import { CreateProductCommandHandler } from './commands/create-product/create-product.command-handler';
 import { FindAllProductQueryHandler } from './queries/find-all-product/find-all-product.query-handler';
 import { UsbTokenAuthenticationService } from '../domain/services/usb-token-authentication.service';
+import { FindOneProductQueryHandler } from './queries/find-one-product/find-one-product.query-handler';
 
 const InvoiceDomainServices: any[] = [UsbTokenAuthenticationService];
 const InvoiceEventCommandHandlers: any[] = [
@@ -20,6 +21,7 @@ const InvoiceEventHandlers: any[] = [];
 const InvoiceQueryHandlers: any[] = [
   FindTaxPayerQueryHandler,
   FindAllProductQueryHandler,
+  FindOneProductQueryHandler
 ];
 
 export const InvoiceApplications = {

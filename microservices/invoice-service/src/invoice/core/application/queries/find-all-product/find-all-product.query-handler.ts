@@ -1,10 +1,11 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { FindAllProductQuery } from './find-all-product.query';
-import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
 import { Logger } from '@nestjs/common';
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
+
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
+import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 
 @QueryHandler(FindAllProductQuery)
