@@ -11,6 +11,7 @@ import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/addre
 import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { Email } from '../../../domain/value-objects/email';
 import { PhoneNumber } from '../../../domain/value-objects/phone-number';
+import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 
 @CommandHandler(TaxPayerUpdatedEventCommand)
 export class TaxPayerUpdatedEventCommandHandler
@@ -33,7 +34,7 @@ export class TaxPayerUpdatedEventCommandHandler
         new TaxCode(payload.TaxPayer.taxCode.value),
       );
       if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
+        throw new InvoiceException('Người nộp thuế không tồn tại.');
       }
 
       findTaxPayer.update(

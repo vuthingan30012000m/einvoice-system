@@ -6,6 +6,7 @@ import { UsbTokenAuthenticationService } from '../../../domain/services/usb-toke
 import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxPayerActivatedEvent } from '../../../domain/events/tax-payer-activated.event';
+import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 
 @CommandHandler(RegisterUsbTokenCommand)
 export class RegisterUsbTokenCommandHandler
@@ -32,7 +33,7 @@ export class RegisterUsbTokenCommandHandler
         new TaxCode(payload.taxCode),
       );
       if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
+        throw new TaxPayerException('Người nộp thuế không tồn tại.');
       }
 
       findTaxPayer.registerUsbToken(usbToken);

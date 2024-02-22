@@ -52,14 +52,14 @@ export class ChangePasswordCommandHandler
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       if (payload.password != payload.passwordConfirm) {
-        throw new Error('Mật khẩu không trùng khớp.');
+        throw new TaxPayerException('Mật khẩu không trùng khớp.');
       }
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxCode),
       );
       if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
+        throw new TaxPayerException('Người nộp thuế không tồn tại.');
       }
 
       const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(

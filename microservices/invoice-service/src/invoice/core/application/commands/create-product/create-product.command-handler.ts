@@ -26,13 +26,13 @@ export class CreateProductCommandHandler
 
   public async execute(payload: CreateProductCommand) {
     try {
-      this.logger.log(`>  payload: ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxPayerId),
       );
       if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
+        throw new InvoiceException('Người nộp thuế không tồn tại.');
       }
 
       const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(

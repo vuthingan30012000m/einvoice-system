@@ -10,6 +10,7 @@ import { TaxPayer } from './../../../core/domain/entities/tax-payer';
 import { TaxCode } from './../../../core/domain/value-objects/tax-code';
 import { Email } from '../../../core/domain/value-objects/email';
 import { PhoneNumber } from './../../../core/domain/value-objects/phone-number';
+import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
 
 @Injectable()
 export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {
@@ -54,7 +55,7 @@ export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {
   }
 
   async delete(TaxPayer: TaxPayer): Promise<boolean> {
-    throw new Error('Method not implemented.');
+    throw new TaxPayerException('Method not implemented.');
   }
 
   async getOneByEmail(email: Email): Promise<TaxPayer> {

@@ -75,8 +75,8 @@ export const InvoiceInfrastructure = {
       useClass: MailerAdapter,
     },
     // {
-    //   provide: MessageQueuePort,
-    //   useClass: QueueAdapter,
+    // provide: MessageQueuePort,
+    // useClass: QueueAdapter,
     // },
     {
       provide: TaxPayerRepositoryPort,

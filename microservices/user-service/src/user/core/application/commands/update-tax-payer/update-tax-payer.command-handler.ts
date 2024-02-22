@@ -58,7 +58,7 @@ export class UpdateTaxPayerCommandHandler
         new TaxCode(payload.taxCode),
       );
       if (!findTaxPayer) {
-        throw new Error('Người nộp thuế không tồn tại.');
+        throw new TaxPayerException('Người nộp thuế không tồn tại.');
       }
 
       const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(

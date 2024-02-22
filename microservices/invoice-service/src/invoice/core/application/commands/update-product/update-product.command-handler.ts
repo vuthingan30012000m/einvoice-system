@@ -24,7 +24,7 @@ export class UpdateProductCommandHandler
 
   public async execute(payload: UpdateProductCommand) {
     try {
-      this.logger.log(`>  payload: ${JSON.stringify(payload)}`);
+      this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
       const findTaxPayer = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.taxPayerId),

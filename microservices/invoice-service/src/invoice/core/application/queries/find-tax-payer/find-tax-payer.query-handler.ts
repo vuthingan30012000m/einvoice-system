@@ -11,6 +11,7 @@ import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.rep
 import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
 import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
 import { Logger } from '@nestjs/common';
+import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 
 @QueryHandler(FindTaxPayerQuery)
 export class FindTaxPayerQueryHandler
@@ -33,10 +34,10 @@ export class FindTaxPayerQueryHandler
       this.logger.debug(`> payload: ${JSON.stringify(payload)}`);
 
       const existingTaxPayer = await this.TaxPayerRepository.getOneById(
-       new TaxCode( payload.taxCode)
+        new TaxCode(payload.taxCode),
       );
       if (!existingTaxPayer) {
-        throw new Error('Không tìm thấy thông tin người nộp thuế.');
+        throw new InvoiceException('Không tìm thấy thông tin người nộp thuế.');
       }
 
       const existingTaxOffice = await this.TaxOfficeRepositoryPort.getOneById(
