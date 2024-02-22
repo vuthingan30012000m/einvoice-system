@@ -19,7 +19,6 @@ export class InvoiceAdapter {
     if (!invoiceEntity) return null;
 
     const invoiceId = new InvoiceId(invoiceEntity.id);
- 
 
     const invoiceModel = Invoice.Builder(new InvoiceId(invoiceEntity.id))
       // .withSellerId(new TaxCode(invoiceEntity.seller.id))

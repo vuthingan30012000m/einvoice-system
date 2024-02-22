@@ -34,67 +34,48 @@ export class CreateNewInvoiceCommandHandler
     try {
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
-      const findTaxPayer = await this.TaxPayerRepository.getOneById(
+      const findSeller = await this.TaxPayerRepository.getOneById(
         new TaxCode(payload.sellerId),
       );
-      if (!findTaxPayer) {
-        throw new InvoiceException('Người nộp thuế không tồn tại.');
+      if (!findSeller) {
+        throw new InvoiceException('Người bán không tồn tại.');
       }
 
       const isValidUsbToken = await this.UsbTokenAuthenticationService.verify(
         payload.usbToken,
-        findTaxPayer.usbToken,
+        findSeller.usbToken,
       );
 
       if (!isValidUsbToken) {
         throw new InvoiceException('Chữ ký số không đúng.');
       }
 
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
-      // buyerId ACTI
+      const findBuyer = await this.TaxPayerRepository.getOneById(
+        new TaxCode(payload.sellerId),
+      );
+      if (!findBuyer) {
+        throw new InvoiceException('Người  mua không tồn tại.');
+      }
 
-      // const findProduct = await this.ProductRepository.getOneById(
-      //   new ProductId(payload.productId),
-      // );
-      // if (!findProduct) {
-      //   throw new InvoiceException('Sản phẩm không  tồn tại.');
-      // }
- 
+      for (const item of payload.invoiceItems) {
+        const findProduct = await this.ProductRepository.getOneById(
+          new ProductId(item.productId),
+        );
+        if (!findProduct) {
+          throw new InvoiceException('Sản phẩm không tồn tại.');
+        }
+      }
+
       const newInvoiceId = new InvoiceId(randomUUID());
 
       const newInvoiceItems = payload.invoiceItems.map((item) => {
-        return (
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          // ProductId
-          InvoiceItem.Builder(new InvoiceId(randomUUID()))
-            .withProductId(new ProductId(item.productId))
-            .withQuantity(Number(item.quantity))
-            .withPrice(new Money(Number(item.price)))
-            .withTaxRate(Number(item.taxRate))
-            .withSubTotal(new Money(0))
-            .build()
-        );
+        return InvoiceItem.Builder(new InvoiceId(randomUUID()))
+          .withProductId(new ProductId(item.productId))
+          .withQuantity(Number(item.quantity))
+          .withPrice(new Money(Number(item.price)))
+          .withTaxRate(Number(item.taxRate))
+          .withSubTotal(new Money(0))
+          .build();
       });
 
       const newInvoice = Invoice.Builder(newInvoiceId)
