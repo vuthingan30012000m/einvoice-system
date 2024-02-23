@@ -8,7 +8,6 @@ export class CreateNewInvoiceDto {
   readonly sellerId: string;
   readonly buyerId: string;
 
-  // readonly invoiceItems: Array<{ InvoiceItemDto }>;
   readonly invoiceItems: InvoiceItemDto[];
 
   readonly usbToken: string;

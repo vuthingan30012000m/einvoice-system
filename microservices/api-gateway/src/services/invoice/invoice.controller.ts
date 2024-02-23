@@ -64,37 +64,6 @@ export class InvoiceController {
     );
   }
 
-  // @ApiBearerAuth()
-  // @Post('create-replace-invoice')
-  // @ApiOperation({ summary: 'Lập hóa đơn thay thế' })
-  // async createReplaceInvoice(
-  //   @Body() createReplaceInvoiceDto: createReplaceInvoiceDto,
-  //   @TaxPayer() TaxPayer: TaxPayerJwtPayload,
-  // ) {
-  //   if (!TaxPayer) {
-  //     throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-  //   }
-
-  //   return this.apiGateway.send(
-  //     { cmd: 'create-new-invoice' },
-  //     {
-  //       sellerId: TaxPayer.taxCode,
-  //       buyerId: createReplaceInvoiceDto.buyerId,
-  //       invoiceItems: createReplaceInvoiceDto.invoiceItems,
-  //       usbToken: createReplaceInvoiceDto.usbToken,
-  //     },
-  //   );
-  // }
-
-  // Delete invoice
-  // Xóa hóa đơn
-
   // Find invoices by  id
   // Tra cứu hóa đơn theo số hóa đơn
-
-  // Find all export
-  // Tra cứu tất cả hóa đơn bán ra
-
-  // Find all import
-  // Tra cứu tất cả hóa đơn mua vào
 }

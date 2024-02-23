@@ -60,20 +60,27 @@ export class InvoiceController {
         createNewInvoiceDto.usbToken,
       ),
     );
-
-    //   createNewInvoiceDto.invoiceItems.map(item => {
-    //     return new CreateNewInvoiceItemCommand(
-    //       item.productId,
-    //       item.quantity,
-    //       item.price,
-    //       item.taxRate,
-    //     );
-    //   }
-
-    //   ,
-    //   createNewInvoiceDto.usbToken,
-    // ),
-    // ),
-    // );
   }
+
+  // @MessagePattern({ cmd: 'create-replace-invoice' })
+  // async createReplaceInvoice(
+  //   @Payload() createReplaceInvoiceDto: CreateReplaceInvoiceDto,
+  // ) {
+  //   return await this.commandBus.execute(
+  //     new CreateReplaceInvoiceCommand(
+  //       createReplaceInvoiceDto.invoiceId,
+  //       createReplaceInvoiceDto.sellerId,
+  //       createReplaceInvoiceDto.buyerId,
+  //       createReplaceInvoiceDto.invoiceItems.map((item) => {
+  //         return new CreateReplaceInvoiceItemCommand(
+  //           item.productId,
+  //           item.quantity,
+  //           item.price,
+  //           item.taxRate,
+  //         );
+  //       }),
+  //       createReplaceInvoiceDto.usbToken,
+  //     ),
+  // );
+  // }
 }
