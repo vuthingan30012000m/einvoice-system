@@ -1,15 +1,8 @@
-<!-- ngay -->
-<!-- mailhoas ddown -->
-
 <!-- Status null k đc .. Phee duuyet -->
 <!-- tct? -->
 <!-- user=api=tct -->
 
-
-
-<!--@  -->
-
-Nginx load bln
+ 
 
 
 
@@ -21,8 +14,5 @@ Nginx load bln
  
  
 
-
-<!-- Factory -->
-<!-- AR -->
-
+ 
 <!-- xóa  this.logger.  payload hoặc event -->
