@@ -67,7 +67,10 @@ export class CreateNewInvoiceCommandHandler
         if (findProduct.taxRate !== Number(item.taxRate)) {
           throw new InvoiceException('Thuế suất không đúng.');
         }
-        if (findProduct.price !== new Money(Number(item.price))) {
+
+
+
+        if (findProduct.price.value !== new Money(Number(item.price)).value) {
           throw new InvoiceException('Giá bán không đúng.');
         }
       }

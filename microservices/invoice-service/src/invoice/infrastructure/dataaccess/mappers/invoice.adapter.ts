@@ -30,12 +30,9 @@ export class InvoiceAdapter {
             .withQuantity(item.quantity)
             .withPrice(new Money(item.price))
             .withTaxRate(item.taxRate)
-            .withSubTotal(new Money(item.subTotal))
             .build(),
         ),
       )
-      .withTotalAfterTax(new Money(invoiceEntity.totalAfterTax))
-      .withTotalBeforeTax(new Money(invoiceEntity.totalBeforeTax))
       .build();
 
     return invoiceModel;
