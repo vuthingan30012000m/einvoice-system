@@ -32,7 +32,7 @@ export class UpdateTaxPayerCommandHandler
     private readonly WardRepository: WardRepositoryPort,
     private readonly BankDetailRepository: BankDetailRepositoryPort,
     private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
-    private readonly AddressRepository: AddressRepositoryPort,
+    private readonly addressRepository: AddressRepositoryPort,
   ) {}
 
   private readonly logger = new Logger(UpdateTaxPayerCommandHandler.name);
@@ -95,7 +95,7 @@ export class UpdateTaxPayerCommandHandler
       const existingBank = await this.BankRepository.getOneById(
         existingBankDetail.BankId,
       );
-      const existingAddress = await this.AddressRepository.getOneById(
+      const existingAddress = await this.addressRepository.getOneById(
         findTaxPayer.addressId,
       );
       const existingWard = await this.WardRepository.getOneById(
