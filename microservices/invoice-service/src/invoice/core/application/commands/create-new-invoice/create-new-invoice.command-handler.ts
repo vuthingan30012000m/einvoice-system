@@ -79,7 +79,7 @@ export class CreateNewInvoiceCommandHandler
 
       const newInvoiceId = await this.MicroservicesTctPort.getId();
       if (!newInvoiceId) {
-        throw new InvoiceException('Lỗi hóa đơn không tạo phê duyệt.');
+        throw new InvoiceException('Lỗi hóa đơn không được phê duyệt.');
       }
 
       const newInvoiceItems = payload.invoiceItems.map((item) => {
