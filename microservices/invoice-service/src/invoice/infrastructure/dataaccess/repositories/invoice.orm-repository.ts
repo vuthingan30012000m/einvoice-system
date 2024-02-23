@@ -26,7 +26,7 @@ export class InvoiceOrmRepository implements InvoiceRepositoryPort {
   async getAll(): Promise<Invoice[]> {
     const entities = await this.InvoiceEntityRepository.find({
       // relations: {
-      //   TaxPayer: true,
+      // TaxPayer: true,
       // },
     });
 
