@@ -10,7 +10,7 @@ import { TaxPayer } from './../../../core/domain/entities/tax-payer';
 import { TaxCode } from './../../../core/domain/value-objects/tax-code';
 import { Email } from '../../../core/domain/value-objects/email';
 import { PhoneNumber } from './../../../core/domain/value-objects/phone-number';
-import { TaxPayerException } from '..//user/core/domain/exceptions/tax-payer.exception';
+import { TaxPayerException } from './../../../core/domain/exceptions/tax-payer.exception';
 
 @Injectable()
 export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {

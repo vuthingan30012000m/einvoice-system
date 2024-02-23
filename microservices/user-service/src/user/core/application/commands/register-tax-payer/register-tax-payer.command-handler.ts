@@ -29,12 +29,14 @@ import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 import { TaxPayerRegisteredEvent } from '../../../domain/events/tax-payer-registered.event';
 import { JwtService } from '@nestjs/jwt';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';
+import { MicroservicesTctPort } from '../../ports/tct/tct.port';
 
 @CommandHandler(RegisterTaxPayerCommand)
 export class RegisterTaxPayerCommandHandler
   implements ICommandHandler<RegisterTaxPayerCommand>
 {
   constructor(
+    private readonly MicroservicesTctPort: MicroservicesTctPort,
     private readonly HashPasswordService: HashPasswordService,
     private readonly eventBus: EventBus,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
@@ -109,7 +111,12 @@ export class RegisterTaxPayerCommandHandler
         payload.password,
       );
 
-      const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
+      const newTaxCode = await this.MicroservicesTctPort.getId();
+      if (!newTaxCode) {
+        throw new TaxPayerException('Lỗi hóa đơn không tạo phê duyệt.');
+      }
+
+      const newTaxPayer = TaxPayer.Builder(new TaxCode(newTaxCode))
         .withName(payload.name)
         .withPassword(hashPassword)
         .withEmail(new Email(payload.email))
