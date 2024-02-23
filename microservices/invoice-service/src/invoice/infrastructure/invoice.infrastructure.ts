@@ -54,6 +54,9 @@ export const InvoiceInfrastructure = {
 
     MAIL_HOST: Joi.string().required(),
     MAIL_PORT: Joi.string().required(),
+
+    TCT_HOST: Joi.string().required(),
+    TCT_PORT: Joi.string().required(),
   }),
   configs: [
     DatabaseConfig.configs(),
