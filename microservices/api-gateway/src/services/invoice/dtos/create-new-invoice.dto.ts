@@ -55,7 +55,7 @@ export class InvoiceItemDto {
 }
 export class CreateNewInvoiceDto {
   @ApiProperty({
-    description: 'Mã định danh của  người mua',
+    description: 'Mã định danh của người mua',
     example: faker.datatype.uuid(),
     required: true,
   })
