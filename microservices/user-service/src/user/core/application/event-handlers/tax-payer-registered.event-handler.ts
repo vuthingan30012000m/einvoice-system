@@ -29,7 +29,12 @@ export class TaxPayerRegisteredEventHandler
       this.mailerPort.send(
         event.newTaxPayer.email,
         'Xác thực email',
-        `<h1>Xin chào <strong>${event.newTaxPayer.name}</strong>,</h1> <p>Cảm ơn bạn đã đăng ký. Mã số thuế của bạn là: <strong>${event.newTaxPayer.taxCode.value}</strong></p> <br/> <p>Để hoàn tất quá trình đăng ký, bạn cần xác nhận địa chỉ email của mình.Vui lòng nhấn vào nút bên dưới để xác nhận địa chỉ email của bạn.</p><a style=" background-color: #04aa6d;color: white;padding: 10px;text-decoration: none;border-radius: 12px; "href="${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${tokenEmail}" target="_blank" >&#128073; Xác thực email</a ><br /><p>Trân trọng,</p><p><strong> Vũ Văn Nghĩa </strong></p><p><strong> MSSV: 20206205 </strong></p>`,
+        'tax-payer-registered.hbs',
+        {
+          name: event.newTaxPayer.name,
+          taxCode: event.newTaxPayer.taxCode.value,
+          url: `${process.env.APP_DOMAIN}:${process.env.APP_PORT}/api/user/verify-email/${tokenEmail}`,
+        },
       );
 
       this.logger.log(
