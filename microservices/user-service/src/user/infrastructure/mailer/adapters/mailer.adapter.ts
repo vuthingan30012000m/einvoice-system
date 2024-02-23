@@ -7,11 +7,12 @@ import { Email } from '../../../core/domain/value-objects/email';
 export abstract class MailerAdapter implements MailerPort {
   constructor(private readonly mailerService: MailerService) {}
 
-  async send(receiver: Email, title: string, htmlContent: string) {
-    await this.mailerService.sendMail({
+  send(receiver: Email, title: string, template: string, context: any) {
+    this.mailerService.sendMail({
       to: receiver.value,
       subject: title,
-      html: htmlContent,
+      template: template,
+      context: context,
     });
   }
 }
