@@ -8,7 +8,6 @@ import { InvoiceInterface } from './interface/invoice.interface';
 
 @Module({
   imports: [
-    
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: InvoiceInfrastructure.validations,

@@ -1,12 +1,11 @@
 import * as Joi from '@hapi/joi';
 
+import { TctAdapter } from '../../../../invoice-service/src/invoice/infrastructure/tct/adapters/tct.adapter';
+import { MicroservicesTctPort } from '../../../../invoice-service/src/invoice/core/application/ports/tct/tct.port';
+
 import { MailerConfig } from './mailer/config/mailer.config';
 import { MailerAdapter } from './mailer/adapters/mailer.adapter';
 import { MailerPort } from '../core/application/ports/mailer/mailer.port';
-
-// import { QueueConfig } from './queue/config/queue.config';
-// import { QueueAdapter } from './queue/adapters/queue.adapter';
-// import { MessageQueuePort } from '../core/application/ports/publisher/message-queue.port';
 
 import { DatabaseConfig } from './dataaccess/config/database.config';
 
@@ -78,13 +77,13 @@ export const InvoiceInfrastructure = {
   seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
   providers: [
     {
+      provide: MicroservicesTctPort,
+      useClass: TctAdapter,
+    },
+    {
       provide: MailerPort,
       useClass: MailerAdapter,
     },
-    // {
-    // provide: MessageQueuePort,
-    // useClass: QueueAdapter,
-    // },
     {
       provide: TaxPayerRepositoryPort,
       useClass: TaxPayerOrmRepository,

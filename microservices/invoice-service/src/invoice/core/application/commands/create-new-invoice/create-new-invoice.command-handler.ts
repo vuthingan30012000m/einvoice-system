@@ -18,6 +18,10 @@ import { ProductId } from '../../../domain/value-objects/product-id';
 import { Money } from '../../../domain/value-objects/money';
 import { InvoiceCreatedEvent } from 'src/invoice/core/domain/events/invoice-created.event';
 
+// import { MicroservicesTctPort } from '../../ports/tct/tct.port';
+// private readonly MicroservicesTctPort: MicroservicesTctPort,
+// const a =await this.MicroservicesTctPort.getId();
+
 @CommandHandler(CreateNewInvoiceCommand)
 export class CreateNewInvoiceCommandHandler
   implements ICommandHandler<CreateNewInvoiceCommand>
