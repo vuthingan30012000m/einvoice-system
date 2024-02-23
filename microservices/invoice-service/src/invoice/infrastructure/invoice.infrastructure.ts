@@ -1,7 +1,7 @@
 import * as Joi from '@hapi/joi';
 
-import { TctAdapter } from '../../../../invoice-service/src/invoice/infrastructure/tct/adapters/tct.adapter';
-import { MicroservicesTctPort } from '../../../../invoice-service/src/invoice/core/application/ports/tct/tct.port';
+import { MicroservicesTctPort } from '../core/application/ports/tct/tct.port';
+import { TctAdapter } from './tct/adapters/tct.adapter';
 
 import { MailerConfig } from './mailer/config/mailer.config';
 import { MailerAdapter } from './mailer/adapters/mailer.adapter';
