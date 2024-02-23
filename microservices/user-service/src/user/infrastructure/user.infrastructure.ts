@@ -1,5 +1,14 @@
 import * as Joi from '@hapi/joi';
 
+
+
+
+import { MicroservicesTctPort } from '../core/application/ports/tct/tct.port';
+import { TctAdapter } from './tct/adapters/tct.adapter';
+
+
+
+
 import { MailerConfig } from './mailer/config/mailer.config';
 import { MailerAdapter } from './mailer/adapters/mailer.adapter';
 import { MailerPort } from '../core/application/ports/mailer/mailer.port';
@@ -66,6 +75,10 @@ export const UserInfrastructure = {
   ],
   seeders: [TaxOfficeSeeder, BankSeeder, AddressSeeder],
   providers: [
+    {
+      provide: MicroservicesTctPort,
+      useClass: TctAdapter,
+    },
     {
       provide: MailerPort,
       useClass: MailerAdapter,
