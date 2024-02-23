@@ -46,7 +46,7 @@ export class UpdateProductCommandHandler
         new ProductId(payload.productId),
       );
       if (!findProduct) {
-        throw new InvoiceException('Sản phẩm không  tồn tại.');
+        throw new InvoiceException('Sản phẩm không tồn tại.');
       }
 
       findProduct.update(
