@@ -1,9 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsNotEmpty,
-  IsNumberString,
-  IsString,
-} from 'class-validator';
+import { IsNotEmpty, IsNumberString, IsString } from 'class-validator';
 
 import * as faker from 'faker';
 

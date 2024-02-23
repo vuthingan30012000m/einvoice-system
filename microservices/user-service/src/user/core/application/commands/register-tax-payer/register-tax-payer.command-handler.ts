@@ -113,7 +113,7 @@ export class RegisterTaxPayerCommandHandler
 
       const newTaxCode = await this.MicroservicesTctPort.getId();
       if (!newTaxCode) {
-        throw new TaxPayerException('Lỗi người nộp thuế  không  được phê duyệt.');
+        throw new TaxPayerException('Lỗi người nộp thuế không được phê duyệt.');
       }
 
       const newTaxPayer = TaxPayer.Builder(new TaxCode(newTaxCode))
