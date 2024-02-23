@@ -12,4 +12,8 @@ export class AppController {
   getRandomValue() {
    return this.appService.getRandomValue();
   }
+  @MessagePattern({ cmd: 'tct' })
+  tct() {
+   return this.appService.getRandomValue();
+  }
 }
