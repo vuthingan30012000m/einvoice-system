@@ -17,16 +17,14 @@ import { InvoiceItem } from 'src/invoice/core/domain/entities/invoice-item';
 import { ProductId } from '../../../domain/value-objects/product-id';
 import { Money } from '../../../domain/value-objects/money';
 import { InvoiceCreatedEvent } from 'src/invoice/core/domain/events/invoice-created.event';
-
-// import { MicroservicesTctPort } from '../../ports/tct/tct.port';
-// private readonly MicroservicesTctPort: MicroservicesTctPort,
-// const a =await this.MicroservicesTctPort.getId();
+import { MicroservicesTctPort } from '../../ports/tct/tct.port';
 
 @CommandHandler(CreateNewInvoiceCommand)
 export class CreateNewInvoiceCommandHandler
   implements ICommandHandler<CreateNewInvoiceCommand>
 {
   constructor(
+    private readonly MicroservicesTctPort: MicroservicesTctPort,
     private readonly ProductRepository: ProductRepositoryPort,
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
@@ -79,7 +77,10 @@ export class CreateNewInvoiceCommandHandler
         }
       }
 
-      const newInvoiceId = new InvoiceId(randomUUID());
+      const newInvoiceId =await this.MicroservicesTctPort.getId()
+      if(!newInvoiceId){
+        throw new InvoiceException('Lỗi   hóa đơn không tạo phê duyệt.');
+      }
 
       const newInvoiceItems = payload.invoiceItems.map((item) => {
         return InvoiceItem.Builder(new InvoiceId(randomUUID()))
@@ -90,7 +91,7 @@ export class CreateNewInvoiceCommandHandler
           .build();
       });
 
-      const newInvoice = Invoice.Builder(newInvoiceId)
+      const newInvoice = Invoice.Builder( new InvoiceId(newInvoiceId))
         .withSellerId(new TaxCode(payload.sellerId))
         .withBuyerId(new TaxCode(payload.buyerId))
         .withItem(newInvoiceItems)

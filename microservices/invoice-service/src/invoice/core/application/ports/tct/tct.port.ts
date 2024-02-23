@@ -1,3 +1,3 @@
 export abstract class MicroservicesTctPort {
-  abstract getId();
+  abstract getId(): Promise<string>;
 }

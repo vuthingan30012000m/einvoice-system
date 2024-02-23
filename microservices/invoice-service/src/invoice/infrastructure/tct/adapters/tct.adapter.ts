@@ -4,7 +4,7 @@ import { MicroservicesTctPort } from '../../../core/application/ports/tct/tct.po
 
 @Injectable()
 export abstract class TctAdapter implements MicroservicesTctPort {
-  async getId() {
+  async getId(): Promise<string>{
     const response = await axios.get(
       `http://${process.env.TCT_HOST}:${process.env.TCT_PORT}/api/demo/uuid`,
     );
