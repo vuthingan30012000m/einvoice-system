@@ -3,7 +3,6 @@ import { AppService } from './app.service';
 import { MessagePattern } from '@nestjs/microservices';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-
 @Controller('demo')
 @ApiTags('Demo')
 export class AppController {
@@ -17,6 +16,6 @@ export class AppController {
   }
   // @MessagePattern({ cmd: 'tct' })
   // tct() {
-    // return this.appService.getRandomValue();
+  // return this.appService.getRandomValue();
   // }
 }

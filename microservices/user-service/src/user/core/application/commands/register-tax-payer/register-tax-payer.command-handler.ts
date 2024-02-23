@@ -96,36 +96,36 @@ export class RegisterTaxPayerCommandHandler
       // }
 
       // const newAddress = Address.Builder(new AddressId(randomUUID()))
-      //   .withWardId(new WardId(payload.wardId))
-      //   .withNoteAddress(payload.noteAddress)
-      //   .build();
+      // .withWardId(new WardId(payload.wardId))
+      // .withNoteAddress(payload.noteAddress)
+      // .build();
 
       // const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
-      //   .withBankId(new BankId(payload.bankId))
-      //   .withAccountBank(payload.accountBank)
-      //   .build();
+      // .withBankId(new BankId(payload.bankId))
+      // .withAccountBank(payload.accountBank)
+      // .build();
 
       // const hashPassword = await this.HashPasswordService.hash(
-      //   payload.password,
+      // payload.password,
       // );
 
       // const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
-      //   .withName(payload.name)
-      //   .withPassword(hashPassword)
-      //   .withEmail(new Email(payload.email))
-      //   .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
-      //   .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
-      //   .withBankDetailId(new BankDetailId(newBankDetail.bankDetailId.value))
-      //   .withAddressId(new AddressId(newAddress.addressId.value))
-      //   .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
-      //   .build();
+      // .withName(payload.name)
+      // .withPassword(hashPassword)
+      // .withEmail(new Email(payload.email))
+      // .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
+      // .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
+      // .withBankDetailId(new BankDetailId(newBankDetail.bankDetailId.value))
+      // .withAddressId(new AddressId(newAddress.addressId.value))
+      // .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
+      // .build();
 
       // await this.AddressRepository.save(newAddress);
       // await this.BankDetailRepository.save(newBankDetail);
       // await this.TaxPayerRepository.save(newTaxPayer);
 
       // this.eventBus.publish(
-      //   new TaxPayerRegisteredEvent(newAddress, newBankDetail, newTaxPayer),
+      // new TaxPayerRegisteredEvent(newAddress, newBankDetail, newTaxPayer),
       // );
 
       return { message: 'Đăng ký thành công. Hãy thực hiện xác nhận email.' };
