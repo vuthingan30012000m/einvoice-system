@@ -11,11 +11,11 @@
 <p>Thông tin chi tiết hóa đơn:</p>
 
 <ul>
-  <li>Số hóa đơn: <strong> {{ newInvoice.invoiceId.value }} </strong></li>
-  <li>Ngày thanh toán: <strong> {{ newInvoice.createAt }} </strong></li>
+ <li>Số hóa đơn: <strong> {{ newInvoice.invoiceId.value }} </strong></li>
+ <li>Ngày thanh toán: <strong> {{ newInvoice.createAt }} </strong></li>
 
-  <li>Tổng trước thuế: <strong> {{ newInvoice.totalBeforeTax.value }} </strong></li>
-  <li>Tổng sau thuế: <strong> {{ newInvoice.totalAfterTax.value }} </strong></li>
+ <li>Tổng trước thuế: <strong> {{ newInvoice.totalBeforeTax.value }} </strong></li>
+ <li>Tổng sau thuế: <strong> {{ newInvoice.totalAfterTax.value }} </strong></li>
 
 </ul>
 
@@ -29,26 +29,26 @@
 <p>Hóa đơn này bao gồm các mục sau đây:</p>
 
 <table style="width: 100%">
-  <thead>
-    <tr>
-      <th style="text-align: left; background-color: #04aa6d"> Sản phẩm</th>
-      <th style="text-align: left; background-color: #04aa6d"> Số lượng</th>
-      <th style="text-align: left; background-color: #04aa6d"> Giá</th>
-      <th style="text-align: left; background-color: #04aa6d"> Thuế suất (%)</th>
-      <th style="text-align: left; background-color: #04aa6d"> Tổng tiền</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each newInvoice.invoiceItems}}
-    <tr>
-      <td>{{this.productId.value}}</td>
-      <td>{{this.quantity}}</td>
-      <td>{{this.price.value}}</td>
-      <td>{{this.taxRate}} </td>
-      <td>{{this.subTotal.value}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
+ <thead>
+ <tr>
+ <th style="text-align: left; background-color: #04aa6d"> Sản phẩm</th>
+ <th style="text-align: left; background-color: #04aa6d"> Số lượng</th>
+ <th style="text-align: left; background-color: #04aa6d"> Giá</th>
+ <th style="text-align: left; background-color: #04aa6d"> Thuế suất (%)</th>
+ <th style="text-align: left; background-color: #04aa6d"> Tổng tiền</th>
+ </tr>
+ </thead>
+ <tbody>
+ {{#each newInvoice.invoiceItems}}
+ <tr>
+ <td>{{this.productId.value}}</td>
+ <td>{{this.quantity}}</td>
+ <td>{{this.price.value}}</td>
+ <td>{{this.taxRate}} </td>
+ <td>{{this.subTotal.value}}</td>
+ </tr>
+ {{/each}}
+ </tbody>
 </table>
 
 
@@ -58,7 +58,7 @@
 
 
 <a style=" background-color: #04aa6d;color: white;padding: 10px;text-decoration: none;border-radius: 12px; "
-  href="{{ url }}" target="_blank">&#128073; Truy cập trang web của chúng tôi</a>
+ href="{{ url }}" target="_blank">&#128073; Truy cập trang web của chúng tôi</a>
 
 
 <br />
