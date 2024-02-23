@@ -7,6 +7,7 @@ import { Product } from '../../domain/entities/product';
 import { ProductRepositoryPort } from '../ports/dataaccess/repositories/product.repository.port';
 import { InvoiceItem } from '../../domain/entities/invoice-item';
 import { ProductId } from '../../domain/value-objects/product-id';
+import { InvoiceException } from '../../domain/exceptions/invoice.exception';
 
 @EventsHandler(InvoiceCreatedEvent)
 export class InvoiceCreatedEventHandler
@@ -42,7 +43,7 @@ export class InvoiceCreatedEventHandler
         event.newInvoice.buyerId,
       );
       if (!findBuyer) {
-        throw new Error('Không tìm thấy     người mua');
+        throw new InvoiceException('Không tìm thấy người mua');
       }
 
       this.mailerPort.send(
