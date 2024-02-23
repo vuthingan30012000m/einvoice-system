@@ -25,11 +25,11 @@ def format(directory):
             # subprocess.run(["prettier", "--write", file_path], check=True)
 
 list_code=[
-# "/home/vvn20206205/Desktop/einvoice-system/microservices/api-gateway/src",
+"/home/vvn20206205/Desktop/einvoice-system/microservices/api-gateway/src",
 "/home/vvn20206205/Desktop/einvoice-system/microservices/user-service/src",
 "/home/vvn20206205/Desktop/einvoice-system/microservices/invoice-service/src",
-# "/home/vvn20206205/Desktop/einvoice-system/microservices/tct-demo/src",
-# "/home/vvn20206205/Desktop/vuvannghia/src",
+"/home/vvn20206205/Desktop/einvoice-system/microservices/tct-demo/src",
+"/home/vvn20206205/Desktop/vuvannghia/src",
 # "/home/vvn20206205/Desktop/einvoice-system/microservices/report-service/src",
 ]
 for code in list_code:
