@@ -27,14 +27,6 @@
     {
       "name": "invoice-service",
       "path": "microservices/invoice-service/src"
-    },
-    {
-      "name": "application",
-      "path": "microservices/user-service/src/user/core/application"
-    },
-    {
-      "name": "application",
-      "path": "microservices/invoice-service/src/invoice/core/application"
     }
   ],
   "settings": {

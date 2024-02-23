@@ -47,6 +47,17 @@ services:
     logging:
       driver: none
 
+  tct:
+    build: ../microservices/tct-demo
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ../microservices/tct-demo:/usr/src/app
+    command: npm run start:dev
+    environment:
+      PORT: ${TCT_PORT}
+
   api_gateway:
     build: ../microservices/api-gateway
     restart: always
@@ -62,20 +73,6 @@ services:
 
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
-
-  # tct:
-  #   build: ../microservices/tct-demo
-  #   restart: always
-  #   volumes:
-  #     - ../microservices/tct-demo:/usr/src/app
-  #   command: npm run start:dev
-  #   environment:
-  #     APP_NAME: ${APP_NAME}
-  #     APP_PORT: ${APP_PORT}
-  #     APP_DOMAIN: ${APP_DOMAIN}
-
-  #     NATS_HOST: ${NATS_HOST}
-
 
   user:
     build: ../microservices/user-service
@@ -126,29 +123,10 @@ services:
 
       MAIL_HOST: ${MAIL_HOST}
       MAIL_PORT: ${MAIL_PORT}
-      # VERIFY_EMAIL_SECRET: ${VERIFY_EMAIL_SECRET}
-      # VERIFY_RESET_PASSWORD_SECRET: ${VERIFY_RESET_PASSWORD_SECRET}
-
-      # JWT_SECRET: ${JWT_SECRET}
-      # JWT_EXPIRES_IN: ${JWT_EXPIRES_IN} 
-
-      # report:
 
 
 
 
+      TCT_HOST: ${TCT_HOST}
+      TCT_PORT: ${TCT_PORT}
 
-
-      # postgres:
-      #   container_name: postgres-container
-      #   image: postgres:alpine
-      #   ports:
-      #     - 5432:5432
-      #   environment:
-      #     POSTGRES_USER: 'user'
-      #     POSTGRES_PASSWORD: 'password'
-      #     POSTGRES_DB: 'ddh'
-      #   volumes:
-      #     - ddh-postgres:/var/lib/postgresql/data
-      #   networks:
-      #     - postgres
