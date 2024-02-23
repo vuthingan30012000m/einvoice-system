@@ -5,7 +5,7 @@ import { ProductId } from '../../../domain/value-objects/product-id';
 import { randomUUID } from 'crypto';
 import { Product } from '../../../domain/entities/product';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { InvoiceException } from 'src/invoice/core/domain/exceptions/invoice.exception';
+import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 import { Money } from '../../../domain/value-objects/money';
 
 import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';

@@ -5,10 +5,10 @@ import { WardEntity } from '../entities/ward.entity';
 
 import { InvoiceId } from '../../../core/domain/value-objects/invoice-id';
 import { WardId } from '../../../core/domain/value-objects/ward-id';
-import { Money } from 'src/invoice/core/domain/value-objects/money';
+import { Money } from '../../../core/domain/value-objects/money';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
-import { TaxCode } from 'src/invoice/core/domain/value-objects/tax-code';
-import { InvoiceItem } from 'src/invoice/core/domain/entities/invoice-item';
+import { TaxCode } from '../../../core/domain/value-objects/tax-code';
+import { InvoiceItem } from '../../../core/domain/entities/invoice-item';
 import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { InvoiceItemEntity } from '../entities/invoice-item.entity';
 import { map } from 'rxjs';

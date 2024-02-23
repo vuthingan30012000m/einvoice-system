@@ -7,8 +7,8 @@ import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-
 import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
-import { ProductId } from 'src/invoice/core/domain/value-objects/product-id';
-import { Money } from 'src/invoice/core/domain/value-objects/money';
+import { ProductId } from '../../../domain/value-objects/product-id';
+import { Money } from '../../../domain/value-objects/money';
 
 @CommandHandler(UpdateProductCommand)
 export class UpdateProductCommandHandler

@@ -24,8 +24,7 @@ export class InvoiceOrmRepository implements InvoiceRepositoryPort {
   }
 
   async getAll(): Promise<Invoice[]> {
-    const entities = await this.InvoiceEntityRepository.find({
-    });
+    const entities = await this.InvoiceEntityRepository.find({});
 
     return entities.map((item) => InvoiceAdapter.toDomain(item));
   }

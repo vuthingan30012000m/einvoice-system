@@ -7,7 +7,7 @@ import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/produ
 import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { ProductId } from 'src/invoice/core/domain/value-objects/product-id';
+import { ProductId } from '../../../domain/value-objects/product-id';
 
 @QueryHandler(FindOneProductQuery)
 export class FindOneProductQueryHandler

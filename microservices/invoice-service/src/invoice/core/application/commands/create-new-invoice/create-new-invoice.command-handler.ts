@@ -2,7 +2,7 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { CreateNewInvoiceCommand } from './create-new-invoice.command';
 
-import { InvoiceException } from 'src/invoice/core/domain/exceptions/invoice.exception';
+import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
 import { InvoiceRepositoryPort } from '../../ports/dataaccess/repositories/invoice.repository.port';
@@ -10,13 +10,13 @@ import { InvoiceRepositoryPort } from '../../ports/dataaccess/repositories/invoi
 import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 
 import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { Invoice } from 'src/invoice/core/domain/entities/invoice';
+import { Invoice } from '../../../domain/entities/invoice';
 import { InvoiceId } from '../../../domain/value-objects/invoice-id';
 import { randomUUID } from 'crypto';
-import { InvoiceItem } from 'src/invoice/core/domain/entities/invoice-item';
+import { InvoiceItem } from '../../../domain/entities/invoice-item';
 import { ProductId } from '../../../domain/value-objects/product-id';
 import { Money } from '../../../domain/value-objects/money';
-import { InvoiceCreatedEvent } from 'src/invoice/core/domain/events/invoice-created.event';
+import { InvoiceCreatedEvent } from '../../../domain/events/invoice-created.event';
 import { MicroservicesTctPort } from '../../ports/tct/tct.port';
 
 @CommandHandler(CreateNewInvoiceCommand)

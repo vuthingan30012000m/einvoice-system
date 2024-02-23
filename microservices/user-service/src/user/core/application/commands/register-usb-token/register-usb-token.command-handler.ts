@@ -6,7 +6,7 @@ import { UsbTokenAuthenticationService } from '../../../domain/services/usb-toke
 import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxPayerActivatedEvent } from '../../../domain/events/tax-payer-activated.event';
-import { TaxPayerException } from 'src/user/core/domain/exceptions/tax-payer.exception';
+import { TaxPayerException } from '..//user/core/domain/exceptions/tax-payer.exception';
 
 @CommandHandler(RegisterUsbTokenCommand)
 export class RegisterUsbTokenCommandHandler

@@ -12,15 +12,15 @@ import { Address } from '../../../domain/entities/address';
 import { AddressId } from '../../../domain/value-objects/address-id';
 import { WardId } from '../../../domain/value-objects/ward-id';
 
-import { BankDetail } from 'src/invoice/core/domain/entities/bank-detail';
+import { BankDetail } from '../../../domain/entities/bank-detail';
 
 import { BankDetailId } from './../../../domain/value-objects/bank-detail-id';
 import { BankId } from './../../../domain/value-objects/bank-id';
 import { PhoneNumber } from './../../../domain/value-objects/phone-number';
-import { TaxPayer } from 'src/invoice/core/domain/entities/tax-payer';
-import { TaxCode } from 'src/invoice/core/domain/value-objects/tax-code';
+import { TaxPayer } from '../../../domain/entities/tax-payer';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 
-import { TaxOfficeId } from 'src/invoice/core/domain/value-objects/tax-office-id';
+import { TaxOfficeId } from '../../../domain/value-objects/tax-office-id';
 
 import { Email } from '../../../domain/value-objects/email';
 import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';

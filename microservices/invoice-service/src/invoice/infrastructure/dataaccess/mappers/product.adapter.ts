@@ -5,9 +5,9 @@ import { WardEntity } from '../entities/ward.entity';
 
 import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { WardId } from '../../../core/domain/value-objects/ward-id';
-import { Money } from 'src/invoice/core/domain/value-objects/money';
+import { Money } from '../../../core/domain/value-objects/money';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
-import { TaxCode } from 'src/invoice/core/domain/value-objects/tax-code';
+import { TaxCode } from '../../../core/domain/value-objects/tax-code';
 
 export class ProductAdapter {
   static toDomain(ProductEntity: ProductEntity): Product {
