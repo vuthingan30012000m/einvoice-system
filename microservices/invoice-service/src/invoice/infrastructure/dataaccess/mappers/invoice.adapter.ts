@@ -17,9 +17,6 @@ import { ProductEntity } from '../entities/product.entity';
 export class InvoiceAdapter {
   static toDomain(invoiceEntity: InvoiceEntity): Invoice {
     if (!invoiceEntity) return null;
-
-    const invoiceId = new InvoiceId(invoiceEntity.id);
-
     const invoiceModel = Invoice.Builder(new InvoiceId(invoiceEntity.id))
       .withSellerId(new TaxCode(invoiceEntity.seller.id))
       .withBuyerId(new TaxCode(invoiceEntity.buyer.id))

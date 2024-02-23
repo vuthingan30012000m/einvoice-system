@@ -26,6 +26,8 @@ import {
   CreateNewInvoiceCommand,
   CreateNewInvoiceItemCommand,
 } from '../../../core/application/commands/create-new-invoice/create-new-invoice.command';
+import { FindOneInvoiceDto } from '../dtos/find-one-invoice.dto';
+import { FindOneInvoiceQuery } from '../../../core/application/queries/find-one-invoice/find-one-invoice.query';
 
 @Controller()
 export class InvoiceController {
@@ -62,25 +64,14 @@ export class InvoiceController {
     );
   }
 
-  // @MessagePattern({ cmd: 'create-replace-invoice' })
-  // async createReplaceInvoice(
-  //   @Payload() createReplaceInvoiceDto: CreateReplaceInvoiceDto,
-  // ) {
-  //   return await this.commandBus.execute(
-  //     new CreateReplaceInvoiceCommand(
-  //       createReplaceInvoiceDto.invoiceId,
-  //       createReplaceInvoiceDto.sellerId,
-  //       createReplaceInvoiceDto.buyerId,
-  //       createReplaceInvoiceDto.invoiceItems.map((item) => {
-  //         return new CreateReplaceInvoiceItemCommand(
-  //           item.productId,
-  //           item.quantity,
-  //           item.price,
-  //           item.taxRate,
-  //         );
-  //       }),
-  //       createReplaceInvoiceDto.usbToken,
-  //     ),
-  // );
-  // }
+  @MessagePattern({ cmd: 'find-one-invoice' })
+  async findOneInvoice(@Payload() findOneInvoiceDto: FindOneInvoiceDto) {
+    return await this.queryBus.execute(
+      new FindOneInvoiceQuery(
+        findOneInvoiceDto.invoiceId,
+        findOneInvoiceDto.taxPayerId,
+        findOneInvoiceDto.usbToken,
+      ),
+    );
+  }
 }

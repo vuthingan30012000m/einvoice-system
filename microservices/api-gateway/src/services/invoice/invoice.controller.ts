@@ -21,6 +21,7 @@ import {
 } from './../../decorators/tax-payer.decorator';
 
 import { CreateNewInvoiceDto } from './dtos/create-new-invoice.dto';
+import { FindOneInvoiceDto } from './dtos/find-one-invoice.dto';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')
@@ -64,6 +65,24 @@ export class InvoiceController {
     );
   }
 
-  // Find invoices by  id
-  // Tra cứu hóa đơn theo số hóa đơn
+  @ApiBearerAuth()
+  @Post('find-one-invoice')
+  @ApiOperation({ summary: 'Tra cứu hóa đơn theo số hóa đơn' })
+  async findOneInvoice(
+    @Body() findOneInvoiceDto: FindOneInvoiceDto,
+    @TaxPayer() TaxPayer: TaxPayerJwtPayload,
+  ) {
+    if (!TaxPayer) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+
+    return this.apiGateway.send(
+      { cmd: 'find-one-invoice' },
+      {
+        InvoiceId: findOneInvoiceDto.invoiceId,
+        taxPayerId: TaxPayer.taxCode,
+        usbToken: findOneInvoiceDto.usbToken,
+      },
+    );
+  }
 }

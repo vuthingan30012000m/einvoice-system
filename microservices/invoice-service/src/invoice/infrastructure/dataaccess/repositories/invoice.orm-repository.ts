@@ -38,9 +38,13 @@ export class InvoiceOrmRepository implements InvoiceRepositoryPort {
       where: {
         id: id.value,
       },
-      // relations: {
-      //   TaxPayer: true,
-      // },
+      relations: {
+        seller: true,
+        buyer: true,
+        invoiceItems: {
+          product: true,
+        },
+      },
     });
 
     return InvoiceAdapter.toDomain(entity);
