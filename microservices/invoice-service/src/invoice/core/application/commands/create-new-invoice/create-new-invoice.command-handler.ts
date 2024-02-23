@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { CreateNewInvoiceCommand } from './create-new-invoice.command';
 
 import { InvoiceException } from 'src/invoice/core/domain/exceptions/invoice.exception';
@@ -16,6 +16,7 @@ import { randomUUID } from 'crypto';
 import { InvoiceItem } from 'src/invoice/core/domain/entities/invoice-item';
 import { ProductId } from '../../../domain/value-objects/product-id';
 import { Money } from '../../../domain/value-objects/money';
+import { InvoiceCreatedEvent } from 'src/invoice/core/domain/events/invoice-created.event';
 
 @CommandHandler(CreateNewInvoiceCommand)
 export class CreateNewInvoiceCommandHandler
@@ -26,6 +27,7 @@ export class CreateNewInvoiceCommandHandler
     private readonly TaxPayerRepository: TaxPayerRepositoryPort,
     private readonly UsbTokenAuthenticationService: UsbTokenAuthenticationService,
     private readonly InvoiceRepositoryPort: InvoiceRepositoryPort,
+    private readonly eventBus: EventBus,
   ) {}
 
   private readonly logger = new Logger(CreateNewInvoiceCommandHandler.name);
@@ -91,6 +93,9 @@ export class CreateNewInvoiceCommandHandler
         .build();
 
       this.InvoiceRepositoryPort.save(newInvoice);
+
+      this.eventBus.publish(new InvoiceCreatedEvent(newInvoice));
+
       return newInvoice;
     } catch (error) {
       this.logger.error(`> ${error}`);

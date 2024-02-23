@@ -12,6 +12,7 @@ import { UpdateProductCommandHandler } from './commands/update-product/update-pr
 import { DeleteProductCommandHandler } from './commands/delete-product/delete-product.command-handler';
 import { CreateNewInvoiceCommandHandler } from './commands/create-new-invoice/create-new-invoice.command-handler';
 import { FindOneInvoiceQueryHandler } from './queries/find-one-invoice/find-one-invoice.query-handler';
+import { InvoiceCreatedEventHandler } from './event-handlers/invoice-created.event-handler';
 
 const InvoiceDomainServices: any[] = [UsbTokenAuthenticationService];
 const InvoiceEventCommandHandlers: any[] = [
@@ -19,14 +20,14 @@ const InvoiceEventCommandHandlers: any[] = [
   TaxPayerActivatedEventCommandHandler,
   TaxPayerUpdatedEventCommandHandler,
   TaxPayerDeletedEventCommandHandler,
-  CreateNewInvoiceCommandHandler,
 ];
 const InvoiceCommandHandlers: any[] = [
   CreateProductCommandHandler,
   UpdateProductCommandHandler,
   DeleteProductCommandHandler,
+  CreateNewInvoiceCommandHandler,
 ];
-const InvoiceEventHandlers: any[] = [];
+const InvoiceEventHandlers: any[] = [InvoiceCreatedEventHandler];
 const InvoiceQueryHandlers: any[] = [
   FindTaxPayerQueryHandler,
   FindAllProductQueryHandler,

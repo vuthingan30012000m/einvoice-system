@@ -30,6 +30,7 @@ export class InvoiceAdapter {
             .build(),
         ),
       )
+      .withCreateAt(invoiceEntity.createAt)
       .build();
 
     return invoiceModel;
@@ -66,6 +67,8 @@ export class InvoiceAdapter {
 
     entity.totalAfterTax = invoice.totalAfterTax.value;
     entity.totalBeforeTax = invoice.totalBeforeTax.value;
+
+    entity.createAt = invoice.createAt;
 
     return entity;
   }

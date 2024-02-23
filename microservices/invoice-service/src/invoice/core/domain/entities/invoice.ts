@@ -14,6 +14,8 @@ export class Invoice {
   totalBeforeTax: Money;
   totalAfterTax: Money;
 
+  createAt: Date;
+
   calculateTotalBeforeTax(): Money {
     let totalBeforeTaxAmount = new Money(0);
     for (const item of this.invoiceItems) {
@@ -59,6 +61,11 @@ class InvoiceBuilder {
 
   withItem(invoiceItems: InvoiceItem[]): InvoiceBuilder {
     invoiceItems.map((item) => this.invoice.invoiceItems.push(item));
+    return this;
+  }
+
+  withCreateAt(createAt: Date): InvoiceBuilder {
+    this.invoice.createAt = createAt;
     return this;
   }
 
