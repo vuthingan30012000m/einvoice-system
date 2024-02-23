@@ -2,16 +2,16 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { TaxPayerUpdatedEventCommand } from './tax-payer-updated-event.command';
 
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
-import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
-import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
-import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
-import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 import { Email } from '../../../domain/value-objects/email';
 import { PhoneNumber } from '../../../domain/value-objects/phone-number';
-import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
+import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
+import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
+import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
 
 @CommandHandler(TaxPayerUpdatedEventCommand)
 export class TaxPayerUpdatedEventCommandHandler

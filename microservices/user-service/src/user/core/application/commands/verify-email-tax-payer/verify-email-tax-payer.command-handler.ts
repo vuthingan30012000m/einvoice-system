@@ -1,10 +1,9 @@
 import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { VerifyEmailTaxPayerCommand } from './verify-email-tax-payer.command';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { VerifyEmailTaxPayerCommand } from './verify-email-tax-payer.command';
 
 import { Email } from '../../../domain/value-objects/email';
-import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 
 import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
 import { EncryptionEmailService } from '../../../domain/services/encryption-email.service';

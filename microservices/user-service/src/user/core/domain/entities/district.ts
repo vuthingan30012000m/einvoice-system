@@ -1,5 +1,5 @@
-import { CityId } from './../value-objects/city-id';
 import { DistrictId } from '../value-objects/district-id';
+import { CityId } from './../value-objects/city-id';
 
 export class District {
   districtId: DistrictId;

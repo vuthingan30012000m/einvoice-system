@@ -1,15 +1,12 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
-  OneToMany,
-  ManyToOne,
-  OneToOne,
-  JoinColumn,
   CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
-import { BankDetailEntity } from './bank-detail.entity';
 import { InvoiceItemEntity } from './invoice-item.entity';
 import { TaxPayerEntity } from './tax-payer.entity';
 

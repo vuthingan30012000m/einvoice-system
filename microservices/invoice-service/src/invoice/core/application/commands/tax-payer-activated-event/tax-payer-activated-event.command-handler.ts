@@ -2,8 +2,8 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { TaxPayerActivatedEventCommand } from './tax-payer-activated-event.command';
 
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 
 @CommandHandler(TaxPayerActivatedEventCommand)
 export class TaxPayerActivatedEventCommandHandler

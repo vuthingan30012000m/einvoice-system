@@ -1,11 +1,8 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
-  OneToMany,
+  Entity,
   ManyToOne,
-  OneToOne,
-  JoinColumn,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 import { InvoiceEntity } from './invoice.entity';

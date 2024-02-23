@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 
 import { BankRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/bank.repository.port';
 
+import { BankId } from '../../../core/domain/value-objects/bank-id';
 import { BankEntity } from '../entities/bank.entity';
 import { BankAdapter } from '../mappers/bank.adapter';
 import { Bank } from './../../../core/domain/entities/bank';
-import { BankId } from '../../../core/domain/value-objects/bank-id';
 
 @Injectable()
 export class BankOrmRepository implements BankRepositoryPort {

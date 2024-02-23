@@ -1,5 +1,4 @@
-import { DomainValueObject } from '@vuvannghia/common';
-import { DomainException } from '@vuvannghia/common';
+import { DomainException, DomainValueObject } from '@vuvannghia/common';
 
 export class Email extends DomainValueObject {
   constructor(readonly value: string) {

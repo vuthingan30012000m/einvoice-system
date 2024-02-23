@@ -1,5 +1,5 @@
-import { BankId } from './../value-objects/bank-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
+import { BankId } from './../value-objects/bank-id';
 
 export class BankDetail {
   bankDetailId: BankDetailId;

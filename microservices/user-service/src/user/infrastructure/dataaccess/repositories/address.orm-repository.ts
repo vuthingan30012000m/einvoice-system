@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 
 import { AddressRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/address.repository.port';
 
+import { AddressId } from '../../../core/domain/value-objects/address-id';
 import { AddressEntity } from '../entities/address.entity';
 import { AddressAdapter } from '../mappers/address.adapter';
 import { Address } from './../../../core/domain/entities/address';
-import { AddressId } from '../../../core/domain/value-objects/address-id';
 
 @Injectable()
 export class AddressOrmRepository implements AddressRepositoryPort {

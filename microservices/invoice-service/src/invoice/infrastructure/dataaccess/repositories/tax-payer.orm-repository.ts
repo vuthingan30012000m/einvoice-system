@@ -4,13 +4,13 @@ import { Repository } from 'typeorm';
 
 import { TaxPayerRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/tax-payer.repository.port';
 
+import { InvoiceException } from '../../../core/domain/exceptions/invoice.exception';
+import { Email } from '../../../core/domain/value-objects/email';
 import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayerAdapter } from '../mappers/tax-payer.adapter';
 import { TaxPayer } from './../../../core/domain/entities/tax-payer';
-import { TaxCode } from './../../../core/domain/value-objects/tax-code';
-import { Email } from '../../../core/domain/value-objects/email';
 import { PhoneNumber } from './../../../core/domain/value-objects/phone-number';
-import { InvoiceException } from '../../../core/domain/exceptions/invoice.exception';
+import { TaxCode } from './../../../core/domain/value-objects/tax-code';
 
 @Injectable()
 export class TaxPayerOrmRepository implements TaxPayerRepositoryPort {

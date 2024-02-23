@@ -3,20 +3,20 @@ import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { CreateNewInvoiceCommand } from './create-new-invoice.command';
 
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
 import { InvoiceRepositoryPort } from '../../ports/dataaccess/repositories/invoice.repository.port';
+import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 
 import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 
-import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { Invoice } from '../../../domain/entities/invoice';
-import { InvoiceId } from '../../../domain/value-objects/invoice-id';
 import { randomUUID } from 'crypto';
+import { Invoice } from '../../../domain/entities/invoice';
 import { InvoiceItem } from '../../../domain/entities/invoice-item';
-import { ProductId } from '../../../domain/value-objects/product-id';
-import { Money } from '../../../domain/value-objects/money';
 import { InvoiceCreatedEvent } from '../../../domain/events/invoice-created.event';
+import { InvoiceId } from '../../../domain/value-objects/invoice-id';
+import { Money } from '../../../domain/value-objects/money';
+import { ProductId } from '../../../domain/value-objects/product-id';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { MicroservicesTctPort } from '../../ports/tct/tct.port';
 
 @CommandHandler(CreateNewInvoiceCommand)

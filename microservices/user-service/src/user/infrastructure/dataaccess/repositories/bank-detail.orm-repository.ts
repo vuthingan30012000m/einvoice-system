@@ -4,11 +4,11 @@ import { Repository } from 'typeorm';
 
 import { BankDetailRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/bank-detail.repository.port';
 
+import { BankDetailId } from '../../../core/domain/value-objects/bank-detail-id';
+import { BankId } from '../../../core/domain/value-objects/bank-id';
 import { BankDetailEntity } from '../entities/bank-detail.entity';
 import { BankDetailAdapter } from '../mappers/bank-detail.adapter';
 import { BankDetail } from './../../../core/domain/entities/bank-detail';
-import { BankId } from '../../../core/domain/value-objects/bank-id';
-import { BankDetailId } from '../../../core/domain/value-objects/bank-detail-id';
 
 @Injectable()
 export class BankDetailOrmRepository implements BankDetailRepositoryPort {

@@ -1,9 +1,9 @@
-import { Inject, Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { TaxPayerRegisteredEvent } from '../../domain/events/tax-payer-registered.event';
+import { EncryptionEmailService } from '../../domain/services/encryption-email.service';
 import { MailerPort } from '../ports/mailer/mailer.port';
 import { MessageQueuePort } from '../ports/publisher/message-queue.port';
-import { EncryptionEmailService } from '../../domain/services/encryption-email.service';
 
 @EventsHandler(TaxPayerRegisteredEvent)
 export class TaxPayerRegisteredEventHandler

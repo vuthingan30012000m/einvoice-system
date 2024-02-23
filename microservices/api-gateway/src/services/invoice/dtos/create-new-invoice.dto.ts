@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import * as faker from 'faker';
+import { Type } from 'class-transformer';
 import {
+  IsArray,
   IsNotEmpty,
   IsNumberString,
   IsOptional,
   IsString,
   IsUUID,
-  IsArray,
   ValidateNested,
 } from 'class-validator';
-import { Type } from 'class-transformer';
+import * as faker from 'faker';
 
 export class InvoiceItemDto {
   @ApiProperty({

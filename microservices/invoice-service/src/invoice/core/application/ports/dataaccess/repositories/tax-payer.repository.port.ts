@@ -1,9 +1,9 @@
 import { IRepository } from '@vuvannghia/common';
 
-import { TaxCode } from '../../../../domain/value-objects/tax-code';
 import { TaxPayer } from '../../../../domain/entities/tax-payer';
 import { Email } from '../../../../domain/value-objects/email';
 import { PhoneNumber } from '../../../../domain/value-objects/phone-number';
+import { TaxCode } from '../../../../domain/value-objects/tax-code';
 
 export abstract class TaxPayerRepositoryPort implements IRepository<TaxPayer> {
   abstract save(entity: TaxPayer | TaxPayer[]): Promise<TaxPayer>;

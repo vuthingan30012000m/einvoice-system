@@ -1,18 +1,15 @@
 import {
+  Body,
   Controller,
   Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Inject,
-  Res,
-  NotFoundException,
-  NotAcceptableException,
   HttpException,
   HttpStatus,
-  UseInterceptors,
+  Inject,
+  Param,
+  Patch,
+  Post,
+  Res,
+  UseInterceptors
 } from '@nestjs/common';
 
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -29,12 +26,12 @@ import { QRCodeSegment, toFileStream } from 'qrcode';
 
 import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
 
-import { RequestResetPasswordDto } from './dtos/request-reset-password.dto';
 import { ChangePasswordDto } from './dtos/change-password.dto';
-import { UpdateTaxPayerDto } from './dtos/update-tax-payer.dto';
 import { DeleteTaxPayerDto } from './dtos/delete-tax-payer.dto';
-import { RegisterTaxPayerDto } from './dtos/register-tax-payer.dto';
 import { LoginTaxPayerDto } from './dtos/login-tax-payer.dto';
+import { RegisterTaxPayerDto } from './dtos/register-tax-payer.dto';
+import { RequestResetPasswordDto } from './dtos/request-reset-password.dto';
+import { UpdateTaxPayerDto } from './dtos/update-tax-payer.dto';
 
 @ApiTags('Dịch vụ quản lý người dùng')
 @Controller('user')

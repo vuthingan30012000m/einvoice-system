@@ -1,7 +1,7 @@
 import { InvoiceId } from '../value-objects/invoice-id';
-import { InvoiceItem } from './invoice-item';
 import { Money } from '../value-objects/money';
 import { TaxCode } from '../value-objects/tax-code';
+import { InvoiceItem } from './invoice-item';
 
 export class Invoice {
   invoiceId: InvoiceId;

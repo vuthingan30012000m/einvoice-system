@@ -1,37 +1,28 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Inject,
+  Controller
 } from '@nestjs/common';
 
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import {
-  ClientProxy,
-  EventPattern,
   MessagePattern,
-  Payload,
+  Payload
 } from '@nestjs/microservices';
 
-import { CreateProductDto } from '../dtos/create-product.dto';
 import { CreateProductCommand } from '../../../core/application/commands/create-product/create-product.command';
+import { CreateProductDto } from '../dtos/create-product.dto';
 
-import { FindAllProductDto } from '../dtos/find-all-product.dto';
 import { FindAllProductQuery } from '../../../core/application/queries/find-all-product/find-all-product.query';
+import { FindAllProductDto } from '../dtos/find-all-product.dto';
 
-import { FindOneProductDto } from '../dtos/find-one-product.dto';
 import { FindOneProductQuery } from '../../../core/application/queries/find-one-product/find-one-product.query';
+import { FindOneProductDto } from '../dtos/find-one-product.dto';
 
-import { UpdateProductDto } from '../dtos/update-product.dto';
 import { UpdateProductCommand } from '../../../core/application/commands/update-product/update-product.command';
+import { UpdateProductDto } from '../dtos/update-product.dto';
 
-import { DeleteProductDto } from '../dtos/delete-product.dto';
 import { DeleteProductCommand } from '../../../core/application/commands/delete-product/delete-product.command';
+import { DeleteProductDto } from '../dtos/delete-product.dto';
 
 @Controller()
 export class ProductController {

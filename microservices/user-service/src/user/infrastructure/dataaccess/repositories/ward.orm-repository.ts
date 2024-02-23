@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 
 import { WardRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/ward.repository.port';
 
+import { WardId } from '../../../core/domain/value-objects/ward-id';
 import { WardEntity } from '../entities/ward.entity';
 import { WardAdapter } from '../mappers/ward.adapter';
 import { Ward } from './../../../core/domain/entities/ward';
-import { WardId } from '../../../core/domain/value-objects/ward-id';
 
 @Injectable()
 export class WardOrmRepository implements WardRepositoryPort {

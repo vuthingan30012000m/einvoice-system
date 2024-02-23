@@ -1,15 +1,13 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  Inject,
-  UseInterceptors,
   HttpException,
   HttpStatus,
+  Inject,
+  Patch,
+  Post,
+  UseInterceptors
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -21,10 +19,10 @@ import {
 import { ExcludeValueInterceptor } from '../../interceptors/exclude-value.interceptor';
 
 import { CreateProductDto } from './dtos/create-product.dto';
+import { DeleteProductDto } from './dtos/delete-product.dto';
 import { FindAllProductDto } from './dtos/find-all-product.dto';
 import { FindOneProductDto } from './dtos/find-one-product.dto';
 import { UpdateProductDto } from './dtos/update-product.dto';
-import { DeleteProductDto } from './dtos/delete-product.dto';
 
 @ApiTags('Dịch vụ quản lý hóa đơn')
 @Controller('invoice')

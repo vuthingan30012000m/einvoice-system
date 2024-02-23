@@ -1,18 +1,15 @@
-import { InvoiceEntity } from '../entities/invoice.entity';
 import { Invoice } from '../../../core/domain/entities/invoice';
+import { InvoiceEntity } from '../entities/invoice.entity';
 
-import { WardEntity } from '../entities/ward.entity';
 
-import { InvoiceId } from '../../../core/domain/value-objects/invoice-id';
-import { WardId } from '../../../core/domain/value-objects/ward-id';
-import { Money } from '../../../core/domain/value-objects/money';
-import { TaxPayerEntity } from '../entities/tax-payer.entity';
-import { TaxCode } from '../../../core/domain/value-objects/tax-code';
 import { InvoiceItem } from '../../../core/domain/entities/invoice-item';
+import { InvoiceId } from '../../../core/domain/value-objects/invoice-id';
+import { Money } from '../../../core/domain/value-objects/money';
 import { ProductId } from '../../../core/domain/value-objects/product-id';
+import { TaxCode } from '../../../core/domain/value-objects/tax-code';
 import { InvoiceItemEntity } from '../entities/invoice-item.entity';
-import { map } from 'rxjs';
 import { ProductEntity } from '../entities/product.entity';
+import { TaxPayerEntity } from '../entities/tax-payer.entity';
 
 export class InvoiceAdapter {
   static toDomain(invoiceEntity: InvoiceEntity): Invoice {

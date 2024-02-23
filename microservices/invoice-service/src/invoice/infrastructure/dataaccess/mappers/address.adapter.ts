@@ -1,5 +1,5 @@
-import { AddressEntity } from '../entities/address.entity';
 import { Address } from '../../../core/domain/entities/address';
+import { AddressEntity } from '../entities/address.entity';
 
 import { WardEntity } from '../entities/ward.entity';
 

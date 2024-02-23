@@ -1,5 +1,5 @@
-import { ProductId } from '../value-objects/product-id';
 import { Money } from '../value-objects/money';
+import { ProductId } from '../value-objects/product-id';
 import { TaxCode } from '../value-objects/tax-code';
 
 export class Product {

@@ -6,8 +6,8 @@ import { CityEntity } from '../entities/city.entity';
 import { DistrictEntity } from '../entities/district.entity';
 import { WardEntity } from '../entities/ward.entity';
 
-import { dataDistrict } from './data/address.district.data';
 import { dataCity } from './data/address.city.data';
+import { dataDistrict } from './data/address.district.data';
 import { dataWard } from './data/address.ward.data';
 
 @Injectable()

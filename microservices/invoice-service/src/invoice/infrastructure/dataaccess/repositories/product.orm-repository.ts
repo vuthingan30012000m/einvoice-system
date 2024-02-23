@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 
 import { ProductRepositoryPort } from '../../../core/application/ports/dataaccess/repositories/product.repository.port';
 
+import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { ProductEntity } from '../entities/product.entity';
 import { ProductAdapter } from '../mappers/product.adapter';
 import { Product } from './../../../core/domain/entities/product';
-import { ProductId } from '../../../core/domain/value-objects/product-id';
 
 @Injectable()
 export class ProductOrmRepository implements ProductRepositoryPort {

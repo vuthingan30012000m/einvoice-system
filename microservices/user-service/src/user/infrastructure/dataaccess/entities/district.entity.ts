@@ -1,13 +1,13 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
-  OneToMany,
+  Entity,
   ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { WardEntity } from './ward.entity';
 import { CityEntity } from './city.entity';
+import { WardEntity } from './ward.entity';
 
 @Entity()
 export class DistrictEntity {

@@ -1,16 +1,16 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
-import { FindTaxPayerQuery } from './find-tax-payer.query';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { FindTaxPayerQuery } from './find-tax-payer.query';
 
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
-import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
-import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
-import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
-import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
 import { Logger } from '@nestjs/common';
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
+import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
+import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
+import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
+import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
 
 @QueryHandler(FindTaxPayerQuery)
 export class FindTaxPayerQueryHandler

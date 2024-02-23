@@ -1,16 +1,16 @@
 import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { CreateProductCommand } from './create-product.command';
-import { ProductId } from '../../../domain/value-objects/product-id';
 import { randomUUID } from 'crypto';
 import { Product } from '../../../domain/entities/product';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
 import { Money } from '../../../domain/value-objects/money';
+import { ProductId } from '../../../domain/value-objects/product-id';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { CreateProductCommand } from './create-product.command';
 
+import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 
 @CommandHandler(CreateProductCommand)
 export class CreateProductCommandHandler

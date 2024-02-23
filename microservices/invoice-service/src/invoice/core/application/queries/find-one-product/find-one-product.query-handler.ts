@@ -1,13 +1,13 @@
-import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { Logger } from '@nestjs/common';
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { FindOneProductQuery } from './find-one-product.query';
 
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
-import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { ProductId } from '../../../domain/value-objects/product-id';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 
 @QueryHandler(FindOneProductQuery)
 export class FindOneProductQueryHandler

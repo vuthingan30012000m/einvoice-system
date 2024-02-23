@@ -1,5 +1,5 @@
-import { WardId } from './../value-objects/ward-id';
 import { AddressId } from '../value-objects/address-id';
+import { WardId } from './../value-objects/ward-id';
 
 export class Address {
   addressId: AddressId;

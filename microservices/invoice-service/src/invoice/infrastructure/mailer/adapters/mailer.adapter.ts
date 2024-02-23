@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
+import { Injectable } from '@nestjs/common';
 import { MailerPort } from '../../../core/application/ports/mailer/mailer.port';
 import { Email } from '../../../core/domain/value-objects/email';
 

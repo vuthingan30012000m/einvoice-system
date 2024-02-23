@@ -1,7 +1,7 @@
-import { Email } from '../value-objects/email';
-import { PhoneNumber } from '../value-objects/phone-number';
 import { AddressId } from '../value-objects/address-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
+import { Email } from '../value-objects/email';
+import { PhoneNumber } from '../value-objects/phone-number';
 import { TaxCode } from '../value-objects/tax-code';
 
 export class Seller {

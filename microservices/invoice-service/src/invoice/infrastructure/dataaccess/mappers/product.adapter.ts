@@ -1,13 +1,11 @@
-import { ProductEntity } from '../entities/product.entity';
 import { Product } from '../../../core/domain/entities/product';
+import { ProductEntity } from '../entities/product.entity';
 
-import { WardEntity } from '../entities/ward.entity';
 
-import { ProductId } from '../../../core/domain/value-objects/product-id';
-import { WardId } from '../../../core/domain/value-objects/ward-id';
 import { Money } from '../../../core/domain/value-objects/money';
-import { TaxPayerEntity } from '../entities/tax-payer.entity';
+import { ProductId } from '../../../core/domain/value-objects/product-id';
 import { TaxCode } from '../../../core/domain/value-objects/tax-code';
+import { TaxPayerEntity } from '../entities/tax-payer.entity';
 
 export class ProductAdapter {
   static toDomain(ProductEntity: ProductEntity): Product {

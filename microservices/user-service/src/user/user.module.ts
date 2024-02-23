@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
 
 import { UserApplications } from './core/application/user.application';
-import { UserInterface } from './interface/user.interface';
 import { UserInfrastructure } from './infrastructure/user.infrastructure';
+import { UserInterface } from './interface/user.interface';
 
 @Module({
   imports: [

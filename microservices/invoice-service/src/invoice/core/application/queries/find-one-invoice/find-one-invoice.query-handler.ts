@@ -1,15 +1,14 @@
+import { Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { FindOneInvoiceQuery } from './find-one-invoice.query';
-import { Logger } from '@nestjs/common';
 
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
-import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { ProductId } from '../../../domain/value-objects/product-id';
-import { InvoiceRepositoryPort } from '../../ports/dataaccess/repositories/invoice.repository.port';
+import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
 import { InvoiceId } from '../../../domain/value-objects/invoice-id';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { InvoiceRepositoryPort } from '../../ports/dataaccess/repositories/invoice.repository.port';
+import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 
 @QueryHandler(FindOneInvoiceQuery)
 export class FindOneInvoiceQueryHandler

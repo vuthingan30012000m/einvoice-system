@@ -1,33 +1,24 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Inject,
+  Controller
 } from '@nestjs/common';
 
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import {
-  ClientProxy,
-  EventPattern,
   MessagePattern,
-  Payload,
+  Payload
 } from '@nestjs/microservices';
 
-import { FindTaxPayerDto } from '../dtos/find-tax-payer.dto';
 import { FindTaxPayerQuery } from '../../../core/application/queries/find-tax-payer/find-tax-payer.query';
+import { FindTaxPayerDto } from '../dtos/find-tax-payer.dto';
 
-import { CreateNewInvoiceDto } from '../dtos/create-new-invoice.dto';
 import {
   CreateNewInvoiceCommand,
   CreateNewInvoiceItemCommand,
 } from '../../../core/application/commands/create-new-invoice/create-new-invoice.command';
-import { FindOneInvoiceDto } from '../dtos/find-one-invoice.dto';
 import { FindOneInvoiceQuery } from '../../../core/application/queries/find-one-invoice/find-one-invoice.query';
+import { CreateNewInvoiceDto } from '../dtos/create-new-invoice.dto';
+import { FindOneInvoiceDto } from '../dtos/find-one-invoice.dto';
 
 @Controller()
 export class InvoiceController {

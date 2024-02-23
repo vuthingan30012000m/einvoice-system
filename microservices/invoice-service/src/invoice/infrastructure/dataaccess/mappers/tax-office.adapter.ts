@@ -1,5 +1,5 @@
-import { TaxOfficeEntity } from '../entities/tax-office.entity';
 import { TaxOffice } from '../../../core/domain/entities/tax-office';
+import { TaxOfficeEntity } from '../entities/tax-office.entity';
 
 import { TaxOfficeId } from '../../../core/domain/value-objects/tax-office-id';
 

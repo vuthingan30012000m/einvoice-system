@@ -1,12 +1,11 @@
 import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { VerifyResetPasswordCommand } from './verify-reset-password.command';
 import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
 import { EncryptionEmailService } from '../../../domain/services/encryption-email.service';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { VerifyResetPasswordCommand } from './verify-reset-password.command';
 
 import { Email } from '../../../domain/value-objects/email';
-import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
 
 import * as faker from 'faker';
 import { HashPasswordService } from '../../../domain/services/hash-password.service';

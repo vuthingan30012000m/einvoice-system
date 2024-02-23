@@ -1,9 +1,8 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
+  Entity,
   OneToMany,
-  ManyToOne,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 import { BankDetailEntity } from './bank-detail.entity';

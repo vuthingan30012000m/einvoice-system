@@ -1,14 +1,13 @@
-import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { LoginTaxPayerQuery } from './login-tax-payer.query';
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { Email } from '../../../domain/value-objects/email';
-import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
-import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { Logger } from '@nestjs/common';
-import { HashPasswordService } from '../../../domain/services/hash-password.service';
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { JwtService } from '@nestjs/jwt';
+import { TaxPayerException } from '../../../domain/exceptions/tax-payer.exception';
+import { HashPasswordService } from '../../../domain/services/hash-password.service';
 import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { TaxPayerStatus } from '../../../domain/value-objects/tax-payer-status';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
+import { LoginTaxPayerQuery } from './login-tax-payer.query';
 
 @QueryHandler(LoginTaxPayerQuery)
 export class LoginTaxPayerQueryHandler

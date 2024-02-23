@@ -1,11 +1,11 @@
-import { TaxCode } from '../value-objects/tax-code';
-import { Email } from '../value-objects/email';
-import { PhoneNumber } from '../value-objects/phone-number';
-import { TaxPayerStatus } from '../value-objects/tax-payer-status';
-import { TaxOfficeId } from '../value-objects/tax-office-id';
+import { TaxPayerException } from '../exceptions/tax-payer.exception';
 import { AddressId } from '../value-objects/address-id';
 import { BankDetailId } from '../value-objects/bank-detail-id';
-import { TaxPayerException } from '../exceptions/tax-payer.exception';
+import { Email } from '../value-objects/email';
+import { PhoneNumber } from '../value-objects/phone-number';
+import { TaxCode } from '../value-objects/tax-code';
+import { TaxOfficeId } from '../value-objects/tax-office-id';
+import { TaxPayerStatus } from '../value-objects/tax-payer-status';
 
 export class TaxPayer {
   taxCode: TaxCode;

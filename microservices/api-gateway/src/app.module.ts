@@ -1,19 +1,19 @@
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 
-import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
+import { ConfigModule } from '@nestjs/config';
 
 import { JwtModule } from '@nestjs/jwt';
 
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
-import { LoggingRequestMiddleware } from './middlewares/logging.middleware';
 import { AllExceptionFilter } from './filters/all-exception.filter';
 import { TaxPayerInterceptor } from './interceptors/tax-payer.interceptor';
+import { LoggingRequestMiddleware } from './middlewares/logging.middleware';
 
-import { UserModule } from './services/user/user.module';
 import { InvoiceModule } from './services/invoice/invoice.module';
 import { ReportModule } from './services/report/report.module';
+import { UserModule } from './services/user/user.module';
 
 @Module({
   imports: [

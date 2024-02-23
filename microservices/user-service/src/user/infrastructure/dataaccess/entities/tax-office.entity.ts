@@ -1,9 +1,8 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
+  Entity,
   OneToMany,
-  OneToOne,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 import { TaxPayerEntity } from './tax-payer.entity';

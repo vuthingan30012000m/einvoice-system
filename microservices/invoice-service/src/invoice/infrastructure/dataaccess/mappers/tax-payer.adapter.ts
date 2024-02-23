@@ -1,18 +1,17 @@
-import { BankDetail } from './../../../core/domain/entities/bank-detail';
-import { TaxPayerEntity } from '../entities/tax-payer.entity';
 import { TaxPayer } from '../../../core/domain/entities/tax-payer';
+import { TaxPayerEntity } from '../entities/tax-payer.entity';
 
 import { TaxCode } from '../../../core/domain/value-objects/tax-code';
 
 import { Email } from '../../../core/domain/value-objects/email';
 
+import { AddressId } from '../../../core/domain/value-objects/address-id';
+import { BankDetailId } from '../../../core/domain/value-objects/bank-detail-id';
 import { PhoneNumber } from '../../../core/domain/value-objects/phone-number';
 import { TaxOfficeId } from '../../../core/domain/value-objects/tax-office-id';
-import { BankDetailId } from '../../../core/domain/value-objects/bank-detail-id';
-import { AddressId } from '../../../core/domain/value-objects/address-id';
-import { TaxOfficeEntity } from '../entities/tax-office.entity';
-import { BankDetailEntity } from '../entities/bank-detail.entity';
 import { AddressEntity } from '../entities/address.entity';
+import { BankDetailEntity } from '../entities/bank-detail.entity';
+import { TaxOfficeEntity } from '../entities/tax-office.entity';
 
 export class TaxPayerAdapter {
   static toDomain(TaxPayerEntity: TaxPayerEntity): TaxPayer {

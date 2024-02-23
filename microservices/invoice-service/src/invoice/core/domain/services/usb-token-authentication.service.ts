@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
-import { TaxCode } from '../../domain/value-objects/tax-code';
 import { authenticator } from 'otplib';
+import { TaxCode } from '../../domain/value-objects/tax-code';
 
 @Injectable()
 export class UsbTokenAuthenticationService {

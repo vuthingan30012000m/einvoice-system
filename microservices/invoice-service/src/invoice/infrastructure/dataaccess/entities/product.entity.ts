@@ -1,12 +1,12 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
+  Entity,
   ManyToOne,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
-import { TaxPayerEntity } from './tax-payer.entity';
 import { InvoiceItemEntity } from './invoice-item.entity';
+import { TaxPayerEntity } from './tax-payer.entity';
 
 @Entity()
 export class ProductEntity {

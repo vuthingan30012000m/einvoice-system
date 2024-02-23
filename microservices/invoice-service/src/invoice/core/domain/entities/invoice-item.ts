@@ -1,4 +1,3 @@
-import { InvoiceId } from '../value-objects/invoice-id';
 import { InvoiceItemId } from '../value-objects/invoice-item-id';
 import { Money } from '../value-objects/money';
 import { ProductId } from '../value-objects/product-id';

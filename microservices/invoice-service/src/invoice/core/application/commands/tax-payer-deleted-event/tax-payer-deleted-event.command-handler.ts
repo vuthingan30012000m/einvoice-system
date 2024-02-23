@@ -1,14 +1,9 @@
 import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { TaxPayerDeletedEventCommand } from './tax-payer-deleted-event.command';
 import { TaxCode } from '../../../domain/value-objects/tax-code';
+import { TaxPayerDeletedEventCommand } from './tax-payer-deleted-event.command';
 
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { TaxOfficeRepositoryPort } from '../../ports/dataaccess/repositories/tax-office.repository.port';
-import { BankRepositoryPort } from '../../ports/dataaccess/repositories/bank.repository.port';
-import { WardRepositoryPort } from '../../ports/dataaccess/repositories/ward.repository.port';
-import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
-import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
 
 @CommandHandler(TaxPayerDeletedEventCommand)
 export class TaxPayerDeletedEventCommandHandler

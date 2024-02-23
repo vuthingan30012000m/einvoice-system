@@ -1,5 +1,5 @@
-import { BankEntity } from '../entities/bank.entity';
 import { Bank } from '../../../core/domain/entities/bank';
+import { BankEntity } from '../entities/bank.entity';
 
 import { BankId } from '../../../core/domain/value-objects/bank-id';
 

@@ -2,11 +2,10 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { TaxPayerRegisteredEventCommand } from './tax-payer-registered-event.command';
 
-import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
 import { AddressRepositoryPort } from '../../ports/dataaccess/repositories/address.repository.port';
+import { BankDetailRepositoryPort } from '../../ports/dataaccess/repositories/bank-detail.repository.port';
+import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
 
-import { randomUUID } from 'crypto';
 
 import { Address } from '../../../domain/entities/address';
 import { AddressId } from '../../../domain/value-objects/address-id';
@@ -14,11 +13,11 @@ import { WardId } from '../../../domain/value-objects/ward-id';
 
 import { BankDetail } from '../../../domain/entities/bank-detail';
 
+import { TaxPayer } from '../../../domain/entities/tax-payer';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { BankDetailId } from './../../../domain/value-objects/bank-detail-id';
 import { BankId } from './../../../domain/value-objects/bank-id';
 import { PhoneNumber } from './../../../domain/value-objects/phone-number';
-import { TaxPayer } from '../../../domain/entities/tax-payer';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
 
 import { TaxOfficeId } from '../../../domain/value-objects/tax-office-id';
 

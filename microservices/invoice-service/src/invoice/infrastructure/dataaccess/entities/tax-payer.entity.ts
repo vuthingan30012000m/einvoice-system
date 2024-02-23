@@ -1,19 +1,19 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
-  ManyToOne,
-  OneToOne,
+  Entity,
   JoinColumn,
+  ManyToOne,
   OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { TaxOfficeEntity } from './tax-office.entity';
+import { TaxPayerStatus } from '../../../core/domain/value-objects/tax-payer-status';
 import { AddressEntity } from './address.entity';
 import { BankDetailEntity } from './bank-detail.entity';
-import { TaxPayerStatus } from '../../../core/domain/value-objects/tax-payer-status';
-import { ProductEntity } from './product.entity';
 import { InvoiceEntity } from './invoice.entity';
+import { ProductEntity } from './product.entity';
+import { TaxOfficeEntity } from './tax-office.entity';
 
 @Entity()
 export class TaxPayerEntity {

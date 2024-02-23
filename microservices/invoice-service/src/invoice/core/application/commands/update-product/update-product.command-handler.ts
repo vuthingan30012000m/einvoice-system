@@ -2,13 +2,13 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { UpdateProductCommand } from './update-product.command';
 
+import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
+import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
+import { Money } from '../../../domain/value-objects/money';
+import { ProductId } from '../../../domain/value-objects/product-id';
+import { TaxCode } from '../../../domain/value-objects/tax-code';
 import { ProductRepositoryPort } from '../../ports/dataaccess/repositories/product.repository.port';
 import { TaxPayerRepositoryPort } from '../../ports/dataaccess/repositories/tax-payer.repository.port';
-import { UsbTokenAuthenticationService } from '../../../domain/services/usb-token-authentication.service';
-import { TaxCode } from '../../../domain/value-objects/tax-code';
-import { InvoiceException } from '../../../domain/exceptions/invoice.exception';
-import { ProductId } from '../../../domain/value-objects/product-id';
-import { Money } from '../../../domain/value-objects/money';
 
 @CommandHandler(UpdateProductCommand)
 export class UpdateProductCommandHandler

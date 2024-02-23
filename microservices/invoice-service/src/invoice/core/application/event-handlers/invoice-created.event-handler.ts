@@ -1,13 +1,11 @@
+import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { InvoiceCreatedEvent } from '../../domain/events/invoice-created.event';
-import { Logger } from '@nestjs/common';
-import { MailerPort } from '../ports/mailer/mailer.port';
-import { TaxPayerRepositoryPort } from '../ports/dataaccess/repositories/tax-payer.repository.port';
-import { Product } from '../../domain/entities/product';
-import { ProductRepositoryPort } from '../ports/dataaccess/repositories/product.repository.port';
-import { InvoiceItem } from '../../domain/entities/invoice-item';
-import { ProductId } from '../../domain/value-objects/product-id';
 import { InvoiceException } from '../../domain/exceptions/invoice.exception';
+import { ProductId } from '../../domain/value-objects/product-id';
+import { ProductRepositoryPort } from '../ports/dataaccess/repositories/product.repository.port';
+import { TaxPayerRepositoryPort } from '../ports/dataaccess/repositories/tax-payer.repository.port';
+import { MailerPort } from '../ports/mailer/mailer.port';
 
 @EventsHandler(InvoiceCreatedEvent)
 export class InvoiceCreatedEventHandler
