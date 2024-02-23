@@ -42,3 +42,13 @@ echo "Xong phpmyadmin"
 # docker save -o sau/wifi/image/pgadmin4_image.tar dpage/pgadmin4
 # docker load -i sau/wifi/image/pgadmin4_image.tar
 # echo "Xong pgadmin4"
+
+
+# echo "Tải latex"
+# docker pull         blang/latex:latest
+# docker save -o sau/wifi/image/latex_image.tar  blang/latex:latest
+# docker load -i sau/wifi/image/latex_image.tar
+# echo "Xong latex"
+
+
+
