@@ -1,17 +1,35 @@
 import { NestFactory } from '@nestjs/core';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { AppModule } from './app.module';
+import { Logger, ValidationPipe } from '@nestjs/common';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
-  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    AppModule,
-    {
-      transport: Transport.NATS,
-      options: {
-        servers: [process.env.NATS_HOST],
-      },
-    },
+  const app = await NestFactory.create(AppModule);
+  const logger = new Logger();
+
+  app.setGlobalPrefix('api');
+
+  const options = new DocumentBuilder().build();
+  // const options = new DocumentBuilder()
+    // .setTitle('Quản lý hóa đơn điện tử')
+    // .setDescription('Vũ Văn Nghĩa 20206205')
+    // .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('swagger', app, document);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
   );
-  await app.listen();
+
+  app.enableShutdownHooks();
+
+  const port = process.env.PORT || 3000;
+  await app.listen(port, async () => {
+    logger.log(`Server is running on: ${await app.getUrl()}`);
+  });
 }
 bootstrap();
