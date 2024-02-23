@@ -4,7 +4,7 @@ import {
   IsNotEmpty,
   IsNumberString,
   IsString,
-  Matches
+  Matches,
 } from 'class-validator';
 
 import * as faker from 'faker';

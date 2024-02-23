@@ -1,9 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsEmail,
-  IsNotEmpty,
-  Matches
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, Matches } from 'class-validator';
 
 import * as faker from 'faker';
 

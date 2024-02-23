@@ -9,7 +9,7 @@ import {
   Patch,
   Post,
   Res,
-  UseInterceptors
+  UseInterceptors,
 } from '@nestjs/common';
 
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';

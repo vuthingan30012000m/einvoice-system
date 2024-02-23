@@ -7,7 +7,7 @@ import {
   Inject,
   Patch,
   Post,
-  UseInterceptors
+  UseInterceptors,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
