@@ -58,7 +58,7 @@ export class CreateNewInvoiceCommandHandler
         new TaxCode(payload.buyerId),
       );
       if (!findBuyer) {
-        throw new InvoiceException('Người  mua không tồn tại.');
+        throw new InvoiceException('Người mua không tồn tại.');
       }
 
       for (const item of payload.invoiceItems) {
@@ -77,9 +77,9 @@ export class CreateNewInvoiceCommandHandler
         }
       }
 
-      const newInvoiceId =await this.MicroservicesTctPort.getId()
-      if(!newInvoiceId){
-        throw new InvoiceException('Lỗi   hóa đơn không tạo phê duyệt.');
+      const newInvoiceId = await this.MicroservicesTctPort.getId();
+      if (!newInvoiceId) {
+        throw new InvoiceException('Lỗi hóa đơn không tạo phê duyệt.');
       }
 
       const newInvoiceItems = payload.invoiceItems.map((item) => {
@@ -91,7 +91,7 @@ export class CreateNewInvoiceCommandHandler
           .build();
       });
 
-      const newInvoice = Invoice.Builder( new InvoiceId(newInvoiceId))
+      const newInvoice = Invoice.Builder(new InvoiceId(newInvoiceId))
         .withSellerId(new TaxCode(payload.sellerId))
         .withBuyerId(new TaxCode(payload.buyerId))
         .withItem(newInvoiceItems)
