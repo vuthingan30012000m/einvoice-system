@@ -16,8 +16,9 @@ export class InvoiceItemEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @OneToOne(() => ProductEntity)
-  @JoinColumn()
+  @ManyToOne(() => ProductEntity, (product) => product.invoiceItems, {
+    nullable: false,
+  })
   product: ProductEntity;
 
   @Column({ nullable: false })

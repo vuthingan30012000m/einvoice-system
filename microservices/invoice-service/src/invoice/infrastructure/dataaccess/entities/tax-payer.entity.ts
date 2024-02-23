@@ -13,6 +13,7 @@ import { AddressEntity } from './address.entity';
 import { BankDetailEntity } from './bank-detail.entity';
 import { TaxPayerStatus } from '../../../core/domain/value-objects/tax-payer-status';
 import { ProductEntity } from './product.entity';
+import { InvoiceEntity } from './invoice.entity';
 
 @Entity()
 export class TaxPayerEntity {
@@ -63,4 +64,14 @@ export class TaxPayerEntity {
     cascade: true,
   })
   products: ProductEntity[];
+
+  @OneToMany(() => InvoiceEntity, (taxPayer) => taxPayer.seller, {
+    cascade: true,
+  })
+  sellerInvoices: InvoiceEntity[];
+
+  @OneToMany(() => InvoiceEntity, (taxPayer) => taxPayer.buyer, {
+    cascade: true,
+  })
+  buyerInvoices: InvoiceEntity[];
 }

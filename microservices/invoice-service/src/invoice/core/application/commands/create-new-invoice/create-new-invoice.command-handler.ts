@@ -90,6 +90,7 @@ export class CreateNewInvoiceCommandHandler
         .withSellerId(new TaxCode(payload.sellerId))
         .withBuyerId(new TaxCode(payload.buyerId))
         .withItem(newInvoiceItems)
+        .withCreateAt(new Date())
         .build();
 
       this.InvoiceRepositoryPort.save(newInvoice);

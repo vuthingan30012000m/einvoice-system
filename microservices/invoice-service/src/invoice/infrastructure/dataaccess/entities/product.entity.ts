@@ -1,5 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { TaxPayerEntity } from './tax-payer.entity';
+import { InvoiceItemEntity } from './invoice-item.entity';
 
 @Entity()
 export class ProductEntity {
@@ -25,4 +32,9 @@ export class ProductEntity {
     nullable: false,
   })
   taxPayer: TaxPayerEntity;
+
+  @OneToMany(() => InvoiceItemEntity, (invoiceItem) => invoiceItem.product, {
+    nullable: false,
+  })
+  invoiceItems: InvoiceItemEntity[];
 }
