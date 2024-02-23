@@ -24,7 +24,7 @@ export class TaxPayerEntity {
   name: string;
 
   @Column({
-    // unique: true,
+    unique: true,
     nullable: false,
   })
   email: string;
@@ -33,7 +33,7 @@ export class TaxPayerEntity {
   password: string;
 
   @Column({
-    // unique: true,
+    unique: true,
     nullable: false,
   })
   phoneNumber: string;

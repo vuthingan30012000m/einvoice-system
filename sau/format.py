@@ -14,7 +14,7 @@ def format(directory):
             contents = contents.replace("process.env[\"", "process.env.")
             contents = contents.replace("return { error: error.message };", "return { message: error.message };") 
             # contents = contents.replace("@vuvannghia/common", "@vuvannghia") 
-            # contents = contents.replace("src", "../") //
+            contents = contents.replace("src", "../") 
             # contents = contents.replace("//", "") 
             # contents = contents.replace("🚀", "")   
             contents = contents.replace("throw new Error", "throw new xxxxxxxxxxxxxxxxxxx")  

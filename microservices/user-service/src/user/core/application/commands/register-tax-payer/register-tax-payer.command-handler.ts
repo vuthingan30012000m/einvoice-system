@@ -51,82 +51,82 @@ export class RegisterTaxPayerCommandHandler
     try {
       this.logger.log(`> payload: ${JSON.stringify(payload)}`);
 
-      // const existingEmail = await this.TaxPayerRepository.getOneByEmail(
-      // new Email(payload.email),
-      // );
-      // if (existingEmail) {
-      // throw new TaxPayerException('Email đã tồn tại.');
-      // }
+      const existingEmail = await this.TaxPayerRepository.getOneByEmail(
+        new Email(payload.email),
+      );
+      if (existingEmail) {
+        throw new TaxPayerException('Email đã tồn tại.');
+      }
 
-      // const existingPhoneNumber =
-      // await this.TaxPayerRepository.getOneByPhoneNumber(
-      // new PhoneNumber(payload.phoneNumber),
-      // );
-      // if (existingPhoneNumber) {
-      // throw new TaxPayerException('Số điện thoại đã tồn tại.');
-      // }
+      const existingPhoneNumber =
+        await this.TaxPayerRepository.getOneByPhoneNumber(
+          new PhoneNumber(payload.phoneNumber),
+        );
+      if (existingPhoneNumber) {
+        throw new TaxPayerException('Số điện thoại đã tồn tại.');
+      }
 
-      // const existingTaxOffice = await this.TaxOfficeRepository.getOneById(
-      // new TaxOfficeId(payload.taxOfficeId),
-      // );
-      // if (!existingTaxOffice) {
-      // throw new TaxPayerException('Cơ quan thuế không tồn tại');
-      // }
+      const existingTaxOffice = await this.TaxOfficeRepository.getOneById(
+        new TaxOfficeId(payload.taxOfficeId),
+      );
+      if (!existingTaxOffice) {
+        throw new TaxPayerException('Cơ quan thuế không tồn tại');
+      }
 
-      // const existingBank = await this.BankRepository.getOneById(
-      // new BankId(payload.bankId),
-      // );
-      // if (!existingBank) {
-      // throw new TaxPayerException('Ngân hàng không tồn tại');
-      // }
+      const existingBank = await this.BankRepository.getOneById(
+        new BankId(payload.bankId),
+      );
+      if (!existingBank) {
+        throw new TaxPayerException('Ngân hàng không tồn tại');
+      }
 
-      // const exitingWard = await this.WardRepository.getOneById(
-      // new WardId(payload.wardId),
-      // );
-      // if (!exitingWard) {
-      // throw new TaxPayerException('Phường/xã không tồn tại');
-      // }
+      const exitingWard = await this.WardRepository.getOneById(
+        new WardId(payload.wardId),
+      );
+      if (!exitingWard) {
+        throw new TaxPayerException('Phường/xã không tồn tại');
+      }
 
-      // const exitingBankDetail = await this.BankDetailRepository.getAccountBank(
-      // payload.accountBank,
-      // new BankId(payload.bankId),
-      // );
-      // if (exitingBankDetail) {
-      // throw new TaxPayerException('Tài khoản ngân hàng đã tồn tại');
-      // }
+      const exitingBankDetail = await this.BankDetailRepository.getAccountBank(
+        payload.accountBank,
+        new BankId(payload.bankId),
+      );
+      if (exitingBankDetail) {
+        throw new TaxPayerException('Tài khoản ngân hàng đã tồn tại');
+      }
 
-      // const newAddress = Address.Builder(new AddressId(randomUUID()))
-      // .withWardId(new WardId(payload.wardId))
-      // .withNoteAddress(payload.noteAddress)
-      // .build();
+      const newAddress = Address.Builder(new AddressId(randomUUID()))
+        .withWardId(new WardId(payload.wardId))
+        .withNoteAddress(payload.noteAddress)
+        .build();
 
-      // const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
-      // .withBankId(new BankId(payload.bankId))
-      // .withAccountBank(payload.accountBank)
-      // .build();
+      const newBankDetail = BankDetail.Builder(new BankDetailId(randomUUID()))
+        .withBankId(new BankId(payload.bankId))
+        .withAccountBank(payload.accountBank)
+        .build();
 
-      // const hashPassword = await this.HashPasswordService.hash(
-      // payload.password,
-      // );
+      const hashPassword = await this.HashPasswordService.hash(
+        payload.password,
+      );
 
-      // const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
-      // .withName(payload.name)
-      // .withPassword(hashPassword)
-      // .withEmail(new Email(payload.email))
-      // .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
-      // .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
-      // .withBankDetailId(new BankDetailId(newBankDetail.bankDetailId.value))
-      // .withAddressId(new AddressId(newAddress.addressId.value))
-      // .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
-      // .build();
+      const newTaxPayer = TaxPayer.Builder(new TaxCode(randomUUID()))
+        .withName(payload.name)
+        .withPassword(hashPassword)
+        .withEmail(new Email(payload.email))
+        .withPhoneNumber(new PhoneNumber(payload.phoneNumber))
+        .withTaxOfficeId(new TaxOfficeId(payload.taxOfficeId))
+        .withBankDetailId(new BankDetailId(newBankDetail.bankDetailId.value))
+        .withAddressId(new AddressId(newAddress.addressId.value))
+        .withTaxPayerStatus(TaxPayerStatus.VERIFY_EMAIL)
+        .build();
 
-      // await this.AddressRepository.save(newAddress);
-      // await this.BankDetailRepository.save(newBankDetail);
-      // await this.TaxPayerRepository.save(newTaxPayer);
+      await this.AddressRepository.save(newAddress);
+      await this.BankDetailRepository.save(newBankDetail);
+      await this.TaxPayerRepository.save(newTaxPayer);
 
-      // this.eventBus.publish(
-      // new TaxPayerRegisteredEvent(newAddress, newBankDetail, newTaxPayer),
-      // );
+      this.eventBus.publish(
+        new TaxPayerRegisteredEvent(newAddress, newBankDetail, newTaxPayer),
+      );
 
       return { message: 'Đăng ký thành công. Hãy thực hiện xác nhận email.' };
     } catch (error) {

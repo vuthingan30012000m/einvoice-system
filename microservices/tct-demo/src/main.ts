@@ -9,11 +9,10 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
 
-  const options = new DocumentBuilder().build();
-  // const options = new DocumentBuilder()
-  // .setTitle('Quản lý hóa đơn điện tử')
-  // .setDescription('Vũ Văn Nghĩa 20206205')
-  // .build();
+  const options = new DocumentBuilder()
+    .setTitle('Tổng cục thuế Demo')
+    .setDescription('Vũ Văn Nghĩa 20206205')
+    .build();
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('swagger', app, document);

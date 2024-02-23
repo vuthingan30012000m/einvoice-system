@@ -14,19 +14,19 @@ export class BankEntity {
   id: string;
 
   @Column({
-    // unique: true,
+    unique: true,
     nullable: false,
   })
   name: string;
 
   @Column({
-    // unique: true,
+    unique: true,
     nullable: false,
   })
   code: string;
 
   @Column({
-    // unique: true,
+    unique: true,
     nullable: false,
   })
   shortName: string;

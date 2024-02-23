@@ -13,12 +13,6 @@ import { InvoiceModule } from './invoice/invoice.module';
         APP_DOMAIN: Joi.string().required(),
 
         NATS_HOST: Joi.string().required(),
-
-        // VERIFY_EMAIL_SECRET: Joi.string().required(),
-        // VERIFY_RESET_PASSWORD_SECRET: Joi.string().required(),
-
-        // JWT_SECRET: Joi.string().required(),
-        // JWT_EXPIRES_IN: Joi.string().required(),
       }),
     }),
     InvoiceModule,

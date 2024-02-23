@@ -8,7 +8,7 @@ export class CityEntity {
   id: string;
 
   @Column({
-    // unique: true,
+    unique: true,
     nullable: false,
   })
   name: string;

@@ -58,11 +58,7 @@ export const InvoiceInfrastructure = {
     TCT_HOST: Joi.string().required(),
     TCT_PORT: Joi.string().required(),
   }),
-  configs: [
-    DatabaseConfig.configs(),
-    MailerConfig.configs(),
-    // QueueConfig.configs(),
-  ],
+  configs: [DatabaseConfig.configs(), MailerConfig.configs()],
 
   repositories: [
     TaxOfficeEntity,

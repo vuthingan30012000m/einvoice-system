@@ -14,7 +14,7 @@ export class TaxOfficeEntity {
   id: string;
 
   @Column({
-    // unique: true,
+    unique: true,
     nullable: false,
   })
   name: string;
