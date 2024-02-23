@@ -1,11 +1,6 @@
 import {
   Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
+  Get
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
